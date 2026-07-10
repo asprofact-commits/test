@@ -244,7 +244,7 @@ h2{font-size:clamp(1.45rem,5vw,1.9rem);margin-bottom:6px}
 
 <script>
 /* ================= CONFIG ================= */
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNfE8JluThER7113R4tvbb17EAx7MDeP_fkEijzBCfgoIr5BpVIyVrQbkvKpuNNgZSNw/exec";        // ← paste your deployed Apps Script web-app URL here. Empty = demo mode.
+const APPS_SCRIPT_URL = "";        // ← paste your deployed Apps Script web-app URL here. Empty = demo mode.
 const DAYS_AHEAD = 7;              // booking window
 const CLOSED_WEEKDAYS = [];        // e.g. [1] closes Mondays (0=Sun … 6=Sat)
 const LUNCH = ["12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00"];
@@ -508,16 +508,18 @@ async function submit(){
   const payload={action:"reserve",name:S.name,phone:S.phone,notes:S.notes,
     date:S.date,time:S.time,party:S.party,lang,
     plates:plateSummary().join("; "),source:"web"};
-  let ok=true;
+  let ok=true, detail="";
   if(APPS_SCRIPT_URL){
     try{
       const r=await fetch(APPS_SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
-      const j=await r.json(); ok=j.ok===true;
-    }catch(e){ok=false;}
+      const raw=await r.text();
+      try{const j=JSON.parse(raw); ok=j.ok===true; if(!ok)detail=j.error||raw.slice(0,200);}
+      catch(pe){ok=false; detail="HTTP "+r.status+" non-JSON: "+raw.slice(0,200);}
+    }catch(e){ok=false; detail=String(e);}
   }else{
     await new Promise(r=>setTimeout(r,900)); // demo latency
   }
-  if(!ok){alert(t("err_net")); b.disabled=false; refreshCta(); return;}
+  if(!ok){alert(t("err_net")+(detail?"\n\n[debug] "+detail:"")); b.disabled=false; refreshCta(); return;}
   const d=new Date(S.date+"T12:00:00");
   $("doneSub").textContent=t("done_sub").replace("{P}",S.party).replace("{D}",fmtDate(d,true)).replace("{H}",S.time).replace("{N}",S.name.split(" ")[0]);
   buildIcs();
