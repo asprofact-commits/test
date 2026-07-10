@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Κουζίνα · Εβδομαδιαίο Μενού — Cookaki</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#B8943E;--steel:#2C4A5A;--navy:#1C2E3A;--cream:#FBF7EF;--line:rgba(28,46,58,.14);
+--serif:'Cormorant Garamond',Georgia,serif;--sans:Georgia,serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--cream);color:#2a2a26;min-height:100dvh}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+header{position:sticky;top:0;z-index:5;background:var(--navy);color:var(--cream);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+header h1{font-family:var(--serif);font-size:1.15rem;font-weight:600;letter-spacing:.03em}
+header h1 span{color:var(--gold)}
+header .sub{font-size:.7rem;opacity:.7}
+main{max-width:760px;margin:0 auto;padding:18px 14px 120px}
+
+/* PIN gate */
+#gate{max-width:340px;margin:14vh auto;text-align:center;padding:0 20px}
+#gate h2{font-family:var(--serif);color:var(--navy);font-size:1.6rem;margin-bottom:8px}
+#gate p{color:var(--steel);font-size:.9rem;margin-bottom:20px}
+#pin{width:100%;padding:14px;font-size:1.4rem;text-align:center;letter-spacing:.5em;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+#pin:focus{outline:none;border-color:var(--gold)}
+#gateBtn{width:100%;margin-top:12px;background:var(--navy);color:var(--cream);padding:14px;border-radius:12px;font-size:1rem;font-weight:700}
+#gateErr{color:#a5432e;font-size:.85rem;margin-top:10px;display:none}
+
+/* day summary strip */
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:6px 0 18px}
+.days div{text-align:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 2px}
+.days b{display:block;font-size:.72rem;color:var(--steel);letter-spacing:.05em}
+.days span{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--navy)}
+.days span.low{color:#a5432e}.days span.hi{color:var(--gold)}
+.hint{font-size:.78rem;color:var(--steel);margin-bottom:16px;line-height:1.5}
+
+/* grid */
+.cat{margin:20px 0 8px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.prow{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.prow .nm{flex:1;min-width:0}
+.prow .nm b{font-family:var(--serif);font-size:1.02rem;color:var(--navy);display:block;line-height:1.2}
+.prow .nm small{font-size:.7rem;color:var(--steel)}
+.dots{display:flex;gap:4px}
+.dot{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);font-size:.62rem;color:var(--steel);display:flex;align-items:center;justify-content:center;transition:all .12s;background:#fff}
+.dot.on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:700}
+@media(max-width:560px){
+  .prow{flex-direction:column;align-items:flex-start}
+  .dots{width:100%;justify-content:space-between}
+  .dot{flex:1;height:36px}
+}
+
+/* footer */
+.cta{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(transparent,var(--cream) 30%);padding:16px 14px calc(16px + env(safe-area-inset-bottom))}
+.cta .in{max-width:760px;margin:0 auto;display:flex;gap:10px}
+.btn{flex:1;background:var(--gold);color:#fff;font-size:1rem;font-weight:700;padding:15px;border-radius:12px}
+.btn.ghost{flex:0 0 auto;background:#fff;color:var(--steel);border:1.5px solid var(--line);padding:15px 18px}
+.btn:disabled{opacity:.4}
+#saved{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:var(--navy);color:var(--cream);padding:10px 22px;border-radius:99px;font-size:.85rem;display:none;z-index:9}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <h2>Κουζίνα Cookaki</h2>
+  <p>Βάλε το PIN για να ορίσεις το μενού της εβδομάδας<br><small>Enter PIN to set this week's menu</small></p>
+  <input id="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="off">
+  <button id="gateBtn" onclick="unlock()">Είσοδος · Enter</button>
+  <div id="gateErr">Λάθος PIN — προσπάθησε ξανά.</div>
+</div>
+
+<div id="app" style="display:none">
+<header>
+  <h1>COOKAKI <span>· Μενού εβδομάδας</span></h1>
+  <div class="sub">Weekly menu setup</div>
+</header>
+<main>
+  <div class="days" id="dayStrip"></div>
+  <div class="hint">Πάτα τις μέρες που σερβίρεται κάθε πιάτο. Στόχος: <b>6–10 πιάτα</b> τη μέρα — αρκετή επιλογή, καθόλου σπατάλη. Το site ενημερώνεται αυτόματα κάθε μέρα.<br><small>Tap the days each plate is served. Aim for 6–10 plates/day. The booking page updates automatically.</small></div>
+  <div id="list"></div>
+</main>
+<div class="cta"><div class="in">
+  <button class="btn ghost" onclick="setAll(1)" title="Όλα, όλες τις μέρες">Όλα ✓</button>
+  <button class="btn ghost" onclick="setAll(0)" title="Καθάρισμα">Καμία ✕</button>
+  <button class="btn" id="saveBtn" onclick="save()">Αποθήκευση εβδομάδας</button>
+</div></div>
+<div id="saved">✓ Αποθηκεύτηκε — το μενού ενημερώθηκε</div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNfE8JluThER7113R4tvbb17EAx7MDeP_fkEijzBCfgoIr5BpVIyVrQbkvKpuNNgZSNw/exec";   // ← same web-app URL as reserve.html. Empty = demo mode.
+const DAY_LABELS=["Δε","Τρ","Τε","Πε","Πα","Σα","Κυ"];
+const CATS={hot:"Μαγειρευτά · Hot table",sea:"Θάλασσα · From the sea",cold:"Σαλάτες & Ορεκτικά",sweet:"Γλυκά"};
+
+/* demo data — mirrors reserve.html */
+const DEMO_PLATES=[
+ {id:"moussaka",el:"Μουσακάς",en:"Moussaka",cat:"hot"},{id:"pastitsio",el:"Παστίτσιο",en:"Pastitsio",cat:"hot"},
+ {id:"gemista",el:"Γεμιστά",en:"Gemista",cat:"hot"},{id:"soutzou",el:"Σουτζουκάκια",en:"Soutzoukakia",cat:"hot"},
+ {id:"kokkin",el:"Μοσχάρι κοκκινιστό",en:"Beef kokkinisto",cat:"hot"},{id:"lemonchick",el:"Κοτόπουλο λεμονάτο",en:"Lemon chicken",cat:"hot"},
+ {id:"briam",el:"Μπριάμ",en:"Briam",cat:"hot"},{id:"gigantes",el:"Γίγαντες",en:"Gigantes",cat:"hot"},
+ {id:"fish",el:"Ψάρι ημέρας",en:"Fish of the day",cat:"sea"},{id:"octopus",el:"Χταπόδι σχάρας",en:"Grilled octopus",cat:"sea"},
+ {id:"horiatiki",el:"Χωριάτικη",en:"Horiatiki",cat:"cold"},{id:"dolmad",el:"Ντολμαδάκια",en:"Dolmadakia",cat:"cold"},
+ {id:"fava",el:"Φάβα",en:"Fava",cat:"cold"},{id:"tzatziki",el:"Τζατζίκι",en:"Tzatziki",cat:"cold"},
+ {id:"galakto",el:"Γαλακτομπούρεκο",en:"Galaktoboureko",cat:"sweet"},{id:"yogurt",el:"Γιαούρτι με μέλι",en:"Yogurt & honey",cat:"sweet"}];
+const DEMO_WEEK={moussaka:[1,1,1,1,1,1,1],pastitsio:[0,1,0,1,0,1,1],gemista:[1,0,1,0,1,1,0],soutzou:[0,1,0,1,0,1,0],
+ kokkin:[1,0,1,0,1,0,1],lemonchick:[0,1,0,1,1,0,1],briam:[1,1,0,1,0,1,0],gigantes:[1,0,1,0,1,1,1],
+ fish:[0,0,1,1,1,1,0],octopus:[0,0,0,1,1,1,1],horiatiki:[1,1,1,1,1,1,1],dolmad:[1,1,1,1,1,1,1],
+ fava:[1,1,1,1,1,1,1],tzatziki:[1,1,1,1,1,1,1],galakto:[1,1,1,1,1,1,1],yogurt:[1,1,1,1,1,1,1]};
+
+let PLATES=[],WEEK={},PIN="";
+const $=id=>document.getElementById(id);
+
+async function unlock(){
+  PIN=$("pin").value.trim();
+  if(!PIN){$("gateErr").style.display="block";return;}
+  if(APPS_SCRIPT_URL){
+    try{
+      const r=await fetch(`${APPS_SCRIPT_URL}?action=admin&pin=${encodeURIComponent(PIN)}`);
+      const j=await r.json();
+      if(!j.ok){$("gateErr").style.display="block";return;}
+      PLATES=j.plates; WEEK=j.week;
+    }catch(e){$("gateErr").style.display="block";return;}
+  }else{
+    PLATES=DEMO_PLATES; WEEK=JSON.parse(JSON.stringify(DEMO_WEEK));
+  }
+  $("gate").style.display="none"; $("app").style.display="block";
+  render();
+}
+$("pin").addEventListener("keydown",e=>{if(e.key==="Enter")unlock();});
+
+function render(){
+  const list=$("list"); list.innerHTML="";
+  ["hot","sea","cold","sweet"].forEach(cat=>{
+    const items=PLATES.filter(p=>p.cat===cat); if(!items.length)return;
+    const h=document.createElement("div");h.className="cat";h.textContent=CATS[cat]||cat;list.appendChild(h);
+    items.forEach(p=>{
+      if(!WEEK[p.id])WEEK[p.id]=[0,0,0,0,0,0,0];
+      const row=document.createElement("div");row.className="prow";
+      row.innerHTML=`<div class="nm"><b>${p.el}</b><small>${p.en}</small></div>`;
+      const dots=document.createElement("div");dots.className="dots";
+      DAY_LABELS.forEach((d,i)=>{
+        const b=document.createElement("button");
+        b.className="dot"+(WEEK[p.id][i]?" on":"");b.textContent=d;
+        b.onclick=()=>{WEEK[p.id][i]=WEEK[p.id][i]?0:1;b.classList.toggle("on");strip();};
+        dots.appendChild(b);
+      });
+      row.appendChild(dots);list.appendChild(row);
+    });
+  });
+  strip();
+}
+function strip(){
+  const s=$("dayStrip");s.innerHTML="";
+  DAY_LABELS.forEach((d,i)=>{
+    const n=Object.values(WEEK).reduce((a,w)=>a+(w[i]?1:0),0);
+    const cls=n<6?"low":n>10?"hi":"";
+    s.innerHTML+=`<div><b>${d}</b><span class="${cls}">${n}</span></div>`;
+  });
+}
+function setAll(v){Object.keys(WEEK).forEach(k=>WEEK[k]=[v,v,v,v,v,v,v]);render();}
+
+async function save(){
+  const b=$("saveBtn");b.disabled=true;b.textContent="Αποθήκευση…";
+  let ok=true;
+  if(APPS_SCRIPT_URL){
+    try{
+      const r=await fetch(APPS_SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body:JSON.stringify({action:"saveWeekly",pin:PIN,week:WEEK})});
+      const j=await r.json();ok=j.ok===true;
+    }catch(e){ok=false;}
+  }else{await new Promise(r=>setTimeout(r,600));}
+  b.disabled=false;b.textContent="Αποθήκευση εβδομάδας";
+  if(!ok){alert("Σφάλμα — προσπάθησε ξανά.");return;}
+  const s=$("saved");s.style.display="block";setTimeout(()=>s.style.display="none",2400);
+}
+</script>
+</body>
+</html>

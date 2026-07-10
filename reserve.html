@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Reserve a Table — Cookaki Bell Kitchen, est. 1956</title>
+<meta name="description" content="Book your table at Cookaki, the family taverna two minutes from the Acropolis Museum. Reserve today's home-cooked plates before they sell out.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B8943E; --steel:#2C4A5A; --navy:#1C2E3A; --cream:#FBF7EF;
+  --ink:#2a2a26; --line:rgba(28,46,58,.14); --ok:#3d7a4f; --err:#a5432e;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);min-height:100dvh;display:flex;flex-direction:column}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit;font-size:16px}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:10;background:var(--cream);border-bottom:1px solid var(--line)}
+.bar{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px 10px}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.25rem;color:var(--navy);letter-spacing:.04em;text-decoration:none}
+.brand em{color:var(--gold);font-style:normal;font-size:.72rem;letter-spacing:.22em;display:block;font-family:var(--sans)}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:2px}
+.lang button{padding:4px 12px;border-radius:99px;font-size:.78rem;color:var(--steel)}
+.lang button.on{background:var(--navy);color:var(--cream)}
+.progress{height:3px;background:rgba(184,148,62,.18)}
+.progress i{display:block;height:100%;background:var(--gold);width:0%;transition:width .35s ease}
+
+/* ---------- layout ---------- */
+main{flex:1;width:100%;max-width:640px;margin:0 auto;padding:26px 20px 120px}
+.step{display:none;animation:fade .3s ease}
+.step.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1,h2{font-family:var(--serif);color:var(--navy);font-weight:600;line-height:1.15}
+h1{font-size:clamp(1.9rem,6vw,2.6rem)}
+h2{font-size:clamp(1.45rem,5vw,1.9rem);margin-bottom:6px}
+.sub{color:var(--steel);font-size:.95rem;line-height:1.55;margin-bottom:22px}
+.back{color:var(--steel);font-size:.85rem;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;opacity:.85}
+.back:hover{opacity:1}
+
+/* ---------- welcome ---------- */
+.hero{text-align:center;padding-top:4vh}
+.hero .kicker{color:var(--gold);letter-spacing:.28em;font-size:.72rem;text-transform:uppercase;margin-bottom:14px}
+.hero p.lead{color:var(--steel);font-size:1.02rem;line-height:1.6;max-width:46ch;margin:14px auto 6px}
+.proof{display:flex;justify-content:center;gap:0;margin:26px 0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{padding:14px 18px;text-align:center;flex:1}
+.proof div+div{border-left:1px solid var(--line)}
+.proof b{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--navy)}
+.proof span{font-size:.72rem;color:var(--steel);letter-spacing:.05em}
+
+/* ---------- option grids ---------- */
+.grid{display:grid;gap:10px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.opt{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:16px 8px;text-align:center;font-size:1.05rem;color:var(--navy);transition:all .15s;min-height:58px}
+.opt:hover{border-color:var(--gold)}
+.opt.sel{border-color:var(--gold);background:var(--gold);color:#fff;font-weight:700}
+.opt small{display:block;font-size:.68rem;letter-spacing:.04em;opacity:.75;margin-top:3px}
+.opt:disabled{opacity:.35;cursor:not-allowed}
+.datecard b{display:block;font-family:var(--serif);font-size:1.35rem}
+.slotlbl{margin:20px 0 10px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+/* ---------- group notice ---------- */
+.notice{border:1px solid var(--line);border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:14px 16px;font-size:.88rem;color:var(--steel);line-height:1.55;margin-top:18px}
+
+/* ---------- menu ---------- */
+.cat{margin:22px 0 10px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.plate{display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;transition:border-color .15s}
+.plate.sel{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.plate .tx{flex:1;min-width:0}
+.plate .nm{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--navy)}
+.plate .ds{font-size:.8rem;color:var(--steel);line-height:1.4}
+.plate .pr{font-weight:700;color:var(--navy);white-space:nowrap;font-size:.95rem}
+.qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.qty button{width:34px;height:34px;font-size:1.15rem;color:var(--steel);display:flex;align-items:center;justify-content:center}
+.qty button:hover{background:rgba(184,148,62,.12)}
+.qty b{min-width:22px;text-align:center;font-size:.95rem}
+.scarce{display:inline-block;background:rgba(184,148,62,.14);color:#8a6c25;font-size:.72rem;padding:3px 10px;border-radius:99px;margin-bottom:16px}
+.skip{display:block;text-align:center;color:var(--steel);text-decoration:underline;font-size:.88rem;margin:18px auto 0}
+
+/* ---------- form ---------- */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.8rem;letter-spacing:.06em;color:var(--steel);margin-bottom:6px}
+.field label i{font-style:normal;opacity:.6}
+.field input,.field textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field .hint{font-size:.74rem;color:var(--steel);opacity:.8;margin-top:5px}
+.errmsg{color:var(--err);font-size:.8rem;margin-top:5px;display:none}
+
+/* ---------- review ---------- */
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.94rem}
+.row:last-child{border:none}
+.row span{color:var(--steel)}
+.row b{color:var(--navy);text-align:right}
+.edit{color:var(--gold);font-size:.78rem;text-decoration:underline;margin-left:8px}
+
+/* ---------- footer cta ---------- */
+.cta{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(transparent,var(--cream) 30%);padding:18px 20px calc(18px + env(safe-area-inset-bottom));z-index:9}
+.cta .in{max-width:640px;margin:0 auto}
+.btn{width:100%;background:var(--navy);color:var(--cream);font-size:1.05rem;font-weight:700;padding:17px;border-radius:14px;letter-spacing:.03em;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn:hover{background:var(--steel)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.gold{background:var(--gold)}
+.btn.gold:hover{background:#a5842f}
+.cta .note{text-align:center;font-size:.72rem;color:var(--steel);margin-top:8px;opacity:.85}
+
+/* ---------- confirmation ---------- */
+.done{text-align:center;padding-top:5vh}
+.done .mark{width:74px;height:74px;border-radius:50%;background:var(--gold);color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:var(--serif)}
+.done .kerasma{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--steel);max-width:40ch;margin:14px auto 26px;line-height:1.5}
+.acts{display:grid;gap:10px;max-width:380px;margin:0 auto}
+.act{display:flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:13px;font-size:.92rem;color:var(--navy);text-decoration:none}
+.act:hover{border-color:var(--gold)}
+.spin{width:18px;height:18px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.hp{position:absolute;left:-5000px;opacity:0}
+@media(max-width:420px){.g4{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="/">COOKAKI<em data-i>est1956</em></a>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="lEn" class="on" onclick="setLang('en')">EN</button>
+      <button id="lEl" onclick="setLang('el')">ΕΛ</button>
+    </div>
+  </div>
+  <div class="progress"><i id="prog"></i></div>
+</header>
+
+<main>
+
+  <!-- 0 · WELCOME -->
+  <section class="step hero" id="s0">
+    <div class="kicker" data-i>kicker</div>
+    <h1 data-i>title</h1>
+    <p class="lead" data-i>lead</p>
+    <div class="proof">
+      <div><b>4.8★</b><span data-i>proof1</span></div>
+      <div><b>1956</b><span data-i>proof2</span></div>
+      <div><b>2′</b><span data-i>proof3</span></div>
+    </div>
+  </section>
+
+  <!-- 1 · PARTY -->
+  <section class="step" id="s1">
+    <button class="back" onclick="go(0)">←&nbsp;<span data-i>back</span></button>
+    <h2 data-i>q_party</h2>
+    <p class="sub" data-i>q_party_sub</p>
+    <div class="grid g4" id="partyGrid"></div>
+    <div class="notice" id="groupNote" style="display:none" data-i>group_note</div>
+  </section>
+
+  <!-- 2 · DATE -->
+  <section class="step" id="s2">
+    <button class="back" onclick="go(1)">←&nbsp;<span data-i>back</span></button>
+    <h2 data-i>q_date</h2>
+    <p class="sub" data-i>q_date_sub</p>
+    <div class="grid g4" id="dateGrid"></div>
+  </section>
+
+  <!-- 3 · TIME -->
+  <section class="step" id="s3">
+    <button class="back" onclick="go(2)">←&nbsp;<span data-i>back</span></button>
+    <h2 data-i>q_time</h2>
+    <p class="sub" data-i>q_time_sub</p>
+    <div class="slotlbl" data-i>lunch</div>
+    <div class="grid g4" id="lunchGrid"></div>
+    <div class="slotlbl" data-i>dinner</div>
+    <div class="grid g4" id="dinnerGrid"></div>
+  </section>
+
+  <!-- 4 · PLATES -->
+  <section class="step" id="s4">
+    <button class="back" onclick="go(3)">←&nbsp;<span data-i>back</span></button>
+    <h2 id="menuTitle"></h2>
+    <p class="sub" data-i>q_menu_sub</p>
+    <span class="scarce" data-i>scarce</span>
+    <div id="menuList"></div>
+    <button class="skip" onclick="next()" data-i>skip</button>
+  </section>
+
+  <!-- 5 · DETAILS -->
+  <section class="step" id="s5">
+    <button class="back" onclick="go(4)">←&nbsp;<span data-i>back</span></button>
+    <h2 data-i>q_you</h2>
+    <p class="sub" data-i>q_you_sub</p>
+    <div class="field">
+      <label for="fName" data-i>f_name</label>
+      <input id="fName" autocomplete="name" required>
+      <div class="errmsg" id="eName" data-i>e_name</div>
+    </div>
+    <div class="field">
+      <label for="fPhone" data-i>f_phone</label>
+      <input id="fPhone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+30 …" required>
+      <div class="hint" data-i>f_phone_hint</div>
+      <div class="errmsg" id="ePhone" data-i>e_phone</div>
+    </div>
+    <div class="field">
+      <label for="fNotes"><span data-i>f_notes</span> <i data-i>opt</i></label>
+      <textarea id="fNotes" rows="2"></textarea>
+    </div>
+    <input class="hp" id="fWeb" tabindex="-1" autocomplete="off">
+  </section>
+
+  <!-- 6 · REVIEW -->
+  <section class="step" id="s6">
+    <button class="back" onclick="go(5)">←&nbsp;<span data-i>back</span></button>
+    <h2 data-i>q_review</h2>
+    <p class="sub" data-i>q_review_sub</p>
+    <div class="card" id="reviewCard"></div>
+    <div class="notice" id="reviewGroup" style="display:none" data-i>group_note</div>
+  </section>
+
+  <!-- 7 · DONE -->
+  <section class="step done" id="s7">
+    <div class="mark">✓</div>
+    <h2 data-i>done_t</h2>
+    <p class="sub" id="doneSub"></p>
+    <p class="kerasma" data-i>kerasma</p>
+    <div class="acts">
+      <a class="act" id="aCal" download="cookaki-reservation.ics">📅 <span data-i>a_cal</span></a>
+      <a class="act" href="https://wa.me/306982373505" target="_blank" rel="noopener">💬 <span data-i>a_wa</span></a>
+      <a class="act" href="https://maps.google.com/?q=Cookaki+Petmeza+5+Koukaki+Athens" target="_blank" rel="noopener">📍 <span data-i>a_map</span></a>
+    </div>
+  </section>
+
+</main>
+
+<div class="cta" id="cta">
+  <div class="in">
+    <button class="btn gold" id="ctaBtn" onclick="ctaClick()"></button>
+    <div class="note" id="ctaNote"></div>
+  </div>
+</div>
+
+<script>
+/* ================= CONFIG ================= */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNfE8JluThER7113R4tvbb17EAx7MDeP_fkEijzBCfgoIr5BpVIyVrQbkvKpuNNgZSNw/exec";        // ← paste your deployed Apps Script web-app URL here. Empty = demo mode.
+const DAYS_AHEAD = 7;              // booking window
+const CLOSED_WEEKDAYS = [];        // e.g. [1] closes Mondays (0=Sun … 6=Sat)
+const LUNCH = ["12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00"];
+const DINNER = ["18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00"];
+const GROUP_MIN = 6;               // party size that triggers the card-guarantee policy
+
+/* ================= I18N ================= */
+const T = {
+en:{
+ est1956:"BELL KITCHEN · EST. 1956", kicker:"Koukaki · Athens",
+ title:"A table is waiting for you",
+ lead:"Home-cooked Greek plates from the morning market, two minutes from the Acropolis Museum. Booking takes under a minute — no account, no prepayment.",
+ proof1:"419 reviews", proof2:"family-run since", proof3:"from Acropolis Museum",
+ back:"Back",
+ q_party:"How many of you?", q_party_sub:"Children count too — we have room for everyone.",
+ group_note:"For parties of 6 or more we hold the table with a card guarantee — nothing is charged. We'll send a secure link on WhatsApp right after you book.",
+ q_date:"Which day?", q_date_sub:"The menu changes daily — pick a day and see what Marios is cooking.",
+ q_time:"What time?", q_time_sub:"Kitchen open 12:30–16:30 and 18:00–22:30.",
+ lunch:"Lunch", dinner:"Dinner",
+ q_menu_sub:"Optional — reserve your plates now and they'll be set aside for your table. You pay at the restaurant.",
+ scarce:"★ Daily specials often sell out by 21:00",
+ skip:"I'll choose at the table →",
+ q_you:"Last step — who's coming?", q_you_sub:"Just a name and a phone. No account, no spam.",
+ f_name:"Your name", f_phone:"Mobile phone", f_phone_hint:"We confirm on WhatsApp — nothing else, ever.",
+ f_notes:"Anything we should know?", opt:"(optional)",
+ e_name:"Please tell us your name", e_phone:"We need a phone number to confirm",
+ q_review:"Everything look right?", q_review_sub:"You can still change anything.",
+ r_party:"Guests", r_date:"Date", r_time:"Time", r_plates:"Plates reserved", r_none:"choosing at the table", r_name:"Name", r_phone:"Phone", edit:"edit",
+ done_t:"Your table is reserved!",
+ done_sub:"We've sent a confirmation for {P} guests on {D} at {H}. See you soon, {N}!",
+ kerasma:"“A kérasma of bread, olive oil and salt from our family will be waiting on your table — as it has since 1956.”",
+ a_cal:"Add to calendar", a_wa:"Message us on WhatsApp", a_map:"How to find us",
+ cta0:"Book a table — 60 seconds", cta:"Continue", cta_confirm:"Confirm reservation", cta_send:"Reserving…",
+ note0:"Free · no prepayment · instant confirmation", note_confirm:"Free cancellation up to 2 hours before",
+ today:"Today", tmrw:"Tmrw",
+ menu_for:"Cooking on {D}",
+ err_net:"Something went wrong — please try again, or WhatsApp us at +30 698 237 3505."
+},
+el:{
+ est1956:"BELL KITCHEN · ΑΠΟ ΤΟ 1956", kicker:"Κουκάκι · Αθήνα",
+ title:"Ένα τραπέζι σε περιμένει",
+ lead:"Σπιτικά μαγειρευτά από τη λαϊκή της ημέρας, δύο λεπτά από το Μουσείο της Ακρόπολης. Η κράτηση παίρνει λιγότερο από ένα λεπτό — χωρίς λογαριασμό, χωρίς προπληρωμή.",
+ proof1:"419 κριτικές", proof2:"οικογενειακό από", proof3:"από το Μουσείο Ακρόπολης",
+ back:"Πίσω",
+ q_party:"Πόσα άτομα;", q_party_sub:"Και τα παιδιά μετράνε — έχουμε χώρο για όλους.",
+ group_note:"Για παρέες 6+ ατόμων κρατάμε το τραπέζι με εγγύηση κάρτας — δεν γίνεται καμία χρέωση. Θα σου στείλουμε ασφαλή σύνδεσμο στο WhatsApp αμέσως μετά την κράτηση.",
+ q_date:"Ποια μέρα;", q_date_sub:"Το μενού αλλάζει καθημερινά — διάλεξε μέρα και δες τι μαγειρεύει ο Μάριος.",
+ q_time:"Τι ώρα;", q_time_sub:"Κουζίνα ανοιχτή 12:30–16:30 και 18:00–22:30.",
+ lunch:"Μεσημέρι", dinner:"Βράδυ",
+ q_menu_sub:"Προαιρετικό — κράτησε τα πιάτα σου τώρα και θα σε περιμένουν στο τραπέζι. Πληρώνεις στο μαγαζί.",
+ scarce:"★ Τα μαγειρευτά της ημέρας συχνά τελειώνουν ως τις 21:00",
+ skip:"Θα διαλέξω στο τραπέζι →",
+ q_you:"Τελευταίο βήμα — ποιος έρχεται;", q_you_sub:"Μόνο όνομα και τηλέφωνο. Χωρίς λογαριασμό, χωρίς spam.",
+ f_name:"Το όνομά σου", f_phone:"Κινητό τηλέφωνο", f_phone_hint:"Επιβεβαιώνουμε στο WhatsApp — τίποτα άλλο, ποτέ.",
+ f_notes:"Κάτι που πρέπει να ξέρουμε;", opt:"(προαιρετικό)",
+ e_name:"Πες μας το όνομά σου", e_phone:"Χρειαζόμαστε τηλέφωνο για την επιβεβαίωση",
+ q_review:"Όλα σωστά;", q_review_sub:"Μπορείς ακόμα να αλλάξεις οτιδήποτε.",
+ r_party:"Άτομα", r_date:"Ημέρα", r_time:"Ώρα", r_plates:"Πιάτα", r_none:"θα διαλέξω στο τραπέζι", r_name:"Όνομα", r_phone:"Τηλέφωνο", edit:"αλλαγή",
+ done_t:"Το τραπέζι σου κρατήθηκε!",
+ done_sub:"Στείλαμε επιβεβαίωση για {P} άτομα στις {D} στις {H}. Τα λέμε σύντομα, {N}!",
+ kerasma:"«Ένα κέρασμα με ψωμί, ελαιόλαδο και αλάτι από την οικογένειά μας θα σε περιμένει στο τραπέζι — όπως από το 1956.»",
+ a_cal:"Προσθήκη στο ημερολόγιο", a_wa:"Μήνυμα στο WhatsApp", a_map:"Πώς θα μας βρεις",
+ cta0:"Κράτηση τραπεζιού — 60″", cta:"Συνέχεια", cta_confirm:"Επιβεβαίωση κράτησης", cta_send:"Γίνεται κράτηση…",
+ note0:"Δωρεάν · χωρίς προπληρωμή · άμεση επιβεβαίωση", note_confirm:"Δωρεάν ακύρωση έως 2 ώρες πριν",
+ today:"Σήμερα", tmrw:"Αύριο",
+ menu_for:"Μαγειρεύουμε {D}",
+ err_net:"Κάτι πήγε στραβά — δοκίμασε ξανά ή στείλε μας WhatsApp στο +30 698 237 3505."
+}};
+let lang = (navigator.language||"en").toLowerCase().startsWith("el") ? "el" : "en";
+
+/* ============ DEMO CATALOGUE (used when APPS_SCRIPT_URL is empty) ============ */
+const DEMO_PLATES = [
+ {id:"moussaka",  en:"Moussaka",              el:"Μουσακάς",             den:"Layered aubergine, minced beef, béchamel — the classic", del:"Μελιτζάνες, κιμάς, μπεσαμέλ — ο κλασικός", pr:8.0, cat:"hot"},
+ {id:"pastitsio", en:"Pastitsio",             el:"Παστίτσιο",            den:"Baked pasta with minced beef and béchamel", del:"Μακαρόνια φούρνου με κιμά και μπεσαμέλ", pr:7.5, cat:"hot"},
+ {id:"gemista",   en:"Gemista",               el:"Γεμιστά",              den:"Tomatoes & peppers stuffed with herbed rice", del:"Ντομάτες και πιπεριές γεμιστές με ρύζι και μυρωδικά", pr:6.5, cat:"hot"},
+ {id:"soutzou",   en:"Soutzoukakia",          el:"Σουτζουκάκια",         den:"Smyrna meatballs in cumin-tomato sauce", del:"Σμυρναίικα, σε σάλτσα ντομάτας με κύμινο", pr:7.5, cat:"hot"},
+ {id:"kokkin",    en:"Beef kokkinisto",       el:"Μοσχάρι κοκκινιστό",   den:"Slow-braised beef in red wine & tomato", del:"Σιγομαγειρεμένο σε κόκκινο κρασί και ντομάτα", pr:8.5, cat:"hot"},
+ {id:"lemonchick",en:"Lemon chicken",         el:"Κοτόπουλο λεμονάτο",   den:"With oven potatoes from grandma's recipe", del:"Με πατάτες φούρνου, συνταγή της γιαγιάς", pr:7.0, cat:"hot"},
+ {id:"briam",     en:"Briam",                 el:"Μπριάμ",               den:"Slow-baked summer vegetables in olive oil", del:"Λαδερά λαχανικά ψημένα αργά στον φούρνο", pr:6.0, cat:"hot"},
+ {id:"gigantes",  en:"Gigantes",              el:"Γίγαντες",             den:"Giant beans baked in tomato & dill", del:"Στον φούρνο με ντομάτα και άνηθο", pr:5.5, cat:"hot"},
+ {id:"fish",      en:"Fish of the day",       el:"Ψάρι ημέρας",          den:"From the morning market — ask what the sea sent", del:"Από τη λαϊκή της ημέρας — ρώτα τι έστειλε η θάλασσα", pr:9.0, cat:"sea"},
+ {id:"octopus",   en:"Grilled octopus",       el:"Χταπόδι σχάρας",       den:"With fava and capers from Santorini", del:"Με φάβα και κάπαρη Σαντορίνης", pr:9.0, cat:"sea"},
+ {id:"horiatiki", en:"Horiatiki",             el:"Χωριάτικη",            den:"Village salad, barrel feta, Cretan olive oil", del:"Με βαρελίσια φέτα και κρητικό ελαιόλαδο", pr:6.0, cat:"cold"},
+ {id:"dolmad",    en:"Dolmadakia",            el:"Ντολμαδάκια",          den:"Hand-rolled vine leaves, lemon & rice", del:"Χειροποίητα, με ρύζι και λεμόνι", pr:5.5, cat:"cold"},
+ {id:"fava",      en:"Fava",                  el:"Φάβα",                 den:"Silky yellow split-pea purée, onion, olive oil", del:"Βελουτέ, με κρεμμύδι και ελαιόλαδο", pr:5.0, cat:"cold"},
+ {id:"tzatziki",  en:"Tzatziki",              el:"Τζατζίκι",             den:"Strained yogurt, cucumber, garlic", del:"Στραγγιστό γιαούρτι, αγγούρι, σκόρδο", pr:4.0, cat:"cold"},
+ {id:"galakto",   en:"Galaktoboureko",        el:"Γαλακτομπούρεκο",      den:"Warm semolina custard in crisp phyllo", del:"Ζεστό, με τραγανό φύλλο", pr:4.5, cat:"sweet"},
+ {id:"yogurt",    en:"Yogurt & thyme honey",  el:"Γιαούρτι με θυμαρίσιο μέλι", den:"With walnuts", del:"Με καρύδια", pr:4.0, cat:"sweet"}
+];
+/* demo weekly grid: which plates run each weekday (0=Mon … 6=Sun) */
+const DEMO_WEEK = {
+ moussaka:[1,1,1,1,1,1,1], pastitsio:[0,1,0,1,0,1,1], gemista:[1,0,1,0,1,1,0],
+ soutzou:[0,1,0,1,0,1,0], kokkin:[1,0,1,0,1,0,1], lemonchick:[0,1,0,1,1,0,1],
+ briam:[1,1,0,1,0,1,0], gigantes:[1,0,1,0,1,1,1], fish:[0,0,1,1,1,1,0],
+ octopus:[0,0,0,1,1,1,1], horiatiki:[1,1,1,1,1,1,1], dolmad:[1,1,1,1,1,1,1],
+ fava:[1,1,1,1,1,1,1], tzatziki:[1,1,1,1,1,1,1], galakto:[1,1,1,1,1,1,1], yogurt:[1,1,1,1,1,1,1]
+};
+const CATS = {hot:{en:"The hot table · today's mageireftá",el:"Η ζεστή γωνιά · μαγειρευτά ημέρας"},
+              sea:{en:"From the sea",el:"Από τη θάλασσα"},
+              cold:{en:"Salads & starters",el:"Σαλάτες & ορεκτικά"},
+              sweet:{en:"Something sweet",el:"Κάτι γλυκό"}};
+
+/* ================= STATE ================= */
+const S = {step:0, party:null, date:null, time:null, plates:{}, name:"", phone:"", notes:""};
+const $ = id => document.getElementById(id);
+const t = k => (T[lang][k] ?? k);
+
+function setLang(l){
+  lang=l; $("lEn").classList.toggle("on",l==="en"); $("lEl").classList.toggle("on",l==="el");
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-i]").forEach(el=>{const k=el.getAttribute("data-i")||el.textContent.trim(); if(!el.getAttribute("data-i"))el.setAttribute("data-i",k); el.textContent=t(el.getAttribute("data-i"));});
+  buildParty(); buildDates(); buildSlots(); if(S.date)buildMenu(); refreshCta(); if(S.step===6)buildReview();
+}
+
+/* ================= NAVIGATION ================= */
+function go(n){
+  S.step=n;
+  document.querySelectorAll(".step").forEach((el,i)=>el.classList.toggle("on",i===n));
+  $("prog").style.width=(n/7*100)+"%";
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(n===4)buildMenu();
+  if(n===6)buildReview();
+  refreshCta();
+}
+function next(){ go(Math.min(S.step+1,7)); }
+
+function refreshCta(){
+  const b=$("ctaBtn"), note=$("ctaNote"); $("cta").style.display="block";
+  note.textContent="";
+  switch(S.step){
+    case 0: b.textContent=t("cta0"); b.disabled=false; b.className="btn gold"; note.textContent=t("note0"); break;
+    case 1: b.textContent=t("cta"); b.className="btn"; b.disabled=!S.party; break;
+    case 2: b.textContent=t("cta"); b.className="btn"; b.disabled=!S.date; break;
+    case 3: b.textContent=t("cta"); b.className="btn"; b.disabled=!S.time; break;
+    case 4: b.textContent=t("cta"); b.className="btn"; b.disabled=false; break;
+    case 5: b.textContent=t("cta"); b.className="btn"; b.disabled=false; break;
+    case 6: b.textContent=t("cta_confirm"); b.className="btn gold"; b.disabled=false; note.textContent=t("note_confirm"); break;
+    case 7: $("cta").style.display="none"; break;
+  }
+}
+function ctaClick(){
+  if(S.step===5){ if(!validate())return; }
+  if(S.step===6){ submit(); return; }
+  next();
+}
+
+/* ================= STEP BUILDERS ================= */
+function buildParty(){
+  const g=$("partyGrid"); g.innerHTML="";
+  for(let i=1;i<=8;i++){
+    const v=(i===8)?"8+":String(i);
+    const btn=document.createElement("button");
+    btn.className="opt"+(S.party===v?" sel":""); btn.textContent=v;
+    btn.onclick=()=>{S.party=v; buildParty();
+      const grp=(v==="8+"||parseInt(v)>=GROUP_MIN);
+      $("groupNote").style.display=grp?"block":"none";
+      setTimeout(next,220);};
+    g.appendChild(btn);
+  }
+}
+function fmtDate(d,long){
+  const o=long?{weekday:"long",day:"numeric",month:"long"}:{weekday:"short"};
+  return d.toLocaleDateString(lang==="el"?"el-GR":"en-GB",o);
+}
+function buildDates(){
+  const g=$("dateGrid"); g.innerHTML="";
+  const now=new Date();
+  for(let i=0;i<DAYS_AHEAD;i++){
+    const d=new Date(now); d.setDate(now.getDate()+i);
+    const iso=d.toISOString().slice(0,10);
+    const closed=CLOSED_WEEKDAYS.includes(d.getDay());
+    const btn=document.createElement("button");
+    btn.className="opt datecard"+(S.date===iso?" sel":"");
+    btn.disabled=closed;
+    btn.innerHTML=`<small>${i===0?t("today"):i===1?t("tmrw"):fmtDate(d)}</small><b>${d.getDate()}</b><small>${d.toLocaleDateString(lang==="el"?"el-GR":"en-GB",{month:"short"})}</small>`;
+    btn.onclick=()=>{S.date=iso; S.plates={}; buildDates(); setTimeout(next,220);};
+    g.appendChild(btn);
+  }
+}
+function buildSlots(){
+  const mk=(arr,el)=>{const g=$(el); g.innerHTML="";
+    arr.forEach(h=>{const b=document.createElement("button");
+      b.className="opt"+(S.time===h?" sel":""); b.textContent=h;
+      b.onclick=()=>{S.time=h; buildSlots(); setTimeout(next,220);};
+      g.appendChild(b);});};
+  mk(LUNCH,"lunchGrid"); mk(DINNER,"dinnerGrid");
+}
+
+/* ================= MENU ================= */
+let MENU_CACHE={};
+async function fetchMenu(iso){
+  if(MENU_CACHE[iso])return MENU_CACHE[iso];
+  if(APPS_SCRIPT_URL){
+    try{
+      const r=await fetch(`${APPS_SCRIPT_URL}?action=menu&date=${iso}`);
+      const j=await r.json();
+      MENU_CACHE[iso]=j.plates; return j.plates;
+    }catch(e){/* fall through to demo */}
+  }
+  const wd=(new Date(iso+"T12:00:00").getDay()+6)%7; // 0=Mon
+  const plates=DEMO_PLATES.filter(p=>(DEMO_WEEK[p.id]||[1,1,1,1,1,1,1])[wd]===1);
+  MENU_CACHE[iso]=plates; return plates;
+}
+async function buildMenu(){
+  const d=new Date(S.date+"T12:00:00");
+  $("menuTitle").textContent=t("menu_for").replace("{D}",fmtDate(d,true));
+  const list=$("menuList"); list.innerHTML="";
+  const plates=await fetchMenu(S.date);
+  ["hot","sea","cold","sweet"].forEach(cat=>{
+    const items=plates.filter(p=>p.cat===cat);
+    if(!items.length)return;
+    const h=document.createElement("div"); h.className="cat"; h.textContent=CATS[cat][lang]; list.appendChild(h);
+    items.forEach(p=>{
+      const q=S.plates[p.id]||0;
+      const row=document.createElement("div"); row.className="plate"+(q>0?" sel":"");
+      row.innerHTML=`<div class="tx"><div class="nm">${lang==="el"?p.el:p.en}</div><div class="ds">${lang==="el"?p.del:p.den}</div></div>
+        <div class="pr">€${p.pr.toFixed(2).replace(".00","")}</div>
+        <div class="qty"><button aria-label="less">−</button><b>${q||""}</b><button aria-label="more">+</button></div>`;
+      const [minus,plus]=row.querySelectorAll(".qty button");
+      plus.onclick=()=>{S.plates[p.id]=(S.plates[p.id]||0)+1; buildMenu();};
+      minus.onclick=()=>{if(S.plates[p.id]){S.plates[p.id]--; if(!S.plates[p.id])delete S.plates[p.id]; buildMenu();}};
+      list.appendChild(row);
+    });
+  });
+}
+
+/* ================= VALIDATION / REVIEW ================= */
+function validate(){
+  let ok=true;
+  const name=$("fName").value.trim(), phone=$("fPhone").value.trim();
+  $("eName").style.display=name?"none":"block"; if(!name)ok=false;
+  const phoneOk=/^[+0-9 ()-]{8,}$/.test(phone);
+  $("ePhone").style.display=phoneOk?"none":"block"; if(!phoneOk)ok=false;
+  if(ok){S.name=name; S.phone=phone; S.notes=$("fNotes").value.trim();}
+  return ok;
+}
+function plateSummary(){
+  const plates=MENU_CACHE[S.date]||DEMO_PLATES;
+  return Object.entries(S.plates).map(([id,q])=>{
+    const p=plates.find(x=>x.id===id)||DEMO_PLATES.find(x=>x.id===id);
+    return p?`${q}× ${lang==="el"?p.el:p.en}`:null;
+  }).filter(Boolean);
+}
+function buildReview(){
+  const d=new Date(S.date+"T12:00:00");
+  const rows=[
+    [t("r_party"),S.party,1],[t("r_date"),fmtDate(d,true),2],[t("r_time"),S.time,3],
+    [t("r_plates"),plateSummary().join(", ")||t("r_none"),4],
+    [t("r_name"),S.name,5],[t("r_phone"),S.phone,5]
+  ];
+  $("reviewCard").innerHTML=rows.map(([k,v,step])=>
+    `<div class="row"><span>${k}</span><b>${v}<button class="edit" onclick="go(${step})">${t("edit")}</button></b></div>`).join("");
+  const grp=(S.party==="8+"||parseInt(S.party)>=GROUP_MIN);
+  $("reviewGroup").style.display=grp?"block":"none";
+}
+
+/* ================= SUBMIT ================= */
+async function submit(){
+  if($("fWeb").value)return; // honeypot
+  const b=$("ctaBtn"); b.disabled=true; b.innerHTML=`<span class="spin"></span> ${t("cta_send")}`;
+  const payload={action:"reserve",name:S.name,phone:S.phone,notes:S.notes,
+    date:S.date,time:S.time,party:S.party,lang,
+    plates:plateSummary().join("; "),source:"web"};
+  let ok=true;
+  if(APPS_SCRIPT_URL){
+    try{
+      const r=await fetch(APPS_SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+      const j=await r.json(); ok=j.ok===true;
+    }catch(e){ok=false;}
+  }else{
+    await new Promise(r=>setTimeout(r,900)); // demo latency
+  }
+  if(!ok){alert(t("err_net")); b.disabled=false; refreshCta(); return;}
+  const d=new Date(S.date+"T12:00:00");
+  $("doneSub").textContent=t("done_sub").replace("{P}",S.party).replace("{D}",fmtDate(d,true)).replace("{H}",S.time).replace("{N}",S.name.split(" ")[0]);
+  buildIcs();
+  go(7);
+}
+function buildIcs(){
+  const dt=S.date.replace(/-/g,"")+"T"+S.time.replace(":","")+"00";
+  const end=S.date.replace(/-/g,"")+"T"+String(parseInt(S.time)+2).padStart(2,"0")+S.time.slice(3).replace(":","")+"00";
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Cookaki//Reserve//EN","BEGIN:VEVENT",
+    "UID:"+Date.now()+"@cookaki","DTSTART:"+dt,"DTEND:"+end,
+    "SUMMARY:Dinner at Cookaki ("+S.party+" guests)",
+    "LOCATION:Cookaki\\, Petmeza 5\\, Koukaki\\, Athens 117 42",
+    "DESCRIPTION:Reservation for "+S.party+" · "+S.time+" · WhatsApp +30 698 237 3505",
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  $("aCal").href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);
+}
+
+/* ================= INIT ================= */
+setLang(lang);
+buildParty(); buildDates(); buildSlots();
+go(0);
+</script>
+</body>
+</html>
