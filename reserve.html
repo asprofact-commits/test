@@ -507,17 +507,27 @@ async function submit(){
   const b=$("ctaBtn"); b.disabled=true; b.innerHTML=`<span class="spin"></span> ${t("cta_send")}`;
   const payload={action:"reserve",name:S.name,phone:S.phone,notes:S.notes,
     date:S.date,time:S.time,party:S.party,lang,
-    plates:plateSummary().join("; "),source:"web"};
-  let ok=true, detail="";
+    plates:plateSummary().join("; "),source:"web",
+    cid:Date.now().toString(36)+Math.random().toString(36).slice(2,8)}; // duplicate guard
+  let ok=false, detail="";
   if(APPS_SCRIPT_URL){
+    // attempt 1: POST (preferred)
     try{
       const r=await fetch(APPS_SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
       const raw=await r.text();
       try{const j=JSON.parse(raw); ok=j.ok===true; if(!ok)detail=j.error||raw.slice(0,200);}
-      catch(pe){ok=false; detail="HTTP "+r.status+" non-JSON: "+raw.slice(0,200);}
-    }catch(e){ok=false; detail=String(e);}
+      catch(pe){detail="HTTP "+r.status+" non-JSON: "+raw.slice(0,200);}
+    }catch(e){detail=String(e);}
+    // attempt 2: GET fallback (Safari/CORS-proof; server dedupes by cid)
+    if(!ok){
+      try{
+        const r2=await fetch(APPS_SCRIPT_URL+"?"+new URLSearchParams(payload).toString());
+        const j2=await r2.json(); ok=(j2.ok===true && !!j2.ref); // ref proves the row was written
+        if(!ok)detail=(j2.error||"")+" | "+detail;
+      }catch(e2){detail=String(e2)+" | "+detail;}
+    }
   }else{
-    await new Promise(r=>setTimeout(r,900)); // demo latency
+    await new Promise(r=>setTimeout(r,900)); ok=true; // demo latency
   }
   if(!ok){alert(t("err_net")+(detail?"\n\n[debug] "+detail:"")); b.disabled=false; refreshCta(); return;}
   const d=new Date(S.date+"T12:00:00");

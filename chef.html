@@ -162,14 +162,21 @@ function setAll(v){Object.keys(WEEK).forEach(k=>WEEK[k]=[v,v,v,v,v,v,v]);render(
 
 async function save(){
   const b=$("saveBtn");b.disabled=true;b.textContent="Αποθήκευση…";
-  let ok=true;
+  let ok=false;
   if(APPS_SCRIPT_URL){
     try{
       const r=await fetch(APPS_SCRIPT_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
         body:JSON.stringify({action:"saveWeekly",pin:PIN,week:WEEK})});
       const j=await r.json();ok=j.ok===true;
-    }catch(e){ok=false;}
-  }else{await new Promise(r=>setTimeout(r,600));}
+    }catch(e){}
+    if(!ok){ // GET fallback (Safari/CORS-proof)
+      try{
+        const qs=new URLSearchParams({action:"saveweekly",pin:PIN,week:JSON.stringify(WEEK)});
+        const r2=await fetch(APPS_SCRIPT_URL+"?"+qs.toString());
+        const j2=await r2.json();ok=(j2.ok===true&&j2.saved===true);
+      }catch(e2){}
+    }
+  }else{await new Promise(r=>setTimeout(r,600));ok=true;}
   b.disabled=false;b.textContent="Αποθήκευση εβδομάδας";
   if(!ok){alert("Σφάλμα — προσπάθησε ξανά.");return;}
   const s=$("saved");s.style.display="block";setTimeout(()=>s.style.display="none",2400);
