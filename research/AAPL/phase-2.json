@@ -1,0 +1,59 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Apple Inc.","ticker":"NASDAQ: AAPL","sector":"consumer","currency":"USD","fxToUsd":1,"price":328,"priceUnit":"share","asOf":"2026-09-05","phase":2,"phaseName":"Asset base & physical bottlenecks",
+  "assumedContext":["Apple owns almost no manufacturing. The 'asset base' analysed here is the supply chain it directs plus the silicon and software stack it owns, not property, plant and equipment.","No primary filing retrievable; search-result evidence only."]},
+ "findings":[
+  {"id":"p2-01","claim":"Apple's productive asset base is asset-light by design: capital expenditure was roughly USD 4bn across the first six months of FY2026 against operating cash flow of USD 83bn — capex of under 5% of operating cash flow.","label":"FACT","source":"Apple FY2026 H1 cash flow via capital-return analyses","asOf":"2026-03-28","confidence":"medium","impact":"high","value":4000,"unit":"USD m capex, 6 months"},
+  {"id":"p2-02","claim":"This is the structural contrast with the AI-capex cohort. Alphabet, Microsoft and Amazon are spending heavily on data-centre capacity; Apple is renting the equivalent capability, paying Google roughly USD 1bn a year for Gemini to power Siri.","label":"FACT","source":"Bloomberg via CNBC and CNN, 2026-01-12","asOf":"2026-01-12","confidence":"high","impact":"high","value":1000,"unit":"USD m per year"},
+  {"id":"p2-03","claim":"Apple is shifting 15-20% of production to India and Vietnam, producing most US-market iPhones in India and moving iPad, Mac, Watch and AirPods for US buyers to Vietnam. Over USD 1bn has been invested in Indian facilities since 2023.","label":"FACT","source":"Supply Chain Digital; CNBC; AEI supply-chain report","asOf":"2026-06-30","confidence":"medium","impact":"high"},
+  {"id":"p2-04","claim":"Indian production costs run approximately 5-8% above equivalent Chinese operations according to supply-chain analysts. Diversification is bought with margin, not free.","label":"ANALYST ESTIMATE","source":"Supply-chain analysts via Vantage Markets and SupplyChainBrain","asOf":"2026-06-30","confidence":"medium","impact":"high"},
+  {"id":"p2-05","claim":"Tariffs cost Apple approximately USD 900m in a single quarter, and Q3 FY2026 gross margin of 50.1% included roughly 2 percentage points of benefit from tariff refunds — a non-recurring item worth approximately USD 2.2bn in the quarter.","label":"FACT","source":"Apple Q3 FY2026 commentary; Yahoo Finance tariff impact report","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p2-06","claim":"Q4 FY2026 gross margin is guided to 47-48% against 50.1% actual in Q3, with management citing increased supply constraints and FX headwinds. The guided step-down is 210-310bp.","label":"MANAGEMENT GUIDANCE","source":"Apple Q3 FY2026 earnings call, 2026-07-30","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p2-07","claim":"The binding physical constraint in FY2026 was supply, not demand. Management cited supply constraints in guidance while iPhone revenue grew 22% in both the March and June quarters.","label":"MANAGEMENT GUIDANCE","source":"Apple Q3 FY2026 earnings call; Q3 highlights","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p2-08","claim":"A global memory crunch is raising component costs across the industry. Apple is assessed as best positioned to navigate it given premium mix and supply-chain scale, and is expected to absorb rising costs internally in the near to medium term.","label":"CONSENSUS","source":"IDC commentary via TechResearchOnline, 2026","asOf":"2026-07-22","confidence":"medium","impact":"medium"},
+  {"id":"p2-09","claim":"Apple's differentiated asset is silicon and software integration rather than factories. That asset does not appear on the balance sheet, which is why conventional return-on-invested-capital and price-to-book measures are close to meaningless for this company.","label":"ANALYST ESTIMATE","source":"Derived from the capex and balance-sheet profile","asOf":"2026-09-05","confidence":"high","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Asset intensity versus the AI-capex cohort",
+   "columns":["Measure","Apple","Comment"],
+   "rows":[
+    ["Capex, 6 months FY2026","~USD 4bn","Under 5% of operating cash flow"],
+    ["Operating cash flow, 6 months FY2026","USD 83bn","+53% year on year"],
+    ["Implied 6-month free cash flow","~USD 79bn","Seasonally strongest half"],
+    ["Annual payment for frontier AI capability","~USD 1bn to Google","Rented, not built"],
+    ["Owned manufacturing","Minimal","Contract manufacturers direct the fixed cost"]
+   ],
+   "note":"[FACT] except the implied FCF line [ANALYST ESTIMATE]. Apple is buying AI capability at roughly 0.25% of the annual capex the hyperscalers are committing. That is either exceptional capital discipline or strategic dependence, and Phase 3 has to decide which."},
+  {"title":"Cost pressures on the gross margin line",
+   "columns":["Pressure","Magnitude","Apple's response"],
+   "rows":[
+    ["US tariffs","~USD 900m per quarter observed","Absorbing; ~2pp refund benefit in Q3 FY2026 will not recur"],
+    ["India production premium","5-8% above China","Accepting, for geopolitical diversification"],
+    ["Memory / component crunch","Industry-wide","Absorbing internally to hold price and take share"],
+    ["FX","Cited in Q4 guidance","Unhedged residual"]
+   ],
+   "note":"[FACT/ANALYST ESTIMATE] Every row is a cost Apple is choosing to absorb rather than pass on. The guided Q4 gross margin step-down of 210-310bp is where that choice shows up."}
+ ],
+ "gaps":[
+  {"item":"FY2026 full-year capex and the split between supply-chain tooling and data centre","whyItMatters":"Determines whether Apple is quietly building AI infrastructure or genuinely renting it. The strategic and valuation implications differ sharply.","resolvedBy":"FY2026 10-K, expected late October 2026"},
+  {"item":"Size and duration of the Gemini contract beyond the ~USD 1bn annual figure","whyItMatters":"Apple has outsourced its most strategically important capability to its largest commercial counterparty and antitrust co-defendant.","resolvedBy":"Apple or Google disclosure; the contract is not public"},
+  {"item":"Quantified supply constraint — which components, how long","whyItMatters":"Management cited supply constraints as a growth limiter in Q4 guidance without sizing them.","resolvedBy":"Q4 FY2026 call, late October 2026"}
+ ],
+ "risks":[
+  {"text":"Apple has outsourced frontier AI to Google — simultaneously its largest revenue counterparty, its antitrust co-defendant, and a direct competitor in phones and services.","severity":"high","probability":"medium"},
+  {"text":"Gross margin has been flattered by non-recurring tariff refunds; guidance already concedes 210-310bp of the step-down.","severity":"medium","probability":"high"},
+  {"text":"Supply-chain relocation to India and Vietnam carries a structural 5-8% cost premium that does not reverse.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"iOS 27 ships with full conversational Siri — first real test of the rented-AI strategy","window":"Sept 2026","impact":"High","probability":0.9},
+  {"text":"FY2026 10-K reveals full-year capex and any AI infrastructure build","window":"Late Oct 2026","impact":"Medium","probability":0.95}
+ ],
+ "conclusions":[
+  "Apple's asset base is deliberately light — under 5% of operating cash flow goes to capex — and its differentiating asset, silicon and software integration, does not appear on the balance sheet. Book-value-based methods should be excluded from Phase 5 rather than reported as showing a high multiple.",
+  "Apple has taken the opposite side of the AI capex trade: roughly USD 1bn a year rented from Google versus tens of billions being built by Alphabet, Microsoft and Amazon. This is the central strategic bet in the name.",
+  "The binding constraint in FY2026 was supply, not demand — an unusually good problem, and one that flatters nothing in the valuation.",
+  "Gross margin quality is lower than the headline: 50.1% in Q3 FY2026 included roughly 2pp of non-recurring tariff refunds, and management has guided Q4 down to 47-48%."
+ ],
+ "thesisImpact":"Phase 2 removes two conventional methods from Phase 5 — price-to-book and return on invested capital are not meaningful for a company whose principal asset is unrecorded — and introduces the strategic question that Phase 3 must answer: whether renting frontier AI for USD 1bn a year from a competitor is capital discipline or dependence.",
+ "model":{"sharesOut":14590,"netDebt":-62000}
+}

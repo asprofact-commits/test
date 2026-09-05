@@ -1,0 +1,300 @@
+<title>Apple at $328</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
+  --ink:#10161C; --ink-2:#47535F; --ink-3:#7A8794;
+  --line:#DDE3E9; --line-2:#C6D0D8;
+  --accent:#1F5C7A; --accent-ink:#0A4A66; --accent-soft:rgba(31,92,122,.09);
+  --pos:#2F7A55; --warn:#B07414; --neg:#A33A2E;
+  --neg-soft:rgba(163,58,46,.10); --pos-soft:rgba(47,122,85,.10);
+  --serif:'IBM Plex Serif',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1418; --surface:#161E24; --surface-2:#1C262D;
+    --ink:#E8EDF1; --ink-2:#A3B0BB; --ink-3:#6E7D89;
+    --line:#24303A; --line-2:#33424E;
+    --accent:#5FA8C9; --accent-ink:#8CC5DE; --accent-soft:rgba(95,168,201,.12);
+    --pos:#5CB185; --warn:#D9A05B; --neg:#D4796B;
+    --neg-soft:rgba(212,121,107,.14); --pos-soft:rgba(92,177,133,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1418; --surface:#161E24; --surface-2:#1C262D;
+  --ink:#E8EDF1; --ink-2:#A3B0BB; --ink-3:#6E7D89;
+  --line:#24303A; --line-2:#33424E;
+  --accent:#5FA8C9; --accent-ink:#8CC5DE; --accent-soft:rgba(95,168,201,.12);
+  --pos:#5CB185; --warn:#D9A05B; --neg:#D4796B;
+  --neg-soft:rgba(212,121,107,.14); --pos-soft:rgba(92,177,133,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 26px 64px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+header{padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-bottom:0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.6vw,56px);line-height:1;margin:10px 0 8px;
+  letter-spacing:-.022em;text-wrap:balance}
+.ident{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:6px 20px}
+.ident b{color:var(--ink);font-weight:500}
+
+/* the call */
+.call{display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);border-top:none;
+  background:var(--surface)}
+@media(max-width:720px){.call{grid-template-columns:1fr}}
+.call-l{padding:30px 30px 28px;border-right:1px solid var(--line)}
+@media(max-width:720px){.call-l{border-right:none;border-bottom:1px solid var(--line)}}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);
+  display:block;margin-bottom:10px}
+.big-rating{font-family:var(--serif);font-size:clamp(46px,7vw,64px);font-weight:600;line-height:.95;
+  letter-spacing:-.025em;color:var(--neg);margin:0}
+.qual{font-size:14.5px;color:var(--ink-2);margin:16px 0 0;max-width:42ch}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.fig{background:var(--surface);padding:20px 22px}
+.fig .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.fig .v{font-family:var(--mono);font-size:30px;font-weight:500;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1}
+.fig .n{font-size:12px;color:var(--ink-3);margin-top:5px}
+.neg{color:var(--neg)}.pos{color:var(--pos)}
+
+.thesis{background:var(--ink);color:var(--paper);padding:26px 30px;font-family:var(--serif);
+  font-size:clamp(19px,2.5vw,25px);line-height:1.42;letter-spacing:-.005em}
+.thesis em{font-style:normal;color:#E0B37A}
+:root[data-theme="dark"] .thesis em{color:#E8B87F}
+
+section{margin-top:38px}
+h2{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-ink);
+  margin:0 0 14px;font-weight:600}
+.panel{background:var(--surface);border:1px solid var(--line);padding:24px 26px}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.three{grid-template-columns:1fr}}
+.metric{background:var(--surface);border:1px solid var(--line);padding:20px 22px}
+.metric .v{font-family:var(--mono);font-size:32px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.metric .l{font-size:13.5px;color:var(--ink-2);margin-top:9px;line-height:1.45}
+.metric .l b{color:var(--ink);font-weight:600}
+
+ol.reasons{counter-reset:r;list-style:none;padding:0;margin:0;display:grid;gap:18px}
+ol.reasons li{counter-increment:r;padding-left:40px;position:relative;font-size:15px}
+ol.reasons li:before{content:counter(r);position:absolute;left:0;top:0;font-family:var(--mono);font-size:12px;
+  font-weight:600;color:var(--accent-ink);width:26px;height:26px;border:1px solid var(--line-2);border-radius:50%;
+  display:grid;place-items:center}
+ol.reasons .m{color:var(--ink-3);font-size:13.5px;display:block}
+ol.reasons b{font-weight:600}
+
+ul.risks{list-style:none;padding:0;margin:0;display:grid;gap:13px}
+ul.risks li{padding-left:24px;position:relative;font-size:14.5px;color:var(--ink-2)}
+ul.risks li:before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:2px;
+  background:var(--warn)}
+ul.risks b{color:var(--ink);font-weight:600}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;padding:0 12px 8px 0;border-bottom:1px solid var(--line-2)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+td:last-child,th:last-child{padding-right:0;text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tr.em td{background:var(--accent-soft);font-weight:600}
+.tw{overflow-x:auto}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.caveat{border:1px solid var(--line-2);border-left:3px solid var(--warn);background:var(--surface);
+  padding:16px 20px;font-size:13.5px;color:var(--ink-2);margin-top:34px}
+.caveat b{color:var(--ink)}
+footer{margin-top:26px;font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:18px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Investment committee brief · executive summary</div>
+  <h1>Apple at $328</h1>
+  <div class="ident">
+    <span>NASDAQ:&nbsp;<b>AAPL</b></span><span>Mkt cap <b>$4.79tn</b></span>
+    <span>FY26E P/E <b>36.9×</b></span><span>2026-09-05</span>
+  </div>
+</header>
+
+<div class="call">
+  <div class="call-l">
+    <span class="badge">Rating</span>
+    <p class="big-rating">AVOID</p>
+    <p class="qual">A price call, not a quality judgement. Stated rather than softened to HOLD because
+       <b>all three scenarios — including the bull case at −15% — land below the market price</b>.
+       For an existing holder: hold with triggers, trim on strength. Not liquidate.</p>
+  </div>
+  <div class="figs">
+    <div class="fig"><div class="k">Fair value</div><div class="v">$222</div><div class="n">probability-weighted</div></div>
+    <div class="fig"><div class="k">vs market</div><div class="v neg">−32%</div><div class="n">$328 today</div></div>
+    <div class="fig"><div class="k">Expected 3y IRR</div><div class="v neg">−6.3%</div><div class="n">incl. dividends</div></div>
+    <div class="fig"><div class="k">Re-entry</div><div class="v">$185</div><div class="n">20% margin of safety</div></div>
+  </div>
+</div>
+
+<div class="thesis">
+  Apple is an exceptional business at a demanding price. Every method tested lands below the market, and
+  at an 8.8% discount rate the price embeds <em>5.7% growth in perpetuity</em> — faster than the economy,
+  forever. This is a valuation call, and it should be revisited on price, not on news.
+</div>
+
+<section>
+  <h2>The three numbers</h2>
+  <div class="three">
+    <div class="metric">
+      <div class="v">5.7%</div>
+      <div class="l"><b>Implied perpetual growth.</b> What the price requires at an 8.8% WACC. Long-run US nominal GDP is ~4%.</div>
+    </div>
+    <div class="metric">
+      <div class="v">36.9×</div>
+      <div class="l"><b>FY26E earnings.</b> Above the Nasdaq-100 at 34.5×, the S&amp;P 500 at 25.6× and Alphabet at 17×.</div>
+    </div>
+    <div class="metric">
+      <div class="v neg">16→12%</div>
+      <div class="l"><b>Services growth, Q2 to Q3.</b> The annuity that justifies the multiple decelerated and missed consensus.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Valuation — every method, every scenario</h2>
+  <div class="panel">
+    <svg viewBox="0 0 700 168" role="img" aria-label="Valuation ranges against the $328 market price: DCF $127 to $269 with a base of $195, EV/EBITDA $214 to $342 with a base of $284, sum-of-the-parts $202, and the blended range $166 to $279 with a base of $222.">
+      <g font-family="IBM Plex Mono, monospace" font-size="11">
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="140" y1="16" x2="140" y2="128"/><line x1="290" y1="16" x2="290" y2="128"/>
+          <line x1="440" y1="16" x2="440" y2="128"/><line x1="590" y1="16" x2="590" y2="128"/>
+        </g>
+        <g fill="var(--ink-3)" text-anchor="middle" font-size="10">
+          <text x="140" y="145">$0</text><text x="290" y="145">$100</text>
+          <text x="440" y="145">$200</text><text x="590" y="145">$300</text>
+        </g>
+        <line x1="632" y1="10" x2="632" y2="132" stroke="var(--ink)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="632" y="6" text-anchor="middle" fill="var(--ink)" font-weight="600" font-size="10.5">Market $328</text>
+        <g fill="var(--ink-2)" font-size="11.5" font-family="IBM Plex Sans, sans-serif">
+          <text x="0" y="34">Discounted cash flow</text><text x="0" y="66">EV/EBITDA @ 24×</text>
+          <text x="0" y="98">Sum of the parts</text><text x="0" y="130" fill="var(--ink)" font-weight="600">Blended</text>
+        </g>
+        <rect x="330" y="24" width="214" height="13" rx="4" fill="var(--accent)" opacity=".36"/>
+        <rect x="431" y="21" width="3" height="19" fill="var(--accent-ink)"/>
+        <text x="551" y="34" fill="var(--ink)" font-weight="600" font-size="11">$195</text>
+        <rect x="461" y="56" width="192" height="13" rx="4" fill="var(--accent)" opacity=".36"/>
+        <rect x="564" y="53" width="3" height="19" fill="var(--accent-ink)"/>
+        <text x="660" y="66" fill="var(--ink)" font-weight="600" font-size="11">$284</text>
+        <rect x="437" y="88" width="11" height="13" rx="4" fill="var(--accent)" opacity=".36"/>
+        <rect x="441" y="85" width="3" height="19" fill="var(--accent-ink)"/>
+        <text x="456" y="98" fill="var(--ink)" font-weight="600" font-size="11">$202</text>
+        <rect x="388" y="120" width="170" height="13" rx="4" fill="var(--accent)" opacity=".6"/>
+        <rect x="472" y="116" width="3" height="21" fill="var(--ink)"/>
+        <text x="566" y="130" fill="var(--ink)" font-weight="600" font-size="11">$222</text>
+        <text x="0" y="162" fill="var(--ink-3)" font-size="10" font-family="IBM Plex Sans, sans-serif">Bar spans bear to bull · tick marks the base case · price-to-book excluded as meaningless after a decade of buybacks</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>Why the market is wrong — three non-consensus points</h2>
+  <div class="panel">
+    <ol class="reasons">
+      <li><b>Services is decelerating, not compounding.</b> +16% to +12%, and a consensus miss, while cyclical
+        hardware grew 22%. The market pays an annuity multiple for a mix moving <em>toward</em> cyclicality.
+        <span class="m">Phase 3 — Q3 FY2026 Services $30.74bn vs $31.22bn expected.</span></li>
+      <li><b>Low AI capex is dependency, not discipline.</b> Apple rents frontier AI for ~$1bn a year from Google —
+        its largest counterparty, antitrust co-defendant and direct competitor — two years late, with no owned fallback.
+        <span class="m">Phase 2 — the Gemini contract against hyperscaler capex.</span></li>
+      <li><b>The antitrust "win" removed the protection, not the risk.</b> The ~$20bn search payment survived, but
+        is now non-exclusive, capped at 12-month terms, and appealed by both sides. ~13% of operating income at
+        near-100% margin moved to an annual renegotiation.
+        <span class="m">Phase 1 — Judge Mehta's remedy terms.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>What would make this call wrong</h2>
+  <div class="panel">
+    <ul class="risks">
+      <li><b>The magnitude is assumption-sensitive.</b> On generous inputs — 4.0% terminal growth, 8.0% WACC —
+        the discount narrows from 40% to 17%. The direction is robust across every reasonable input set; the size is not.</li>
+      <li><b>77% of the base-case DCF sits in the terminal value.</b> Most of this valuation is an assumption about
+        the world after year five, which is exactly where a DCF is weakest.</li>
+      <li><b>Quality is not in question.</b> Apple held price in a falling Chinese market and took share from 13.9%
+        to 18.1%. A great business can stay expensive for a very long time, and this call earns nothing while it does.</li>
+      <li><b>The bull catalyst is real and imminent.</b> iOS 27 ships full conversational Siri this month. If it
+        drives a genuine upgrade cycle, the bear and base cash-flow paths are both too low.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="grid2">
+    <div>
+      <h2>Scenarios</h2>
+      <div class="panel" style="padding:20px 22px">
+        <div class="tw"><table>
+          <thead><tr><th>Case</th><th>Prob.</th><th>Fair value</th><th>3y IRR</th></tr></thead>
+          <tbody>
+            <tr><td>Bear</td><td>25%</td><td>$166</td><td class="neg">−17.6%</td></tr>
+            <tr><td>Base</td><td>50%</td><td>$222</td><td class="neg">−5.6%</td></tr>
+            <tr><td>Bull</td><td>25%</td><td>$279</td><td class="pos">+3.5%</td></tr>
+            <tr class="em"><td>Weighted</td><td>100%</td><td>$222</td><td class="neg">−6.3%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div>
+      <h2>Watch these four</h2>
+      <div class="panel" style="padding:20px 22px">
+        <div class="tw"><table>
+          <tbody>
+            <tr><td>iOS 27 Siri ships</td><td>Sept 2026</td></tr>
+            <tr><td>Q4 margin ex-tariff-refund</td><td>Oct 2026</td></tr>
+            <tr><td>Q1 FY27 — demand pull-forward?</td><td>Jan 2027</td></tr>
+            <tr><td>Google payment on appeal</td><td>2027–28</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Sell triggers</h2>
+  <div class="panel" style="padding:20px 26px">
+    <div class="tw"><table>
+      <tbody>
+        <tr><td>Services growth below 10% YoY</td><td>2 consecutive quarters</td></tr>
+        <tr><td>Gross margin below 46% ex-refund</td><td>2 consecutive quarters</td></tr>
+        <tr><td>iPhone revenue declines YoY</td><td>any FY2027 quarter</td></tr>
+        <tr><td>Google search payment cut</td><td>&gt;25% or terminated</td></tr>
+        <tr><td>Forward P/E</td><td>above 42×</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<div class="caveat">
+  <b>Evidence provenance.</b> No primary filing was retrievable — every external domain is blocked by this
+  environment's network egress proxy. All 51 findings across the five phases rest on search-result summaries of
+  Apple's 8-K/10-Q releases and reputable press, not on filings read in full. Sixteen gaps are declared, of which
+  the largest are the absence of primary verification and unsourced WACC components — a 100bp error there moves
+  fair value by roughly 15%, half the gap to the market price.
+</div>
+
+<footer>
+  <p><b>Not investment advice.</b> A discounted cash flow restates assumptions with more decimal places; it is not
+     a source of truth. Check primary sources before acting. Full workings, all 51 findings and the declared gaps
+     are in the detailed dossier.</p>
+  <p style="margin-top:8px">Generated by the <span class="num">/invest</span> five-phase protocol · analysis date
+     2026-09-05 · price of $328 derived from a $4.79tn market cap over 14.59bn shares.</p>
+</footer>
+
+</div>

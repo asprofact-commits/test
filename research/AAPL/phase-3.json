@@ -1,0 +1,63 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Apple Inc.","ticker":"NASDAQ: AAPL","sector":"consumer","currency":"USD","fxToUsd":1,"price":328,"priceUnit":"share","asOf":"2026-09-05","phase":3,"phaseName":"Demand & monetisation structure",
+  "assumedContext":["No primary filing retrievable; search-result evidence only.","FY2026 quarterly figures are reported actuals for Q1-Q3; Q4 is management guidance."]},
+ "findings":[
+  {"id":"p3-01","claim":"FY2026 is running at exceptional growth: Q1 revenue USD 143.8bn (+16%), Q2 USD 111.2bn (+17%), Q3 USD 109.4bn (+16%). Nine-month revenue of USD 364.4bn against FY2025 full-year revenue of USD 416.2bn.","label":"FACT","source":"Apple Q1/Q2/Q3 FY2026 results, 2026-01-29, 2026-04-30, 2026-07-30","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p3-02","claim":"The driver is an iPhone replacement cycle, not a new category. iPhone revenue rose 22% in both the March quarter (USD 56.99bn) and the June quarter (USD 54.3bn). iPhone 17 outsold iPhone 16 by 14% in the first ten days in the US and China.","label":"FACT","source":"Apple Q2/Q3 FY2026 results; TIKR","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p3-03","claim":"FY2026 revenue is estimated at approximately USD 477bn (+14.7%), from nine months actual of USD 364.4bn plus a Q4 estimate of USD 113bn at the midpoint of the guided 9-11% growth on an estimated USD 102.8bn prior-year quarter.","label":"ANALYST ESTIMATE","source":"Derived: 364.4 + 102.8 x 1.10. Prior-year Q4 derived as 416.16 less the three implied year-ago quarters","asOf":"2026-09-05","confidence":"medium","impact":"high","value":477500,"unit":"USD m"},
+  {"id":"p3-04","claim":"FY2026 net income is estimated at approximately USD 131bn (+17%) and EPS at approximately USD 8.89, from nine-month actuals of USD 101.5bn and USD 6.87 respectively plus a fourth quarter at a guided 47-48% gross margin.","label":"ANALYST ESTIMATE","source":"Derived from Q1-Q3 FY2026 reported net income and EPS plus Q4 guidance","asOf":"2026-09-05","confidence":"medium","impact":"high","value":131000,"unit":"USD m"},
+  {"id":"p3-05","claim":"Services reached USD 109.16bn in FY2025 at a 75.4% gross margin — the first year above USD 100bn — and is running at approximately USD 125bn in FY2026.","label":"FACT","source":"Apple FY2025 results; FY2026 quarterly releases","asOf":"2026-07-30","confidence":"high","impact":"high","value":109160,"unit":"USD m FY2025"},
+  {"id":"p3-06","claim":"Services growth is decelerating while hardware accelerates — the reverse of the accepted narrative. Services grew 16% in Q2 FY2026 but 12% in Q3, and missed consensus of USD 31.22bn at USD 30.74bn. iPhone grew 22% in both quarters.","label":"FACT","source":"Apple Q2/Q3 FY2026 results; Yahoo Finance and Quartz, 2026-07-30","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p3-07","claim":"The installed base exceeds 2.5 billion active devices, up 150 million year on year, with more than 1.5 billion paid subscriptions. This is the annuity that underwrites Services.","label":"FACT","source":"Apple Q1 FY2026 release, 2026-01-29; Q3 FY2026","asOf":"2026-07-30","confidence":"high","impact":"high","value":2500,"unit":"m active devices"},
+  {"id":"p3-08","claim":"Roughly 16% of Services revenue is the Google default-search payment (USD 20bn of approximately USD 125bn), carrying a materially higher share of Services profit given its near-zero cost. Services growth and Services quality are therefore not the same question.","label":"ANALYST ESTIMATE","source":"Derived: 20 / 125.6 estimated FY2026 Services revenue","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-09","claim":"Demand classification: the iPhone 17 cycle and the installed base are [Existing Contracted] in substance — recurring, evidenced, already in the run rate. The Gemini-powered Siri launching with iOS 27 in September 2026 is [Approved / Committed Pipeline]. A Siri-driven upgrade supercycle is [Speculative Demand] and belongs only in the bull case.","label":"ANALYST ESTIMATE","source":"Applying the Phase 3 classification test to the demand evidence","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-10","claim":"Apple unveiled the rebuilt Siri on 8 June 2026, routing its hardest reasoning to Google's Gemini models, with full conversational Siri shipping in iOS 27 in September 2026 — roughly two years after the capability was first demonstrated in 2024.","label":"FACT","source":"CNN 2026-01-12; CNBC; tech-insider, 2026","asOf":"2026-06-08","confidence":"high","impact":"high"},
+  {"id":"p3-11","claim":"Incremental margin is currently above average margin — the rare case where growth is accretive rather than dilutive. Q3 FY2026 net income grew 27% (USD 23.43bn to USD 29.79bn) on 16% revenue growth. Approximately 2pp of the gross margin was a non-recurring tariff refund.","label":"ANALYST ESTIMATE","source":"Derived from Q3 FY2026 reported figures","asOf":"2026-07-30","confidence":"high","impact":"high"}
+ ],
+ "tables":[
+  {"title":"FY2026 quarterly progression",
+   "columns":["Quarter","Revenue (USD bn)","Growth","EPS","iPhone (USD bn)","Services (USD bn)"],
+   "rows":[
+    ["Q1 FY26 (Dec-25)","143.8","+16%","2.84","record, all-time","record, +14%"],
+    ["Q2 FY26 (Mar-26)","111.2","+17%","2.01","56.99 (+22%)","30.98 (+16%)"],
+    ["Q3 FY26 (Jun-26)","109.4","+16%","2.02","54.30 (+22%)","30.74 (+12%)"],
+    ["Q4 FY26E","~113","+9-11% guided","~2.02E","—","—"],
+    ["FY2026E","~477.5","+14.7%","~8.89","—","~125.6"]
+   ],
+   "note":"[FACT] for Q1-Q3, [MANAGEMENT GUIDANCE] for Q4 revenue growth, [ANALYST ESTIMATE] for the derived totals. Note the Services deceleration from +16% to +12% while iPhone held at +22%."},
+  {"title":"Demand classified",
+   "columns":["Demand source","Evidence","Classification","Weight in base case"],
+   "rows":[
+    ["Installed base of 2.5bn devices, 1.5bn subscriptions","Reported, growing 150m/yr","[Existing Contracted]","Full"],
+    ["iPhone 17 replacement cycle","Reported: +22% two quarters running","[Existing Contracted]","Full, but cyclical — replacement cycles end"],
+    ["Google default search payment","Contractual, ~USD 20bn","[Existing Contracted], repricing annually","Full, with a 12-month horizon"],
+    ["Gemini-powered Siri, iOS 27","Announced, shipping Sept 2026","[Approved / Committed Pipeline]","Partial"],
+    ["Siri-driven upgrade supercycle","Analyst extrapolation","[Speculative Demand]","Zero — bull case only"]
+   ],
+   "note":"[ANALYST ESTIMATE] The classification matters most for the last row: a great deal of sell-side enthusiasm rests on a supercycle for which no evidence yet exists."}
+ ],
+ "gaps":[
+  {"item":"Services revenue excluding the Google payment, and its growth rate","whyItMatters":"~16% of Services revenue and considerably more of its profit is one contract now repriced annually. Services growth ex-Google is the number that matters and it is not disclosed.","resolvedBy":"Apple does not break this out; it would have to be estimated from Google's own filings"},
+  {"item":"Whether the iPhone 17 cycle pulls demand forward","whyItMatters":"Two quarters at +22% against a normal replacement cadence raises the question of whether FY2027 faces an air pocket. The Q4 guidance of +9-11% is already a deceleration.","resolvedBy":"Q1 FY2027 results, January 2027"},
+  {"item":"Why Services decelerated to +12% and missed consensus","whyItMatters":"Services is the high-margin annuity underwriting the multiple. A deceleration there is worth more than an acceleration in hardware.","resolvedBy":"Q4 FY2026 call, late October 2026"}
+ ],
+ "risks":[
+  {"text":"Services decelerated to +12% and missed consensus in Q3 FY2026 while the market continues to value Apple on the Services annuity story.","severity":"high","probability":"high"},
+  {"text":"The FY2026 growth surge is a replacement cycle, not a new category. Replacement cycles pull demand forward and end; Q4 guidance already decelerates to +9-11%.","severity":"high","probability":"medium"},
+  {"text":"The Siri supercycle thesis is unevidenced. Full conversational Siri ships two years late and on a competitor's model.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"iOS 27 with full conversational Siri ships","window":"Sept 2026","impact":"High","probability":0.9},
+  {"text":"Q1 FY2027 results — first read on whether the iPhone 17 cycle pulled demand forward","window":"Jan 2027","impact":"High","probability":0.95}
+ ],
+ "conclusions":[
+  "FY2026 is an outstanding year: approximately USD 477bn of revenue (+14.7%) and USD 131bn of net income (+17%), driven by an iPhone 17 replacement cycle running at +22% for two consecutive quarters.",
+  "Growth is currently accretive — incremental margin exceeds average margin, and net income grew 27% on 16% revenue in Q3. This is the opposite of the volume-without-value trap.",
+  "But the composition is the wrong way round for the story the market is paying for. Services, the high-margin annuity that justifies the multiple, decelerated from +16% to +12% and missed consensus; hardware, the cyclical line, is carrying the growth.",
+  "Roughly 16% of Services revenue, and considerably more of its profit, is a single contract with Google that a court has just converted to a 12-month non-exclusive arrangement.",
+  "Applying the classification discipline: the supercycle that much of the bullish case depends on is [Speculative Demand] and earns zero weight in a base case."
+ ],
+ "thesisImpact":"Phase 3 sharpens the question for Phase 5. Apple is not expensive because it is not growing — it is growing strongly and profitably. It is expensive because the market is capitalising a cyclical hardware surge and a decelerating Services line at a multiple that assumes both are permanent. The valuation work has to test what growth rate the price actually embeds.",
+ "model":{"sharesOut":14590,"netDebt":-62000}
+}

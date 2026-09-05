@@ -1,0 +1,68 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Apple Inc.","ticker":"NASDAQ: AAPL","sector":"consumer","currency":"USD","fxToUsd":1,"price":328,"priceUnit":"share","asOf":"2026-09-05","phase":1,"phaseName":"Pricing-power architecture",
+  "assumedContext":[
+   "Sector recorded as 'consumer', but Apple genuinely spans two profiles: Phase 1 and 3 draw on the software/internet profile (switching costs, ecosystem lock-in, antitrust) while Phase 2 draws on the consumer/industrials profile (contract manufacturing, supply chain). Both are applied.",
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy. Findings rest on search-result summaries of Apple's 8-K/10-Q releases and reputable press, not on the filings themselves.",
+   "Price of USD 328 is derived, not quoted: market cap USD 4.79tn / 14.59bn shares. One data source showed a stale USD 256.48; market-cap, 52-week-range and all-time-high sources agree on the ~USD 328-336 area, so the stale quote was discarded."
+  ]},
+ "findings":[
+  {"id":"p1-01","claim":"Apple sets its own prices. There is no regulator, no tariff, no rate case. Pricing power derives from brand, switching costs and an installed base of over 2.5 billion active devices (+150m year on year) with more than 1.5 billion paid subscriptions.","label":"FACT","source":"Apple Q1 FY2026 release via AppleInsider/MacRumors, 2026-01-29; Q3 FY2026 release","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p1-02","claim":"Pricing power is demonstrated, not asserted: company gross margin reached 50.1% in Q3 FY2026, up 80bp sequentially, and FY2025 gross margin was 46.2%, up 210bp year on year. Roughly 2pp of the Q3 figure came from tariff refunds and is not recurring.","label":"FACT","source":"Apple Q3 FY2026 results, 2026-07-30; FY2025 results","asOf":"2026-07-30","confidence":"high","impact":"high","value":50.1,"unit":"% gross margin"},
+  {"id":"p1-03","claim":"In China, Apple held prices steady while competitors raised theirs and took share from 13.9% to 18.1% between Q2 2025 and Q2 2026, growing ~25% in a market that fell 4.3%. Huawei holds 22.6%.","label":"FACT","source":"IDC via Asymco and MacTech, 2026-07","asOf":"2026-07-14","confidence":"high","impact":"high"},
+  {"id":"p1-04","claim":"Google pays Apple an estimated USD 20bn a year for default search placement, structured as 36% of Safari search advertising revenue. This is close to pure margin and is the single largest identifiable profit pool inside Services.","label":"FACT","source":"US v. Google court documents via Gulf News, Yahoo Finance; 9to5Mac 2026-02-03","asOf":"2026-05-22","confidence":"high","impact":"high","value":20000,"unit":"USD m per year"},
+  {"id":"p1-05","claim":"Judge Mehta's remedy allowed the payments to continue but stripped their protection: the Safari agreement can no longer be exclusive, Google cannot prevent Apple promoting rival search or generative-AI products, and revenue share cannot be conditioned on default status for more than 12 months.","label":"REGULATORY STATUTE","source":"US v. Google remedies opinion via 9to5Mac and MacRumors","asOf":"2026-05-22","confidence":"high","impact":"high"},
+  {"id":"p1-06","claim":"The 12-month limit means competitors get an annual opportunity to bid for the default. Apple's position is arguably improved — it can now auction a contract it previously had to grant — but the payment is re-priced every year rather than locked.","label":"ANALYST ESTIMATE","source":"Derived from the remedy terms","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-07","claim":"Both sides have appealed: Google appealed the liability finding in May 2026, the DOJ appealed the remedy as too weak in February 2026. The USD 20bn is therefore unresolved in both directions and will stay unresolved for years.","label":"FACT","source":"9to5Mac 2026-02-03; MacRumors 2026-05-22","asOf":"2026-05-22","confidence":"high","impact":"high"},
+  {"id":"p1-08","claim":"The USD 20bn Google payment is approximately 12.7% of estimated FY2026 operating income and, being near-costless, a materially higher share of net income. Its loss would not be recoverable by pricing.","label":"ANALYST ESTIMATE","source":"Derived: 20 / 158 estimated FY2026 operating income","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-09","claim":"The European Commission fined Apple EUR 500m in April 2025 for breaching the DMA anti-steering requirement. On 18 August 2026 the Commission indicated periodic fines are not on the table, effectively closing the dispute.","label":"REGULATORY STATUTE","source":"CNBC 2025-06-26; Daring Fireball and AppleMagazine, 2026-08-18","asOf":"2026-08-18","confidence":"high","impact":"medium"},
+  {"id":"p1-10","claim":"From 1 October 2026 Apple's EU commission structure becomes tiered: 26% for App Store apps using Apple in-app purchase, 20% for those using alternative payment processing, and 15% for small-business, mini-app, video-partner developers and second-year subscriptions. Developers may also distribute through alternative marketplaces and steer users out of the app.","label":"REGULATORY STATUTE","source":"Apple Developer DMA support page; FunnelFox; AppleMagazine, 2026","asOf":"2026-10-01","confidence":"high","impact":"medium"},
+  {"id":"p1-11","claim":"Commentary characterises the August 2026 settlement as Apple 'conceding very little'. The headline rate moves from 30% to 26% on the in-app path — a 13% reduction in take rate on EU in-app purchases, not the disintermediation regulators sought.","label":"CONSENSUS","source":"Daring Fireball, 2026-08; AppleMagazine","asOf":"2026-08-18","confidence":"medium","impact":"medium"},
+  {"id":"p1-12","claim":"Apple has no controlling shareholder and no state ownership. Capital returns are unconstrained by any owner whose objectives conflict with minority shareholders — the opposite of a state-controlled utility.","label":"FACT","source":"Apple DEF 14A FY2025","asOf":"2025-12-31","confidence":"high","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"Price-setting mechanism: who controls each revenue line",
+   "columns":["Revenue line","Who sets the price","Binding constraint","Durability"],
+   "rows":[
+    ["iPhone and hardware","Apple","Consumer willingness to pay; competitive substitution","High — demonstrated by holding price in a falling China market and taking share"],
+    ["App Store commission","Apple, subject to regulators","DMA in the EU; Epic ruling in the US","Eroding at the edges — EU take rate 30% to 26% from Oct 2026"],
+    ["Google default search","Bilateral negotiation, court-supervised","12-month non-exclusive limit; appeals pending both ways","Low visibility — repriced annually, ~USD 20bn at stake"],
+    ["Other Services (iCloud, Music, TV+)","Apple","Subscription competition","High"],
+    ["Input costs","Suppliers and tariffs","US tariff regime; memory pricing; India cost premium of 5-8%","Apple absorbing, not passing through"]
+   ],
+   "note":"[FACT/REGULATORY STATUTE] The pattern is the inverse of a regulated utility: Apple controls price on most lines and is exposed on cost. The exception is the single most profitable line, where a court now sets the terms."},
+  {"title":"Regulatory exposure ranked by profit at risk",
+   "columns":["Exposure","Profit at risk","Status","Timeline"],
+   "rows":[
+    ["Google default search payment","~USD 20bn/yr, near-100% margin","Allowed to continue but non-exclusive, 12-month terms; both sides appealing","Years — appellate process"],
+    ["EU DMA App Store terms","EU in-app take rate 30% to 26%","Settled Aug 2026; new terms effective 1 Oct 2026","Live"],
+    ["US App Store (Epic)","US anti-steering economics","Ongoing","Ongoing"],
+    ["Tariffs","~USD 900m per quarter observed","Active; partially refunded in Q3 FY2026","Live and volatile"]
+   ],
+   "note":"[ANALYST ESTIMATE] on profit at risk. The Google payment dominates every other regulatory exposure combined."}
+ ],
+ "gaps":[
+  {"item":"The exact contractual terms of the renegotiated Google agreement","whyItMatters":"USD 20bn of near-costless profit, ~13% of operating income, now repriced annually. Whether Apple's economics improve or deteriorate under an annual auction is the single largest swing factor in the Services line.","resolvedBy":"Apple 10-K disclosure or court filings in the remedy implementation"},
+  {"item":"EU as a share of App Store revenue","whyItMatters":"Without it the 30%-to-26% change cannot be sized. It is the difference between a rounding error and a material Services headwind.","resolvedBy":"Apple segment disclosure; third-party App Store revenue estimates by geography"},
+  {"item":"Whether the ~2pp tariff refund benefit in Q3 FY2026 gross margin recurs","whyItMatters":"Q4 guidance of 47-48% versus 50.1% actual suggests it does not. Two points of gross margin on ~USD 477bn of revenue is ~USD 9.5bn.","resolvedBy":"Q4 FY2026 results, expected late October 2026"}
+ ],
+ "risks":[
+  {"text":"The USD 20bn Google payment is now a 12-month, non-exclusive arrangement subject to two live appeals. It is ~13% of operating income at near-100% margin and cannot be replaced by pricing.","severity":"high","probability":"medium"},
+  {"text":"Regulatory erosion of App Store take rates is directional and global, not a one-off EU event.","severity":"medium","probability":"high"},
+  {"text":"Apple is absorbing tariff and input-cost inflation rather than passing it through, which protects share but compresses margin.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q4 FY2026 results — tests whether 50.1% gross margin was a tariff-refund artefact","window":"Late Oct 2026","impact":"High","probability":0.95},
+  {"text":"New EU commission tiers take effect","window":"2026-10-01","impact":"Medium","probability":1.0},
+  {"text":"Appellate ruling in US v. Google — determines the fate of the ~USD 20bn payment","window":"2027-2028","impact":"High","probability":0.4}
+ ],
+ "conclusions":[
+  "Apple has genuine, demonstrated pricing power on hardware — it held price in a declining Chinese market and took share from 13.9% to 18.1% while the market fell 4.3%. This is the opposite of the regulated-utility case.",
+  "The vulnerability is not pricing, it is a single counterparty. The ~USD 20bn Google default payment is roughly 13% of operating income at near-100% margin, and a court has just converted it from a locked exclusive arrangement into a non-exclusive 12-month contract with both sides appealing.",
+  "EU regulatory pressure has been settled on terms commentators describe as conceding very little: the in-app take rate falls from 30% to 26% from October 2026. Directionally negative, quantitatively minor on what is known.",
+  "Apple is absorbing cost inflation rather than passing it through — tariffs of roughly USD 900m a quarter, a 5-8% cost premium on Indian production, and a memory crunch. That is a deliberate share-defence choice, and it lands on gross margin.",
+  "Governance is the mirror image of a state-controlled monopoly: no controlling shareholder, no conflicting owner objective, and capital returns limited only by cash generation."
+ ],
+ "thesisImpact":"Phase 1 establishes that the bear case on Apple cannot be a pricing-power case — the pricing power is real and was just demonstrated in the hardest market in the world. The bear case has to be about (a) the concentration of high-margin profit in one contractual counterparty now subject to annual repricing, and (b) valuation. Phases 3 and 5 should carry that weight.",
+ "model":{"sharesOut":14590,"netDebt":-62000}
+}
