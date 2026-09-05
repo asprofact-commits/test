@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Investment Research Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<!--
+  Investment Research Workspace — the reading and modelling half of the
+  /invest skill (.claude/skills/invest). The skill researches each of the
+  five phases and writes research/<TICKER>/phase-N.json; this file imports
+  those, renders the dossier, and runs the valuation arithmetic itself so
+  every number is reproducible and every assumption can be flexed.
+
+  Single file, no build step, no backend. State is localStorage only.
+  Not investment advice.
+-->
+<style>
+:root{
+  --gold:#B8943E; --steel:#2C4A5A; --navy:#1C2E3A; --cream:#FBF7EF;
+  --ink:#2a2a26; --line:rgba(28,46,58,.14); --ok:#3d7a4f; --warn:#c07f28; --err:#a5432e;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);min-height:100dvh;display:flex;flex-direction:column}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit;font-size:16px;color:inherit}
+
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:var(--cream)}
+.topbar{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.2rem;letter-spacing:.04em}
+.brand em{color:var(--gold);font-style:normal;font-size:.66rem;letter-spacing:.22em;display:block;font-family:var(--sans);text-transform:uppercase;opacity:.9}
+.tabs{display:flex;gap:2px;border:1px solid rgba(251,247,239,.22);border-radius:99px;padding:2px}
+.tabs button{padding:6px 16px;border-radius:99px;font-size:.8rem;color:rgba(251,247,239,.72);white-space:nowrap}
+.tabs button.on{background:var(--gold);color:#fff;font-weight:700}
+.subject{background:rgba(0,0,0,.18);font-size:.78rem}
+.subject div{max-width:1180px;margin:0 auto;padding:8px 20px;display:flex;gap:18px;flex-wrap:wrap;color:rgba(251,247,239,.8)}
+.subject b{color:var(--cream);font-weight:400}
+@media(max-width:760px){.topbar{flex-direction:column;align-items:stretch}.tabs button{flex:1;padding:8px 4px;font-size:.75rem}}
+
+main{flex:1;width:100%;max-width:1180px;margin:0 auto;padding:22px 20px 90px}
+.view{display:none}.view.on{display:block}
+h2{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.6rem;line-height:1.15;margin-bottom:4px}
+h3{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.22rem;margin-bottom:8px}
+h4{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.05rem;margin:14px 0 6px}
+.sub{color:var(--steel);font-size:.88rem;line-height:1.55;margin-bottom:18px;max-width:70ch}
+.cat{margin:20px 0 10px;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.muted{color:var(--steel);font-size:.82rem;line-height:1.5}
+.empty{text-align:center;color:var(--steel);font-size:.88rem;padding:30px 14px;line-height:1.7}
+.ghead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.ghead b{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ghead span{font-size:.8rem;color:var(--steel)}
+
+/* phase rail */
+.rail{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}
+.rail button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:11px 8px;text-align:left}
+.rail button.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.rail button.missing{opacity:.55}
+.rail .n{font-family:var(--serif);font-size:1.3rem;color:var(--navy);line-height:1}
+.rail .t{font-size:.68rem;color:var(--steel);line-height:1.3;margin-top:4px;display:block}
+.rail .st{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-top:5px;display:block}
+.rail .st.y{color:var(--ok)}.rail .st.n{color:var(--steel)}
+@media(max-width:700px){.rail{grid-template-columns:repeat(2,1fr)}}
+
+/* findings */
+.finding{border-bottom:1px solid var(--line);padding:11px 0}
+.finding:last-child{border-bottom:none}
+.finding .cl{font-size:.9rem;line-height:1.55;color:var(--ink)}
+.finding .mt{font-size:.72rem;color:var(--steel);margin-top:5px;line-height:1.5}
+.lab{display:inline-block;font-size:.6rem;letter-spacing:.1em;padding:2px 8px;border-radius:4px;text-transform:uppercase;font-weight:700;margin-right:7px;vertical-align:1px}
+.lab.FACT{background:rgba(61,122,79,.14);color:var(--ok)}
+.lab.REG{background:rgba(28,46,58,.12);color:var(--navy)}
+.lab.MGMT{background:rgba(192,127,40,.16);color:#8a5c14}
+.lab.CONS{background:rgba(44,74,90,.12);color:var(--steel)}
+.lab.EST{background:rgba(184,148,62,.18);color:#8a6d26}
+.lab.GAP{background:rgba(165,67,46,.13);color:var(--err)}
+.stale{color:var(--err);font-weight:700}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{text-align:left;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);font-weight:400;padding:0 10px 7px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.r,th.r{text-align:right;padding-right:0}
+tr.self td{background:rgba(184,148,62,.09);font-weight:700}
+tr.med td{border-top:1.5px solid var(--line);font-weight:700}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* scenario grid */
+.scen{display:grid;grid-template-columns:150px repeat(3,1fr);gap:0;font-size:.84rem;min-width:520px}
+.scen>div{padding:8px 10px;border-bottom:1px solid var(--line)}
+.scen .hd{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line)}
+.scen .lb{color:var(--steel)}
+.scen input{width:100%;padding:5px 7px;border:1.5px solid var(--line);border-radius:7px;background:#fff;font-size:.84rem;text-align:right}
+.scen input:focus{outline:none;border-color:var(--gold)}
+.scen .out{text-align:right;font-family:var(--serif);font-size:1.05rem;color:var(--navy)}
+.scen .up{text-align:right;font-size:.78rem}
+.pos{color:var(--ok)}.neg{color:var(--err)}
+
+/* verdict */
+.verdict{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;margin-bottom:14px}
+.vhead{padding:18px;display:flex;align-items:center;gap:18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.vhead .lbl{font-family:var(--serif);font-size:1.7rem;font-weight:700;line-height:1.1}
+.vhead .why{font-size:.84rem;color:var(--steel);line-height:1.5;margin-top:5px;max-width:62ch}
+.v-buy{color:var(--ok)}.v-hold{color:var(--warn)}.v-avoid{color:var(--err)}.v-none{color:var(--steel)}
+.grp{padding:15px 18px;border-bottom:1px solid var(--line)}
+.grp:last-child{border-bottom:none}
+.big{font-family:var(--serif);font-size:1.5rem;color:var(--navy)}
+.kv{display:flex;justify-content:space-between;gap:12px;font-size:.85rem;padding:7px 0;border-bottom:1px dashed var(--line)}
+.kv:last-child{border-bottom:none}
+.kv b{font-weight:400;color:var(--steel)}
+.kv span{color:var(--navy);text-align:right}
+
+/* misc */
+.meter{height:6px;background:rgba(184,148,62,.16);border-radius:99px;overflow:hidden;margin:7px 0}
+.meter i{display:block;height:100%;background:var(--gold)}
+.pill{display:inline-block;font-size:.66rem;letter-spacing:.06em;padding:2px 9px;border-radius:99px;background:rgba(184,148,62,.14);color:#8a6d26;text-transform:uppercase}
+.pill.ok{background:rgba(61,122,79,.13);color:var(--ok)}
+.pill.err{background:rgba(165,67,46,.12);color:var(--err)}
+.pill.warn{background:rgba(192,127,40,.15);color:var(--warn)}
+.note{border:1px solid var(--line);border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:13px 15px;font-size:.84rem;color:var(--steel);line-height:1.55;margin:14px 0}
+.note.warn{border-left-color:var(--err)}
+ul.list{list-style:none;font-size:.87rem;line-height:1.65}
+ul.list li{padding-left:20px;position:relative;margin-bottom:7px}
+ul.list li:before{content:"—";position:absolute;left:0;color:var(--gold)}
+ol.list{padding-left:20px;font-size:.87rem;line-height:1.65}
+ol.list li{margin-bottom:10px}
+.btn{background:var(--navy);color:var(--cream);font-size:.92rem;font-weight:700;padding:12px 20px;border-radius:11px}
+.btn.gold{background:var(--gold);color:#fff}
+.btn.ghost{background:#fff;color:var(--steel);border:1.5px solid var(--line);font-weight:400}
+.btn.danger{color:var(--err);border-color:rgba(165,67,46,.3)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btnrow .btn{flex:1;min-width:140px}
+textarea.paste{width:100%;min-height:130px;padding:11px;border:1.5px solid var(--line);border-radius:11px;font-size:13px;font-family:ui-monospace,Menlo,Consolas,monospace;line-height:1.5}
+textarea.paste:focus{outline:none;border-color:var(--gold)}
+.matrix{font-size:.8rem;border-collapse:collapse;min-width:420px}
+.matrix td,.matrix th{padding:7px 9px;text-align:center;border:1px solid var(--line);white-space:nowrap}
+.matrix th{background:rgba(184,148,62,.08);color:var(--steel);text-transform:none;letter-spacing:0;font-size:.72rem}
+.matrix td.hi{background:rgba(61,122,79,.16)}
+.matrix td.mid{background:rgba(184,148,62,.14)}
+.matrix td.lo{background:rgba(165,67,46,.12)}
+.matrix td.cur{outline:2px solid var(--navy);outline-offset:-2px;font-weight:700}
+.disclaim{max-width:1180px;margin:0 auto;padding:0 20px 40px;font-size:.75rem;color:var(--steel);line-height:1.6;opacity:.85}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--navy);color:var(--cream);padding:11px 24px;border-radius:99px;font-size:.86rem;z-index:50;transition:transform .25s ease;pointer-events:none;max-width:88vw;text-align:center}
+#toast.on{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">Investment Research Workspace<em>five-phase dossier</em></div>
+    <nav class="tabs">
+      <button data-tab="dossier" class="on">Dossier</button>
+      <button data-tab="valuation">Valuation</button>
+      <button data-tab="memo">Memo</button>
+      <button data-tab="data">Data</button>
+    </nav>
+  </div>
+  <div class="subject"><div id="subject"><b>No company loaded</b><span>Import phase JSON under Data</span></div></div>
+</header>
+
+<main>
+
+  <!-- ============ DOSSIER ============ -->
+  <section class="view on" id="v-dossier">
+    <div class="rail" id="rail"></div>
+    <div class="card" id="evidence"></div>
+    <div id="phasebody"></div>
+  </section>
+
+  <!-- ============ VALUATION ============ -->
+  <section class="view" id="v-valuation">
+    <h2>Triangulated valuation</h2>
+    <p class="sub">Every figure below is computed here from the inputs the research phases supplied — nothing is copied from the analysis. Change any assumption and the whole model moves, which is the point: the memo should survive your disagreement with its inputs.</p>
+    <div id="valbody"></div>
+  </section>
+
+  <!-- ============ MEMO ============ -->
+  <section class="view" id="v-memo">
+    <h2>Investment committee memo</h2>
+    <p class="sub">The stated conclusion from Phase 5, shown against the conclusion the arithmetic supports. Where they disagree, the disagreement is the most interesting thing on the page.</p>
+    <div id="memobody"></div>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section class="view" id="v-data">
+    <h2>Load a dossier</h2>
+    <p class="sub">Run the research with the <b>/invest</b> skill — <code>/invest phase-1 &lt;company&gt;</code> — then load the JSON it writes to <code>research/&lt;TICKER&gt;/phase-N.json</code>. Phases are independent: load one, or all five.</p>
+
+    <div class="card">
+      <h3>Import phase files</h3>
+      <p class="muted">Select one or more <code>phase-N.json</code> files. Loading a phase again replaces that phase.</p>
+      <div class="btnrow">
+        <button class="btn gold" id="pickfiles">Choose JSON files</button>
+        <button class="btn ghost" id="loadsample">Load worked example</button>
+      </div>
+      <input type="file" id="filein" accept="application/json,.json" multiple hidden>
+    </div>
+
+    <div class="card">
+      <h3>Or paste one</h3>
+      <textarea class="paste" id="pastebox" placeholder='{"schema":"invest-phase/1","meta":{…},"findings":[…]}'></textarea>
+      <div class="btnrow"><button class="btn" id="pastebtn">Import pasted JSON</button></div>
+    </div>
+
+    <div class="card">
+      <h3>Current dossier</h3>
+      <div id="datastate"></div>
+      <div class="btnrow">
+        <button class="btn ghost" id="exportall">Export dossier</button>
+        <button class="btn ghost danger" id="resetall">Clear everything</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What the workspace computes</h3>
+      <p class="muted">The skill supplies inputs only. These outputs are derived here, so the arithmetic is reproducible and every assumption is yours to flex:</p>
+      <ul class="list">
+        <li>Discounted cash flow — five explicit years plus a Gordon terminal value, per scenario</li>
+        <li>Asset-base valuation — regulated or invested capital base × a normalised multiple</li>
+        <li>Justified price-to-book from normalised ROE, with a full ROE × cost-of-equity matrix</li>
+        <li>Sum-of-the-parts across segments with different economics</li>
+        <li>Peer median multiples and the subject's discount or premium to them</li>
+        <li>Probability-weighted fair value, expected IRR, and the rating the arithmetic supports</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<div class="disclaim">
+  <b>Not investment advice.</b> This workspace renders research produced elsewhere and runs standard valuation arithmetic on inputs it cannot verify. A discounted cash flow is a formula for restating your assumptions with more decimal places, not a source of truth; the terminal value usually carries most of the answer. Labels such as <code>[FACT]</code> record what the researching analyst claimed about a source, not an independent verification of it. Check the primary sources before acting on anything here.
+</div>
+
+<div id="toast"></div>
+
+<script>
+"use strict";
+
+/* =========================================================================
+   0 · utilities
+   ========================================================================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.prototype.slice.call(r.querySelectorAll(s));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const isNum=v=>typeof v==='number'&&isFinite(v);
+const num=v=>{ if(v===''||v===null||v===undefined) return null;
+  const n=parseFloat(String(v).replace(/[, ]/g,'')); return isFinite(n)?n:null; };
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),3000); }
+function pct(v,d=1){ return isNum(v)?(v*100).toFixed(d)+'%':'—'; }
+function n2(v,d=2){ return isNum(v)?v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}):'—'; }
+function n0(v){ return isNum(v)?Math.round(v).toLocaleString('en-US'):'—'; }
+const CURSYM={USD:'$',EUR:'€',GBP:'£',JPY:'¥',KRW:'₩',CNY:'¥',TWD:'NT$',HKD:'HK$',AUD:'A$',CAD:'C$'};
+function cur(){ return CURSYM[meta().currency]||((meta().currency||'')+' '); }
+/* per-share money */
+function ps(v){ return isNum(v)?cur()+n2(v,2):'—'; }
+/* millions */
+function mm(v){ return isNum(v)?cur()+n0(v)+'m':'—'; }
+
+const SCEN=['bear','base','bull'];
+const SCENLBL={bear:'Bear',base:'Base',bull:'Bull'};
+const PHASE_TITLES={
+  1:'Pricing-power architecture', 2:'Asset base & bottlenecks',
+  3:'Demand & monetisation', 4:'Balance sheet & returns', 5:'Valuation & memo'};
+const LABCLASS={'FACT':'FACT','REGULATORY STATUTE':'REG','MANAGEMENT GUIDANCE':'MGMT',
+  'CONSENSUS':'CONS','ANALYST ESTIMATE':'EST'};
+
+/* =========================================================================
+   1 · state
+   ========================================================================= */
+const KEY='invest.workspace.v1';
+const S={phases:{},overrides:{},sel:1};
+
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify({phases:S.phases,overrides:S.overrides})); }catch(e){} }
+function load(){
+  try{ const raw=localStorage.getItem(KEY); if(!raw) return;
+    const d=JSON.parse(raw);
+    if(d.phases&&typeof d.phases==='object') S.phases=d.phases;
+    if(d.overrides&&typeof d.overrides==='object') S.overrides=d.overrides;
+  }catch(e){}
+}
+
+function loadedPhases(){ return Object.keys(S.phases).map(Number).sort((a,b)=>a-b); }
+
+/* later phases win */
+function meta(){
+  const out={};
+  loadedPhases().forEach(n=>{
+    const m=S.phases[n].meta||{};
+    Object.keys(m).forEach(k=>{ if(m[k]!==null&&m[k]!==undefined&&m[k]!=='') out[k]=m[k]; });
+  });
+  return out;
+}
+
+function deepMerge(a,b){
+  const out=Object.assign({},a);
+  Object.keys(b||{}).forEach(k=>{
+    const v=b[k];
+    if(v===null||v===undefined) return;
+    if(Array.isArray(v)) out[k]=v.slice();
+    else if(typeof v==='object') out[k]=deepMerge(typeof a[k]==='object'&&!Array.isArray(a[k])?a[k]:{},v);
+    else out[k]=v;
+  });
+  return out;
+}
+/* the accumulated model, with user overrides applied last */
+function model(){
+  let m={};
+  loadedPhases().forEach(n=>{ m=deepMerge(m,S.phases[n].model||{}); });
+  return deepMerge(m,S.overrides);
+}
+
+/* =========================================================================
+   2 · import & validation
+   ========================================================================= */
+function validate(d){
+  const errs=[];
+  if(!d||typeof d!=='object'||Array.isArray(d)) return['not a JSON object'];
+  if(typeof d.schema==='string'&&d.schema.indexOf('invest-phase')!==0)
+    errs.push('unrecognised schema "'+d.schema+'" (expected invest-phase/1)');
+  if(!d.meta||typeof d.meta!=='object') errs.push('missing meta');
+  else{
+    const p=d.meta.phase;
+    if(!isNum(p)||p<1||p>5||p!==Math.round(p)) errs.push('meta.phase must be an integer 1-5 (got '+JSON.stringify(p)+')');
+    if(!d.meta.company) errs.push('missing meta.company');
+  }
+  if(!Array.isArray(d.findings)) errs.push('findings must be an array');
+  else if(!d.findings.length) errs.push('findings is empty — a phase with no findings has not been run');
+  return errs;
+}
+/* non-fatal quality complaints */
+function auditFindings(d){
+  const bad=[];
+  (d.findings||[]).forEach((f,i)=>{
+    const id=f.id||('#'+(i+1));
+    if(!f.label||!LABCLASS[f.label]) bad.push(id+': label missing or not one of the five');
+    if(!f.source) bad.push(id+': no source');
+    if(!f.asOf) bad.push(id+': no as-of date');
+  });
+  return bad;
+}
+
+function importPhase(d,name){
+  const errs=validate(d);
+  if(errs.length){ toast((name?name+': ':'')+errs[0]); return false; }
+  const n=d.meta.phase;
+  const existing=loadedPhases();
+  const t=meta().ticker, nt=d.meta.ticker;
+  if(existing.length&&t&&nt&&String(t).toUpperCase()!==String(nt).toUpperCase()){
+    if(!confirm('This file is for '+nt+' but the dossier holds '+t+'.\n\nClear the dossier and start on '+nt+'?')) return false;
+    S.phases={}; S.overrides={};
+  }
+  S.phases[n]=d;
+  const bad=auditFindings(d);
+  save();
+  S.sel=n; renderAll();
+  toast('Phase '+n+' loaded'+(bad.length?' — '+bad.length+' finding(s) missing a label, source or date':''));
+  return true;
+}
+
+/* =========================================================================
+   3 · evidence quality
+   ========================================================================= */
+function evidence(){
+  const ph=loadedPhases();
+  let total=0,sourced=0,stale=0,hard=0;
+  const byLabel={};
+  const ref=new Date((meta().asOf||new Date().toISOString().slice(0,10))+'T00:00:00');
+  ph.forEach(n=>{
+    (S.phases[n].findings||[]).forEach(f=>{
+      total++;
+      byLabel[f.label||'unlabelled']=(byLabel[f.label||'unlabelled']||0)+1;
+      if(f.source&&f.asOf) sourced++;
+      if(f.label==='FACT'||f.label==='REGULATORY STATUTE') hard++;
+      if(f.asOf){
+        const d=new Date(f.asOf+'T00:00:00');
+        if(isFinite(d.getTime())&&(ref-d)/86400000>548) stale++;
+      }
+    });
+  });
+  const cov=ph.length/5;
+  const sh=total?sourced/total:0, st=total?stale/total:0, hd=total?hard/total:0;
+  /* Two axes, multiplied rather than added: how much of the work is here,
+     and how good it is. No amount of careful sourcing rescues a dossier
+     that was never researched, so quality can only scale completeness. */
+  const depth=clamp(total/25,0,1);
+  const completeness=0.6*cov+0.4*depth;
+  const quality=0.45*sh+0.30*hd+0.25*(1-st);
+  const score=completeness*(0.55+0.45*quality);
+  const gaps=ph.reduce((a,n)=>a+((S.phases[n].gaps||[]).length),0);
+  return {phases:ph,total,sourced,stale,hard,byLabel,coverage:cov,depth,completeness,quality,
+    sourcedShare:sh,staleShare:st,hardShare:hd,score:clamp(score,0,1),gaps};
+}
+
+/* =========================================================================
+   4 · valuation engine
+   All monetary inputs are in millions of meta.currency; outputs per share.
+   ========================================================================= */
+
+/* discounted cash flow: 5 explicit years + Gordon terminal value */
+function dcf(fcf,w,g,netDebt,shares,minorities){
+  if(!Array.isArray(fcf)||fcf.length<1||!isNum(w)||!isNum(g)||!isNum(shares)||shares<=0) return null;
+  if(!fcf.every(isNum)) return null;
+  if(w<=g) return {error:'WACC ('+pct(w)+') must exceed terminal growth ('+pct(g)+') — the Gordon formula diverges otherwise.'};
+  let pv=0;
+  fcf.forEach((f,i)=>{ pv+=f/Math.pow(1+w,i+1); });
+  const last=fcf[fcf.length-1];
+  const tv=last*(1+g)/(w-g);
+  const pvTv=tv/Math.pow(1+w,fcf.length);
+  const ev=pv+pvTv;
+  const eq=ev-(netDebt||0)-(minorities||0);
+  return {pvExplicit:pv,tv,pvTv,ev,equity:eq,perShare:eq/shares,tvShare:ev>0?pvTv/ev:null};
+}
+
+/* asset base (RAB / invested capital / NAV) × normalised multiple */
+function assetValue(base,mult,netDebt,shares,minorities){
+  if(!isNum(base)||!isNum(mult)||!isNum(shares)||shares<=0) return null;
+  const ev=base*mult, eq=ev-(netDebt||0)-(minorities||0);
+  return {ev,equity:eq,perShare:eq/shares};
+}
+
+/* justified price-to-book from normalised ROE: (ROE - g) / (COE - g) */
+function justifiedPB(roe,g,coe){
+  if(!isNum(roe)||!isNum(g)||!isNum(coe)) return null;
+  if(coe<=g) return null;
+  return (roe-g)/(coe-g);
+}
+function pbValue(book,scen){
+  if(!book||!isNum(book.bvps)) return null;
+  const roe=book.roe&&isNum(book.roe[scen])?book.roe[scen]:null;
+  const g=isNum(book.growth)?book.growth:0, coe=book.coe;
+  const pb=justifiedPB(roe,g,coe);
+  if(pb===null) return null;
+  return {pb,perShare:pb*book.bvps,roe,coe,g};
+}
+
+/* sum of the parts */
+function sotpValue(segs,netDebt,shares,minorities){
+  if(!Array.isArray(segs)||!segs.length||!isNum(shares)||shares<=0) return null;
+  let ev=0; const rows=[];
+  segs.forEach(s=>{
+    if(!isNum(s.metric)||!isNum(s.multiple)) return;
+    const stake=isNum(s.stake)?s.stake:1;
+    const v=s.metric*s.multiple*stake;
+    ev+=v; rows.push({name:s.name||'—',method:s.method||'',metric:s.metric,multiple:s.multiple,stake,ev:v});
+  });
+  if(!rows.length) return null;
+  const eq=ev-(netDebt||0)-(minorities||0);
+  return {rows,ev,equity:eq,perShare:eq/shares};
+}
+
+/* peer medians and the subject's position against them */
+function median(a){
+  const v=a.filter(isNum).sort((x,y)=>x-y);
+  if(!v.length) return null;
+  const m=Math.floor(v.length/2);
+  return v.length%2?v[m]:(v[m-1]+v[m])/2;
+}
+const PEER_COLS=[['evEbitda','EV/EBITDA'],['pe','P/E'],['pb','P/B'],['ndEbitda','Net debt/EBITDA'],['roe','ROE %'],['dy','Div yield %']];
+function peerStats(peers){
+  if(!Array.isArray(peers)||!peers.length) return null;
+  const self=peers.find(p=>p.self)||null;
+  const others=peers.filter(p=>!p.self);
+  const med={};
+  PEER_COLS.forEach(([k])=>{ med[k]=median(others.map(p=>p[k])); });
+  const disc={};
+  if(self) PEER_COLS.forEach(([k])=>{
+    disc[k]=(isNum(self[k])&&isNum(med[k])&&med[k]!==0)?self[k]/med[k]-1:null;
+  });
+  return {peers,self,others,median:med,discount:disc};
+}
+
+/* per-scenario valuation across every applicable method */
+const METHODS=[['dcf','Discounted cash flow'],['asset','Asset base × multiple'],
+               ['pb','Justified P/B × book'],['sotp','Sum of the parts']];
+function valuation(){
+  const m=model(), meta_=meta();
+  const shares=m.sharesOut, nd=m.netDebt, mi=m.minorities;
+  const price=meta_.price;
+  const out={price,shares,netDebt:nd,byScenario:{},methodsUsed:{},errors:[]};
+
+  SCEN.forEach(s=>{
+    const r={};
+    const w=m.wacc&&m.wacc[s], g=m.terminalGrowth&&m.terminalGrowth[s];
+    const f=m.fcf&&m.fcf[s];
+    const d=dcf(f,w,g,nd,shares,mi);
+    if(d&&d.error){ out.errors.push(SCENLBL[s]+' DCF: '+d.error); r.dcf=null; }
+    else r.dcf=d;
+
+    r.asset=(m.assetBase&&m.assetBase.multiple)
+      ? assetValue(m.assetBase.value,m.assetBase.multiple[s],nd,shares,mi):null;
+    r.pb=pbValue(m.book,s);
+    /* one SOTP build, shown against every scenario for comparison */
+    r.sotp=sotpValue(m.sotp,nd,shares,mi);
+    out.byScenario[s]=r;
+  });
+
+  METHODS.forEach(([k])=>{
+    out.methodsUsed[k]=SCEN.some(s=>out.byScenario[s][k]&&isNum(out.byScenario[s][k].perShare));
+  });
+
+  /* triangulation weights, renormalised over the methods actually available */
+  const dflt={dcf:0.45,asset:0.25,pb:0.15,sotp:0.15};
+  const wts=Object.assign({},dflt,(S.overrides.weights||{}));
+  let tot=0; METHODS.forEach(([k])=>{ if(out.methodsUsed[k]) tot+=Math.max(0,wts[k]||0); });
+  out.weights={}; METHODS.forEach(([k])=>{ out.weights[k]=(out.methodsUsed[k]&&tot>0)?Math.max(0,wts[k]||0)/tot:0; });
+
+  SCEN.forEach(s=>{
+    let v=0,used=0;
+    METHODS.forEach(([k])=>{
+      const r=out.byScenario[s][k];
+      if(r&&isNum(r.perShare)&&out.weights[k]>0){ v+=r.perShare*out.weights[k]; used+=out.weights[k]; }
+    });
+    out.byScenario[s].blended=used>0?v/used:null;
+    out.byScenario[s].upside=(used>0&&isNum(price)&&price>0)?out.byScenario[s].blended/price-1:null;
+  });
+
+  /* probability weighting */
+  const p=m.probabilities||{};
+  const praw={bear:isNum(p.bear)?p.bear:null,base:isNum(p.base)?p.base:null,bull:isNum(p.bull)?p.bull:null};
+  const psum=SCEN.reduce((a,s)=>a+(praw[s]||0),0);
+  out.probs={}; SCEN.forEach(s=>{ out.probs[s]=psum>0?(praw[s]||0)/psum:null; });
+  out.probsRenormalised=psum>0&&Math.abs(psum-1)>0.005;
+
+  let fv=0,pw=0;
+  SCEN.forEach(s=>{
+    const b=out.byScenario[s].blended;
+    if(isNum(b)&&isNum(out.probs[s])){ fv+=b*out.probs[s]; pw+=out.probs[s]; }
+  });
+  out.fairValue=pw>0?fv/pw:null;
+  out.upside=(isNum(out.fairValue)&&isNum(price)&&price>0)?out.fairValue/price-1:null;
+  out.bearDownside=(out.byScenario.bear&&isNum(out.byScenario.bear.upside))?out.byScenario.bear.upside:null;
+
+  /* 3-year IRR from the stated targets, dividends included */
+  out.irr={};
+  const t=m.targets||{};
+  SCEN.forEach(s=>{
+    const tg=t[s];
+    if(tg&&isNum(tg.price3y)&&isNum(price)&&price>0){
+      const total=tg.price3y+(isNum(tg.dividends3y)?tg.dividends3y:0);
+      out.irr[s]=Math.pow(total/price,1/3)-1;
+    }else out.irr[s]=null;
+  });
+  let ei=0,ew=0;
+  SCEN.forEach(s=>{ if(isNum(out.irr[s])&&isNum(out.probs[s])){ ei+=out.irr[s]*out.probs[s]; ew+=out.probs[s]; } });
+  out.expectedIrr=ew>0?ei/ew:null;
+
+  out.peers=peerStats(m.peers);
+  out.tvShare=out.byScenario.base&&out.byScenario.base.dcf?out.byScenario.base.dcf.tvShare:null;
+  out.rating=ratingFrom(out.upside,out.bearDownside,evidence().score,out.methodsUsed);
+  return out;
+}
+
+function ratingFrom(up,bearDown,ev,used){
+  const any=used&&Object.keys(used).some(k=>used[k]);
+  if(!any||!isNum(up)) return {label:'NO VALUATION',cls:'v-none',
+    why:'No method has enough inputs to produce a value. Phase 5 has not supplied a usable model block.'};
+  if(ev<0.45) return {label:'INSUFFICIENT EVIDENCE',cls:'v-none',
+    why:'The arithmetic runs, but the evidence behind it is too thin to act on — '+Math.round(ev*100)+'% on the evidence score. Fill the gaps before the committee sees a rating.'};
+  let label,cls,why;
+  if(up>=0.35&&isNum(bearDown)&&bearDown>=-0.20){ label='STRONG BUY';cls='v-buy';
+    why='Probability-weighted upside of '+pct(up,0)+' with the bear case losing only '+pct(Math.abs(bearDown),0)+'. That asymmetry is what a strong buy means.'; }
+  else if(up>=0.20){ label='TACTICAL BUY';cls='v-buy';
+    why='Upside of '+pct(up,0)+', but'+(isNum(bearDown)?' the bear case still costs '+pct(Math.abs(bearDown),0)+'.':' the downside is unquantified.')+' Size it accordingly.'; }
+  else if(up>=-0.10){ label='HOLD / NEUTRAL';cls='v-hold';
+    why='Fair value within '+pct(Math.abs(up),0)+' of the current price. There is no edge here at this price — the honest answer is to wait.'; }
+  else { label='AVOID';cls='v-avoid';
+    why='The model puts fair value '+pct(Math.abs(up),0)+' below the current price.'; }
+  if(label==='STRONG BUY'&&isNum(bearDown)&&bearDown<-0.40){
+    label='TACTICAL BUY'; why+=' Downgraded from strong buy: a bear case that costs '+pct(Math.abs(bearDown),0)+' is too much downside for a maximum-conviction rating.'; }
+  return {label,cls,why};
+}
+
+/* =========================================================================
+   5 · dossier rendering
+   ========================================================================= */
+function renderSubject(){
+  const m=meta(), ph=loadedPhases();
+  if(!ph.length){ $('#subject').innerHTML='<b>No company loaded</b><span>Import phase JSON under Data</span>'; return; }
+  const bits=['<b>'+esc(m.company||'—')+'</b>'];
+  if(m.ticker) bits.push('<span>'+esc(m.ticker)+'</span>');
+  if(m.sector) bits.push('<span>'+esc(m.sector)+'</span>');
+  if(isNum(m.price)) bits.push('<span>'+cur()+n2(m.price,2)+' / '+esc(m.priceUnit||'share')+'</span>');
+  if(m.asOf) bits.push('<span>as of '+esc(m.asOf)+'</span>');
+  bits.push('<span>phases '+ph.join(', ')+'</span>');
+  $('#subject').innerHTML=bits.join('');
+}
+
+function renderRail(){
+  $('#rail').innerHTML=[1,2,3,4,5].map(n=>{
+    const has=!!S.phases[n];
+    return '<button data-ph="'+n+'" class="'+(S.sel===n?'on ':'')+(has?'':'missing')+'">'+
+      '<span class="n">'+n+'</span><span class="t">'+esc(PHASE_TITLES[n])+'</span>'+
+      '<span class="st '+(has?'y':'n')+'">'+(has?'loaded':'not run')+'</span></button>';
+  }).join('');
+  $$('#rail button').forEach(b=>b.addEventListener('click',()=>{ S.sel=+b.dataset.ph; renderRail(); renderPhase(); }));
+}
+
+function renderEvidence(){
+  const e=evidence();
+  if(!e.phases.length){ $('#evidence').innerHTML='<p class="muted">No evidence loaded.</p>'; return; }
+  const labs=Object.keys(e.byLabel).sort((a,b)=>e.byLabel[b]-e.byLabel[a]);
+  $('#evidence').innerHTML=
+    '<div class="ghead"><b>Evidence quality</b><span>'+Math.round(e.score*100)+'% · '+e.total+' findings across '+e.phases.length+' of 5 phases</span></div>'+
+    '<div class="meter"><i style="width:'+Math.round(e.score*100)+'%"></i></div>'+
+    '<div style="margin:10px 0 4px">'+labs.map(l=>'<span class="lab '+(LABCLASS[l]||'GAP')+'">'+esc(l)+' '+e.byLabel[l]+'</span>').join(' ')+'</div>'+
+    '<div class="kv"><b>Completeness</b><span>'+Math.round(e.completeness*100)+'% — '+e.phases.length+' of 5 phases, '+e.total+' finding'+(e.total===1?'':'s')+'</span></div>'+
+    '<div class="kv"><b>Quality of what is here</b><span>'+Math.round(e.quality*100)+'%</span></div>'+
+    '<div class="kv"><b>Sourced and dated</b><span>'+e.sourced+' of '+e.total+' ('+Math.round(e.sourcedShare*100)+'%)</span></div>'+
+    '<div class="kv"><b>Hard evidence (fact or statute)</b><span>'+Math.round(e.hardShare*100)+'%</span></div>'+
+    '<div class="kv"><b>Older than 18 months</b><span'+(e.staleShare>0.25?' style="color:var(--err)"':'')+'>'+e.stale+' finding'+(e.stale===1?'':'s')+'</span></div>'+
+    '<div class="kv"><b>Declared gaps</b><span>'+e.gaps+'</span></div>'+
+    (e.score<0.45?'<div class="note warn">Below 45% the workspace withholds a rating. Thin evidence produces confident-looking arithmetic, which is worse than no arithmetic.</div>':'');
+}
+
+function tableHtml(t){
+  if(!t||!Array.isArray(t.rows)) return '';
+  return '<h4>'+esc(t.title||'')+'</h4><div class="tw"><table>'+
+    (Array.isArray(t.columns)&&t.columns.length?'<tr>'+t.columns.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>':'')+
+    t.rows.map(r=>'<tr>'+(Array.isArray(r)?r:[r]).map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+
+    '</table></div>'+(t.note?'<p class="muted" style="margin-top:6px">'+esc(t.note)+'</p>':'');
+}
+
+function renderPhase(){
+  const n=S.sel, d=S.phases[n], host=$('#phasebody');
+  if(!d){
+    host.innerHTML='<div class="card empty"><b>Phase '+n+' — '+esc(PHASE_TITLES[n])+'</b><br>Not run yet.<br><br>'+
+      'Run it with <b>/invest phase-'+n+' &lt;company&gt;</b>, then import the JSON under Data.<br>'+
+      '<span class="muted">Phases are independent — this one can run without the others.</span></div>';
+    return;
+  }
+  const m=d.meta||{};
+  const ref=new Date((meta().asOf||new Date().toISOString().slice(0,10))+'T00:00:00');
+  let h='<div class="card"><div class="ghead"><b>Phase '+n+' · '+esc(m.phaseName||PHASE_TITLES[n])+'</b>'+
+        '<span>'+(d.findings||[]).length+' findings</span></div>';
+
+  if(Array.isArray(m.assumedContext)&&m.assumedContext.length)
+    h+='<div class="note">Ran without the full dossier. Assumed: '+m.assumedContext.map(esc).join('; ')+'.</div>';
+
+  if(Array.isArray(d.conclusions)&&d.conclusions.length)
+    h+='<div class="cat">What this phase establishes</div><ul class="list">'+
+       d.conclusions.map(c=>'<li>'+esc(c)+'</li>').join('')+'</ul>';
+  h+='</div>';
+
+  h+='<div class="card"><div class="ghead"><b>Findings</b><span>label · source · as of</span></div>';
+  (d.findings||[]).forEach(f=>{
+    let staleFlag='';
+    if(f.asOf){ const dd=new Date(f.asOf+'T00:00:00');
+      if(isFinite(dd.getTime())&&(ref-dd)/86400000>548) staleFlag=' <span class="stale">· stale</span>'; }
+    h+='<div class="finding"><div class="cl"><span class="lab '+(LABCLASS[f.label]||'GAP')+'">'+esc(f.label||'unlabelled')+'</span>'+
+       esc(f.claim||'')+(isNum(f.value)?' <b>'+n0(f.value)+(f.unit?' '+esc(f.unit):'')+'</b>':'')+'</div>'+
+       '<div class="mt">'+(f.source?esc(f.source):'<span class="stale">no source</span>')+
+       (f.asOf?' · '+esc(f.asOf):' · <span class="stale">no date</span>')+staleFlag+
+       (f.confidence?' · confidence '+esc(f.confidence):'')+'</div></div>';
+  });
+  h+='</div>';
+
+  if(Array.isArray(d.tables)&&d.tables.length)
+    h+='<div class="card"><div class="ghead"><b>Tables</b></div>'+d.tables.map(tableHtml).join('')+'</div>';
+
+  if(Array.isArray(d.gaps)&&d.gaps.length)
+    h+='<div class="card"><div class="ghead"><b>What this phase could not establish</b><span>'+d.gaps.length+'</span></div>'+
+       '<ol class="list">'+d.gaps.map(g=>'<li><b>'+esc(g.item||'')+'</b><br><span class="muted">'+
+       esc(g.whyItMatters||'')+(g.resolvedBy?' Resolved by: '+esc(g.resolvedBy):'')+'</span></li>').join('')+'</ol></div>';
+
+  if(Array.isArray(d.risks)&&d.risks.length)
+    h+='<div class="card"><div class="ghead"><b>Risks</b></div><div class="tw"><table>'+
+       '<tr><th>Risk</th><th>Severity</th><th>Probability</th></tr>'+
+       d.risks.map(r=>'<tr><td>'+esc(r.text||'')+'</td><td><span class="pill '+
+         (r.severity==='high'?'err':(r.severity==='medium'?'warn':''))+'">'+esc(r.severity||'—')+'</span></td>'+
+         '<td>'+esc(r.probability||'—')+'</td></tr>').join('')+'</table></div></div>';
+
+  if(Array.isArray(d.catalysts)&&d.catalysts.length)
+    h+='<div class="card"><div class="ghead"><b>Catalysts</b></div><div class="tw"><table>'+
+       '<tr><th>Catalyst</th><th>Window</th><th>Impact</th><th class="r">Probability</th></tr>'+
+       d.catalysts.map(c=>'<tr><td>'+esc(c.text||'')+'</td><td>'+esc(c.window||'—')+'</td>'+
+         '<td><span class="pill '+(String(c.impact).toLowerCase()==='high'?'ok':'')+'">'+esc(c.impact||'—')+'</span></td>'+
+         '<td class="r">'+(isNum(c.probability)?Math.round(c.probability*100)+'%':'—')+'</td></tr>').join('')+
+       '</table></div></div>';
+
+  if(d.thesisImpact)
+    h+='<div class="card"><div class="ghead"><b>What it changes about the thesis</b></div>'+
+       '<p style="font-size:.9rem;line-height:1.6">'+esc(d.thesisImpact)+'</p></div>';
+
+  host.innerHTML=h;
+}
+
+/* =========================================================================
+   6 · valuation rendering
+   ========================================================================= */
+function setPath(obj,path,v){
+  const ks=path.split('.'); let o=obj;
+  for(let i=0;i<ks.length-1;i++){ if(typeof o[ks[i]]!=='object'||o[ks[i]]===null) o[ks[i]]={}; o=o[ks[i]]; }
+  o[ks[ks.length-1]]=v;
+}
+function getPath(obj,path){
+  return path.split('.').reduce((o,k)=>(o&&o[k]!==undefined)?o[k]:undefined,obj);
+}
+function inp(path,kind,val){
+  const shown=(kind==='pct'&&isNum(val))?(Math.round(val*10000)/100):(isNum(val)?val:'');
+  return '<input type="number" step="any" data-path="'+path+'" data-kind="'+kind+'" value="'+shown+'">';
+}
+
+function renderValuation(){
+  const host=$('#valbody'), m=model(), mt=meta();
+  if(!loadedPhases().length){ host.innerHTML='<div class="card empty">Nothing loaded.<br>Import at least one phase under Data.</div>'; return; }
+  const V=valuation();
+  let h='';
+
+  /* --- assumptions ------------------------------------------------- */
+  h+='<div class="card"><div class="ghead"><b>Scenario assumptions</b><span>editable — everything below recomputes</span></div><div class="tw"><div class="scen">'+
+     '<div class="hd">Assumption</div>'+SCEN.map(s=>'<div class="hd">'+SCENLBL[s]+'</div>').join('');
+  const rows=[
+    ['WACC %','wacc','pct'],['Terminal growth %','terminalGrowth','pct'],
+    ['Probability %','probabilities','pct']];
+  rows.forEach(([lbl,key,kind])=>{
+    h+='<div class="lb">'+lbl+'</div>'+SCEN.map(s=>'<div>'+inp(key+'.'+s,kind,getPath(m,key+'.'+s))+'</div>').join('');
+  });
+  if(m.assetBase) h+='<div class="lb">'+esc(m.assetBase.label||'Asset base')+' multiple ×</div>'+
+    SCEN.map(s=>'<div>'+inp('assetBase.multiple.'+s,'num',getPath(m,'assetBase.multiple.'+s))+'</div>').join('');
+  if(m.book) h+='<div class="lb">Normalised ROE %</div>'+
+    SCEN.map(s=>'<div>'+inp('book.roe.'+s,'pct',getPath(m,'book.roe.'+s))+'</div>').join('');
+  h+='</div></div>';
+  h+='<div class="btnrow"><button class="btn ghost" id="resetassump" style="flex:0 0 auto;min-width:0;padding:9px 16px;font-size:.8rem">Reset to researched values</button></div>';
+  if(V.probsRenormalised) h+='<div class="note">Scenario probabilities did not sum to 1 — they have been renormalised for the weighting below.</div>';
+  h+='</div>';
+
+  /* --- shared inputs ------------------------------------------------ */
+  h+='<div class="card"><div class="ghead"><b>Shared inputs</b></div>'+
+     '<div class="kv"><b>Shares outstanding</b><span>'+(isNum(m.sharesOut)?n0(m.sharesOut)+'m':'<span class="stale">missing — no per-share value can be computed</span>')+'</span></div>'+
+     '<div class="kv"><b>Net debt</b><span>'+mm(m.netDebt)+'</span></div>'+
+     (isNum(m.minorities)&&m.minorities?'<div class="kv"><b>Minorities</b><span>'+mm(m.minorities)+'</span></div>':'')+
+     (m.assetBase?'<div class="kv"><b>'+esc(m.assetBase.label||'Asset base')+'</b><span>'+mm(m.assetBase.value)+'</span></div>':'')+
+     (m.book&&isNum(m.book.bvps)?'<div class="kv"><b>Book value per share</b><span>'+ps(m.book.bvps)+'</span></div>':'')+
+     (m.book&&isNum(m.book.coe)?'<div class="kv"><b>Cost of equity</b><span>'+pct(m.book.coe)+'</span></div>':'')+
+     '<div class="kv"><b>Current price</b><span>'+(isNum(mt.price)?ps(mt.price):'—')+'</span></div>'+
+     '</div>';
+
+  if(V.errors.length) h+='<div class="note warn">'+V.errors.map(esc).join('<br>')+'</div>';
+
+  /* --- value per method --------------------------------------------- */
+  h+='<div class="card"><div class="ghead"><b>Value per share by method</b><span>weight · bear / base / bull</span></div><div class="tw"><table>'+
+     '<tr><th>Method</th><th class="r">Weight</th>'+SCEN.map(s=>'<th class="r">'+SCENLBL[s]+'</th>').join('')+'</tr>';
+  METHODS.forEach(([k,lbl])=>{
+    if(!V.methodsUsed[k]){
+      h+='<tr><td>'+lbl+'</td><td class="r muted">—</td><td class="r muted" colspan="3">no inputs supplied</td></tr>'; return;
+    }
+    h+='<tr><td>'+lbl+'</td><td class="r">'+Math.round(V.weights[k]*100)+'%</td>'+
+      SCEN.map(s=>{ const r=V.byScenario[s][k];
+        return '<td class="r">'+(r&&isNum(r.perShare)?ps(r.perShare):'—')+'</td>'; }).join('')+'</tr>';
+  });
+  h+='<tr class="med"><td>Blended</td><td class="r">100%</td>'+
+     SCEN.map(s=>'<td class="r">'+ps(V.byScenario[s].blended)+'</td>').join('')+'</tr>'+
+     '<tr><td class="muted">Upside vs price</td><td></td>'+
+     SCEN.map(s=>{ const u=V.byScenario[s].upside;
+       return '<td class="r '+(isNum(u)?(u>=0?'pos':'neg'):'')+'">'+(isNum(u)?(u>=0?'+':'')+pct(u,0):'—')+'</td>'; }).join('')+'</tr>'+
+     '</table></div>';
+  h+='<p class="muted" style="margin-top:8px">Blended = the weighted mean of the methods that produced a value, renormalised over those methods. Adjust weights below.</p>';
+  h+='<div class="tw"><div class="scen" style="grid-template-columns:150px repeat(4,1fr);min-width:520px">'+
+     '<div class="hd">Method weight %</div>'+METHODS.map(([k,l])=>'<div class="hd">'+l.split(' ')[0]+'</div>').join('')+
+     '<div class="lb">Weight %</div>'+METHODS.map(([k])=>'<div>'+
+       (V.methodsUsed[k]?inp('weights.'+k,'pct',V.weights[k]):'<span class="muted">n/a</span>')+'</div>').join('')+
+     '</div></div></div>';
+
+  /* --- DCF detail ---------------------------------------------------- */
+  const bd=V.byScenario.base.dcf;
+  if(bd&&isNum(bd.perShare)){
+    h+='<div class="card"><div class="ghead"><b>Discounted cash flow — base case</b><span>five explicit years plus terminal value</span></div>'+
+       '<div class="kv"><b>PV of explicit forecast</b><span>'+mm(bd.pvExplicit)+'</span></div>'+
+       '<div class="kv"><b>PV of terminal value</b><span>'+mm(bd.pvTv)+'</span></div>'+
+       '<div class="kv"><b>Enterprise value</b><span>'+mm(bd.ev)+'</span></div>'+
+       '<div class="kv"><b>Less net debt</b><span>'+mm(-(m.netDebt||0))+'</span></div>'+
+       '<div class="kv"><b>Equity value</b><span>'+mm(bd.equity)+'</span></div>'+
+       '<div class="kv"><b>Per share</b><span>'+ps(bd.perShare)+'</span></div>'+
+       (isNum(bd.tvShare)?'<div class="note'+(bd.tvShare>0.75?' warn':'')+'">'+
+         Math.round(bd.tvShare*100)+'% of the enterprise value sits in the terminal value'+
+         (bd.tvShare>0.75?' — most of this valuation is an assumption about the world after year five, not a forecast of the next five years. Treat the DCF as a sensitivity on terminal growth, not a valuation.'
+                         :'. That is within the normal range for a long-lived asset, but the terminal assumptions still carry the answer.')+
+         '</div>':'')+
+       '<div class="tw"><table><tr><th>Free cash flow</th>'+
+       (m.fcf&&m.fcf.base?m.fcf.base.map((_,i)=>'<th class="r">Y'+(i+1)+'</th>').join(''):'')+'</tr>'+
+       SCEN.map(s=>(m.fcf&&m.fcf[s])?'<tr><td>'+SCENLBL[s]+'</td>'+m.fcf[s].map(f=>'<td class="r">'+n0(f)+'</td>').join('')+'</tr>':'').join('')+
+       '</table></div></div>';
+  }
+
+  /* --- P/B vs ROE matrix --------------------------------------------- */
+  if(m.book&&isNum(m.book.bvps)&&isNum(m.book.coe)){
+    const g=isNum(m.book.growth)?m.book.growth:0;
+    const roeB=(m.book.roe&&isNum(m.book.roe.base))?m.book.roe.base:null;
+    if(isNum(roeB)){
+      const roes=[-0.04,-0.02,0,0.02,0.04].map(d=>roeB+d);
+      const coes=[-0.02,-0.01,0,0.01,0.02].map(d=>m.book.coe+d);
+      h+='<div class="card"><div class="ghead"><b>Justified P/B × normalised ROE</b><span>(ROE − g) ÷ (COE − g) × book value</span></div><div class="tw"><table class="matrix">'+
+         '<tr><th>ROE ╲ COE</th>'+coes.map(c=>'<th>'+pct(c,1)+'</th>').join('')+'</tr>'+
+         roes.map(r=>'<tr><th>'+pct(r,1)+'</th>'+coes.map(c=>{
+           const pb=justifiedPB(r,g,c);
+           if(pb===null) return '<td class="lo">n/a</td>';
+           const v=pb*m.book.bvps;
+           const up=isNum(mt.price)&&mt.price>0?v/mt.price-1:null;
+           const cls=!isNum(up)?'':(up>=0.2?'hi':(up>=-0.1?'mid':'lo'));
+           const cur_=(Math.abs(r-roeB)<1e-9&&Math.abs(c-m.book.coe)<1e-9)?' cur':'';
+           return '<td class="'+cls+cur_+'">'+ps(v)+'</td>';
+         }).join('')+'</tr>').join('')+
+         '</table></div><p class="muted" style="margin-top:8px">Outlined cell is the researched base case. Green cells clear the current price by 20% or more; red fall more than 10% below it. Terminal growth held at '+pct(g)+'.</p></div>';
+    }
+  }
+
+  /* --- SOTP ----------------------------------------------------------- */
+  const sp=V.byScenario.base.sotp;
+  if(sp){
+    h+='<div class="card"><div class="ghead"><b>Sum of the parts</b></div><div class="tw"><table>'+
+       '<tr><th>Segment</th><th>Method</th><th class="r">Metric</th><th class="r">Multiple</th><th class="r">Stake</th><th class="r">EV</th></tr>'+
+       sp.rows.map(r=>'<tr><td>'+esc(r.name)+'</td><td>'+esc(r.method)+'</td><td class="r">'+n0(r.metric)+
+         '</td><td class="r">'+n2(r.multiple,2)+'×</td><td class="r">'+Math.round(r.stake*100)+'%</td><td class="r">'+mm(r.ev)+'</td></tr>').join('')+
+       '<tr class="med"><td>Enterprise value</td><td></td><td></td><td></td><td></td><td class="r">'+mm(sp.ev)+'</td></tr>'+
+       '<tr><td>Less net debt</td><td></td><td></td><td></td><td></td><td class="r">'+mm(-(m.netDebt||0))+'</td></tr>'+
+       '<tr class="med"><td>Equity · per share</td><td></td><td></td><td></td><td></td><td class="r">'+mm(sp.equity)+' · '+ps(sp.perShare)+'</td></tr>'+
+       '</table></div></div>';
+  }
+
+  /* --- peers ----------------------------------------------------------- */
+  if(V.peers){
+    const P=V.peers;
+    h+='<div class="card"><div class="ghead"><b>Peer benchmarking</b><span>'+P.others.length+' peers</span></div><div class="tw"><table>'+
+       '<tr><th>Company</th>'+PEER_COLS.map(([k,l])=>'<th class="r">'+l+'</th>').join('')+'</tr>'+
+       P.peers.map(p=>'<tr'+(p.self?' class="self"':'')+'><td>'+esc(p.name||'—')+'</td>'+
+         PEER_COLS.map(([k])=>'<td class="r">'+(isNum(p[k])?n2(p[k],1):'—')+'</td>').join('')+'</tr>').join('')+
+       '<tr class="med"><td>Peer median</td>'+PEER_COLS.map(([k])=>'<td class="r">'+(isNum(P.median[k])?n2(P.median[k],1):'—')+'</td>').join('')+'</tr>'+
+       (P.self?'<tr><td class="muted">vs median</td>'+PEER_COLS.map(([k])=>{
+         const d=P.discount[k];
+         return '<td class="r '+(isNum(d)?(d>=0?'pos':'neg'):'')+'">'+(isNum(d)?(d>=0?'+':'')+pct(d,0):'—')+'</td>'; }).join('')+'</tr>':'')+
+       '</table></div>'+
+       (P.self?'<p class="muted" style="margin-top:8px">A discount on every multiple at a comparable ROE is an opportunity; a discount that exactly tracks a lower ROE is the market pricing the business correctly. Decompose it before calling it cheap.</p>':'')+
+       '</div>';
+  }
+
+  host.innerHTML=h;
+  wireAssumptions();
+}
+
+function wireAssumptions(){
+  $$('#valbody input[data-path]').forEach(i=>{
+    i.addEventListener('change',()=>{
+      const raw=num(i.value);
+      const v=(raw===null)?null:(i.dataset.kind==='pct'?raw/100:raw);
+      if(v===null) return;
+      setPath(S.overrides,i.dataset.path,v);
+      save(); renderValuation(); renderMemo();
+    });
+  });
+  const r=$('#resetassump');
+  if(r) r.addEventListener('click',()=>{ S.overrides={}; save(); renderValuation(); renderMemo(); toast('Assumptions reset to the researched values'); });
+}
+
+/* =========================================================================
+   7 · memo rendering
+   ========================================================================= */
+function memoBlock(){
+  let mb=null;
+  loadedPhases().forEach(n=>{ if(S.phases[n].memo) mb=S.phases[n].memo; });
+  return mb;
+}
+function allCatalysts(){
+  const out=[];
+  loadedPhases().forEach(n=>(S.phases[n].catalysts||[]).forEach(c=>out.push(Object.assign({phase:n},c))));
+  const rank={high:3,medium:2,low:1};
+  return out.sort((a,b)=>(rank[String(b.impact).toLowerCase()]||0)-(rank[String(a.impact).toLowerCase()]||0)
+    ||((b.probability||0)-(a.probability||0)));
+}
+
+function renderMemo(){
+  const host=$('#memobody');
+  if(!loadedPhases().length){ host.innerHTML='<div class="card empty">Nothing loaded.<br>Import at least one phase under Data.</div>'; return; }
+  const V=valuation(), mb=memoBlock(), mt=meta(), e=evidence();
+  let h='';
+
+  /* verdict */
+  h+='<div class="verdict"><div class="vhead"><div style="flex:1;min-width:240px">'+
+     '<div class="lbl '+V.rating.cls+'">'+esc(V.rating.label)+'</div>'+
+     '<div class="why">'+esc(V.rating.why)+'</div></div>';
+  if(isNum(V.fairValue))
+    h+='<div style="text-align:right"><div class="big">'+ps(V.fairValue)+'</div>'+
+       '<div class="muted">probability-weighted fair value'+
+       (isNum(V.upside)?'<br><span class="'+(V.upside>=0?'pos':'neg')+'">'+(V.upside>=0?'+':'')+pct(V.upside,0)+' vs '+ps(mt.price)+'</span>':'')+
+       '</div></div>';
+  h+='</div>';
+
+  if(mb&&mb.rating){
+    const same=String(mb.rating).toUpperCase().replace(/\s+/g,' ')===V.rating.label;
+    h+='<div class="grp"><div class="ghead"><b>Stated rating vs the arithmetic</b></div>'+
+       '<div class="kv"><b>Analyst rating (Phase 5)</b><span>'+esc(mb.rating)+'</span></div>'+
+       '<div class="kv"><b>Rating the model supports</b><span>'+esc(V.rating.label)+'</span></div>'+
+       (same?'<p class="muted" style="margin-top:8px">The stated conclusion and the arithmetic agree.</p>'
+            :'<div class="note warn">These disagree. Either the model inputs understate the case the analysis is making, or the memo is more confident than its own numbers. Resolve it before the committee does.</div>')+
+       '</div>';
+  }
+
+  /* scenario summary */
+  h+='<div class="grp"><div class="ghead"><b>Fair value, targets and returns</b></div><div class="tw"><table>'+
+     '<tr><th>Scenario</th><th class="r">Probability</th><th class="r">Fair value</th><th class="r">Upside</th>'+
+     '<th class="r">3y target</th><th class="r">3y IRR</th></tr>'+
+     SCEN.map(s=>{
+       const b=V.byScenario[s], m=model(), t=(m.targets||{})[s]||{};
+       return '<tr><td>'+SCENLBL[s]+'</td><td class="r">'+(isNum(V.probs[s])?Math.round(V.probs[s]*100)+'%':'—')+'</td>'+
+         '<td class="r">'+ps(b.blended)+'</td>'+
+         '<td class="r '+(isNum(b.upside)?(b.upside>=0?'pos':'neg'):'')+'">'+(isNum(b.upside)?(b.upside>=0?'+':'')+pct(b.upside,0):'—')+'</td>'+
+         '<td class="r">'+(isNum(t.price3y)?ps(t.price3y):'—')+'</td>'+
+         '<td class="r '+(isNum(V.irr[s])?(V.irr[s]>=0?'pos':'neg'):'')+'">'+(isNum(V.irr[s])?(V.irr[s]>=0?'+':'')+pct(V.irr[s],1):'—')+'</td></tr>';
+     }).join('')+
+     '<tr class="med"><td>Weighted</td><td class="r">100%</td><td class="r">'+ps(V.fairValue)+'</td>'+
+     '<td class="r '+(isNum(V.upside)?(V.upside>=0?'pos':'neg'):'')+'">'+(isNum(V.upside)?(V.upside>=0?'+':'')+pct(V.upside,0):'—')+'</td>'+
+     '<td class="r">—</td><td class="r '+(isNum(V.expectedIrr)?(V.expectedIrr>=0?'pos':'neg'):'')+'">'+
+     (isNum(V.expectedIrr)?(V.expectedIrr>=0?'+':'')+pct(V.expectedIrr,1):'—')+'</td></tr>'+
+     '</table></div>'+
+     (mb&&mb.weighting?'<p class="muted" style="margin-top:8px">'+esc(mb.weighting)+'</p>':'')+
+     '</div>';
+
+  if(mb&&Array.isArray(mb.nonConsensus)&&mb.nonConsensus.length){
+    h+='<div class="grp"><div class="ghead"><b>Why the market is mispricing this</b><span>'+mb.nonConsensus.length+' non-consensus points</span></div><ol class="list">'+
+       mb.nonConsensus.map(p=>'<li><b>Market believes:</b> '+esc(p.market||'')+'<br><b>We believe:</b> '+esc(p.us||'')+
+         (p.evidence?'<br><span class="muted">Evidence: '+esc(p.evidence)+'</span>':'')+'</li>').join('')+'</ol></div>';
+  }
+  if(mb&&Array.isArray(mb.fears)&&mb.fears.length){
+    h+='<div class="grp"><div class="ghead"><b>What the consensus is correctly terrified of</b></div><ol class="list">'+
+       mb.fears.map(f=>'<li>'+esc(f.text||f)+(f.why?'<br><span class="muted">'+esc(f.why)+'</span>':'')+'</li>').join('')+'</ol></div>';
+  }
+
+  const cats=allCatalysts();
+  if(cats.length){
+    h+='<div class="grp"><div class="ghead"><b>Catalyst calendar</b><span>ranked by impact, then probability</span></div><div class="tw"><table>'+
+       '<tr><th>Catalyst</th><th>Window</th><th>Impact</th><th class="r">Probability</th><th class="r">Phase</th></tr>'+
+       cats.map(c=>'<tr><td>'+esc(c.text||'')+'</td><td>'+esc(c.window||'—')+'</td>'+
+         '<td><span class="pill '+(String(c.impact).toLowerCase()==='high'?'ok':(String(c.impact).toLowerCase()==='medium'?'warn':''))+'">'+esc(c.impact||'—')+'</span></td>'+
+         '<td class="r">'+(isNum(c.probability)?Math.round(c.probability*100)+'%':'—')+'</td>'+
+         '<td class="r muted">'+c.phase+'</td></tr>').join('')+'</table></div></div>';
+  }
+
+  if(mb&&Array.isArray(mb.sellTriggers)&&mb.sellTriggers.length){
+    h+='<div class="grp"><div class="ghead"><b>Trigger-to-sell conditions</b><span>measurable, falsifiable</span></div><ul class="list">'+
+       mb.sellTriggers.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></div>';
+  }
+
+  const missing=[1,2,3,4,5].filter(n=>!S.phases[n]);
+  h+='<div class="grp"><div class="ghead"><b>Standing of this memo</b></div>'+
+     '<div class="kv"><b>Phases complete</b><span>'+e.phases.length+' of 5'+(missing.length?' — missing '+missing.join(', '):'')+'</span></div>'+
+     '<div class="kv"><b>Evidence score</b><span>'+Math.round(e.score*100)+'%</span></div>'+
+     '<div class="kv"><b>Declared gaps</b><span>'+e.gaps+'</span></div>'+
+     (isNum(V.tvShare)?'<div class="kv"><b>Value in terminal assumptions</b><span>'+Math.round(V.tvShare*100)+'% of base-case EV</span></div>':'')+
+     (missing.length?'<div class="note">This memo rests on an incomplete dossier. Phase '+missing.join(', ')+' would change it.</div>':'')+
+     '</div>';
+
+  h+='<div class="grp"><div class="btnrow"><button class="btn ghost" id="copymemo">Copy memo as text</button></div></div></div>';
+  host.innerHTML=h;
+  const cm=$('#copymemo'); if(cm) cm.addEventListener('click',copyMemo);
+}
+
+function copyMemo(){
+  const V=valuation(), mb=memoBlock(), mt=meta(), e=evidence(), L=[];
+  L.push((mt.company||'—')+(mt.ticker?' ('+mt.ticker+')':''));
+  L.push('Investment committee memo · '+(mt.asOf||'')+' · price '+ps(mt.price));
+  L.push('');
+  L.push('RATING (model): '+V.rating.label+(mb&&mb.rating?'   RATING (stated): '+mb.rating:''));
+  L.push(V.rating.why);
+  L.push('');
+  L.push('Probability-weighted fair value: '+ps(V.fairValue)+(isNum(V.upside)?'  ('+(V.upside>=0?'+':'')+pct(V.upside,0)+')':''));
+  SCEN.forEach(s=>L.push('  '+SCENLBL[s].padEnd(5)+' p='+(isNum(V.probs[s])?Math.round(V.probs[s]*100)+'%':'—')+
+    '  FV '+ps(V.byScenario[s].blended)+'  IRR '+(isNum(V.irr[s])?pct(V.irr[s],1):'—')));
+  L.push('');
+  if(mb&&mb.nonConsensus){ L.push('WHY THE MARKET IS MISPRICING THIS');
+    mb.nonConsensus.forEach((p,i)=>L.push('  '+(i+1)+'. Market: '+(p.market||'')+' / Us: '+(p.us||''))); L.push(''); }
+  if(mb&&mb.fears){ L.push('WHAT THE CONSENSUS IS CORRECTLY TERRIFIED OF');
+    mb.fears.forEach((f,i)=>L.push('  '+(i+1)+'. '+(f.text||f))); L.push(''); }
+  if(mb&&mb.sellTriggers){ L.push('TRIGGER-TO-SELL'); mb.sellTriggers.forEach(t=>L.push('  · '+t)); L.push(''); }
+  L.push('Evidence: '+Math.round(e.score*100)+'% · phases '+e.phases.join(', ')+' of 5 · '+e.gaps+' declared gaps');
+  L.push('Produced by the /invest workspace from self-supplied inputs. Not investment advice.');
+  const t=L.join('\n');
+  if(navigator.clipboard&&navigator.clipboard.writeText)
+    navigator.clipboard.writeText(t).then(()=>toast('Memo copied'),()=>toast('Copy failed'));
+  else toast('Clipboard unavailable');
+}
+
+/* =========================================================================
+   8 · data view
+   ========================================================================= */
+function renderData(){
+  const ph=loadedPhases();
+  if(!ph.length){ $('#datastate').innerHTML='<p class="muted">Nothing loaded yet.</p>'; return; }
+  $('#datastate').innerHTML='<div class="tw"><table>'+
+    '<tr><th>Phase</th><th>Name</th><th class="r">Findings</th><th class="r">As of</th><th></th></tr>'+
+    ph.map(n=>{ const d=S.phases[n];
+      return '<tr><td>'+n+'</td><td>'+esc((d.meta&&d.meta.phaseName)||PHASE_TITLES[n])+'</td>'+
+        '<td class="r">'+((d.findings||[]).length)+'</td><td class="r">'+esc((d.meta&&d.meta.asOf)||'—')+'</td>'+
+        '<td class="r"><button class="btn ghost danger" data-drop="'+n+'" style="padding:5px 11px;font-size:.75rem">Remove</button></td></tr>';
+    }).join('')+'</table></div>';
+  $$('#datastate [data-drop]').forEach(b=>b.addEventListener('click',()=>{
+    delete S.phases[+b.dataset.drop]; save(); renderAll(); toast('Phase '+b.dataset.drop+' removed');
+  }));
+}
+
+/* =========================================================================
+   9 · worked example
+   A FICTIONAL company with invented figures, so the workspace can be
+   explored without implying research that was never done. Every source
+   line says so.
+   ========================================================================= */
+const SRC='Synthetic example — Meridian Grid Holdings is not a real company and these figures are invented';
+function F(id,claim,label,asOf,extra){ return Object.assign({id,claim,label,source:SRC,asOf,confidence:'high'},extra||{}); }
+function M(phase,phaseName){ return {company:'Meridian Grid Holdings',ticker:'DEMO: MGH',sector:'regulated-utility',
+  currency:'USD',fxToUsd:1,price:32.00,priceUnit:'share',asOf:'2026-06-30',phase,phaseName}; }
+
+const SAMPLE=[
+ {schema:'invest-phase/1',meta:M(1,'Pricing-power architecture'),
+  findings:[
+    F('p1-01','Tariffs are set by a four-year rate settlement; the regulator may defer, but not cancel, an approved increase.','REGULATORY STATUTE','2026-01-15',{impact:'high'}),
+    F('p1-02','Fuel costs pass through on a six-month lag with an annual true-up, capped at 4% of the retail tariff per period.','REGULATORY STATUTE','2026-01-15',{impact:'high'}),
+    F('p1-03','The state holds 38% via a development bank and appoints four of eleven board seats.','FACT','2025-12-31',{impact:'medium'}),
+    F('p1-04','Management expects the next settlement to raise allowed ROE toward 9.5%.','MANAGEMENT GUIDANCE','2026-05-20',{confidence:'low',impact:'high'})],
+  tables:[{title:'Price-setting mechanism',columns:['Input','Mechanism','Lag','Who bears the residual'],
+    rows:[['Fuel','Automatic pass-through, capped','6 months','Company above the 4% cap'],
+          ['Network capex','Rate base at allowed ROE','Next settlement','Company until admitted'],
+          ['Retail margin','Fixed in settlement','4 years','Company']],
+    note:'[REGULATORY STATUTE] Settlement order, January 2026.'}],
+  gaps:[{item:'Historical deferral episodes',whyItMatters:'The statute permits deferral; whether the regulator has ever used it decides how much the pass-through is really worth.',resolvedBy:'Regulator docket archive, 2010 onward'}],
+  conclusions:['Price increases are deferrable but not cancellable — a timing risk, not an existence risk.',
+    'The 4% fuel cap is the single largest exposure to a commodity spike.',
+    'State ownership is influential but not controlling; minority interests are not structurally subordinated.'],
+  thesisImpact:'Pricing power is real but lagged. The equity is a bet on the regulator honouring the settlement through a cost shock, not on demand.'},
+
+ {schema:'invest-phase/1',meta:M(2,'Asset base & bottlenecks'),
+  findings:[
+    F('p2-01','Regulated network assets of $62.0bn; generation fleet of 14.2 GW.','FACT','2025-12-31',{value:62000,unit:'USD m',impact:'high'}),
+    F('p2-02','Two 400 kV lines into the eastern load centre are delayed 31 months by right-of-way litigation.','FACT','2026-04-10',{impact:'high'}),
+    F('p2-03','Displacing 1 TWh of gas peaking with baseload nuclear expands gross margin by roughly $41m at current spreads.','ANALYST ESTIMATE','2026-06-30',{value:41,unit:'USD m per TWh',confidence:'medium'})],
+  tables:[{title:'Unit cost curve',columns:['Technology','Capacity (GW)','LCOE ($/MWh)','Utilisation'],
+    rows:[['Nuclear','5.1','42','89%'],['Coal','3.4','71','54%'],['Gas CCGT','4.2','96','38%'],['Wind & solar','1.5','58','29%']],
+    note:'[ANALYST ESTIMATE] Fully loaded, including capital charge.'}],
+  risks:[{text:'Right-of-way litigation extends beyond 2029, stranding the interconnection queue behind it.',severity:'high',probability:'medium'}],
+  gaps:[{item:'Capex admitted to rate base at the next settlement',whyItMatters:'Decides whether the grid programme is an earnings annuity or a cash drain.',resolvedBy:'Settlement filing, expected Q1 2027'}],
+  conclusions:['The binding constraint is transmission right-of-way, not generation capacity.',
+    'Mix shift toward nuclear is worth roughly $41m of gross margin per TWh displaced.'],
+  thesisImpact:'The growth case depends on lines that are held up in court. Volume without wires is not revenue.'},
+
+ {schema:'invest-phase/1',meta:M(3,'Demand & monetisation'),
+  findings:[
+    F('p3-01','Three data-centre campuses totalling 1.9 GW have signed interconnection agreements with capital contributions.','FACT','2026-05-31',{value:1900,unit:'MW',impact:'high'}),
+    F('p3-02','Customer capital contributions recover 62% of the dedicated connection capex before energisation.','FACT','2026-05-31',{impact:'high'}),
+    F('p3-03','Incremental contribution margin on large-load tariffs is 21% against a 27% company average.','ANALYST ESTIMATE','2026-06-30',{confidence:'medium',impact:'high'})],
+  tables:[{title:'Demand pipeline by classification',columns:['Source','Capacity (MW)','Annual TWh','Start','Classification'],
+    rows:[['Campus A','800','5.6','2027','[Existing Contracted]'],
+          ['Campus B','650','4.6','2028','[Existing Contracted]'],
+          ['Campus C','450','3.2','2029','[Approved / Committed Pipeline]'],
+          ['Announced fab expansion','1,200','8.4','2031','[Unfunded Planned Project]'],
+          ['Regional AI cluster','2,000','14.0','2032','[Speculative Demand]']],
+    note:'Only the first three carry weight in the base case.'}],
+  catalysts:[{text:'Campus C reaches financial close',window:'H2 2027',impact:'Medium',probability:0.7}],
+  conclusions:['1.45 GW is contracted or committed; the remaining 3.2 GW of headlines is not.',
+    'Incremental margin runs six points below the company average — this growth dilutes returns even as it grows earnings.',
+    'Capital contributions are what make the connections economic; without them the returns would not clear the hurdle.'],
+  thesisImpact:'Growth is real and largely funded by customers, but it is lower-margin than the existing book. Earnings rise, ROIC does not.'},
+
+ {schema:'invest-phase/1',meta:M(4,'Balance sheet & returns'),
+  findings:[
+    F('p4-01','Net debt of $26.0bn, 4.6× EBITDA, with $3.1bn maturing within 24 months.','FACT','2025-12-31',{value:26000,unit:'USD m',impact:'high'}),
+    F('p4-02','Average cost of debt 4.1%, 78% fixed; a 200 bp rise costs an estimated $118m of pre-tax income by year three.','ANALYST ESTIMATE','2026-06-30',{confidence:'medium'}),
+    F('p4-03','ROIC has averaged 4.9% against an estimated 7.1% WACC over ten years — a persistently negative spread.','ANALYST ESTIMATE','2026-06-30',{impact:'high'})],
+  tables:[{title:'Rate sensitivity',columns:['Shock','Year 1','Year 2','Year 3','Mechanism'],
+    rows:[['+100 bp','-$18m','-$37m','-$59m','Refinancing schedule only'],
+          ['+200 bp','-$36m','-$74m','-$118m','Refinancing schedule only']],
+    note:'[ANALYST ESTIMATE] Applied to maturing debt as it refinances, not to the whole stock.'},
+   {title:'ROIC vs WACC',columns:['Period','ROIC','WACC','Spread'],
+    rows:[['10-year average','4.9%','7.1%','-2.2pp'],['Last 3 years','5.8%','7.4%','-1.6pp'],['Base case 2029','7.6%','7.5%','+0.1pp']],
+    note:'[ANALYST ESTIMATE] The spread turns positive only if the next settlement lifts allowed ROE and the nuclear mix shift lands.'}],
+  risks:[{text:'The spread has been negative for a decade; assuming it inverts requires the settlement and the mix shift to both go right.',severity:'high',probability:'medium'}],
+  conclusions:['The balance sheet funds the plan, but with little room for a cost shock.',
+    'A decade of returns below the cost of capital is the central fact of this investment case.'],
+  thesisImpact:'Everything rests on whether the negative ROIC-WACC spread is cyclical or structural. The evidence so far says structural.'},
+
+ {schema:'invest-phase/1',meta:M(5,'Valuation & memo'),
+  findings:[
+    F('p5-01','Trades at 0.79× book against a peer median of 1.32×.','CONSENSUS','2026-06-30',{impact:'high'}),
+    F('p5-02','Peer discount is roughly two-thirds explained by lower ROE and higher leverage.','ANALYST ESTIMATE','2026-06-30',{confidence:'medium',impact:'high'})],
+  tables:[{title:'Scenario triggers',columns:['Scenario','Tariff','Fuel','Transmission','Demand'],
+    rows:[['Bear','Deferred twice','Spike above the 4% cap','Litigation to 2030','Campus C slips'],
+          ['Base','Settlement honoured','Normalised','Lines energised 2029','Contracted volume only'],
+          ['Bull','Allowed ROE to 9.5%','Benign','Special permitting act passes','Fab expansion funded']]}],
+  catalysts:[{text:'Rate settlement filing',window:'Q1 2027',impact:'High',probability:0.9},
+             {text:'Right-of-way appellate ruling',window:'H1 2027',impact:'High',probability:0.6},
+             {text:'Dividend policy review',window:'Q4 2026',impact:'Medium',probability:0.5}],
+  conclusions:['The discount to peers is mostly earned; the unexplained residual is roughly a third of it.'],
+  thesisImpact:'A cheap multiple on a business that does not earn its cost of capital is not obviously cheap.',
+  memo:{rating:'HOLD / NEUTRAL',
+    weighting:'DCF 45%, EV/RAB 25%, P/B-ROE 15%, SOTP 15% — the RAB multiple carries the regulatory verdict the DCF cannot express.',
+    nonConsensus:[
+      {market:'The data-centre pipeline is a growth story worth a re-rating.',us:'Only 1.45 GW is contracted, at six points below average margin.',evidence:'Phase 3 classification table and the incremental margin calculation.'},
+      {market:'The discount to book closes when rates fall.',us:'The discount tracks the ROIC-WACC spread, not the rate cycle.',evidence:'Phase 4 ten-year spread history.'},
+      {market:'Transmission delay is a timing issue.',us:'It gates the entire contracted pipeline; 31 months of slippage moves the cash flows past the settlement.',evidence:'Phase 2 litigation status.'}],
+    fears:[{text:'A decade of returns below the cost of capital, with no structural reason for that to change.',why:'The Phase 4 evidence supports the bears here.'},
+      {text:'A fuel spike above the 4% pass-through cap lands entirely on the company.',why:'The cap is statutory and has no override.'},
+      {text:'The state shareholder prefers low tariffs to shareholder returns when the two conflict.',why:'It has four board seats and an industrial policy mandate.'}],
+    sellTriggers:['Allowed ROE set below 8.5% at the 2027 settlement',
+      'Net debt/EBITDA above 5.5× for two consecutive quarters',
+      'Right-of-way litigation unresolved by end-2028',
+      'Campus A or B renegotiates its capital contribution downward']},
+  model:{sharesOut:1200,netDebt:26000,
+    wacc:{bear:0.082,base:0.075,bull:0.070},
+    terminalGrowth:{bear:0.010,base:0.020,bull:0.025},
+    fcf:{bear:[2900,2900,3000,3100,3200],base:[3200,3500,3800,4100,4400],bull:[3400,3900,4500,5100,5700]},
+    assetBase:{label:'RAB',value:62000,multiple:{bear:0.95,base:1.15,bull:1.35}},
+    book:{bvps:26.0,coe:0.090,growth:0.020,roe:{bear:0.055,base:0.095,bull:0.125}},
+    sotp:[{name:'Regulated network',method:'EV/RAB',metric:54000,multiple:1.05,stake:1.0},
+          {name:'Generation',method:'EV/EBITDA',metric:2000,multiple:6.5,stake:1.0},
+          {name:'Retail supply',method:'EV/EBITDA',metric:500,multiple:5.0,stake:1.0}],
+    peers:[{name:'Meridian Grid (subject)',self:true,evEbitda:8.1,pe:11.4,pb:0.79,ndEbitda:4.6,roe:7.1,dy:4.8},
+      {name:'Peer A — global T&D',evEbitda:11.4,pe:18.9,pb:1.62,ndEbitda:5.1,roe:9.8,dy:3.1},
+      {name:'Peer B — global T&D',evEbitda:10.8,pe:17.2,pb:1.41,ndEbitda:4.8,roe:9.1,dy:3.6},
+      {name:'Peer C — integrated',evEbitda:9.6,pe:15.1,pb:1.22,ndEbitda:5.4,roe:8.4,dy:4.1},
+      {name:'Peer D — regional',evEbitda:9.1,pe:13.8,pb:1.05,ndEbitda:5.9,roe:7.9,dy:4.4},
+      {name:'Peer E — regional',evEbitda:8.7,pe:12.6,pb:0.94,ndEbitda:6.2,roe:7.2,dy:5.0},
+      {name:'Peer F — state-controlled',evEbitda:7.9,pe:10.9,pb:0.71,ndEbitda:6.8,roe:6.1,dy:5.4},
+      {name:'Peer G — nuclear-heavy',evEbitda:10.1,pe:16.4,pb:1.33,ndEbitda:4.4,roe:9.4,dy:3.3}],
+    targets:{bear:{price3y:22,dividends3y:2.4},base:{price3y:41,dividends3y:3.0},bull:{price3y:58,dividends3y:3.4}},
+    probabilities:{bear:0.30,base:0.50,bull:0.20}}}
+];
+
+/* =========================================================================
+   10 · wiring
+   ========================================================================= */
+function renderAll(){ renderSubject(); renderRail(); renderEvidence(); renderPhase(); renderValuation(); renderMemo(); renderData(); }
+function showTab(t){
+  $$('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  $$('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+t));
+  window.scrollTo(0,0);
+}
+
+function init(){
+  load();
+  if(!loadedPhases().length) S.sel=1;
+  else S.sel=loadedPhases()[0];
+  renderAll();
+
+  $$('.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+
+  $('#pickfiles').addEventListener('click',()=>$('#filein').click());
+  $('#filein').addEventListener('change',e=>{
+    const files=Array.prototype.slice.call(e.target.files||[]);
+    let done=0,ok=0;
+    if(!files.length) return;
+    files.forEach(f=>{
+      const r=new FileReader();
+      r.onload=()=>{
+        try{ if(importPhase(JSON.parse(r.result),f.name)) ok++; }
+        catch(err){ toast(f.name+': not valid JSON'); }
+        if(++done===files.length&&ok>1) toast(ok+' phases loaded');
+      };
+      r.onerror=()=>{ toast('Could not read '+f.name); done++; };
+      r.readAsText(f);
+    });
+    e.target.value='';
+  });
+
+  $('#pastebtn').addEventListener('click',()=>{
+    const v=$('#pastebox').value.trim();
+    if(!v){ toast('Paste a phase JSON first'); return; }
+    try{ if(importPhase(JSON.parse(v),'pasted')) $('#pastebox').value=''; }
+    catch(e){ toast('Not valid JSON: '+e.message); }
+  });
+
+  $('#loadsample').addEventListener('click',()=>{
+    S.phases={}; S.overrides={};
+    SAMPLE.forEach(p=>{ S.phases[p.meta.phase]=JSON.parse(JSON.stringify(p)); });
+    S.sel=1; save(); renderAll();
+    toast('Worked example loaded — Meridian Grid is fictional and every figure is invented');
+  });
+
+  $('#exportall').addEventListener('click',()=>{
+    if(!loadedPhases().length){ toast('Nothing to export'); return; }
+    const blob=new Blob([JSON.stringify({phases:S.phases,overrides:S.overrides},null,2)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='dossier-'+String(meta().ticker||'company').replace(/[^A-Za-z0-9]+/g,'-')+'.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  });
+
+  $('#resetall').addEventListener('click',()=>{
+    if(!confirm('Clear the whole dossier from this browser? This cannot be undone.')) return;
+    S.phases={}; S.overrides={}; S.sel=1; save(); renderAll(); toast('Cleared');
+  });
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
