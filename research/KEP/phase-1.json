@@ -1,0 +1,133 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Korea Electric Power Corporation (KEPCO)",
+    "ticker": "KRX: 015760 / NYSE: KEP",
+    "sector": "regulated-utility",
+    "currency": "KRW",
+    "fxToUsd": 0.00074014,
+    "price": 33600,
+    "priceUnit": "share",
+    "asOf": "2026-09-05",
+    "phase": 1,
+    "phaseName": "Pricing-power architecture",
+    "assumedContext": [
+      "No primary document could be retrieved: every external domain (SEC EDGAR, kepco.co.kr, MOTIE, Korea Herald, law-firm briefings) is blocked by this environment's network egress proxy. Every finding below rests on search-result summaries, not on a filing, order or statute read in full. Confidence is capped accordingly and no finding should be taken to committee without primary verification.",
+      "KRX share price of KRW 33,600 is derived, not observed: ADR at USD 12.26 (2026-08-10) x 2 ADRs per share / FX 0.00074014. The market-cap sources conflict (USD 16.0bn vs USD 20.7bn), so treat as +/-10%.",
+      "Phases 2-5 not yet run. Capacity, demand, balance-sheet and valuation conclusions are out of scope here and are referred forward."
+    ]
+  },
+  "findings": [
+    {"id":"p1-01","claim":"The KEPCO Act requires the Government, directly or through the Korea Development Bank, to hold at least 51% of KEPCO's capital. Current holdings: KDB 32.9%, Republic of Korea 18.2% (51.1% combined), National Pension Service 7.51%.","label":"REGULATORY STATUTE","source":"KEPCO Act via Wikipedia/SEC 20-F summaries (WebSearch, primary text not retrievable)","asOf":"2025-12-31","confidence":"high","impact":"high"},
+    {"id":"p1-02","claim":"Retail tariff changes require approval from the Ministry of Trade, Industry and Energy (MOTIE) in consultation with the Ministry of Economy and Finance (MOEF). KEPCO proposes; it does not set.","label":"REGULATORY STATUTE","source":"S&P Global / energynews summaries of the October 2024 tariff decision","asOf":"2024-10-24","confidence":"high","impact":"high"},
+    {"id":"p1-03","claim":"The Fuel Cost Adjustment Tariff is bounded by statute at +/-KRW 5/kWh per quarter, with a KRW 1/kWh minimum adjustment threshold, referencing coal and LNG prices of the preceding three months.","label":"REGULATORY STATUTE","source":"Asia Business Daily / Korea Times summaries of the quarterly adjustment notices","asOf":"2025-12-22","confidence":"high","impact":"high","value":5,"unit":"KRW/kWh cap"},
+    {"id":"p1-04","claim":"The adjustment has been pinned at the +KRW 5/kWh ceiling continuously since Q3 2022 — roughly 17 consecutive quarters. The formula has not been allowed to operate in either direction.","label":"FACT","source":"Asia Business Daily, 2025-12-22; Korea Times, 2026-06-22","asOf":"2026-06-22","confidence":"high","impact":"high"},
+    {"id":"p1-05","claim":"Q1 2026 frozen, Q2 2026 unchanged, Q3 2026 frozen. In the Q1 decision the government explicitly 'notified KEPCO to maintain the current rate', citing KEPCO's financial situation and accumulated unadjusted fuel-cost charges.","label":"FACT","source":"Korea Times 2025-12-22 (Q1); UPI 2026-03-23 (Q2); Korea Times/Korea Herald 2026-06-22 (Q3)","asOf":"2026-06-22","confidence":"high","impact":"high"},
+    {"id":"p1-06","claim":"Downward adjustment has also been suppressed: when falling fuel costs created a downward adjustment factor, the rate was held at +KRW 5/kWh anyway. The mechanism is asymmetric in practice and is used as a recovery instrument, not an indexation formula.","label":"FACT","source":"Asia Business Daily, 2025-12-22","asOf":"2025-12-22","confidence":"medium","impact":"high"},
+    {"id":"p1-07","claim":"KEPCO recorded a combined loss of KRW 43 trillion (USD ~31.2bn) across 2021-2023, caused by selling electricity below production cost while LNG and coal import costs surged.","label":"FACT","source":"S&P Global; Korea Times","asOf":"2023-12-31","confidence":"high","impact":"high","value":43000000,"unit":"KRW m"},
+    {"id":"p1-08","claim":"In Q2 2022 KEPCO postponed an announced rate increase to conform with the incoming President's campaign pledge to freeze household power bills. This is the clearest documented instance of the political override operating directly on the tariff.","label":"FACT","source":"Korea Times, 2022-03","asOf":"2022-03-31","confidence":"high","impact":"high"},
+    {"id":"p1-09","claim":"The October 2024 increase was industrial-only: +9.7% average, +10.2% for large industrial users, +5.2% for SMEs, with household tariffs frozen for inflation reasons.","label":"FACT","source":"S&P Global, 2024-10-23; Korea Times, 2024-10-23","asOf":"2024-10-24","confidence":"high","impact":"high"},
+    {"id":"p1-10","claim":"MOTIE's amendment to the Notice on Capping Electricity Exchange Price (24 May 2022) permits a cap on the System Marginal Price payable to generators during emergencies such as fuel-price spikes, to limit generator windfalls and shield consumers.","label":"REGULATORY STATUTE","source":"Shin & Kim and Lexology briefing summaries (full text blocked)","asOf":"2022-05-24","confidence":"medium","impact":"high"},
+    {"id":"p1-11","claim":"Under the SMP cap, MOTIE stated that generators would be separately compensated for actual fuel prices paid, and that private generators would be compensated where fuel costs exceed the cap. The cap therefore transfers generator margin, not generator cost, to KEPCO.","label":"REGULATORY STATUTE","source":"Shin & Kim / Lexology summaries; Korea Herald 2022-05-24","asOf":"2022-05-24","confidence":"medium","impact":"high"},
+    {"id":"p1-12","claim":"The Special Act on the Promotion of Distributed Energy was enacted June 2023 and entered force June 2024 via its enforcement decree, creating the legal basis for regionally differentiated electricity tariffs.","label":"REGULATORY STATUTE","source":"Kim & Chang and Lexology briefing summaries","asOf":"2024-06-30","confidence":"high","impact":"high"},
+    {"id":"p1-13","claim":"On 26-27 August 2026 the government set out regional industrial pricing: four broad areas subdivided into 11 final zones (Jeju excluded). Southern Gyeongsang/Jeolla -13 to -18 KRW/kWh (7-10%); Gangwon/Chungcheong/Daejeon/Sejong -10 to -15 (5-8%); northern Seoul/Incheon/northern Gyeonggi -6 to -10 (3-8%); southern Seoul/southern Gyeonggi -0 to -1, i.e. effectively unchanged.","label":"FACT","source":"Korea Herald; Seoul Economic Daily 2026-08-27; KED Global 2026-08-26; Ajupress 2026-08-26","asOf":"2026-08-27","confidence":"high","impact":"high"},
+    {"id":"p1-14","claim":"The stated benefit is KRW 2.8 trillion a year of savings to industrial users outside the southern capital area, targeted for introduction by end-2026. No offsetting premium is applied to the Seoul metropolitan area — the highest-cost-to-serve region is the one region whose rate does not move.","label":"FACT","source":"Korea Herald; Seoul Economic Daily 2026-08-27","asOf":"2026-08-27","confidence":"high","impact":"high","value":2800000,"unit":"KRW m per year"},
+    {"id":"p1-15","claim":"KRW 2.8tn of customer savings is KRW 2.8tn of KEPCO revenue foregone, absent a compensating mechanism. Against FY2025 operating profit of KRW 13.5tn that is 20.7%; against annualised H1 2026 revenue of ~KRW 92.6tn it is ~3.0% of turnover.","label":"ANALYST ESTIMATE","source":"Derived: 2.8 / 13.5 = 20.7%; 2.8 / (46.3 x 2) = 3.0%. Inputs from Seoul Economic Daily 2026-02-27 and H1 2026 results","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+    {"id":"p1-16","claim":"Private generators have objected to the regional tariff redraw, indicating the wholesale leg is contested rather than settled.","label":"FACT","source":"KED Global, 2026-08-26 ('Private generators balk')","asOf":"2026-08-26","confidence":"medium","impact":"medium"},
+    {"id":"p1-17","claim":"Academic modelling of zonal pricing in Korea puts metropolitan-area prices on average 10.16 KRW/kWh above non-metropolitan prices, against a uniform national SMP of 123.10-144.04 KRW/kWh across scenarios; under uniform pricing non-metro generators are overcompensated despite transmission-constrained output.","label":"ANALYST ESTIMATE","source":"arXiv 2605.09318, 'Price Distortions in Korea's Electricity Market'","asOf":"2026-05-31","confidence":"medium","impact":"medium"},
+    {"id":"p1-18","claim":"Six of the generation companies selling into the pool are KEPCO's own consolidated subsidiaries. Wholesale price reductions paid to those subsidiaries are an intra-group transfer and net to approximately zero at the consolidated level; only reductions in payments to third-party IPPs are a genuine consolidated saving.","label":"ANALYST ESTIMATE","source":"Derived from KEPCO's consolidated structure (six gencos plus KHNP) and the mechanics of pool settlement","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+    {"id":"p1-19","claim":"FY2025 was a record year: operating profit of KRW 13.5 trillion (~USD 9.5bn) on multiple industrial rate increases and stabilised fuel prices.","label":"FACT","source":"Seoul Economic Daily 2026-02-27; BigGo Finance","asOf":"2025-12-31","confidence":"high","impact":"high","value":13500000,"unit":"KRW m"},
+    {"id":"p1-20","claim":"A dividend of KRW 1,540 per share was declared for FY2025, totalling KRW 988.6bn at a 3.2% yield — the second consecutive year of dividends after a four-year suspension through the loss period.","label":"FACT","source":"Seoul Economic Daily 2026-02-27; Korea Times 2025-02-28","asOf":"2026-02-27","confidence":"high","impact":"high"},
+    {"id":"p1-21","claim":"Shares outstanding of approximately 642 million, derived from the FY2025 dividend: KRW 988.6bn total payout / KRW 1,540 per share = 642.0m.","label":"ANALYST ESTIMATE","source":"Derived from the two disclosed dividend figures","asOf":"2026-02-27","confidence":"high","impact":"medium","value":642,"unit":"m shares"},
+    {"id":"p1-22","claim":"The 3.2% yield on a KRW 1,540 dividend implies a share price of ~KRW 48,100 at declaration in February 2026. The derived current price of ~KRW 33,600 is ~30% below that, consistent with the ADR's fall from a 52-week high of USD 23.41 to USD 12.26 — the equity has roughly halved during the company's best reported year.","label":"ANALYST ESTIMATE","source":"Derived: 1540 / 0.032 = 48,125. ADR range from Investing.com/CNBC, 2026-08-10","asOf":"2026-08-10","confidence":"medium","impact":"high"},
+    {"id":"p1-23","claim":"The government framed the resumption of state-owned enterprise dividends as a positive signal to shareholders 'in line with the Corporate Value-up Program'.","label":"FACT","source":"Korea Times, 2025-02-28","asOf":"2025-02-28","confidence":"high","impact":"medium"},
+    {"id":"p1-24","claim":"756 Korean listed companies had filed Value-Up plans by end-August 2026, covering 87.7% of KOSPI market value. No KEPCO-specific value-up plan with ROE or PBR targets could be located.","label":"FACT","source":"Seoul Economic Daily 2026-09-03; Sosonomics Value-Up tracker","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+    {"id":"p1-25","claim":"A 2022 amendment to the KEPCO Act raised the statutory bond issuance ceiling from 2x to 5x paid-in capital plus reserves, equivalent to KRW 121.3 trillion. The exemption expires at end-2027 and reverts to 2x from 2028.","label":"REGULATORY STATUTE","source":"Asia Business Daily 2026-06-26; BigGo Finance summary; Korea Times 2022-12","asOf":"2026-06-26","confidence":"medium","impact":"high","value":121300000,"unit":"KRW m"},
+    {"id":"p1-26","claim":"Consolidated debt of approximately KRW 210.7 trillion (USD ~154.2bn), with interest of roughly KRW 11.4bn per day (~KRW 4.2tn a year).","label":"FACT","source":"Asia Business Daily 2026-06-26; Korea Times 2026-06-22","asOf":"2026-06-26","confidence":"medium","impact":"high","value":210700000,"unit":"KRW m"},
+    {"id":"p1-27","claim":"H1 2026 operating profit fell KRW 976.8bn to KRW 4.9 trillion on revenue of KRW 46.3 trillion (+0.3%); fuel costs rose 8.8% to KRW 10.1 trillion; SMP reached 151 KRW/kWh in August against 117 a year earlier; nuclear capacity factor and share of mix declined while coal and LNG rose.","label":"FACT","source":"KEPCO H1 2026 results, 2026-08-12; Q2 2026 earnings call, 2026-08-14; Investing.com slides summary","asOf":"2026-08-14","confidence":"high","impact":"high"},
+    {"id":"p1-28","claim":"On 3 September 2026 KEPCO was reported to be seeking KRW 25 trillion (~USD 18.1bn) in prepaid power bills from Samsung Electronics and SK Hynix to fund grid expansion for the semiconductor clusters.","label":"FACT","source":"Seoul Economic Daily 2026-09-03; TechTimes 2026-09-03; Bloomingbit","asOf":"2026-09-03","confidence":"medium","impact":"high","value":25000000,"unit":"KRW m"}
+  ],
+  "tables": [
+    {
+      "title": "Price-setting mechanism: who bears each residual",
+      "columns": ["Input", "Mechanism", "Lag", "Statutory bound", "Who bears the residual"],
+      "rows": [
+        ["Fuel (coal, LNG)", "Fuel Cost Adjustment Tariff, quarterly", "3-month reference, 1 quarter", "+/-KRW 5/kWh per quarter; KRW 1/kWh threshold", "KEPCO above the cap — and in practice at the cap, which has been pinned since Q3 2022"],
+        ["Base tariff", "MOTIE approval with MOEF consultation", "Discretionary, no fixed cycle", "None — political discretion", "KEPCO until the ministry acts"],
+        ["Wholesale purchase price", "SMP, uniform national pool; emergency cap since May 2022", "Real-time settlement", "MOTIE emergency cap notice", "Generators' margin, not their fuel cost — IPPs compensated for actual fuel"],
+        ["Regional differentiation", "Special Act on Distributed Energy (in force June 2024)", "Target end-2026", "11 zones, discounts only", "KEPCO — KRW 2.8tn/yr of discounts with no offsetting metro premium"],
+        ["Grid capex for large loads", "Customer prepayment being negotiated", "Ad hoc", "None established", "Unresolved — KRW 25tn request to Samsung/SK Hynix is the test case"]
+      ],
+      "note": "[REGULATORY STATUTE] except the final row [FACT, 2026-09-03]. The pattern across every row: statutory formulae bound KEPCO's upside, ministerial discretion governs its downside."
+    },
+    {
+      "title": "The political override: documented record",
+      "columns": ["Date", "Action", "Stated trigger", "Effect on KEPCO"],
+      "rows": [
+        ["Q2 2022", "Announced increase postponed", "Incoming President's pledge to freeze household bills", "Direct contribution to the KRW 43tn loss of 2021-23"],
+        ["Q3 2022 onward", "Fuel adjustment pinned at the +KRW 5/kWh ceiling", "Inflation management", "Cap binds in the company's favour but cannot rise further; ~17 quarters"],
+        ["Oct 2024", "Industrial-only increase, +9.7%", "Compromise between KEPCO losses and household inflation", "Recovery loaded entirely onto industrial users"],
+        ["Q1 2026", "Rate frozen; government 'notified KEPCO to maintain the current rate'", "KEPCO finances and unadjusted accumulated charges", "Explicit ministerial direction on a formula-driven tariff"],
+        ["Q2-Q3 2026", "Frozen again", "Financial troubles / inflation", "Fuel costs rising 8.8% into a frozen tariff"],
+        ["Aug 2026", "Regional discounts announced, no metro premium", "Regional industrial policy", "KRW 2.8tn/yr revenue foregone, ~20.7% of FY2025 operating profit"]
+      ],
+      "note": "[FACT] Every entry is a government action on a mechanism that is nominally formulaic. The statute permits deferral; the record shows deferral is the norm, not the exception."
+    },
+    {
+      "title": "Regional tariff plan, August 2026",
+      "columns": ["Zone", "Change (KRW/kWh)", "Change (%)", "Direction"],
+      "rows": [
+        ["Southern Gyeongsang & Jeolla (Honam/Yeongnam)", "-13 to -18", "-7 to -10%", "Discount"],
+        ["Gangwon, Daejeon, Chungcheong, Sejong", "-10 to -15", "-5 to -8%", "Discount"],
+        ["Northern Seoul, Incheon, northern Gyeonggi", "-6 to -10", "-3 to -8%", "Discount"],
+        ["Southern Seoul & southern Gyeonggi", "-0 to -1", "~0%", "Unchanged"],
+        ["Jeju", "Excluded", "n/a", "Excluded"]
+      ],
+      "note": "[FACT] Four broad areas subdivided into 11 final zones on regional-development criteria. Sources conflict on presentation — some report four zones, others eleven; both describe the same scheme at different levels of granularity. Note the asymmetry: every zone that moves, moves down."
+    },
+    {
+      "title": "Ownership and alignment",
+      "columns": ["Holder", "Stake", "Objective", "Aligned with minorities?"],
+      "rows": [
+        ["Korea Development Bank", "32.9%", "State policy instrument", "No — policy agent"],
+        ["Republic of Korea", "18.2%", "Industrial competitiveness, consumer prices, inflation", "No — explicitly conflicting"],
+        ["National Pension Service", "7.51%", "Investment return", "Yes"],
+        ["Free float / other", "~41.4%", "Investment return", "Yes"]
+      ],
+      "note": "[FACT/REGULATORY STATUTE] The KEPCO Act mandates the 51% floor, so the conflict is structural and cannot be voted away. Minorities hold roughly 49% of the economics and none of the control."
+    }
+  ],
+  "gaps": [
+    {"item":"Primary documents — no filing, order or statute could be read in full","whyItMatters":"Every finding here is search-result-level. Article numbers, exact statutory wording and the precise conditions for tariff deferral are unverified, and the deferral clause is the single most important mechanism in this phase.","resolvedBy":"KEPCO 2025 Form 20-F (filed 2026-04-29), the MOTIE fuel-cost adjustment notice, and the Special Act enforcement decree, read directly"},
+    {"item":"KEPCO's own Corporate Value-Up plan","whyItMatters":"756 firms covering 87.7% of KOSPI value have filed. Whether the 51%-state-owned monopoly filed one, and with what ROE or PBR target, is the difference between a governance catalyst and a governance excuse.","resolvedBy":"DART search for KEPCO's 기업가치 제고 계획 disclosure"},
+    {"item":"Whether the KRW 2.8tn regional discount is compensated","whyItMatters":"Decides whether the August 2026 plan is a ~21% cut to operating profit or a revenue-neutral reallocation. Nothing found indicates a compensating mechanism, but absence of evidence is not evidence of absence.","resolvedBy":"The MOTIE implementing notice for the regional tariff, expected before end-2026"},
+    {"item":"Size of the third-party IPP share of pool purchases","whyItMatters":"Determines how much of any wholesale LMP saving is real at the consolidated level rather than an intra-group transfer among KEPCO's own gencos. This is the hinge of the 'reform pays for itself' argument.","resolvedBy":"KPX settlement data by generator ownership; 20-F segment disclosure"},
+    {"item":"Exact legal text of the tariff-deferral discretion","whyItMatters":"The mandate asks under what exact legal conditions the government can suspend a rate rise. The record establishes that it does; the statutory basis and any limits on it remain unverified.","resolvedBy":"Electric Utility Act and the fuel cost adjustment notice, primary text"},
+    {"item":"Current KRX share price, observed rather than derived","whyItMatters":"All valuation work in Phase 5 is anchored to it, and the two market-cap sources disagree by 29%.","resolvedBy":"A KRX quote for 015760"}
+  ],
+  "risks": [
+    {"text":"The tariff formula is nominally automatic and has been overridden or pinned in every quarter since Q3 2022. Pricing power is ministerial discretion wearing a formula's clothing.","severity":"high","probability":"high"},
+    {"text":"The August 2026 regional plan removes ~KRW 2.8tn/yr of revenue with no identified compensating mechanism and no metro premium — roughly 21% of FY2025 operating profit.","severity":"high","probability":"medium"},
+    {"text":"The 5x bond issuance ceiling reverts to 2x at end-2027, tightening borrowing capacity precisely as grid capex for the semiconductor clusters peaks.","severity":"high","probability":"high"},
+    {"text":"Fuel costs rose 8.8% in H1 2026 into a frozen tariff already at its adjustment ceiling; the mechanism has no headroom left to absorb a further spike.","severity":"high","probability":"medium"},
+    {"text":"The controlling shareholder's objectives — industrial competitiveness, consumer inflation, regional development — are all served by lower tariffs, and it holds 51% by statute.","severity":"high","probability":"high"}
+  ],
+  "catalysts": [
+    {"text":"MOTIE implementing notice for regional tariffs — reveals whether the KRW 2.8tn discount is compensated","window":"Q4 2026","impact":"High","probability":0.8},
+    {"text":"Q4 2026 fuel cost adjustment decision — first test of whether the mechanism can move after 17 quarters pinned","window":"Dec 2026","impact":"Medium","probability":0.9},
+    {"text":"Resolution of the KRW 25tn prepayment request to Samsung and SK Hynix — establishes whether customer capital contributions become a structural funding mechanism","window":"H1 2027","impact":"High","probability":0.5},
+    {"text":"Legislative decision on extending the 5x bond issuance ceiling beyond end-2027","window":"2027","impact":"High","probability":0.6},
+    {"text":"FY2026 dividend declaration — third consecutive year, against falling H1 profit","window":"Feb 2027","impact":"Medium","probability":0.7}
+  ],
+  "conclusions": [
+    "KEPCO cannot set its own price. MOTIE approves tariffs with MOEF, and the one formulaic mechanism that exists — the fuel cost adjustment — has been pinned at its statutory ceiling for roughly 17 consecutive quarters and was explicitly directed to stay there. The formula bounds the upside at +KRW 5/kWh; ministerial discretion governs the downside without bound.",
+    "The override is not a tail risk, it is the operating norm. Every documented episode since 2022 runs the same direction, and the 2021-23 loss of KRW 43tn is what it cost equity holders the last time fuel prices moved against a frozen tariff.",
+    "The August 2026 regional pricing plan is the live case of uncompensated regulatory action: KRW 2.8tn a year handed to industrial customers, every zone that moves moving down, and the highest-cost-to-serve region — the southern capital area — the only one left unchanged. That is ~20.7% of FY2025 operating profit with no compensating mechanism yet identified.",
+    "The claimed wholesale offset is weaker than it looks. Six of the gencos in the pool are KEPCO's own consolidated subsidiaries, so paying them less is an intra-group transfer; only the third-party IPP share is a genuine consolidated saving, and the IPPs are already objecting.",
+    "The 51% state holding is a statutory floor, not a preference. Minorities own roughly 49% of the economics and none of the control, and the controlling shareholder's stated objectives — industrial competitiveness, consumer inflation, regional development — are each served by a lower tariff. The FY2025 dividend was framed as a Value-Up signal, but no KEPCO value-up plan with ROE or PBR targets could be found."
+  ],
+  "thesisImpact": "This phase reframes the investment question. KEPCO is not a utility with a regulatory lag; it is a policy instrument with a listed equity attached. The equity is a claim on whatever margin is left after industrial competitiveness, consumer inflation and regional development have been served — and in the record year of FY2025 the shares still roughly halved, which suggests the market is repricing that claim rather than the earnings. Any bull case from here must rest on a specific, dated mechanism that forces the tariff to follow cost, not on the observation that the multiple is low. Phases 2-4 should be read as tests of whether such a mechanism exists: the grid capex programme (is it compensated?), the large-load demand (is it priced above marginal cost?), and the bond ceiling reverting in 2028 (does the state have to choose between funding the grid and suppressing the tariff?).",
+  "model": {
+    "sharesOut": 642
+  }
+}
