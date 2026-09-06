@@ -1,0 +1,326 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Metlen Energy & Metals PLC",
+  "ticker": "LSE: MTLN / ATHEX: MYTIL",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 46.62,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Net debt of ~EUR 1,600m is DERIVED, not sourced: end-2025 leverage of 3.1x on FY2025 EBITDA of EUR 753m implies ~EUR 2.33bn, less the disclosed EUR 728m H1 reduction. It cross-checks against the disclosed 1.7x leverage on a trailing EBITDA base of roughly EUR 940m.",
+   "Market capitalisation uses EUR 46.62 x 142.62m shares = ~EUR 6.65bn. A reported figure of ~EUR 6.88bn implies ~147.6m shares; the ~3% difference is inside the error bars stated below."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "The deleveraging is the strongest single fact in this dossier. Adjusted net debt fell by EUR 728m in H1 2026 and net leverage improved to 1.7x from 3.1x at end-2025 — a halving of leverage in six months.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 728,
+   "unit": "EUR m net debt reduction in H1 2026"
+  },
+  {
+   "id": "p4-02",
+   "claim": "But the mechanism matters. A material part of that reduction is asset-rotation proceeds — the 283 MW UK solar disposal and similar — which is selling the asset base to repay debt. In an asset-rotation model that is the business working as designed, not a windfall; it does mean leverage improvement and asset disposal are the same event.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed disposal and cash flow",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-03",
+   "claim": "At 1.7x, leverage is now appropriate for a diversified industrial and comfortably below the 3.1x that constrained the company at end-2025. This is no longer a balance-sheet story.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-04",
+   "claim": "The discount to European peers in the thesis is confirmed and it is large. At approximately 7.7x enterprise value to FY2026E EBITDA, Metlen trades at less than half Siemens Energy's ~17x and well below Constellation's ~14x.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: EV ~EUR 8.25bn / FY2026E EBITDA EUR 1,075m",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 7.7,
+   "unit": "x FY2026E EV/EBITDA"
+  },
+  {
+   "id": "p4-05",
+   "claim": "On earnings the discount is equally clear: roughly 10.6x FY2026E earnings against Siemens Energy at ~30x and Constellation at ~23.6x. Metlen is the cheapest company in the batch on both measures by a wide margin.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: EUR 46.62 / ~EUR 4.40 FY2026E EPS",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 10.6,
+   "unit": "x FY2026E earnings"
+  },
+  {
+   "id": "p4-06",
+   "claim": "The honest question is not whether the discount exists but whether it is deserved, and there are four defensible reasons for one: a five-part conglomerate structure, commodity price-taking in the two largest businesses, demonstrated lump-sum EPC losses that cut group EBITDA 30% in FY2025, and a development rather than an ownership model in renewables.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from Phases 1-3",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-07",
+   "claim": "One reason for the discount is being actively removed. The redomiciliation to a UK PLC with a primary London listing and FTSE 100 membership changes the buyer base structurally — index funds that could not hold a Greek mid-cap must now hold this. That is a re-rating mechanism independent of anything operational.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the listing structure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-08",
+   "claim": "Return on capital cannot be assessed cleanly. FY2025 net profit of EUR 314m on a capital base carrying EUR 2.3bn of net debt and a large in-progress metals expansion gives a depressed and unrepresentative figure; FY2024's EUR 615m gives a flattering one. The truth is somewhere between and the disclosure to separate them is not available here.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Capital structure",
+   "columns": [
+    "Item",
+    "Value",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Share price",
+     "EUR 46.62",
+     "High"
+    ],
+    [
+     "Shares outstanding",
+     "~142.6m",
+     "Medium — a reported market cap implies ~147.6m"
+    ],
+    [
+     "Market capitalisation",
+     "~EUR 6.65bn",
+     "Medium"
+    ],
+    [
+     "Net debt",
+     "~EUR 1,600m",
+     "Low — DERIVED from the disclosed leverage ratios"
+    ],
+    [
+     "Enterprise value",
+     "~EUR 8.25bn",
+     "Low"
+    ],
+    [
+     "Net leverage",
+     "1.7x",
+     "HIGH — disclosed"
+    ],
+    [
+     "FY2026E EBITDA",
+     "~EUR 1,075m",
+     "High — guidance midpoint"
+    ],
+    [
+     "FY2026E EPS",
+     "~EUR 4.40",
+     "Medium — H1 EPS EUR 2.18 annualised"
+    ],
+    [
+     "EV / EBITDA",
+     "~7.7x",
+     "Medium"
+    ],
+    [
+     "P/E",
+     "~10.6x",
+     "Medium"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] Net debt is derived rather than sourced, but the disclosed 1.7x leverage is a direct fact and it bounds the estimate tightly."
+  },
+  {
+   "title": "The batch, on one page",
+   "columns": [
+    "Company",
+    "EV/EBITDA",
+    "P/E",
+    "Net position",
+    "Rating so far"
+   ],
+   "rows": [
+    [
+     "Metlen",
+     "~7.7x",
+     "~10.6x",
+     "~EUR 1.6bn net debt, 1.7x",
+     "Phase 5"
+    ],
+    [
+     "Constellation Energy",
+     "~14x",
+     "~23.6x",
+     "~USD 30bn net debt",
+     "HOLD"
+    ],
+    [
+     "Siemens Energy",
+     "~17x",
+     "~30.4x",
+     "~EUR 8bn net cash",
+     "HOLD"
+    ],
+    [
+     "GE Vernova",
+     "~40x",
+     "very high",
+     "~USD 10bn net cash",
+     "AVOID"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Metlen is the cheapest company in the batch on both measures, and the only one where the cheapness is the stated thesis rather than an incidental finding."
+  },
+  {
+   "title": "Is the discount deserved?",
+   "columns": [
+    "Reason for a discount",
+    "Valid?",
+    "Durable?"
+   ],
+   "rows": [
+    [
+     "Five-part conglomerate structure",
+     "Yes",
+     "Yes — no announced simplification"
+    ],
+    [
+     "Commodity price-taking in the two largest businesses",
+     "Yes",
+     "Yes — structural"
+    ],
+    [
+     "Lump-sum EPC losses cut FY2025 EBITDA 30%",
+     "Yes",
+     "Fades as the book runs off"
+    ],
+    [
+     "Development rather than ownership in renewables",
+     "Yes",
+     "Yes — it is the stated model"
+    ],
+    [
+     "Greek listing and narrow buyer base",
+     "Was",
+     "NO — removed by the FTSE 100 move"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Four of five reasons for the discount are real and durable. The fifth has been deliberately removed, which is the strongest argument for a re-rating."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Reported net debt at 30 June 2026",
+   "whyItMatters": "Derived rather than sourced. It moves enterprise value and every multiple, though the disclosed 1.7x leverage bounds it tightly.",
+   "resolvedBy": "Interim report balance sheet"
+  },
+  {
+   "item": "Shares outstanding",
+   "whyItMatters": "The price-times-shares and reported market-capitalisation figures differ by about 3%.",
+   "resolvedBy": "Interim report cover"
+  },
+  {
+   "item": "Asset rotation proceeds as a share of the H1 deleveraging",
+   "whyItMatters": "Distinguishes cash earned from assets sold. Both are legitimate in this model; they are not the same quality of cash.",
+   "resolvedBy": "Interim cash flow statement"
+  },
+  {
+   "item": "Capital employed by sub-sector",
+   "whyItMatters": "Return on capital cannot be assessed without it, and it is the test of whether the conglomerate structure destroys or creates value.",
+   "resolvedBy": "Annual report segment note"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Four of the five reasons for the peer discount are real and durable: conglomerate structure, commodity price-taking, demonstrated EPC execution losses, and a development rather than ownership model.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Part of the deleveraging is asset disposal. In an asset-rotation model that is by design, but leverage improvement and shrinking the asset base are the same event.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "Net debt is derived rather than sourced, and the share count is uncertain by about 3%.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "Return on capital cannot be assessed: FY2025 is depressed by one-off losses and FY2024 is flattering.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Index-driven buying following FTSE 100 inclusion",
+   "window": "Ongoing",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "FY2026 results with reported net debt and the segment split",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "Any announced simplification of the five-part structure",
+   "window": "Unknown",
+   "impact": "High",
+   "probability": 0.2
+  }
+ ],
+ "conclusions": [
+  "The deleveraging is the strongest fact here: net debt down EUR 728m in six months and leverage halved to 1.7x from 3.1x. This is no longer a balance-sheet story.",
+  "Part of that came from selling assets — the 283 MW UK solar disposal and similar. In an asset-rotation model that is the business working as designed, but leverage improvement and asset-base reduction are the same event.",
+  "The discount in the thesis is confirmed and large: roughly 7.7x EV/EBITDA and 10.6x earnings, against Siemens Energy at ~17x and ~30x and Constellation at ~14x and ~23.6x. Metlen is the cheapest company in the batch on both measures.",
+  "But four defensible reasons for a discount survive scrutiny — conglomerate structure, commodity price-taking, demonstrated lump-sum EPC losses, and development rather than ownership in renewables. A discount is not the same thing as an error.",
+  "The fifth reason is being deliberately removed. The UK redomiciliation and FTSE 100 membership change the buyer base structurally, and that is a re-rating mechanism entirely independent of operations."
+ ],
+ "thesisImpact": "Phase 4 confirms the 'undervalued' half of the thesis on the arithmetic and qualifies it on the reasoning. The discount is real, most of it is deserved, and the one undeserved component — a narrow Greek buyer base — has been addressed by the listing move. Phase 5 must therefore value the parts properly rather than assume the discount closes on its own.",
+ "model": {
+  "sharesOut": 142.62,
+  "netDebt": 1600,
+  "wacc": {
+   "bear": 0.105,
+   "base": 0.09,
+   "bull": 0.082
+  },
+  "terminalGrowth": {
+   "bear": 0.015,
+   "base": 0.02,
+   "bull": 0.025
+  }
+ }
+}
