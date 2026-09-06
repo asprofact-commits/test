@@ -1,0 +1,66 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Space Exploration Technologies Corp. (SpaceX)","ticker":"NASDAQ: SPCX","sector":"infrastructure","currency":"USD","fxToUsd":1,"price":147.95,"priceUnit":"share","asOf":"2026-09-05","phase":4,"phaseName":"Capital structure & returns on capital",
+  "assumedContext":["No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.","Net debt is set to zero as a stated assumption. The IPO raised substantial primary capital and no reliable net debt figure could be sourced; this is a declared gap and the assumption flatters the valuation slightly rather than harming it."]},
+ "findings":[
+  {"id":"p4-01","claim":"SpaceX has approximately 13 billion shares outstanding. At USD 147.95 that is a market capitalisation of approximately USD 1.92 trillion.","label":"ANALYST ESTIMATE","source":"Derived: ~13bn shares from lockup coverage x USD 147.95","asOf":"2026-09-05","confidence":"medium","impact":"high","value":1923000,"unit":"USD m market cap"},
+  {"id":"p4-02","claim":"Only 638.9 million shares were floated at the June IPO — roughly 4.9% of the share base. On 6 August 2026 a further 911.5 million shares became eligible to trade, about 43% more than the entire IPO float, and the stock rose 6% that day.","label":"FACT","source":"Investing.com lockup coverage; CNN 2026-08-06","asOf":"2026-08-06","confidence":"high","impact":"high"},
+  {"id":"p4-03","claim":"The 180-day lockup fully expires on 8 December 2026, with shares releasing in staggered tranches tied to earnings windows and fixed-day milestones. Roughly 12.4 billion shares remain to become freely tradable against a 639 million share IPO float.","label":"FACT","source":"PurePowerPicks lockup schedule; Investing.com","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p4-04","claim":"The company is loss-making: a net loss of USD 541m in Q2 2026 despite adjusted EBITDA of USD 3.5bn. The gap between the two is the cost of the AI build and the depreciation of the constellation.","label":"FACT","source":"CNBC, 2026-08-04","asOf":"2026-08-04","confidence":"high","impact":"high","value":-541,"unit":"USD m net income"},
+  {"id":"p4-05","claim":"Consolidated free cash flow is negative, with Starlink's profit subsidising xAI development. Starlink alone is projected to generate approximately USD 8.1bn of pro forma free cash flow in 2026, which the group as a whole does not retain.","label":"CONSENSUS","source":"Tiger Brokers; ValueAddVC","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p4-06","claim":"Return on invested capital cannot be measured. The company has two quarters of public reporting, is loss-making, completed a transformational related-party acquisition seven months ago and is mid-way through building three asset bases at once.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-07","claim":"Alphabet's Q2 2026 results included a USD 98bn net gain in other income, primarily unrealised marks on SpaceX and one private holding — of which USD 77.1bn reached net income after tax. A third party's mark on its SpaceX stake was large enough to distort the reported earnings of a USD 4 trillion company.","label":"FACT","source":"Alphabet Q2 2026 results; see research/GOOGL phase-4","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p4-08","claim":"That cross-reference cuts both ways. It independently corroborates that SpaceX's valuation rose steeply through 2026, and it illustrates how much reported profit across the market now depends on marks against this single asset.","label":"ANALYST ESTIMATE","source":"Derived from the Alphabet disclosure","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p4-09","claim":"The private valuation escalated extraordinarily fast: USD 400bn at USD 212 per share in July 2025, USD 800bn at USD 421 in December 2025, roughly USD 1.25tn on the xAI merger in February 2026, a USD 1.77tn IPO target, and approximately USD 2.1tn at the first-day close in June 2026.","label":"FACT","source":"Fortune 2025-12-13; CNBC 2026-02-03; Wikipedia IPO page","asOf":"2026-06-12","confidence":"medium","impact":"high"},
+  {"id":"p4-10","claim":"The valuation therefore rose roughly fivefold in under twelve months, of which the operating businesses explain part and the xAI acquisition and IPO enthusiasm explain the rest.","label":"ANALYST ESTIMATE","source":"Derived: USD 400bn July 2025 to ~USD 2.1tn June 2026","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p4-11","claim":"The stock traded below its USD 135 IPO price for a period in July and August 2026, closing above it for the first time in weeks on 10 August. It is USD 147.95 now, 8% above the issue price and 8% below the first-day close.","label":"FACT","source":"CNBC, 2026-08-10; current quote","asOf":"2026-09-05","confidence":"high","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"The valuation escalation",
+   "columns":["Date","Event","Per share","Implied valuation"],
+   "rows":[
+    ["July 2025","Tender offer","USD 212","USD 400bn"],
+    ["December 2025","Tender offer; IPO plans confirmed","USD 421","USD 800bn"],
+    ["February 2026","xAI merger closes (all-stock, related party)","—","~USD 1.25tn combined"],
+    ["June 2026","IPO priced","USD 135","~USD 1.77tn"],
+    ["June 2026","First-day close","USD 161","~USD 2.1tn"],
+    ["September 2026","Current","USD 147.95","~USD 1.92tn"]
+   ],
+   "note":"[FACT] Roughly a fivefold increase in under twelve months. Note that the per-share figures before the IPO are not comparable to the post-IPO ones because of the merger share exchange."},
+  {"title":"Share supply",
+   "columns":["Event","Shares","Versus IPO float"],
+   "rows":[
+    ["IPO float, June 2026","638.9m","—"],
+    ["Unlocked 6 August 2026","911.5m","+43%"],
+    ["Full lockup expiry, 8 December 2026","Balance of ~13bn","~19x the IPO float"]
+   ],
+   "note":"[FACT] Roughly 95% of the share base was locked at listing. The price discovery observed so far has taken place on a very small float."}
+ ],
+ "gaps":[
+  {"item":"Net debt, cash and IPO proceeds","whyItMatters":"Set to zero as a stated assumption in the absence of a sourced figure. It shifts every per-share valuation directly.","resolvedBy":"10-Q balance sheet"},
+  {"item":"Exact share count and its treatment of unvested equity","whyItMatters":"Approximately 13 billion is derived from lockup coverage. A 10% error moves per-share value 10%.","resolvedBy":"10-Q cover page"},
+  {"item":"Capital expenditure and the cash burn rate","whyItMatters":"Consolidated free cash flow is negative and the funding requirement is unquantified. With ~95% of the share base unlocking by December, the market's capacity to fund further equity issuance matters.","resolvedBy":"10-Q cash flow statement"},
+  {"item":"Whether an independent committee and fairness opinion supported the xAI valuation","whyItMatters":"USD 250bn of the combined entity rests on a related-party mark.","resolvedBy":"Merger proxy and S-1"}
+ ],
+ "risks":[
+  {"text":"Roughly 12.4bn shares become freely tradable by 8 December 2026 against a 639m share IPO float. Price discovery to date has occurred on under 5% of the company.","severity":"high","probability":"high"},
+  {"text":"The company is loss-making and consolidated free cash flow is negative while three capital programmes run simultaneously.","severity":"high","probability":"high"},
+  {"text":"The valuation rose roughly fivefold in twelve months, partly on a related-party transaction the company valued itself.","severity":"high","probability":"medium"},
+  {"text":"Return on capital is unmeasurable, so the central claim of the bull case cannot currently be tested.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Full lockup expiry — the remaining ~95% of the share base becomes tradable","window":"2026-12-08","impact":"High","probability":1.0},
+  {"text":"First balance sheet and cash flow statement scrutinised over two comparable quarters","window":"Nov 2026","impact":"High","probability":0.95}
+ ],
+ "conclusions":[
+  "The company is loss-making at the net line and consolidated free cash flow is negative, with the one profitable segment funding three that are not.",
+  "Price discovery has taken place on under 5% of the share base. Roughly 12.4 billion shares become freely tradable by 8 December 2026, against a 639 million share IPO float — a supply event with few precedents at this scale.",
+  "The valuation rose roughly fivefold in under twelve months, from USD 400bn in July 2025 to approximately USD 2.1tn at the first-day close, with a related-party acquisition the company valued itself accounting for a large part of the step.",
+  "Return on invested capital cannot be measured and will not be measurable for years, so the central claim of the bull case is currently unfalsifiable.",
+  "Alphabet's Q2 2026 earnings were distorted by a USD 98bn gain driven substantially by its SpaceX mark. That independently corroborates the valuation increase — and shows how far the consequences of marking this one asset now reach into other companies' reported profits."
+ ],
+ "thesisImpact":"Phase 4 makes the valuation question unavoidable and supplies the reason to treat the current price with caution beyond the multiple itself: the price was set on a very small float, by a market that has seen two quarters of numbers, in a security whose supply is about to multiply roughly twentyfold.",
+ "model":{"sharesOut":13000,"netDebt":0,
+  "wacc":{"bear":0.140,"base":0.120,"bull":0.105},
+  "terminalGrowth":{"bear":0.025,"base":0.035,"bull":0.045}}
+}

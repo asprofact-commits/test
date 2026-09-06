@@ -1,0 +1,63 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Space Exploration Technologies Corp. (SpaceX)","ticker":"NASDAQ: SPCX","sector":"infrastructure","currency":"USD","fxToUsd":1,"price":147.95,"priceUnit":"share","asOf":"2026-09-05","phase":1,"phaseName":"Pricing-power architecture",
+  "assumedContext":[
+   "SpaceX was private until 12 June 2026. It is now public, so this dossier is a public-equity analysis — but with only two quarters of reported results, the evidence base is far thinner than for an established listed company.",
+   "Sector recorded as infrastructure. The company genuinely spans three: launch (industrials), Starlink (consumer/enterprise subscription infrastructure) and xAI (software). All three profiles are applied.",
+   "No primary filing could be retrieved: every external domain is blocked by this environment egress proxy, including sec.gov. Findings rest on search-result summaries of the S-1, the Q2 2026 release and reputable press."]},
+ "findings":[
+  {"id":"p1-01","claim":"SpaceX listed on Nasdaq under SPCX on 12 June 2026 at a subscription price of USD 135, closing the first day at USD 161, up 19%. It trades at USD 147.95 as of 5 September 2026.","label":"FACT","source":"Wikipedia IPO page; CNBC 2026-08-10; TradingView/Investing.com quotes","asOf":"2026-09-05","confidence":"high","impact":"high","value":147.95,"unit":"USD per share"},
+  {"id":"p1-02","claim":"In February 2026 SpaceX acquired xAI in an all-stock exchange, creating a combined entity valued at approximately USD 1.25 trillion — SpaceX at roughly USD 1tn and xAI at roughly USD 250bn. xAI holders received 0.1433 SpaceX shares per xAI share, with a cash alternative at USD 75.46.","label":"FACT","source":"CNBC 2026-02-03; TechCrunch 2026-02-02; D&O Diary","asOf":"2026-02-03","confidence":"high","impact":"high"},
+  {"id":"p1-03","claim":"Pricing power in Starlink is a subscription list price set by SpaceX, and the evidence supports it: subscribers reached 12 million by mid-2026, roughly double a year earlier, with 1.7 million net additions in Q2 2026 alone.","label":"FACT","source":"Q2 2026 results; ValueAddVC Starlink analysis","asOf":"2026-08-04","confidence":"high","impact":"high","value":12,"unit":"m subscribers"},
+  {"id":"p1-04","claim":"Approximately 85% of Starlink revenue is recurring, and the segment carries an estimated 63% EBITDA margin for 2026 — the economics of a subscription infrastructure business rather than a hardware vendor.","label":"CONSENSUS","source":"ValueAddVC; Tiger Brokers revenue breakdown","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p1-05","claim":"In launch, pricing power derives from a near-monopoly on reusable capacity. SpaceX targeted 150+ Falcon 9 launches in 2026 and reached its 50th by 26 April, with booster reuse routinely exceeding 20 flights per vehicle.","label":"FACT","source":"KeepTrack X-Report 2026-04-28; SpaceNexus launch schedule","asOf":"2026-04-28","confidence":"high","impact":"high"},
+  {"id":"p1-06","claim":"The principal competitor in connectivity, Amazon Kuiper, must launch on rivals' rockets including SpaceX's own Falcon 9 — effectively funding its competitor — and its FCC mandate to deploy 50% of a 3,236-satellite constellation by July 2026 was expected to be missed, creating regulatory risk for the challenger rather than the incumbent.","label":"FACT","source":"IBTimes competitor analysis; Bloomberg; FCC licence terms via press","asOf":"2026-07-31","confidence":"medium","impact":"high"},
+  {"id":"p1-07","claim":"Starlink operates a working constellation of approximately 10,280 satellites, a density no competitor is close to matching.","label":"FACT","source":"KeepTrack X-Report, 2026-04-28","asOf":"2026-04-28","confidence":"high","impact":"high","value":10280,"unit":"satellites"},
+  {"id":"p1-08","claim":"Governance is the weakest element of the case. Control is concentrated with Elon Musk across an entity that acquired another Musk-controlled company in an all-stock deal it valued itself, three months before listing. The transaction was between related parties on both sides.","label":"ANALYST ESTIMATE","source":"Derived from the merger structure; D&O Diary commentary on the related-party character","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-09","claim":"Key-man exposure is unusually concentrated: the chief executive sets the technical roadmap, the capital allocation and the public narrative for launch, connectivity and AI simultaneously.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p1-10","claim":"Regulatory dependence runs both ways and is material: spectrum and constellation licensing sit with the FCC and the ITU, launch licensing with the FAA, and a substantial share of launch revenue comes from NASA and defence customers.","label":"ANALYST ESTIMATE","source":"Derived from the regulatory structure of the industry","asOf":"2026-09-05","confidence":"high","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"Pricing mechanism by segment",
+   "columns":["Segment","Who sets the price","Evidence of power","Binding constraint"],
+   "rows":[
+    ["Starlink connectivity","SpaceX list price","12m subscribers, doubled YoY; 1.7m net adds in Q2; ~85% recurring","Capacity, spectrum licensing, Kuiper entry"],
+    ["Launch","SpaceX, near-monopoly on reusable capacity","150+ launches targeted 2026; boosters reused 20+ times","FAA licensing; competitor catch-up"],
+    ["xAI / AI segment","Contract and usage pricing","Q2 revenue USD 2.6bn, +247%","Compute cost; frontier-model competition"],
+    ["Government and defence launch","Negotiated procurement","Incumbency","Political and procurement risk"]
+   ],
+   "note":"[FACT] except the constraint column [ANALYST ESTIMATE]. Unusually for this protocol, the pricing power is genuine and demonstrable in all three segments. The difficulty in this name is not the franchise."},
+  {"title":"Governance risk register",
+   "columns":["Issue","Character","Assessment"],
+   "rows":[
+    ["Related-party merger","SpaceX acquired xAI, both Musk-controlled, all-stock, self-valued","The USD 250bn ascribed to xAI was not set by an arm's-length market"],
+    ["Key-man concentration","One individual across roadmap, capital allocation and narrative","No disclosed succession"],
+    ["Listing recency","Two quarters of reported results","No track record of guidance versus delivery as a public company"],
+    ["Lockup overhang","~13bn shares against 639m floated at IPO","Full expiry 8 December 2026"]
+   ],
+   "note":"[FACT/ANALYST ESTIMATE] Each item is individually manageable. Together they mean the usual public-market checks on an aggressive valuation are weaker here than for a mature listed company."}
+ ],
+ "gaps":[
+  {"item":"The S-1 and the first 10-Q, read in full","whyItMatters":"Everything in this dossier rests on secondary summaries of a company with two quarters of public disclosure. For a mature company that is a weakness; for a three-month-old listing it is close to disqualifying for a committee decision.","resolvedBy":"SEC EDGAR — currently blocked by this environment"},
+  {"item":"The independent fairness process behind the xAI valuation","whyItMatters":"USD 250bn of the combined entity's value was ascribed in a related-party all-stock deal. Whether an independent committee and a fairness opinion supported it determines how much of that USD 250bn a public investor should credit.","resolvedBy":"Merger proxy and S-1 disclosure"},
+  {"item":"Segment-level pricing and churn for Starlink","whyItMatters":"Subscriber growth is disclosed; ARPU trajectory and churn are not. A doubling of subscribers at falling ARPU is a materially different business from one at flat ARPU.","resolvedBy":"Segment disclosure in the 10-Q"}
+ ],
+ "risks":[
+  {"text":"Control is concentrated in one individual who set both sides of a USD 250bn related-party transaction three months before the listing.","severity":"high","probability":"high"},
+  {"text":"The company has two quarters of public reporting, so there is no track record of guidance versus delivery against which to test an extremely aggressive revenue target.","severity":"high","probability":"high"},
+  {"text":"Spectrum, constellation and launch licensing are all discretionary government permissions, and a substantial share of launch revenue is government-sourced.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — the second public report, and the first test of the revenue trajectory","window":"Nov 2026","impact":"High","probability":0.95},
+  {"text":"Full lockup expiry — the remaining share base becomes tradable","window":"2026-12-08","impact":"High","probability":1.0}
+ ],
+ "conclusions":[
+  "The franchise is real and the pricing power is demonstrable in all three segments: Starlink doubled subscribers to 12 million with ~85% recurring revenue, launch runs a near-monopoly on reusable capacity at 150+ flights a year, and the AI segment grew 247%.",
+  "The competitive moat in connectivity is wide and getting wider. Kuiper must buy launches from SpaceX to compete with SpaceX, and was expected to miss its FCC deployment deadline.",
+  "The weakness is not competitive, it is governance. A related-party all-stock merger ascribed USD 250bn to xAI on both sides of a transaction controlled by the same person, three months before the listing.",
+  "This is a three-month-old public company with two quarters of reported results. Every normal public-market check on an aggressive valuation — track record, guidance history, analyst scrutiny over cycles — is weaker here than for any other company examined under this protocol.",
+  "Roughly 13 billion shares exist against 639 million floated at IPO, with the lockup fully expiring on 8 December 2026."
+ ],
+ "thesisImpact":"Phase 1 establishes that the business quality question is largely settled in the company's favour and the governance question is not. That inverts the usual shape of this protocol: the risk here is not that the franchise fails, but that a genuinely exceptional franchise has been priced by a market with unusually little information and unusually weak checks.",
+ "model":{"sharesOut":13000}
+}

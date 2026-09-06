@@ -1,0 +1,306 @@
+<title>SpaceX at $148</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
+  --ink:#10161C; --ink-2:#47535F; --ink-3:#7A8794;
+  --line:#DDE3E9; --line-2:#C6D0D8;
+  --accent:#1F5C7A; --accent-ink:#0A4A66; --accent-soft:rgba(31,92,122,.09);
+  --pos:#2F7A55; --warn:#B07414; --neg:#A33A2E;
+  --neg-soft:rgba(163,58,46,.10); --pos-soft:rgba(47,122,85,.10);
+  --serif:'IBM Plex Serif',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1418; --surface:#161E24; --surface-2:#1C262D;
+    --ink:#E8EDF1; --ink-2:#A3B0BB; --ink-3:#6E7D89;
+    --line:#24303A; --line-2:#33424E;
+    --accent:#5FA8C9; --accent-ink:#8CC5DE; --accent-soft:rgba(95,168,201,.12);
+    --pos:#5CB185; --warn:#D9A05B; --neg:#D4796B;
+    --neg-soft:rgba(212,121,107,.14); --pos-soft:rgba(92,177,133,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1418; --surface:#161E24; --surface-2:#1C262D;
+  --ink:#E8EDF1; --ink-2:#A3B0BB; --ink-3:#6E7D89;
+  --line:#24303A; --line-2:#33424E;
+  --accent:#5FA8C9; --accent-ink:#8CC5DE; --accent-soft:rgba(95,168,201,.12);
+  --pos:#5CB185; --warn:#D9A05B; --neg:#D4796B;
+  --neg-soft:rgba(212,121,107,.14); --pos-soft:rgba(92,177,133,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 26px 64px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+header{padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-bottom:0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.6vw,56px);line-height:1;margin:10px 0 8px;
+  letter-spacing:-.022em;text-wrap:balance}
+.ident{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:6px 20px}
+.ident b{color:var(--ink);font-weight:500}
+
+/* the call */
+.call{display:grid;grid-template-columns:1.1fr 1fr;border:1px solid var(--line);border-top:none;
+  background:var(--surface)}
+@media(max-width:720px){.call{grid-template-columns:1fr}}
+.call-l{padding:30px 30px 28px;border-right:1px solid var(--line)}
+@media(max-width:720px){.call-l{border-right:none;border-bottom:1px solid var(--line)}}
+.badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);
+  display:block;margin-bottom:10px}
+.big-rating{font-family:var(--serif);font-size:clamp(46px,7vw,64px);font-weight:600;line-height:.95;
+  letter-spacing:-.025em;color:var(--neg);margin:0}
+.qual{font-size:14.5px;color:var(--ink-2);margin:16px 0 0;max-width:42ch}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.fig{background:var(--surface);padding:20px 22px}
+.fig .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.fig .v{font-family:var(--mono);font-size:30px;font-weight:500;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1}
+.fig .n{font-size:12px;color:var(--ink-3);margin-top:5px}
+.neg{color:var(--neg)}.pos{color:var(--pos)}
+
+.thesis{background:var(--ink);color:var(--paper);padding:26px 30px;font-family:var(--serif);
+  font-size:clamp(19px,2.5vw,25px);line-height:1.42;letter-spacing:-.005em}
+.thesis em{font-style:normal;color:#E0B37A}
+:root[data-theme="dark"] .thesis em{color:#E8B87F}
+
+section{margin-top:38px}
+h2{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-ink);
+  margin:0 0 14px;font-weight:600}
+.panel{background:var(--surface);border:1px solid var(--line);padding:24px 26px}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:760px){.three{grid-template-columns:1fr}}
+.metric{background:var(--surface);border:1px solid var(--line);padding:20px 22px}
+.metric .v{font-family:var(--mono);font-size:32px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.metric .l{font-size:13.5px;color:var(--ink-2);margin-top:9px;line-height:1.45}
+.metric .l b{color:var(--ink);font-weight:600}
+
+ol.reasons{counter-reset:r;list-style:none;padding:0;margin:0;display:grid;gap:18px}
+ol.reasons li{counter-increment:r;padding-left:40px;position:relative;font-size:15px}
+ol.reasons li:before{content:counter(r);position:absolute;left:0;top:0;font-family:var(--mono);font-size:12px;
+  font-weight:600;color:var(--accent-ink);width:26px;height:26px;border:1px solid var(--line-2);border-radius:50%;
+  display:grid;place-items:center}
+ol.reasons .m{color:var(--ink-3);font-size:13.5px;display:block}
+ol.reasons b{font-weight:600}
+
+ul.risks{list-style:none;padding:0;margin:0;display:grid;gap:13px}
+ul.risks li{padding-left:24px;position:relative;font-size:14.5px;color:var(--ink-2)}
+ul.risks li:before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:2px;
+  background:var(--warn)}
+ul.risks b{color:var(--ink);font-weight:600}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;padding:0 12px 8px 0;border-bottom:1px solid var(--line-2)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+td:last-child,th:last-child{padding-right:0;text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:none}
+tr.em td{background:var(--accent-soft);font-weight:600}
+.tw{overflow-x:auto}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.caveat{border:1px solid var(--line-2);border-left:3px solid var(--warn);background:var(--surface);
+  padding:16px 20px;font-size:13.5px;color:var(--ink-2);margin-top:34px}
+.caveat b{color:var(--ink)}
+footer{margin-top:26px;font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:18px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Investment committee brief · executive summary</div>
+  <h1>SpaceX at $148</h1>
+  <div class="ident">
+    <span>NASDAQ:&nbsp;<b>SPCX</b></span><span>Mkt cap <b>~$1.92tn</b></span>
+    <span>FY26E EV/EBITDA <b>~128×</b></span><span>Listed 12 Jun 2026</span>
+  </div>
+</header>
+
+<div class="call">
+  <div class="call-l">
+    <span class="badge">Rating</span>
+    <p class="big-rating">AVOID</p>
+    <p class="qual">A price call on an exceptional company — stated with <b>lower confidence</b> than the Apple or
+       Alphabet ratings. Published targets span <b>$160–$300</b>; this sits ~64% below the lowest. The divergence is
+       methodological, and the case against this rating is stated overleaf, first.</p>
+  </div>
+  <div class="figs">
+    <div class="fig"><div class="k">Fair value</div><div class="v">$58</div><div class="n">probability-weighted</div></div>
+    <div class="fig"><div class="k">vs market</div><div class="v neg">−61%</div><div class="n">$147.95 today</div></div>
+    <div class="fig"><div class="k">Expected 3y IRR</div><div class="v neg">−1.3%</div><div class="n">range −26% to +29%</div></div>
+    <div class="fig"><div class="k">Bull case</div><div class="v">$67</div><div class="n">still 54% below price</div></div>
+  </div>
+</div>
+
+<div class="thesis">
+  To justify $1.92tn at a mature 30× EBITDA, SpaceX needs roughly <em>$100bn of revenue at Starlink-like margins</em>
+  — precisely management's end-2026 target, against ~$31bn annualised today. The price does not treat that target as
+  an aspiration. It treats it as an accomplished fact.
+</div>
+
+<section>
+  <h2>The three numbers</h2>
+  <div class="three">
+    <div class="metric">
+      <div class="v neg">$1.05tn</div>
+      <div class="l"><b>The optionality gap.</b> Between a generous $875bn sum-of-the-parts and the $1.92tn price — ascribed to Starship economics and space data centres that do not yet commercially exist.</div>
+    </div>
+    <div class="metric">
+      <div class="v">~128×</div>
+      <div class="l"><b>FY26E EV/EBITDA.</b> Five times Apple's 27.8×, seven times Alphabet's 18.6× — and loss-making at the net line.</div>
+    </div>
+    <div class="metric">
+      <div class="v neg">~12.4bn</div>
+      <div class="l"><b>Shares unlocking by 8 Dec.</b> Against a 638.9m IPO float. All price discovery so far has occurred on under 5% of the company.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Valuation — every method, every scenario, below the price</h2>
+  <div class="panel">
+    <svg viewBox="0 0 700 168" role="img" aria-label="Valuation ranges against the $147.95 market price: sum-of-the-parts $67, EV/EBITDA $29 to $69 with a base of $46, DCF under $1 to $63 with a base of $17, and the blended range $51 to $67 with a base of $57.">
+      <g font-family="IBM Plex Mono, monospace" font-size="11">
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="140" y1="16" x2="140" y2="128"/><line x1="280" y1="16" x2="280" y2="128"/>
+          <line x1="420" y1="16" x2="420" y2="128"/><line x1="560" y1="16" x2="560" y2="128"/>
+        </g>
+        <g fill="var(--ink-3)" text-anchor="middle" font-size="10">
+          <text x="140" y="145">$0</text><text x="280" y="145">$50</text>
+          <text x="420" y="145">$100</text><text x="560" y="145">$150</text>
+        </g>
+        <line x1="554" y1="10" x2="554" y2="132" stroke="var(--ink)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="554" y="6" text-anchor="middle" fill="var(--ink)" font-weight="600" font-size="10.5">Market $148</text>
+        <g fill="var(--ink-2)" font-size="11.5" font-family="IBM Plex Sans, sans-serif">
+          <text x="0" y="34">Sum of the parts <tspan fill="var(--ink-3)" font-size="10">(65%)</tspan></text>
+          <text x="0" y="66">EV/EBITDA @ 40×</text>
+          <text x="0" y="98">DCF <tspan fill="var(--ink-3)" font-size="10">(10% — breaks here)</tspan></text>
+          <text x="0" y="130" fill="var(--ink)" font-weight="600">Blended</text>
+        </g>
+        <rect x="322" y="24" width="11" height="13" rx="4" fill="var(--accent)" opacity=".5"/>
+        <rect x="326" y="21" width="3" height="19" fill="var(--accent-ink)"/>
+        <text x="341" y="34" fill="var(--ink)" font-weight="600" font-size="11">$67</text>
+        <rect x="221" y="56" width="113" height="13" rx="4" fill="var(--accent)" opacity=".38"/>
+        <rect x="269" y="53" width="3" height="19" fill="var(--accent-ink)"/>
+        <text x="342" y="66" fill="var(--ink)" font-weight="600" font-size="11">$46</text>
+        <rect x="141" y="88" width="177" height="13" rx="4" fill="var(--accent)" opacity=".2"/>
+        <rect x="187" y="85" width="3" height="19" fill="var(--accent-ink)"/>
+        <text x="326" y="98" fill="var(--ink)" font-weight="600" font-size="11">$17</text>
+        <rect x="283" y="120" width="46" height="13" rx="4" fill="var(--accent)" opacity=".6"/>
+        <rect x="299" y="116" width="3" height="21" fill="var(--ink)"/>
+        <text x="337" y="130" fill="var(--ink)" font-weight="600" font-size="11">$57</text>
+        <text x="0" y="162" fill="var(--ink-3)" font-size="10" font-family="IBM Plex Sans, sans-serif">The bear-case DCF returns under $1 — not a forecast, but proof the instrument cannot value a company whose free cash flow is negative throughout</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>What would make this call wrong</h2>
+  <p class="lede" style="margin-bottom:14px">Stated before the case for it, because it is genuinely strong.</p>
+  <div class="panel">
+    <ul class="risks">
+      <li><b>Conventional analysis has been wrong about this company for twenty years.</b> Every conservative
+        valuation of SpaceX since 2012 has been too low. A method giving zero weight to unproven capability will
+        systematically undervalue a company whose defining characteristic is delivering unproven capability.</li>
+      <li><b>Starlink is genuinely superb</b> — 12m subscribers doubling year on year, ~85% recurring, ~63% EBITDA
+        margin — and is valued here at 32× EBITDA. At 40–50m subscribers the anchor used here is far too low.</li>
+      <li><b>The evidence base is unusually thin.</b> Three months public, two quarters reported, no primary filing
+        readable, net debt assumed zero and the share count derived. The honest error bar is wide in both directions.</li>
+      <li><b>The bull case is not absurd.</b> If the $100bn target is delivered and sustained at high margin, the
+        price is roughly fair rather than excessive — which is exactly why the Q3 report matters so much.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Why the market is wrong — three non-consensus points</h2>
+  <div class="panel">
+    <ol class="reasons">
+      <li><b>Quantify the optionality and it has to carry $1.05 trillion.</b> That is the gap between a generous
+        $875bn sum-of-the-parts — Starlink at 32× EBITDA, xAI above its own merger mark, launch at 11× revenue — and
+        the $1.92tn price. More than the market cap of all but a handful of companies on earth, for assets not yet
+        commercially operating.
+        <span class="m">Phase 5 SOTP build; Phase 2 — Starship pre-commercial.</span></li>
+      <li><b>The $100bn target is not upside to the price; it is the price.</b> It requires ~3× the run rate in two
+        quarters with no disclosed bridge — and the reverse valuation shows the current price already requires it,
+        delivered and sustained at Starlink-like group margins.
+        <span class="m">Phase 3 — Q2 revenue $7.8bn, ~$31bn annualised.</span></li>
+      <li><b>The supply overhang is ahead, not behind.</b> 911.5m shares unlocked in August; ~12.4bn more by 8
+        December, against a 638.9m IPO float. All price discovery so far has happened on under 5% of the company.
+        <span class="m">Phase 4 — lockup schedule.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="grid2">
+    <div>
+      <h2>Scenarios</h2>
+      <div class="panel" style="padding:20px 22px">
+        <div class="tw"><table>
+          <thead><tr><th>Case</th><th>Prob.</th><th>Fair value</th><th>3y IRR</th></tr></thead>
+          <tbody>
+            <tr><td>Bear</td><td>30%</td><td>$51</td><td class="neg">−26.0%</td></tr>
+            <tr><td>Base</td><td>45%</td><td>$57</td><td class="neg">−1.8%</td></tr>
+            <tr><td>Bull</td><td>25%</td><td>$67</td><td class="pos">+29.3%</td></tr>
+            <tr class="em"><td>Weighted</td><td>100%</td><td>$58</td><td class="neg">−1.3%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div>
+      <h2>Versus the other dossiers</h2>
+      <div class="panel" style="padding:20px 22px">
+        <div class="tw"><table>
+          <tbody>
+            <tr><td>SpaceX EV/EBITDA</td><td>~128×</td></tr>
+            <tr><td>Apple EV/EBITDA</td><td>27.8×</td></tr>
+            <tr><td>Alphabet EV/EBITDA</td><td>18.6×</td></tr>
+            <tr><td>SpaceX fair value gap</td><td>−61%</td></tr>
+            <tr><td>Apple / Alphabet gap</td><td>−32% / −11%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Re-entry — an evidence test, not a price</h2>
+  <div class="panel" style="padding:20px 26px">
+    <div class="tw"><table>
+      <tbody>
+        <tr><td>A credible, <b>disclosed bridge</b> to the $100bn run rate</td><td>Q3, Nov 2026</td></tr>
+        <tr><td><b>Two consecutive quarters</b> of positive consolidated FCF</td><td>2027</td></tr>
+        <tr><td>Completion of the <b>December lockup at a stable price</b></td><td>8 Dec 2026</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin:14px 0 0;font-size:13.5px;color:var(--ink-2)">Any one would independently justify revisiting.
+      Absent them, this is an exceptional business to admire and not to own at this multiple.</p>
+  </div>
+</section>
+
+<div class="caveat">
+  <b>Evidence provenance.</b> No primary filing was retrievable — every external domain is blocked by this
+  environment's network egress proxy, including <span class="num">sec.gov</span>. All 50 findings rest on
+  search-result summaries. This matters more here than in any other dossier under this protocol:
+  <b>SpaceX has been public for under three months and has reported two quarters.</b> Net debt is assumed zero and
+  the ~13bn share count is derived from lockup coverage — both declared gaps that move every per-share figure
+  directly. Twenty gaps are declared in total.
+</div>
+
+<footer>
+  <p><b>Not investment advice.</b> This reaches a conclusion far below every published price target, and states the
+     case against its own rating before stating the rating. Check primary sources before acting. Full workings, all
+     50 findings and the declared gaps are in the detailed dossier and the complete five-stage write-up.</p>
+  <p style="margin-top:8px">Generated by the <span class="num">/invest</span> five-phase protocol · 2026-09-05.</p>
+</footer>
+
+</div>

@@ -1,0 +1,62 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Space Exploration Technologies Corp. (SpaceX)","ticker":"NASDAQ: SPCX","sector":"infrastructure","currency":"USD","fxToUsd":1,"price":147.95,"priceUnit":"share","asOf":"2026-09-05","phase":2,"phaseName":"Asset base & physical bottlenecks","assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy. Findings rest on search-result summaries of a company with only two quarters of public reporting."]},
+ "findings":[
+  {"id":"p2-01","claim":"The productive asset base is a working constellation of approximately 10,280 Starlink satellites plus a reusable launch fleet, with boosters routinely flown more than 20 times each.","label":"FACT","source":"KeepTrack X-Report, 2026-04-28","asOf":"2026-04-28","confidence":"high","impact":"high"},
+  {"id":"p2-02","claim":"Reuse is the cost curve. A booster flown 20 times amortises its build cost across 20 missions, which is the mechanism behind a launch cadence no competitor can match on price.","label":"ANALYST ESTIMATE","source":"Derived from the disclosed reuse rate","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p2-03","claim":"SpaceX targeted 150+ Falcon 9 launches in 2026 and had completed 50 by 26 April, a pace consistent with well over 100 for the year, and is targeting multiple Starship flights per month by year end.","label":"MANAGEMENT GUIDANCE","source":"KeepTrack; SpaceNexus 2026 launch schedule","asOf":"2026-04-28","confidence":"medium","impact":"high"},
+  {"id":"p2-04","claim":"The constellation is a depreciating asset with a short life. Starlink satellites are designed for roughly five years in orbit, so the constellation requires continuous replacement launch capacity simply to stand still.","label":"ANALYST ESTIMATE","source":"Derived from published Starlink design life","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-05","claim":"This is the structural elegance of the model and also its trap: SpaceX is its own largest launch customer, so replacement capex is internalised at marginal cost — but it also means a large share of reported launch activity is not third-party revenue.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-06","claim":"The xAI acquisition added a compute-intensive asset base whose costs are already visible: the first post-IPO report was characterised as soaring AI costs outweighing a revenue beat.","label":"FACT","source":"CNBC, 2026-08-04","asOf":"2026-08-04","confidence":"high","impact":"high"},
+  {"id":"p2-07","claim":"The stated strategic rationale for the merger is space-based data centres, on the argument that terrestrial electricity and cooling cannot meet AI demand. No such facility is in commercial operation.","label":"MANAGEMENT GUIDANCE","source":"TechCrunch 2026-02-02; merger commentary","asOf":"2026-02-02","confidence":"high","impact":"high"},
+  {"id":"p2-08","claim":"Consolidated free cash flow is negative. Starlink's profit is actively subsidising xAI development — the connectivity business funds the AI business rather than the shareholder.","label":"CONSENSUS","source":"Tiger Brokers segment breakdown; ValueAddVC","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p2-09","claim":"The binding bottleneck is capital, not demand or technology. Starlink adds subscribers faster than the group can fund the constellation replacement, the Starship ramp and the AI compute build simultaneously from operating cash flow.","label":"ANALYST ESTIMATE","source":"Derived from the negative consolidated free cash flow against segment-level profitability","asOf":"2026-09-05","confidence":"medium","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Asset base and its economics",
+   "columns":["Asset","Scale","Economic character"],
+   "rows":[
+    ["Starlink constellation","~10,280 satellites","Depreciating, ~5-year design life, continuous replacement required"],
+    ["Reusable launch fleet","150+ flights targeted 2026; 20+ reuses per booster","The cost curve — amortises build cost across missions"],
+    ["Starship","Targeting multiple flights per month by year end","Pre-commercial; the entire bull case for launch economics"],
+    ["xAI compute","Undisclosed","Cost centre today; revenue USD 2.6bn in Q2, +247%"],
+    ["Space-based data centres","None in operation","Stated merger rationale; entirely prospective"]
+   ],
+   "note":"[FACT] for the first two rows; [MANAGEMENT GUIDANCE] for Starship; [ANALYST ESTIMATE] for the economic characterisation. Two of the five rows are assets that do not yet exist commercially."},
+  {"title":"Where the cash goes",
+   "columns":["Flow","Direction","Evidence"],
+   "rows":[
+    ["Starlink operating income","Generates","USD 1.19bn in Q1 2026 on USD 3.26bn revenue"],
+    ["Constellation replacement","Consumes","~5-year satellite life on ~10,280 satellites"],
+    ["Starship development","Consumes","Pre-commercial ramp"],
+    ["xAI compute build","Consumes","Soaring AI costs cited in the first post-IPO report"],
+    ["Consolidated free cash flow","Negative","Starlink profit subsidising xAI development"]
+   ],
+   "note":"[FACT/CONSENSUS] The only segment disclosed as profitable is funding three that are not."}
+ ],
+ "gaps":[
+  {"item":"Capital expenditure guidance and its split by segment","whyItMatters":"Consolidated free cash flow is negative and the company is funding constellation replacement, a Starship ramp and an AI compute build at once. Without the capex split, the burn cannot be attributed or forecast.","resolvedBy":"10-Q cash flow statement and management commentary"},
+  {"item":"Depreciation policy and assumed satellite life","whyItMatters":"A constellation of ~10,280 satellites on a five-year life implies enormous annual depreciation and replacement capex. The assumed life drives both reported earnings and sustaining capex.","resolvedBy":"S-1 and 10-Q property note"},
+  {"item":"Third-party launch revenue versus internal Starlink launches","whyItMatters":"Launch cadence is quoted as an achievement, but flights carrying the company's own satellites are a cost, not revenue. The split determines the launch segment's real size.","resolvedBy":"Segment revenue disclosure"},
+  {"item":"Any operating evidence for space-based data centres","whyItMatters":"It is the stated rationale for a USD 250bn acquisition and nothing in the public record shows a working facility.","resolvedBy":"Not currently resolvable"}
+ ],
+ "risks":[
+  {"text":"Consolidated free cash flow is negative, with the single profitable segment funding three that are not.","severity":"high","probability":"high"},
+  {"text":"The constellation depreciates on roughly a five-year life, so a large replacement capex is permanent, not cyclical.","severity":"high","probability":"high"},
+  {"text":"The merger's stated rationale — space-based data centres — has no commercial precedent and no operating facility.","severity":"high","probability":"medium"},
+  {"text":"Starship is pre-commercial and carries the entire bull case for future launch economics.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"Starship reaching a regular multi-flight-per-month cadence","window":"H1 2027","impact":"High","probability":0.4},
+  {"text":"First capex guidance as a public company","window":"Nov 2026","impact":"High","probability":0.8}
+ ],
+ "conclusions":[
+  "The asset base is genuinely unmatched — roughly 10,280 satellites and a reusable fleet flying boosters more than 20 times each. The cost curve is real and no competitor is close.",
+  "But it is a depreciating asset base with a roughly five-year satellite life, so a large replacement capex is a permanent feature rather than a growth phase that ends.",
+  "The binding constraint is capital, not demand or technology. Starlink adds subscribers faster than the group can simultaneously fund constellation replacement, the Starship ramp and the AI compute build from operating cash flow.",
+  "Consolidated free cash flow is negative, and the only segment disclosed as profitable is subsidising three that are not — including a USD 250bn acquisition justified by a facility type that does not yet exist commercially.",
+  "Two of the five principal assets in this analysis — Starship at commercial cadence and space-based data centres — are prospective rather than operating."
+ ],
+ "thesisImpact":"Phase 2 identifies where the value question actually sits. The operating assets are exceptional; the prospective assets carry the valuation. Phase 5 must therefore be explicit about how much of the market price rests on things that are currently operating and how much on things that are not.",
+ "model":{"sharesOut":13000}
+}
