@@ -1,0 +1,61 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Mastercard Incorporated","ticker":"NYSE: MA","sector":"financials","currency":"USD","fxToUsd":1,"price":580.00,"priceUnit":"share","asOf":"2026-09-05","phase":3,"phaseName":"Demand & monetisation structure","assumedContext":["No primary filing could be retrieved; every external domain is blocked by this environment egress proxy. The banking profile does not apply to this company — see phase 1 meta."]},
+ "findings":[
+  {"id":"p3-01","claim":"FY2025 net revenue was USD 32.8bn, up 16%, with operating margin of 57.6% against 55.3% in 2024. Q4 2025 revenue grew 18% and EPS 25% on strong cross-border volume.","label":"FACT","source":"Mastercard FY2025 results; Investing.com Q4 2025 slides","asOf":"2025-12-31","confidence":"high","impact":"high"},
+  {"id":"p3-02","claim":"Q2 2026 net revenue was USD 9.3bn, up 14%, with adjusted earnings of USD 5.04 per share against a USD 4.77 consensus. Growth was driven by cross-border volume, switched transactions and value-added services.","label":"FACT","source":"Mastercard Q2 2026 results; Zacks via Yahoo Finance","asOf":"2026-07-30","confidence":"high","impact":"high","value":9300,"unit":"USD m"},
+  {"id":"p3-03","claim":"Value-added services and solutions produced USD 3.8bn of Q2 2026 net revenue, up 20% — roughly 41% of the total and growing appreciably faster than the payment network itself.","label":"FACT","source":"Mastercard Q2 2026 results; eMarketer","asOf":"2026-07-30","confidence":"high","impact":"high","value":3800,"unit":"USD m"},
+  {"id":"p3-04","claim":"Management raised full-year 2026 guidance to low-teens net revenue growth on a currency-neutral basis excluding acquisitions, from a previous range of high-end-of-low-double-digits to low-teens, citing stronger first-half performance.","label":"MANAGEMENT GUIDANCE","source":"Mastercard Q2 2026 guidance; eMarketer","asOf":"2026-07-30","confidence":"high","impact":"high"},
+  {"id":"p3-05","claim":"FY2026 net revenue is estimated at approximately USD 37bn, applying low-teens growth to the FY2025 base of USD 32.8bn.","label":"ANALYST ESTIMATE","source":"Derived: 32.8 x 1.125","asOf":"2026-09-05","confidence":"medium","impact":"high","value":37000,"unit":"USD m"},
+  {"id":"p3-06","claim":"FY2026 adjusted earnings per share are estimated at approximately USD 19.75, from Q2 actual of USD 5.04 and a full year growing in the mid-teens.","label":"ANALYST ESTIMATE","source":"Derived from reported quarterly EPS and the guided growth rate","asOf":"2026-09-05","confidence":"medium","impact":"high","value":19.75,"unit":"USD per share"},
+  {"id":"p3-07","claim":"Growth is margin-accretive and has been for years: operating margin expanded 230 basis points in FY2025 while revenue grew 16%. This is the cleanest example in this series of growth that expands returns rather than diluting them.","label":"ANALYST ESTIMATE","source":"Derived from FY2025 margin progression","asOf":"2025-12-31","confidence":"high","impact":"high"},
+  {"id":"p3-08","claim":"Demand classification: the installed base of issuers, merchants and switched transactions is [Existing Contracted] in substance; value-added services revenue is [Existing Contracted] and compounding at 20%; the BVNK stablecoin infrastructure is [Approved / Committed Pipeline]; and a durable stablecoin toll equivalent to today's interchange is [Speculative Demand] and earns zero base-case weight.","label":"ANALYST ESTIMATE","source":"Applying the Phase 3 classification test","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-09","claim":"Unusually for this protocol, almost none of the valuation rests on speculative demand. The business is priced on cash flows it is already generating, which is the opposite of the Apple, Alphabet and SpaceX dossiers.","label":"ANALYST ESTIMATE","source":"Derived from the classification","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-10","claim":"The corresponding weakness is that there is no large contracted backlog to underwrite the future either. Mastercard's revenue is recurring by behaviour rather than by contract — it depends on consumers continuing to choose cards, which is precisely what the honor-all-cards change and rail substitution both address.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Recent progression",
+   "columns":["Period","Net revenue","Growth","Operating margin","Value-added services"],
+   "rows":[
+    ["FY2024","~USD 28.2bn","—","55.3%","—"],
+    ["FY2025","USD 32.8bn","+16%","57.6%","—"],
+    ["Q4 2025","—","+18%","—","EPS +25%"],
+    ["Q2 2026","USD 9.3bn","+14%","—","USD 3.8bn, +20%"],
+    ["FY2026E","~USD 37bn","low teens guided","—","~41% of revenue"]
+   ],
+   "note":"[FACT] except FY2024 revenue and the FY2026E line [ANALYST ESTIMATE]. Revenue growing mid-teens with margin expanding 230bp is an unusual combination for a business of this maturity."},
+  {"title":"Demand classified",
+   "columns":["Source","Evidence","Class","Base-case weight"],
+   "rows":[
+    ["Switched transactions and installed base","Recurring by behaviour, decades of history","[Existing Contracted] in substance","Full"],
+    ["Value-added services","USD 3.8bn in Q2, +20%","[Existing Contracted]","Full"],
+    ["Cross-border volume","Cited growth driver","[Existing Contracted]","Full, but the line most exposed to substitution"],
+    ["BVNK stablecoin infrastructure","Acquisition agreed, closing end-2026","[Approved / Committed Pipeline]","Partial"],
+    ["A durable stablecoin toll at card-like economics","No precedent","[Speculative Demand]","Zero"]
+   ],
+   "note":"[ANALYST ESTIMATE] Note the contrast with the rest of this series: almost the entire valuation rests on flows already occurring. The risk here is not that promised demand fails to arrive — it is that existing demand migrates elsewhere."}
+ ],
+ "gaps":[
+  {"item":"Cross-border revenue as a disclosed share of the total","whyItMatters":"It is simultaneously the growth driver and the line most exposed to stablecoin substitution. Without it, the most important sensitivity cannot be quantified.","resolvedBy":"10-K revenue disaggregation"},
+  {"item":"Value-added services margin","whyItMatters":"41% of revenue, growing at 20%, with undisclosed profitability. The group margin trajectory depends on it.","resolvedBy":"Not separately disclosed"},
+  {"item":"Volume carried on premium and rewards cards","whyItMatters":"Determines the exposure to merchants declining those cards now that honor-all-cards has been discontinued.","resolvedBy":"Not disclosed at this granularity"}
+ ],
+ "risks":[
+  {"text":"Revenue is recurring by consumer behaviour rather than by contract, and both the settlement and rail substitution target that behaviour directly.","severity":"high","probability":"medium"},
+  {"text":"Cross-border is the fastest-growing line and the one most exposed to stablecoin substitution.","severity":"high","probability":"medium"},
+  {"text":"There is no contracted backlog to underwrite future revenue, unlike Alphabet's USD 514bn cloud order book.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — guided to the high end of low double digits","window":"Oct 2026","impact":"Medium","probability":0.95},
+  {"text":"First full quarter after honor-all-cards ends, showing any mix effect","window":"2027","impact":"High","probability":0.6}
+ ],
+ "conclusions":[
+  "The operating performance is outstanding and unusually clean: FY2025 revenue up 16% to USD 32.8bn with operating margin expanding 230 basis points to 57.6%, and Q2 2026 revenue up 14% with an EPS beat.",
+  "Value-added services are now roughly 41% of revenue and growing at 20%, faster than the network. That is both a genuine diversification away from pure interchange and a partial answer to the substitution threat.",
+  "Growth is margin-accretive — the cleanest example of it in this series. Mastercard expands returns as it grows rather than diluting them.",
+  "Almost none of the valuation rests on speculative demand, which is the opposite of the Apple, Alphabet and SpaceX dossiers. The business is priced on cash flows it already generates.",
+  "The corresponding weakness: revenue is recurring by behaviour, not by contract, and there is no backlog. The risk is not that promised demand fails to arrive — it is that existing demand migrates to another rail."
+ ],
+ "thesisImpact":"Phase 3 establishes that this is a rare case where the base case needs almost no speculative content. That has a direct consequence for Phase 5: the valuation can be built on demonstrated cash flows, which makes the discounted cash flow the most trustworthy instrument here rather than the least — the reverse of every other company in this series.",
+ "model":{"sharesOut":874}
+}
