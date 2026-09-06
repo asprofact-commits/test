@@ -1,0 +1,285 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Vistra Corp.",
+  "ticker": "NYSE: VST",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1.0,
+  "price": 139.8,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Shares outstanding (~340m) is DERIVED: buybacks of roughly USD 6.5bn since late 2021 have reduced the count by about 30% from roughly 485m.",
+   "Net debt (~USD 18.5bn) is DERIVED and is the weakest input in this dossier. It implies roughly 2.6x FY2026E adjusted EBITDA, consistent with a reported debt-to-equity ratio of 3.63 and with the Energy Harbor acquisition and the buyback programme both being debt-assisted."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "Capital return has been aggressive and effective: roughly USD 6.5bn of share repurchases since late 2021, reducing the share count by about 30%, with a remaining USD 1.2bn authorisation expected to be exhausted by the end of 2027.",
+   "label": "FACT",
+   "source": "Vistra capital allocation disclosure",
+   "asOf": "2026-08-07",
+   "confidence": "high",
+   "impact": "high",
+   "value": 6.5,
+   "unit": "USD bn repurchased since late 2021"
+  },
+  {
+   "id": "p4-02",
+   "claim": "Retiring 30% of the share count is the single most shareholder-friendly action taken by any company in this batch, and it stands in direct contrast to PPC, which increased its share count by 62% in the same period.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the PPC dossier",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-03",
+   "claim": "But it was funded partly with debt, and the leverage is the risk. Estimated net debt of roughly USD 18.5bn against FY2026E adjusted EBITDA of USD 7.2bn is about 2.6x — manageable in isolation, and materially less so against merchant earnings exposed to a softening ERCOT curve with 28% of the 2028 book open.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 2.6,
+   "unit": "x net debt / FY2026E EBITDA"
+  },
+  {
+   "id": "p4-04",
+   "claim": "This is the combination that produced the 30% de-rating and it is worth stating plainly: a levered balance sheet against cyclical merchant cash flows means the equity is a geared claim on the ERCOT forward curve. A 10% fall in merchant margin moves equity value by considerably more than 10%.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-05",
+   "claim": "At USD 139.80 and roughly 340m shares the market capitalisation is about USD 47.5bn. Adding estimated net debt gives an enterprise value of roughly USD 66bn, or about 9.2x FY2026E adjusted EBITDA of USD 7.2bn.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 9.2,
+   "unit": "x FY2026E EV/EBITDA"
+  },
+  {
+   "id": "p4-06",
+   "claim": "A price-earnings multiple is excluded from this dossier deliberately. Q2 GAAP net income of USD 305m against adjusted EBITDA of USD 1.767bn shows how far hedge marks distort reported earnings; any P/E computed from them would be noise presented as precision.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the Q2 2026 disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-07",
+   "claim": "Justified price-to-book is also excluded. After roughly USD 6.5bn of buybacks and a debt-to-equity ratio of 3.63, book equity is small relative to enterprise value and carries little information about intrinsic worth. The valuation in Phase 5 uses discounted cash flow, EV/EBITDA and a sum-of-the-parts.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-08",
+   "claim": "On enterprise multiples Vistra sits mid-pack in this batch at about 9.2x, alongside PPC at roughly 9.2x, above Metlen at 7.7x, and far below Siemens Energy at 17x and GE Vernova at about 40x. On cash yield it is the cheapest here by a wide margin.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-references to the other dossiers in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Capital structure",
+   "columns": [
+    "Item",
+    "Value",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Share price",
+     "USD 139.80",
+     "Medium — one source quotes USD 144-152"
+    ],
+    [
+     "Shares outstanding",
+     "~340m",
+     "Medium — derived from a ~30% reduction since 2021"
+    ],
+    [
+     "Market capitalisation",
+     "~USD 47.5bn",
+     "Medium"
+    ],
+    [
+     "Net debt",
+     "~USD 18.5bn",
+     "LOW — derived; the weakest input here"
+    ],
+    [
+     "Enterprise value",
+     "~USD 66bn",
+     "Low"
+    ],
+    [
+     "FY2026E adjusted EBITDA",
+     "USD 7.2bn",
+     "HIGH — guidance midpoint, reaffirmed"
+    ],
+    [
+     "FY2026E adjusted FCF before growth",
+     "~USD 4.3bn",
+     "HIGH — guided"
+    ],
+    [
+     "EV / EBITDA",
+     "~9.2x",
+     "Medium"
+    ],
+    [
+     "Net debt / EBITDA",
+     "~2.6x",
+     "Low"
+    ],
+    [
+     "FCF-before-growth yield",
+     "~9.1%",
+     "Medium"
+    ],
+    [
+     "P/E",
+     "EXCLUDED",
+     "Hedge marks make GAAP earnings uninformative"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] Net debt is derived and material: at USD 18.5bn it is 39% of the market capitalisation, so an error there moves fair value substantially."
+  },
+  {
+   "title": "Capital allocation, across the batch",
+   "columns": [
+    "Company",
+    "Action since 2021",
+    "Effect on share count"
+   ],
+   "rows": [
+    [
+     "Vistra",
+     "~USD 6.5bn of buybacks",
+     "-30%"
+    ],
+    [
+     "Siemens Energy",
+     "Up to EUR 6bn buyback authorised to 2028",
+     "Reducing"
+    ],
+    [
+     "Metlen",
+     "Deleveraging; EUR 728m in H1 2026",
+     "Flat"
+    ],
+    [
+     "PPC",
+     "EUR 4.5bn share capital increase",
+     "+62%"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The two Greek-market and US-merchant names sit at opposite ends of this table, and it is the clearest single contrast in the batch."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Reported net debt and the maturity schedule",
+   "whyItMatters": "Estimated at USD 18.5bn, which is 39% of market capitalisation. It is the largest input uncertainty in the dossier and it determines the gearing on merchant cash flows.",
+   "resolvedBy": "10-Q balance sheet"
+  },
+  {
+   "item": "Actual shares outstanding",
+   "whyItMatters": "Derived from a percentage reduction rather than sourced. Every per-share figure depends on it.",
+   "resolvedBy": "10-Q cover page"
+  },
+  {
+   "item": "Growth capital expenditure and the bridge from FCF-before-growth to free cash flow",
+   "whyItMatters": "The 9.1% yield is on the before-growth figure. The gap is what the discounted cash flow must actually use.",
+   "resolvedBy": "10-K"
+  },
+  {
+   "item": "Asset retirement obligations on the coal fleet",
+   "whyItMatters": "8.7 GW of coal with undisclosed retirement cost is a claim on equity that no multiple in this dossier captures.",
+   "resolvedBy": "10-K"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Estimated net debt of roughly USD 18.5bn against cyclical merchant earnings makes the equity a geared claim on the ERCOT forward curve; a 10% fall in merchant margin moves equity value by considerably more.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Net debt and the share count are both derived rather than sourced, and net debt is 39% of market capitalisation.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Buybacks were partly debt-funded, which amplifies the gearing precisely as the merchant cycle turns.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Coal retirement obligations are unquantified and are a direct claim on equity value.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q3 2026 10-Q — reported net debt, share count and hedge ratios",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "Completion of the remaining USD 1.2bn buyback authorisation",
+   "window": "By end-2027",
+   "impact": "Medium",
+   "probability": 0.8
+  },
+  {
+   "text": "A new buyback authorisation, signalling confidence in the cash flow",
+   "window": "2027",
+   "impact": "Medium",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "Capital return has been the most shareholder-friendly in this batch: roughly USD 6.5bn of buybacks since late 2021, retiring about 30% of the share count, against PPC increasing its count by 62% over a comparable period.",
+  "But it was partly debt-funded. Estimated net debt of roughly USD 18.5bn against USD 7.2bn of FY2026E adjusted EBITDA is about 2.6x — manageable in isolation and much less so against merchant earnings with 28% of the 2028 book open.",
+  "That combination is what produced the 30% de-rating. A levered balance sheet against cyclical cash flows means the equity is a geared claim on the ERCOT forward curve.",
+  "At roughly 9.2x FY2026E EBITDA the enterprise multiple is mid-pack in this batch, but the roughly 9.1% free-cash-flow-before-growth yield is the cheapest here by a wide margin.",
+  "Both a price-earnings multiple and a justified price-to-book are excluded deliberately: hedge marks make GAAP earnings uninformative, and after USD 6.5bn of buybacks book equity carries little information about intrinsic worth."
+ ],
+ "thesisImpact": "Phase 4 establishes that the equity is a geared claim on merchant power prices with an excellent contracted core and an exceptional cash yield. Phase 5 values it on discounted cash flow, enterprise multiple and a sum-of-the-parts that separates the contracted nuclear from the merchant gas and the coal.",
+ "model": {
+  "sharesOut": 340,
+  "netDebt": 18500,
+  "wacc": {
+   "bear": 0.095,
+   "base": 0.08,
+   "bull": 0.073
+  },
+  "terminalGrowth": {
+   "bear": 0.015,
+   "base": 0.02,
+   "bull": 0.025
+  }
+ }
+}

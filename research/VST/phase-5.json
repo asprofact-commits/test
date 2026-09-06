@@ -1,0 +1,475 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Vistra Corp.",
+  "ticker": "NYSE: VST",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1.0,
+  "price": 139.8,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing retrievable; every external domain is blocked by this environment's egress proxy.",
+   "NO PRICE-EARNINGS MULTIPLE AND NO PRICE-TO-BOOK. Both are excluded deliberately. Hedge mark-to-market makes GAAP earnings uninformative (Q2 net income USD 305m against adjusted EBITDA of USD 1.767bn), and after roughly USD 6.5bn of buybacks book equity carries little information about intrinsic worth. Weights are DCF 35%, EV/EBITDA 35%, sum-of-the-parts 30%.",
+   "The DCF is run on free cash flow AFTER estimated growth capital expenditure, not on the guided free-cash-flow-before-growth figure of USD 3.925-4.725bn. Using the guided number would overstate fair value.",
+   "Net debt (~USD 18.5bn, 39% of market capitalisation) and the share count (~340m) are both derived. The share price is uncertain by roughly 5%.",
+   "Sector peers are omitted; the batch companies are the peer set."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "A discounted cash flow on free cash flow after growth capital expenditure of roughly USD 3.0bn rising to USD 4.0bn across 2027-31, at an 8.0% WACC and 2.0% terminal growth, gives approximately USD 122 per share. Terminal value is about 77% of the total.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 122,
+   "unit": "USD per share, DCF"
+  },
+  {
+   "id": "p5-02",
+   "claim": "An EV/EBITDA valuation at 9.0x FY2026E adjusted EBITDA of USD 7.2bn gives approximately USD 136 — essentially the market price, which itself implies about 9.2x — and a sum-of-the-parts by fuel gives approximately USD 119.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-03",
+   "claim": "The sum-of-the-parts is the method that earns its keep here because it separates what the thesis conflates: contracted nuclear at 11x, merchant gas at 7x, coal at 4x, retail at 8x and solar and storage at 10x. Valuing the whole fleet at a contracted-nuclear multiple is precisely the error the thesis invites.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-04",
+   "claim": "Weighted 35% DCF, 35% EV/EBITDA and 30% sum-of-the-parts, the base case is approximately USD 126 and the probability-weighted fair value approximately USD 132 — roughly 6% below the market price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 132,
+   "unit": "USD per share"
+  },
+  {
+   "id": "p5-05",
+   "claim": "Published analyst targets average roughly USD 217 with a median near USD 221 and a range of USD 106 to USD 305, from about 20 analysts with a consensus rating of Strong Buy. This analysis sits roughly 39% below the average — the widest gap to consensus in the series.",
+   "label": "CONSENSUS",
+   "source": "Analyst targets via market data services",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 217,
+   "unit": "USD average price target"
+  },
+  {
+   "id": "p5-06",
+   "claim": "The gap to consensus is explainable and it is the same disagreement in every direction: consensus appears to capitalise the contracted nuclear story across a fleet that is 91% merchant, and to mark the merchant book to a recovering rather than a softening ERCOT curve. Notably the consensus range is enormous — USD 106 to USD 305 — which is itself an admission that this is a bet on power prices, not on a business.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "The bear case of roughly USD 87 is severe and the reason is structural rather than pessimistic: with net debt at 39% of market capitalisation and 77% of the DCF in terminal value, the equity is a geared residual. That fragility is a real property of the security, not an artefact of the model — and it is what a 30% de-rating on a softer forward curve already demonstrated.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "Reverse valuation: at USD 139.80 the price implies about 9.2x FY2026E EBITDA for a fleet that is 15% nuclear, 61% gas and 20% coal. That is a fair multiple for the mix rather than a cheap or expensive one — which is why the honest answer is that this equity is now approximately correctly priced for its risk, having been substantially overpriced twelve months ago.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs USD 139.80",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "EV/EBITDA at 9.0x",
+     "~USD 136",
+     "-3%",
+     "35%",
+     "Low — net debt derived"
+    ],
+    [
+     "Discounted cash flow",
+     "~USD 122",
+     "-13%",
+     "35%",
+     "Low — 77% terminal value"
+    ],
+    [
+     "Sum of the parts by fuel",
+     "~USD 119",
+     "-15%",
+     "30%",
+     "Low — segment EBITDA estimated"
+    ],
+    [
+     "Price / earnings",
+     "EXCLUDED",
+     "—",
+     "0%",
+     "Hedge marks make GAAP earnings uninformative"
+    ],
+    [
+     "Price / book",
+     "EXCLUDED",
+     "—",
+     "0%",
+     "Book equity uninformative after USD 6.5bn of buybacks"
+    ],
+    [
+     "Blended base case",
+     "~USD 126",
+     "-10%",
+     "100%",
+     "Probability-weighted ~USD 132"
+    ],
+    [
+     "Sell-side average",
+     "USD 217",
+     "+55%",
+     "cross-check",
+     "Range USD 106-305"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Three methods within 15% of each other and all below the price. The sell-side range of USD 106 to USD 305 is nearly three times wide, which tells you what kind of security this is."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "25%",
+     "ERCOT forwards fall further; the unhedged 28% of 2028 prices below plan; coal retirement costs crystallise; leverage constrains the buyback",
+     "~USD 87",
+     "-17.7%"
+    ],
+    [
+     "Base",
+     "50%",
+     "PPAs ramp from late 2027; merchant margin normalises at the softer curve; buyback completes",
+     "~USD 126",
+     "+6.4%"
+    ],
+    [
+     "Bull",
+     "25%",
+     "Data-centre load tightens ERCOT while the turbine queue blocks new supply; further hyperscaler PPAs convert merchant capacity",
+     "~USD 188",
+     "+23.6%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] A bear-to-bull span of more than two to one on the same fleet. That is the correct picture of a leveraged merchant generator, and it is what the thesis phrase 'bypassed wholesale market volatility' denies."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Reported net debt",
+   "whyItMatters": "Derived, and at roughly 39% of market capitalisation it gears every valuation output. The largest input uncertainty here.",
+   "resolvedBy": "10-Q balance sheet"
+  },
+  {
+   "item": "Growth capital expenditure",
+   "whyItMatters": "Guidance is free cash flow BEFORE growth. The DCF needs the after-growth figure and it is estimated, which drives 35% of the weighting.",
+   "resolvedBy": "10-K"
+  },
+  {
+   "item": "EBITDA by fuel",
+   "whyItMatters": "The sum-of-the-parts carries 30% weight and separates contracted nuclear from merchant gas and coal — the central analytical point of this dossier.",
+   "resolvedBy": "10-K segment disclosure"
+  },
+  {
+   "item": "Hedge ratios for 2027, 2029 and 2030",
+   "whyItMatters": "Only the 2028 figure of about 72% is available. The roll-off shape determines when the softer curve reaches earnings.",
+   "resolvedBy": "Investor presentation"
+  },
+  {
+   "item": "Coal asset retirement obligations",
+   "whyItMatters": "8.7 GW with undisclosed retirement cost is a claim on equity that no multiple here captures.",
+   "resolvedBy": "10-K"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly 91% of the fleet is merchant and concentrated in ERCOT, against a forward curve management has described as softening, with about 28% of the 2028 book unhedged.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Net debt at roughly 39% of market capitalisation makes the equity a geared residual; the bear case is USD 87 against a base of USD 126.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Net debt, the share count and growth capital expenditure are all derived rather than sourced.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "8.7 GW of coal carries unquantified retirement, carbon and compliance costs and is not mentioned in the thesis at all.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "This analysis sits roughly 39% below a Strong Buy consensus of about USD 217 from 20 analysts. When the whole covering universe is on the other side, the base rate favours them.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q3 2026 results, FY2027 guidance and the hedge ratios",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "AWS Comanche Peak volumes beginning to ramp",
+   "window": "Late 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "ERCOT forward curve stabilising or recovering",
+   "window": "2027",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "Additional hyperscaler PPAs converting merchant capacity",
+   "window": "Ongoing",
+   "impact": "High",
+   "probability": 0.6
+  },
+  {
+   "text": "A new buyback authorisation beyond the remaining USD 1.2bn",
+   "window": "2027",
+   "impact": "Medium",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "The thesis is the most factually accurate in this batch and reaches the least supportable conclusion. Vistra genuinely holds 20-year PPAs with both Amazon and Meta covering roughly 3.8 GW — the best contracted position here — but that is about 8.6% of a 44 GW fleet.",
+  "It has not bypassed wholesale market volatility. The shares are down roughly 30% over twelve months precisely because ERCOT forward prices softened, and management said so on the Q2 call.",
+  "Blended fair value is approximately USD 126 base and USD 132 probability-weighted against USD 139.80 — roughly 6% below the price, with three methods clustering within 15% of each other and all below it.",
+  "The single strongest counter-argument is cash: adjusted free cash flow before growth of roughly USD 4.3bn is about a 9.1% yield on the market capitalisation, and roughly USD 6.5bn of buybacks has retired about 30% of the shares since 2021. That is a great deal to be paid while waiting.",
+  "The honest summary is that this equity is now approximately correctly priced for its risk, having been substantially overpriced a year ago. It is a geared claim on the ERCOT forward curve with an excellent, growing, but small contracted core."
+ ],
+ "thesisImpact": "The five phases confirm every contract the thesis names and reject the conclusion it draws. Vistra is a leveraged merchant generator with the best hyperscaler contracts in the batch attached to 15% of its capacity, and the market has already repriced it accordingly. The result is a stock that is neither the bargain the consensus target implies nor the de-risked infrastructure asset the thesis describes.",
+ "memo": {
+  "rating": "HOLD",
+  "weighting": "DCF 35%, EV/EBITDA 35%, sum-of-the-parts 30%, with both the price-earnings multiple and price-to-book excluded at zero. Those exclusions are deliberate and are the most important methodological choices here: hedge mark-to-market makes GAAP earnings uninformative, and book equity carries little meaning after USD 6.5bn of buybacks. The model and the memo agree at roughly -6%, which is well inside the uncertainty in a derived net debt figure worth 39% of market capitalisation. The rating is HOLD because the arithmetic is inside its own noise and because a 9.1% cash yield pays the holder to wait — not because the thesis is right.",
+  "nonConsensus": [
+   {
+    "market": "Vistra has bypassed wholesale market volatility by locking its nuclear capacity into hyperscaler PPAs.",
+    "us": "The contracts are real, they are the best in this batch, and they cover about 8.6% of a 44 GW fleet. Vistra is 27 GW of merchant gas, 8.7 GW of coal and 6.5 GW of nuclear. The stock fell roughly 30% over twelve months because ERCOT forward prices softened — which is the market demonstrating that the volatility was not bypassed. Management named the cause on the Q2 call.",
+    "evidence": "Phase 1: the fleet composition against the ~3.8 GW under PPA; Phase 3: the Q2 commentary and the ~72% 2028 hedge ratio."
+   },
+   {
+    "market": "This is a zero-carbon nuclear story.",
+    "us": "The second-largest fuel in the fleet is coal, at 8.7 GW — a third more than the nuclear fleet — carrying retirement obligations, carbon exposure and compliance costs that no multiple in this dossier captures and that the thesis does not mention. A fifth of the fleet is the part of the story nobody is telling.",
+    "evidence": "Phase 1 and Phase 2: the disclosed fleet composition."
+   },
+   {
+    "market": "Record Q2 EBITDA up 31% confirms the earnings power.",
+    "us": "Revenue in the same quarter missed consensus by 30% and fell 5.5% year on year, and GAAP net income was USD 305m against USD 1.767bn of adjusted EBITDA. All three are true; the gaps are hedge marks. The practical consequence is that reported revenue and earnings are unusable for this company, which is why this dossier excludes a P/E entirely and values it on cash.",
+    "evidence": "Phase 3: the Q2 2026 revenue, EBITDA and net income figures side by side."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The cash yield is exceptional and it is real. Roughly USD 4.3bn of free cash flow before growth on a USD 47.5bn market capitalisation is about 9.1%, and roughly USD 6.5bn of buybacks has retired about 30% of the share count since 2021.",
+    "why": "This is the strongest argument against a negative view. An investor is paid very well to wait for the PPAs to ramp, and the capital allocation has been the best in this batch."
+   },
+   {
+    "text": "The turbine bottleneck protects the merchant fleet. If GE Vernova's 116 GW and Siemens Energy's ~70 GW gas turbine backlogs mean no meaningful new ERCOT capacity for five years, existing dispatchable plant in a load-growing market is scarcer than the forward curve implies.",
+    "why": "This dossier's own batch supplies the evidence for the bull case, and it is a good one."
+   },
+   {
+    "text": "Twenty analysts rate it Strong Buy with an average target of about USD 217, and this analysis sits 39% below that.",
+    "why": "When the entire covering universe is on the other side, the base rate favours them. The USD 106 to USD 305 range does suggest they are not confident either."
+   }
+  ],
+  "sellTriggers": [
+   "ERCOT forward prices for 2028 and 2029 falling further on two consecutive quarterly disclosures",
+   "FY2027 adjusted EBITDA guided below USD 6.8bn",
+   "Hedge ratios for the following year disclosed below 80%",
+   "Net debt to EBITDA rising above 3.0x",
+   "Suspension of the buyback or failure to renew the authorisation beyond the remaining USD 1.2bn",
+   "Any delay to the AWS Comanche Peak ramp scheduled from late 2027",
+   "A material coal retirement charge or an accelerated closure mandate"
+  ],
+  "reEntry": "Blended fair value is approximately USD 126 base, USD 132 probability-weighted, with a bear case near USD 87 and a bull case near USD 188. Below roughly USD 110 the shares would offer a base-case IRR above 15% with a cash yield above 11%, which would justify a full position in a security this geared. At USD 139.80 the appropriate action is to hold and collect the yield. The evidentiary test is not a price but a curve: two consecutive quarters in which ERCOT forwards for 2028-29 stop falling would remove the specific thing that broke this equity, and the PPA ramp from late 2027 does the rest."
+ },
+ "model": {
+  "sharesOut": 340,
+  "netDebt": 18500,
+  "wacc": {
+   "bear": 0.095,
+   "base": 0.08,
+   "bull": 0.073
+  },
+  "terminalGrowth": {
+   "bear": 0.015,
+   "base": 0.02,
+   "bull": 0.025
+  },
+  "fcf": {
+   "bear": [
+    2600,
+    2500,
+    2600,
+    2700,
+    2800
+   ],
+   "base": [
+    3000,
+    3100,
+    3400,
+    3700,
+    4000
+   ],
+   "bull": [
+    3500,
+    4200,
+    4800,
+    5400,
+    6000
+   ]
+  },
+  "assetBase": {
+   "label": "FY2026E adjusted EBITDA",
+   "value": 7200,
+   "multiple": {
+    "bear": 7.5,
+    "base": 9.0,
+    "bull": 10.5
+   }
+  },
+  "sotp": [
+   {
+    "name": "Nuclear (6.5 GW, ~58% under 20-year PPA)",
+    "method": "EV/EBITDA",
+    "metric": 2200,
+    "multiple": 11,
+    "stake": 1.0
+   },
+   {
+    "name": "Gas (27 GW, merchant)",
+    "method": "EV/EBITDA",
+    "metric": 2600,
+    "multiple": 7,
+    "stake": 1.0
+   },
+   {
+    "name": "Retail (~5m customers)",
+    "method": "EV/EBITDA",
+    "metric": 1600,
+    "multiple": 8,
+    "stake": 1.0
+   },
+   {
+    "name": "Coal (8.7 GW, retiring)",
+    "method": "EV/EBITDA",
+    "metric": 700,
+    "multiple": 4,
+    "stake": 1.0
+   },
+   {
+    "name": "Solar and storage (1.3 GW)",
+    "method": "EV/EBITDA",
+    "metric": 100,
+    "multiple": 10,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "Vistra (subject)",
+    "self": true,
+    "evEbitda": 9.2,
+    "ndEbitda": 2.6
+   },
+   {
+    "name": "Constellation Energy (cross-reference)",
+    "pe": 23.6,
+    "evEbitda": 14.0
+   },
+   {
+    "name": "PPC (cross-reference)",
+    "pe": 19.5,
+    "evEbitda": 9.2
+   },
+   {
+    "name": "Metlen (cross-reference)",
+    "pe": 10.6,
+    "evEbitda": 7.7
+   },
+   {
+    "name": "Siemens Energy (cross-reference)",
+    "pe": 30.4,
+    "evEbitda": 17.0
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 75,
+    "dividends3y": 3.0
+   },
+   "base": {
+    "price3y": 165,
+    "dividends3y": 3.3
+   },
+   "bull": {
+    "price3y": 260,
+    "dividends3y": 3.6
+   }
+  },
+  "probabilities": {
+   "bear": 0.25,
+   "base": 0.5,
+   "bull": 0.25
+  },
+  "weights": {
+   "dcf": 0.35,
+   "asset": 0.35,
+   "sotp": 0.3,
+   "pb": 0.0
+  }
+ }
+}
