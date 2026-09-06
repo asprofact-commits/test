@@ -1,0 +1,132 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Alphabet Inc.","ticker":"NASDAQ: GOOGL","sector":"software","currency":"USD","fxToUsd":1,"price":338.72,"priceUnit":"share","asOf":"2026-09-05","phase":5,"phaseName":"Valuation, stress tests & IC memo",
+  "assumedContext":[
+   "No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.",
+   "Price-to-book is excluded as meaningless for this business. The DCF is deliberately down-weighted to 20% because near-term free cash flow is negative and the answer would otherwise be almost entirely a terminal assumption; weights are set explicitly in model.weights.",
+   "All earnings-based work uses clean operating earnings, not the reported figures that contain USD 77.1bn of after-tax unrealised gains."]},
+ "findings":[
+  {"id":"p5-01","claim":"At USD 338.72 Alphabet trades at approximately 29.8x estimated FY2026 clean operating earnings of USD 11.37 per share and approximately 18.6x estimated FY2026 EBITDA of USD 215bn, on an enterprise value of approximately USD 4,000bn.","label":"ANALYST ESTIMATE","source":"Derived: market cap 4,142 less 142 net cash; EBITDA = ~170 operating income plus ~45 D&A","asOf":"2026-09-05","confidence":"medium","impact":"high","value":29.8,"unit":"x clean FY2026E earnings"},
+  {"id":"p5-02","claim":"Against peers on a comparable clean basis Alphabet is at the median, not at a discount: Microsoft above 23x, S&P 500 at 25.6x, Nasdaq-100 at approximately 34.5x, Apple at approximately 36.9x. The peer median of those benchmarks is roughly 30x against Alphabet's 29.8x.","label":"ANALYST ESTIMATE","source":"Derived from sourced benchmark multiples; Bearsavings Mag-7 tracker 2026-09-02","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-03","claim":"The market capitalisation has risen 59% over one year to approximately USD 4.1 trillion. The re-rating that the antitrust resolution and Cloud acceleration justified has substantially already occurred.","label":"FACT","source":"Stockanalysis.com; companiesmarketcap, 2026-09","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p5-04","claim":"A discounted cash flow on base-case assumptions — free cash flow of -20, +20, +70, +120, +180 USD bn across 2027-31, a 9.0% WACC and 3.5% terminal growth — gives approximately USD 212 per share. It is weighted at only 20% because the first two years are negative and 90% of the value sits beyond the forecast.","label":"ANALYST ESTIMATE","source":"Derived; workings reproduced in the workspace model","asOf":"2026-09-05","confidence":"low","impact":"medium","value":212,"unit":"USD per share"},
+  {"id":"p5-05","claim":"An EV/EBITDA valuation at 18x FY2026E EBITDA gives approximately USD 328, and a sum-of-the-parts — Services at 18x operating income, Cloud at 8x sales, Other Bets anchored on Waymo's USD 126bn valuation — gives approximately USD 310.","label":"ANALYST ESTIMATE","source":"Derived; segment inputs from FY2026 quarterly disclosures and the Waymo funding round","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-06","claim":"Weighted 20% DCF, 40% EV/EBITDA and 40% sum-of-the-parts, the base case is approximately USD 298 and the probability-weighted fair value approximately USD 302 — about 11% below the market price.","label":"ANALYST ESTIMATE","source":"Derived; computed in the workspace from model.weights","asOf":"2026-09-05","confidence":"medium","impact":"high","value":302,"unit":"USD per share"},
+  {"id":"p5-07","claim":"Reverse DCF: at a 9.0% WACC the current price implies terminal growth of approximately 5.1% in perpetuity, above long-run US nominal GDP of roughly 4%. Holding terminal growth at 3.5%, the price implies a WACC of approximately 7.6%.","label":"ANALYST ESTIMATE","source":"Derived: solving for the terminal value and the discount rate implied by the market price","asOf":"2026-09-05","confidence":"medium","impact":"high","value":5.1,"unit":"% implied perpetual growth"},
+  {"id":"p5-08","claim":"The implied assumptions are demanding but materially less so than Apple's on the same methodology — 5.1% implied perpetual growth against Apple's 5.7%, and a 7.6% implied WACC against Apple's 6.9% — while Alphabet is growing revenue at a consensus 21% against Apple's 15%.","label":"ANALYST ESTIMATE","source":"Derived; Apple figures from the parallel dossier in research/AAPL","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-09","claim":"The fair-value estimate sits approximately 0.7 percentage points below the boundary between the HOLD and AVOID bands. Given that a 100bp change in WACC alone moves fair value by roughly 15%, the model cannot distinguish -10.7% from -9.9%, and the difference between the two ratings is inside the error bars.","label":"ANALYST ESTIMATE","source":"Derived sensitivity","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p5-10","claim":"Expected three-year IRR is approximately +3.5% including dividends, positive even though fair value is below the current price, because the three-year targets embed continued compounding. The tension is the definition of a fully-valued high-quality asset.","label":"ANALYST ESTIMATE","source":"Derived from the scenario targets against USD 338.72","asOf":"2026-09-05","confidence":"medium","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Valuation by method, base case",
+   "columns":["Method","Value per share","vs USD 338.72","Weight","Why this weight"],
+   "rows":[
+    ["EV/EBITDA at 18x","~USD 328","-3%","40%","Least distorted by the capex cycle; anchors to the market's revealed preference"],
+    ["Sum of the parts","~USD 310","-8%","40%","Separates a mature cash engine from a hypergrowth Cloud and a venture portfolio — the right frame for this company"],
+    ["Discounted cash flow","~USD 212","-37%","20%","Down-weighted: FCF is negative for two years and ~90% of the value is terminal"],
+    ["Justified P/B","n/a","—","0%","Excluded — book value is not economically meaningful here"],
+    ["Blended base case","~USD 298","-12%","100%","Probability-weighted across scenarios: ~USD 302"]
+   ],
+   "note":"[ANALYST ESTIMATE] throughout. Unlike the Apple dossier, the methods disagree sharply — the DCF is the outlier and is the least reliable instrument for a company two years into a capex cycle."},
+  {"title":"Scenarios",
+   "columns":["Scenario","Prob.","Trigger set","WACC","Terminal g","Fair value","3y IRR"],
+   "rows":[
+    ["Bear","20%","Depreciation lives shorten; Cloud growth decays below 40%; capex stays above USD 250bn without margin follow-through; D.C. Circuit revives structural remedies","9.8%","2.0%","~USD 246","-9.3%"],
+    ["Base","55%","Capex peaks in 2027; Cloud compounds down from 82% toward 40%; Search holds low-teens; depreciation lives hold","9.0%","3.5%","~USD 298","+3.3%"],
+    ["Bull","25%","Backlog converts faster than expected; TPU external sales scale; capex plateaus in 2027; FCF inflects sharply in 2028","8.4%","4.0%","~USD 358","+14.1%"]
+   ],
+   "note":"[ANALYST ESTIMATE] The bear probability is set at 20% rather than 25% because the September 2026 ad tech ruling removed the structural-remedy tail that would otherwise sit in it."},
+  {"title":"The two megacaps compared on identical methodology",
+   "columns":["","Alphabet","Apple"],
+   "rows":[
+    ["Headline P/E","~17.0x","~36.9x"],
+    ["Clean P/E on operating earnings","~29.8x","~36.9x"],
+    ["Revenue growth, FY2026E","~21%","~14.7%"],
+    ["Implied perpetual growth at the price","~5.1%","~5.7%"],
+    ["Implied WACC at 3.5% terminal growth","~7.6%","~6.9%"],
+    ["AI posture","Building at ~USD 200bn/yr","Renting at ~USD 1bn/yr"],
+    ["Capital returns","Buybacks halted; USD 84.75bn equity raise","USD 100bn buyback authorised"],
+    ["Fair value vs price","-11%","-32%"]
+   ],
+   "note":"[ANALYST ESTIMATE] Both look expensive on this methodology; Alphabet materially less so, and on much faster growth. The headline-multiple comparison that makes Alphabet look half the price of Apple does not survive cleaning the earnings."}
+ ],
+ "gaps":[
+  {"item":"Depreciation policy on compute assets","whyItMatters":"The largest single determinant of clean earnings, and therefore of the two methods carrying 80% of the weight. A shift from six-year to four-year lives would move the base case materially.","resolvedBy":"FY2026 10-K"},
+  {"item":"Cloud backlog conversion period","whyItMatters":"USD 514bn of contracted revenue is the core of the bull case and the SOTP Cloud multiple; its value depends on the recognition schedule.","resolvedBy":"10-K remaining performance obligation note"},
+  {"item":"A full peer table with EV/EBITDA","whyItMatters":"Only P/E benchmarks were sourceable, so the 40%-weighted EV/EBITDA multiple is anchored on Alphabet's own current multiple rather than on peers.","resolvedBy":"A market data terminal"},
+  {"item":"Sourced WACC components","whyItMatters":"A 100bp error moves fair value ~15% — more than the entire gap to the market price, and more than the margin by which this lands in one rating band rather than another.","resolvedBy":"Live 10-year Treasury and a published beta"},
+  {"item":"FY2026 operating cash flow","whyItMatters":"The DCF starting point is estimated from one quarter's negative print plus capex guidance.","resolvedBy":"FY2026 10-K"}
+ ],
+ "risks":[
+  {"text":"Reported earnings are inflated by unrealised gains and the widely quoted 17x multiple is roughly half the real one. The most common reason given for owning this stock is arithmetically wrong.","severity":"high","probability":"high"},
+  {"text":"Free cash flow is negative and the capex cycle has no guided peak, with FY2027 consensus 28% above an already-doubled 2026.","severity":"high","probability":"high"},
+  {"text":"Depreciation on short-lived compute could compress reported margin sharply even while revenue compounds.","severity":"high","probability":"medium"},
+  {"text":"Both antitrust cases are live on appeal with the DOJ seeking stronger remedies, so the structural tail is reduced rather than closed.","severity":"high","probability":"low"},
+  {"text":"Cloud growth of 82% must decay, and the market is capitalising a rate that cannot persist.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — Cloud growth rate, whether free cash flow stays negative, whether buybacks resume","window":"Oct 2026","impact":"High","probability":0.95},
+  {"text":"Unsealed ad tech opinion and the Final Judgment filing","window":"Sept-Oct 2026","impact":"Medium","probability":0.9},
+  {"text":"FY2026 10-K — depreciation lives and backlog conversion, the two largest unknowns","window":"Feb 2027","impact":"High","probability":0.95},
+  {"text":"FY2027 capex guidance","window":"Feb 2027","impact":"High","probability":0.95},
+  {"text":"D.C. Circuit ruling on the search case","window":"2027","impact":"High","probability":0.5}
+ ],
+ "conclusions":[
+  "Alphabet is a better business than the market's summary statistics suggest and a more expensive stock than they suggest, at the same time. Revenue growth accelerated to a consensus 21%, Cloud compounds at 82% with expanding margin behind USD 514bn of backlog, and both antitrust cases resolved without structural remedies — while the quoted 17x multiple is really about 29.8x on clean earnings.",
+  "Blended fair value is approximately USD 302 against USD 338.72, roughly 11% below. That sits about 0.7pp on the wrong side of the HOLD/AVOID boundary, which is well inside the model's own error bars.",
+  "The methods disagree, which is itself informative: EV/EBITDA says fairly valued, sum-of-the-parts says slightly expensive, and the DCF says sharply expensive. The DCF is the least trustworthy of the three here, and is weighted accordingly at 20%.",
+  "The reverse DCF asks for ~5.1% perpetual growth at a 9% WACC — demanding, but less demanding than Apple's 5.7% on far faster growth.",
+  "The genuine risk is no longer competitive or legal. It is accounting and capital allocation: whether USD 200-257bn a year earns its cost of capital, and how much reported profit survives an honest depreciation assumption."
+ ],
+ "thesisImpact":"The five phases converge on a high-quality compounder trading at a full but not absurd price, where the principal risk has migrated from the courtroom to the depreciation schedule. This is a name to own on weakness rather than to chase after a 59% one-year re-rating, and the thing to watch is not Search share but the useful-life assumption in the FY2026 10-K.",
+ "memo":{
+  "rating":"HOLD / NEUTRAL",
+  "weighting":"EV/EBITDA 40%, sum-of-the-parts 40%, DCF 20%. The DCF is deliberately down-weighted: free cash flow is negative for two of the five forecast years and roughly 90% of the value falls beyond the explicit period, so it measures the terminal assumption rather than the business. Price-to-book is excluded outright. NOTE ON THE RATING: the arithmetic returns AVOID at -10.7%, 0.7 percentage points past the HOLD boundary. I am stating HOLD / NEUTRAL because a 100bp WACC change moves fair value by about 15%, so the model cannot distinguish -10.7% from -9.9%, and letting a threshold manufacture that precision would be false. This is the opposite call from the Apple dossier, where the gap was -32% and even the bull case was negative — there the arithmetic was outside any error bar and I moved the rating to match it.",
+  "nonConsensus":[
+   {"market":"Alphabet is the cheapest megacap at roughly 17x earnings.","us":"That multiple is computed on trailing earnings containing USD 77.1bn of after-tax unrealised gains on SpaceX and one private holding. On clean FY2026 operating earnings the multiple is about 29.8x — at the peer median, not below it. The single most common reason given for owning this stock does not survive checking.","evidence":"Phase 4: Alphabet's own disclosure that the equity gain added USD 6.26 to the USD 9.11 reported Q2 EPS, leaving USD 2.85 against a USD 2.88 consensus."},
+   {"market":"The AI capex boom is a threat to Alphabet's cash generation and a reason for the discount.","us":"Alphabet is the only hyperscaler that can already point to where the money converts: Cloud grew 82% while operating margin went from 20.7% to 35.6%, behind USD 514bn of contracted backlog. The capex is a compensated build against contracted demand, not a speculative one — which is why the bottleneck is capacity rather than customers.","evidence":"Phase 2 and 3: Q2 2026 Cloud segment disclosures and the backlog figure."},
+   {"market":"Antitrust is an unquantifiable overhang on Alphabet.","us":"At district level it is largely resolved and it resolved well. Mehta declined to order a Chrome divestiture or an Android breakup, and on 2 September 2026 Brinkema rejected all three DOJ structural remedies in the ad tech case. What remains is conduct regulation and an appeal, not dismemberment — and the same 12-month rule that repriced Apple's biggest profit line also capped Alphabet's biggest single cost.","evidence":"Phase 1: the Mehta remedy terms and the Brinkema ruling of 2026-09-02."}
+  ],
+  "fears":[
+   {"text":"Free cash flow has gone negative for the first time since the 2004 IPO, buybacks are halted, and the company is funding a USD 200bn-a-year build with debt and the largest equity raise in US corporate history while still paying a dividend.","why":"This is a genuine change in the financial character of the business, not a presentational one, and it happened in a single year."},
+   {"text":"Roughly 60% of the capex is short-lived compute, and the useful-life assumption is unverifiable from outside. A shift from six-year to four-year lives would cut reported earnings by tens of billions with no change in the business.","why":"It is the largest single unknown in the dossier and it sits directly under the two methods carrying 80% of the valuation weight."},
+   {"text":"FY2027 capex consensus is about USD 257bn, 28% above an already-doubled 2026, and management has guided only that it will rise significantly. There is no stated peak.","why":"An open-ended capital commitment against demand that must be taken partly on trust is how capital cycles end badly, and the whole sector is doing it at once."}
+  ],
+  "sellTriggers":[
+   "Cloud revenue growth falls below 35% year on year for two consecutive quarters",
+   "Consolidated operating margin falls below 30% for two consecutive quarters on rising depreciation",
+   "FY2027 capex guided above USD 280bn without a corresponding rise in Cloud backlog",
+   "Search revenue growth falls below 8% year on year in any quarter",
+   "The D.C. Circuit revives a structural remedy in either antitrust case",
+   "Clean price/earnings on operating earnings exceeds 35x"
+  ],
+  "reEntry": "Blended fair value is ~USD 302. A 15% margin of safety implies adding below ~USD 257; the base case supports paying up to ~USD 300. Given a positive expected three-year IRR of about +3.5%, an existing holder has no reason to sell on valuation alone — this is a do-not-chase call, not a get-out call."
+ },
+ "model":{
+  "sharesOut":12230,
+  "netDebt":-142000,
+  "wacc":{"bear":0.098,"base":0.090,"bull":0.084},
+  "terminalGrowth":{"bear":0.020,"base":0.035,"bull":0.040},
+  "fcf":{
+   "bear":[-30000,0,40000,80000,110000],
+   "base":[-20000,20000,70000,120000,180000],
+   "bull":[0,60000,130000,190000,250000]},
+  "assetBase":{"label":"FY2026E EBITDA","value":215000,"multiple":{"bear":14,"base":18,"bull":22}},
+  "sotp":[
+   {"name":"Google Services","method":"EV/EBIT","metric":155000,"multiple":18,"stake":1.0},
+   {"name":"Google Cloud","method":"EV/Sales","metric":95000,"multiple":8,"stake":1.0},
+   {"name":"Other Bets (Waymo-anchored)","method":"Stake value","metric":100000,"multiple":1,"stake":1.0}],
+  "peers":[
+   {"name":"Alphabet (subject, clean)","self":true,"evEbitda":18.6,"pe":29.8,"ndEbitda":-0.66,"dy":0.26},
+   {"name":"Apple","pe":36.9,"evEbitda":27.8,"ndEbitda":-0.36,"dy":0.33},
+   {"name":"Microsoft","pe":23.0},
+   {"name":"Nasdaq-100 (index)","pe":34.5},
+   {"name":"S&P 500 (index)","pe":25.6}],
+  "targets":{
+   "bear":{"price3y":250,"dividends3y":2.9},
+   "base":{"price3y":370,"dividends3y":3.0},
+   "bull":{"price3y":500,"dividends3y":3.1}},
+  "probabilities":{"bear":0.20,"base":0.55,"bull":0.25},
+  "weights":{"dcf":0.20,"asset":0.40,"sotp":0.40,"pb":0.0}
+ }
+}

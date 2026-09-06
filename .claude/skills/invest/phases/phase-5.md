@@ -32,7 +32,7 @@ Run every method the sector profile marks as applicable. Supply the inputs to `m
 3. **P/B vs normalised ROE** — justified P/B = (ROE − g) / (COE − g). Present the matrix across the plausible ROE and COE ranges; it is usually the most honest single view of a book-value business.
 4. **SOTP** — separate businesses with genuinely different economics: regulated network from merchant generation, each operating subsidiary, minority stakes. State the method and multiple per segment and the stake held.
 
-Triangulate: state which method you weight most and why, and give a probability-weighted fair value.
+Triangulate: state which method you weight most and why, put those weights in `model.weights` so the arithmetic uses them, and give a probability-weighted fair value. Do not leave the defaults in place by inattention — a DCF weighted at 45% is wrong for a company whose near-term free cash flow is negative or whose terminal value carries most of the answer.
 
 ## 5.4 The investment committee memo
 

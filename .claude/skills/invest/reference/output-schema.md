@@ -105,9 +105,12 @@ Any phase may contribute; Phase 4 and 5 carry most of it. The workspace deep-mer
     "base": {"price3y": 88,  "dividends3y": 7.0},
     "bull": {"price3y": 121, "dividends3y": 7.8}
   },
-  "probabilities": {"bear": 0.25, "base": 0.50, "bull": 0.25}
+  "probabilities": {"bear": 0.25, "base": 0.50, "bull": 0.25},
+  "weights": {"dcf": 0.45, "asset": 0.25, "pb": 0.15, "sotp": 0.15}
 }
 ```
+
+`weights` is your stated triangulation — Phase 5 asks which method you weight most and why, and this is how that reaches the arithmetic. Omit it to accept the defaults shown above. Weights are renormalised over the methods that actually produced a value, so a method with no inputs costs nothing. Weight the DCF down when near-term free cash flow is negative or the terminal value dominates; weight it up when cash conversion is stable and predictable. The reader can still flex any weight in the workspace, and their change wins over yours.
 
 ### What the workspace computes from it
 

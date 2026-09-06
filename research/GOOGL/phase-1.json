@@ -1,0 +1,63 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Alphabet Inc.","ticker":"NASDAQ: GOOGL","sector":"software","currency":"USD","fxToUsd":1,"price":338.72,"priceUnit":"share","asOf":"2026-09-05","phase":1,"phaseName":"Pricing-power architecture",
+  "assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy, including sec.gov and abc.xyz. Findings rest on search-result summaries of Alphabet 8-K/10-Q releases and reputable press.","Sector recorded as software; the advertising business is priced by auction and the cloud business by contract, so Phase 1 covers both mechanisms."]},
+ "findings":[
+  {"id":"p1-01","claim":"Alphabet sets no list price in its largest business. Search advertising is priced by continuous auction, so pricing power shows up as auction density and advertiser competition rather than as a rate card.","label":"ANALYST ESTIMATE","source":"Derived from the ads business model","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p1-02","claim":"The auction is still tightening despite AI disruption fears: Search revenue grew 17% year on year in Q2 2026 to USD 63.3bn, from about USD 54.2bn.","label":"FACT","source":"Alphabet Q2 2026 results, 2026-07-22","asOf":"2026-07-22","confidence":"high","impact":"high","value":63300,"unit":"USD m"},
+  {"id":"p1-03","claim":"On 2 September 2026 Judge Brinkema rejected all three of the DOJ structural remedies in the ad tech case, including divestiture of AdX and open-sourcing the DFP final auction logic. Google keeps the ad stack and takes behavioural remedies instead: interoperability with competitors and an end to practices that depress publisher rates.","label":"REGULATORY STATUTE","source":"TechCrunch, AdExchanger, Courthouse News, 2026-09-02/03","asOf":"2026-09-02","confidence":"high","impact":"high"},
+  {"id":"p1-04","claim":"The written ad tech ruling is under seal for 14 days for redactions and the parties must file a jointly proposed Final Judgment by 2 October 2026. Google has said it will appeal the liability finding.","label":"REGULATORY STATUTE","source":"Courthouse News; AdExchanger, 2026-09-02","asOf":"2026-09-02","confidence":"high","impact":"medium"},
+  {"id":"p1-05","claim":"In the search case, Judge Mehta declined the severest remedies — no Chrome divestiture, no Android breakup, no ban on distribution payments — and instead limited exclusivity and tying. Google may continue paying Apple for default placement provided no agreement runs more than one year.","label":"REGULATORY STATUTE","source":"CNBC 2025-12-05; itechguides and TechPolicy.Press summaries, 2026","asOf":"2026-08-31","confidence":"high","impact":"high"},
+  {"id":"p1-06","claim":"Both the search liability finding and its remedy are on appeal to the D.C. Circuit — Google filed notice in mid-January 2026 with its opening brief in May, and the DOJ with state attorneys general cross-appealed for stronger remedies. Briefing was still under way in late August 2026.","label":"FACT","source":"Courthouse News; LitigationLogic, 2026-08","asOf":"2026-08-31","confidence":"high","impact":"high"},
+  {"id":"p1-07","claim":"Taken together, the two antitrust cases resolved at the district level without a structural break-up. The company that was widely expected to be dismantled has kept Chrome, Android, the ad stack and its distribution deals, and now faces conduct rules rather than divestiture.","label":"ANALYST ESTIMATE","source":"Derived from the Mehta and Brinkema outcomes","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p1-08","claim":"Alphabet pays Apple an estimated USD 20bn a year for default search placement — a cost to Alphabet of roughly 12% of estimated FY2026 operating income, now capped at one-year terms and open to competitive bidding each year.","label":"ANALYST ESTIMATE","source":"Derived: USD 20bn against ~USD 170bn estimated FY2026 operating income; payment figure from US v. Google court documents","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-09","claim":"The 12-month rule cuts both ways and is arguably worse for Alphabet than for Apple. Apple can now auction the default annually; Alphabet must re-win it annually, and cannot buy exclusivity at any price.","label":"ANALYST ESTIMATE","source":"Derived from the remedy terms","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-10","claim":"Cloud pricing power is contractual and improving fast: Google Cloud operating margin rose from 20.7% to 35.6% year on year in Q2 2026 while revenue grew 82%. Margin expanding with volume is the signature of genuine pricing power rather than share bought with discount.","label":"FACT","source":"Alphabet Q2 2026 results, 2026-07-22","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p1-11","claim":"The competitive threat is real but moving in Alphabet favour. ChatGPT share of the AI assistant market fell below 50% for the first time in 2026, from 87.2% two years earlier, while Gemini grew from 5.4% to over 21%; Gemini share of chatbot web traffic rose from 5.7% to 27.7%.","label":"CONSENSUS","source":"TechCrunch 2026-06-16; Similarweb via vertu; First Page Sage, 2026","asOf":"2026-06-30","confidence":"medium","impact":"high"},
+  {"id":"p1-12","claim":"Gemini has roughly 662 million monthly users against ChatGPT 1.1 billion and Claude 245 million. Alphabet is second in assistants while remaining first in search — the distribution advantage has not yet been broken.","label":"CONSENSUS","source":"First Page Sage, September 2026","asOf":"2026-09-01","confidence":"medium","impact":"medium"},
+  {"id":"p1-13","claim":"Dual-class share structure concentrates voting control with the founders through Class B shares. Minority holders of Class A and non-voting Class C carry the economics with limited governance recourse.","label":"FACT","source":"Alphabet capital structure, widely reported","asOf":"2025-12-31","confidence":"high","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"Pricing mechanism by revenue line",
+   "columns":["Line","How price is set","Evidence of power","Binding constraint"],
+   "rows":[
+    ["Search advertising","Continuous auction","Revenue +17% YoY in Q2 2026 despite AI substitution fears","Mehta conduct remedies; D.C. Circuit appeal"],
+    ["YouTube advertising","Auction plus direct sales","USD 11.06bn in Q2 2026, up from USD 9.79bn","Competition for attention"],
+    ["Google Cloud","Negotiated contracts, multi-year","Margin 20.7% to 35.6% while growing 82%","Capacity, not demand — backlog USD 514bn"],
+    ["Subscriptions","List price","Included in Services +16%","Consumer willingness to pay"],
+    ["Distribution (cost, not revenue)","Bilateral, court-supervised","~USD 20bn a year to Apple","Max 12-month terms, no exclusivity"]
+   ],
+   "note":"[FACT] except the final row [ANALYST ESTIMATE]. Note the asymmetry with Apple: the same court order that repriced Apple's largest profit line repriced Alphabet's largest single cost."},
+  {"title":"Antitrust exposure after September 2026",
+   "columns":["Case","Structural risk","Outcome","Still live?"],
+   "rows":[
+    ["US v. Google (search)","Chrome divestiture, Android breakup, payment ban","All declined; exclusivity and tying limited; payments capped at 12-month terms","Yes — D.C. Circuit, both sides appealing"],
+    ["US v. Google (ad tech)","AdX divestiture, DFP auction open-sourced","All three structural remedies rejected 2026-09-02; behavioural remedies only","Yes — Google appealing liability; Final Judgment due 2026-10-02"]
+   ],
+   "note":"[REGULATORY STATUTE] The break-up scenario that hung over this equity for two years has not materialised at the district level in either case."}
+ ],
+ "gaps":[
+  {"item":"The sealed text of the Brinkema behavioural remedies","whyItMatters":"Interoperability requirements and rate-depression prohibitions could still cost real ad tech margin. Structural risk is gone; the size of the conduct cost is unknown.","resolvedBy":"The unsealed opinion, expected around 2026-09-16, and the Final Judgment due 2026-10-02"},
+  {"item":"Search revenue attributable to the Apple default","whyItMatters":"Alphabet pays ~USD 20bn a year for traffic it must now re-win annually. What that traffic earns is the return on the largest single cost line and is not disclosed.","resolvedBy":"Not disclosed by either party; court exhibits are the only likely source"},
+  {"item":"Whether AI Overviews and Gemini in Search dilute or expand query monetisation","whyItMatters":"The central bear thesis on Search. Q2 growth of 17% is evidence against dilution so far, but the mix effect is not disclosed.","resolvedBy":"Management commentary; sustained Search growth through FY2027"}
+ ],
+ "risks":[
+  {"text":"Both antitrust cases remain live on appeal, with the DOJ seeking stronger remedies. A D.C. Circuit reversal could reopen structural risk that the market has now largely discounted away.","severity":"high","probability":"low"},
+  {"text":"The ~USD 20bn Apple distribution payment must be re-won annually and cannot be made exclusive, so the cost can rise while the protection cannot.","severity":"medium","probability":"medium"},
+  {"text":"Dual-class control means minority holders cannot force capital discipline if the AI capex cycle disappoints.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"Unsealed ad tech opinion reveals the scope of behavioural remedies","window":"Mid-Sept 2026","impact":"Medium","probability":0.9},
+  {"text":"Jointly proposed Final Judgment filed in the ad tech case","window":"2026-10-02","impact":"Medium","probability":0.9},
+  {"text":"D.C. Circuit ruling on the search case, both appeals","window":"2027","impact":"High","probability":0.5}
+ ],
+ "conclusions":[
+  "Alphabet emerged from two antitrust cases at district level with its structure intact: no Chrome divestiture, no Android breakup, no AdX divestiture, and distribution payments permitted. The break-up scenario that overhung this equity for two years did not happen.",
+  "Pricing power is demonstrated rather than asserted. Search grew 17% in Q2 2026 against a consensus expectation of AI-driven erosion, and Cloud expanded operating margin from 20.7% to 35.6% while growing 82% — margin rising with volume is the signature of real pricing power.",
+  "The same 12-month, non-exclusive rule that repriced Apple's largest profit line repriced Alphabet's largest single cost. Alphabet must now re-win the Apple default every year and cannot buy exclusivity at any price.",
+  "The competitive picture in assistants improved through 2026: ChatGPT fell below 50% share for the first time while Gemini rose above 21%, and Gemini share of chatbot web traffic went from 5.7% to 27.7%.",
+  "What remains is conduct risk, not existence risk — but both cases are live on appeal with the DOJ pressing for more, so the tail has not closed."
+ ],
+ "thesisImpact":"Phase 1 removes the reason most bears held this name at a discount. The legal overhang that justified a structurally cheap multiple has largely resolved in Alphabet's favour, and the operating evidence contradicts the AI-disruption thesis on Search. That shifts the entire question to capital allocation — which is where Phases 2 and 4 find the actual risk.",
+ "model":{"sharesOut":12230}
+}

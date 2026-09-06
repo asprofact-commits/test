@@ -508,8 +508,10 @@ function valuation(){
   });
 
   /* triangulation weights, renormalised over the methods actually available */
+  /* defaults, then the analyst's stated weights from the model block, then
+     any weight the reader has flexed in the UI — the reader always wins */
   const dflt={dcf:0.45,asset:0.25,pb:0.15,sotp:0.15};
-  const wts=Object.assign({},dflt,(S.overrides.weights||{}));
+  const wts=Object.assign({},dflt,(m.weights||{}),(S.overrides.weights||{}));
   let tot=0; METHODS.forEach(([k])=>{ if(out.methodsUsed[k]) tot+=Math.max(0,wts[k]||0); });
   out.weights={}; METHODS.forEach(([k])=>{ out.weights[k]=(out.methodsUsed[k]&&tot>0)?Math.max(0,wts[k]||0)/tot:0; });
 

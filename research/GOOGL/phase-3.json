@@ -1,0 +1,62 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Alphabet Inc.","ticker":"NASDAQ: GOOGL","sector":"software","currency":"USD","fxToUsd":1,"price":338.72,"priceUnit":"share","asOf":"2026-09-05","phase":3,"phaseName":"Demand & monetisation structure",
+  "assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy. Findings rest on search-result summaries."]},
+ "findings":[
+  {"id":"p3-01","claim":"FY2025 revenue was USD 402.836bn, up 15%, with net income of USD 132.170bn and diluted EPS of USD 10.81.","label":"FACT","source":"Alphabet Q4 and FY2025 results, 2026-02-04","asOf":"2025-12-31","confidence":"high","impact":"high","value":402836,"unit":"USD m"},
+  {"id":"p3-02","claim":"Q1 2026 revenue was USD 109.9bn — an eleventh consecutive quarter of double-digit growth — with operating income up 30% to USD 39.7bn and operating margin of 36.1%.","label":"FACT","source":"Alphabet Q1 2026 results, 2026-04-29","asOf":"2026-04-29","confidence":"high","impact":"high"},
+  {"id":"p3-03","claim":"Q2 2026 revenue was USD 119.8bn, up 24%, with operating income up 30% to USD 40.8bn. Growth is accelerating, not decaying.","label":"FACT","source":"Alphabet Q2 2026 results, 2026-07-22","asOf":"2026-07-22","confidence":"high","impact":"high","value":119800,"unit":"USD m"},
+  {"id":"p3-04","claim":"Google Cloud revenue reached USD 24.8bn in Q2 2026, up 82%, with operating income of USD 8.8bn — more than tripling year on year — and operating margin of 35.6% against 20.7% a year earlier.","label":"FACT","source":"Alphabet Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high","value":24800,"unit":"USD m"},
+  {"id":"p3-05","claim":"Cloud backlog stood at USD 514bn at Q2 2026 — more than four times FY2025 total company revenue and roughly nine times annualised Cloud revenue.","label":"FACT","source":"Alphabet Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p3-06","claim":"Search revenue grew 17% to USD 63.3bn in Q2 2026, and YouTube advertising reached USD 11.06bn against USD 9.79bn a year earlier. The core advertising franchise is accelerating despite two years of predictions that generative AI would erode it.","label":"FACT","source":"Alphabet Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p3-07","claim":"FY2026 consensus revenue is approximately USD 488-498bn for growth of about 21%, with FY2027 consensus of approximately USD 585.6bn for growth of about 20%.","label":"CONSENSUS","source":"Analyst consensus via Simply Wall St and Fundamentalis, 2026","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p3-08","claim":"Demand classification: Cloud backlog of USD 514bn is [Existing Contracted]; the Search and YouTube advertising base is [Existing Contracted] in substance; multi-gigawatt TPU supply agreements are [Approved / Committed Pipeline]; the 20-city Waymo expansion is [Unfunded Planned Project]; and a re-rating from AI leadership is [Speculative Demand] and earns zero base-case weight.","label":"ANALYST ESTIMATE","source":"Applying the Phase 3 classification test","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-09","claim":"Growth is margin-accretive at the group level: operating income grew 30% in both Q1 and Q2 2026 against revenue growth of 16% and 24% respectively, and consolidated operating margin expanded two points to 36.1% in Q1.","label":"ANALYST ESTIMATE","source":"Derived from reported Q1 and Q2 2026 figures","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p3-10","claim":"Incremental margin in Cloud is far above the segment average — operating income more than tripled on 82% revenue growth — so the fastest-growing segment is also the one improving group margin. This is the opposite of the growth-dilutes-returns trap.","label":"ANALYST ESTIMATE","source":"Derived from Q2 2026 Cloud disclosures","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p3-11","claim":"Other Bets remains immaterial to revenue and a persistent drag on profit: USD 382m of revenue against a USD 1.8bn operating loss in Q2 2026, and USD 411m against USD 2.1bn in Q1.","label":"FACT","source":"Alphabet Q1 and Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"FY2026 progression",
+   "columns":["Quarter","Revenue","Growth","Operating income","Op margin","Cloud","Cloud growth"],
+   "rows":[
+    ["Q1 2026","USD 109.9bn","+16%","USD 39.7bn","36.1%","USD 20.0bn","+63%"],
+    ["Q2 2026","USD 119.8bn","+24%","USD 40.8bn","34.1%","USD 24.8bn","+82%"],
+    ["FY2025 actual","USD 402.8bn","+15%","~USD 132bn","~32.8%","USD 58.7bn","+36%"],
+    ["FY2026E consensus","USD 488-498bn","~+21%","~USD 170bn","~35%","~USD 95bn","~+62%"]
+   ],
+   "note":"[FACT] for quarters and FY2025; [CONSENSUS] and [ANALYST ESTIMATE] for FY2026E. Revenue growth accelerated from 15% to a consensus 21% while operating margin expanded — an unusual combination at this scale."},
+  {"title":"Demand classified",
+   "columns":["Source","Evidence","Class","Base-case weight"],
+   "rows":[
+    ["Cloud backlog","USD 514bn contracted","[Existing Contracted]","Full, conversion period undisclosed"],
+    ["Search and YouTube advertising","+17% and +13% YoY","[Existing Contracted] in substance","Full"],
+    ["TPU external supply","Multi-gigawatt agreements signed","[Approved / Committed Pipeline]","Partial"],
+    ["Waymo 20-city expansion","Announced, funded at USD 126bn valuation","[Unfunded Planned Project]","Minimal"],
+    ["AI leadership re-rating","Narrative","[Speculative Demand]","Zero"]
+   ],
+   "note":"[ANALYST ESTIMATE] The unusual feature of this dossier is how much sits in the first two rows. Most AI capex stories rest on speculative demand; Alphabet has USD 514bn of it under contract."}
+ ],
+ "gaps":[
+  {"item":"Cloud backlog conversion period","whyItMatters":"USD 514bn is the strongest single number in this dossier and its value depends entirely on whether it converts over three years or twelve.","resolvedBy":"10-K remaining performance obligation disclosure"},
+  {"item":"Search monetisation per query under AI Overviews","whyItMatters":"Aggregate Search growth of 17% could mask falling monetisation offset by rising volume, which would matter for the terminal case.","resolvedBy":"Not disclosed; management commentary only"},
+  {"item":"TPU external revenue","whyItMatters":"Unquantified and potentially material to the return on the capex programme.","resolvedBy":"Segment disclosure if material"}
+ ],
+ "risks":[
+  {"text":"Cloud growth of 82% is not sustainable indefinitely; the market is capitalising a rate that must decay.","severity":"medium","probability":"high"},
+  {"text":"Search growth could be volume-driven with falling monetisation per query, which aggregate disclosure would hide.","severity":"high","probability":"low"},
+  {"text":"Other Bets loses roughly USD 7-8bn a year with immaterial revenue and no disclosed path to profit.","severity":"low","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — whether Cloud growth holds above 60% and Search above 15%","window":"Oct 2026","impact":"High","probability":0.95},
+  {"text":"Backlog conversion disclosure in the FY2026 10-K","window":"Feb 2027","impact":"Medium","probability":0.8}
+ ],
+ "conclusions":[
+  "This is a business accelerating at USD 400bn+ of scale: revenue growth from 15% in FY2025 to a consensus 21% in FY2026, with operating income growing 30% in both reported quarters.",
+  "Cloud is the engine and it is compounding profitably — 82% growth with operating margin expanding from 20.7% to 35.6%, behind USD 514bn of contracted backlog worth more than four times total company revenue.",
+  "The AI-kills-Search thesis is not visible in the numbers. Search grew 17% year on year in Q2 2026, two years after the disruption was first predicted.",
+  "Growth is accretive at every level examined. The fastest-growing segment carries the highest incremental margin, which is the opposite of the trap this protocol exists to catch.",
+  "Applying the classification discipline flatters Alphabet unusually: most of the demand sits in [Existing Contracted], not in narrative. Only the re-rating case is speculative."
+ ],
+ "thesisImpact":"Phase 3 makes the operating case unusually strong and narrows the bear argument to two things: the durability of Cloud growth rates, and whether reported profit survives an honest depreciation assumption on the assets generating it. Nothing in the demand picture supports a bear case; the risk is entirely in cost recognition and capital intensity.",
+ "model":{"sharesOut":12230}
+}
