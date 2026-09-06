@@ -1,0 +1,276 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "LAMDA Development S.A.",
+  "ticker": "ATHEX: LAMDA",
+  "sector": "real estate",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 6.24,
+  "priceUnit": "share",
+  "asOf": "2026-09-06",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Net debt of ~EUR 639m is derived as total borrowings of EUR 1,470m less group cash of EUR 831m at 31 March 2026. Both components are disclosed figures; the subtraction is mine, and Phase 3 establishes that part of the cash is customer money.",
+   "The company also presents a parent-company figure of -EUR 154m (EUR 810m of parent bonds less EUR 656m allocated to Ellinikon). That is a different cut of the same debt and is not used here."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "The capital structure is disclosed with unusual clarity for this batch. Total borrowings are EUR 1,470m, split EUR 815m at the holding company and EUR 655m at the malls portfolio, at an average borrowing cost of 3.8%.",
+   "label": "FACT",
+   "source": "LAMDA FY2025 results presentation",
+   "asOf": "2026-03-31",
+   "confidence": "high",
+   "impact": "high",
+   "value": 1470,
+   "unit": "EUR m total borrowings"
+  },
+  {
+   "id": "p4-02",
+   "claim": "Against group cash of EUR 831m at 31 March 2026, net debt is roughly EUR 639m. On a market capitalisation of about EUR 1.05bn that is modest gearing for a property developer, and materially better than the headline debt figure suggests.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 1,470 - 831",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 639,
+   "unit": "EUR m net debt"
+  },
+  {
+   "id": "p4-03",
+   "claim": "But Phase 3 qualifies that. An unquantified portion of the EUR 831m is customer pre-payment against undelivered homes, so economic net debt is higher than EUR 639m by whatever that portion is. This is the same caution the GE Vernova dossier applied to advance-inflated cash.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from Phase 3",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-04",
+   "claim": "An average borrowing cost of 3.8% is genuinely cheap for a Greek development company, and the maturity profile is long: a EUR 500m bond at 3.8% runs to 2032. The near-term item is a EUR 320m bond at 3.4% maturing in 2027, which refinances into a higher-rate market.",
+   "label": "FACT",
+   "source": "LAMDA bond disclosures",
+   "asOf": "2026-03-31",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-05",
+   "claim": "THE RECONCILIATION THIS DOSSIER CANNOT COMPLETE. The investment portfolio is stated above EUR 3.8bn and net asset value at about EUR 1,533m, a difference of roughly EUR 2.27bn. Net debt accounts for only about EUR 639m of it. Roughly EUR 1.6bn of other claims must sit between the two — most plausibly customer contract liabilities, remaining consideration owed to the Greek state for the Ellinikon site, minority interests and deferred tax.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 3,800 - 1,533 - 639",
+   "asOf": "2026-09-06",
+   "confidence": "low",
+   "impact": "high",
+   "value": 1600,
+   "unit": "EUR m of unexplained claims between GAV and NAV"
+  },
+  {
+   "id": "p4-06",
+   "claim": "That gap is the largest single unknown in this dossier and it is stated rather than smoothed over. It does not invalidate the published net asset value — which is an audited, independently valued figure and is used as the primary anchor in Phase 5 — but it means the EUR 3.8bn portfolio number must not be treated as attributable to shareholders.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-07",
+   "claim": "Return on capital cannot be assessed and will not be for years. The group is loss-making by design while it builds, and a development company's return is only measurable across a full cycle from land acquisition to final delivery. The Ellinikon is roughly a fifth of the way through its programme.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-08",
+   "claim": "At EUR 6.24 against published net asset value of EUR 8.97 the shares trade at a discount of about 30%. That is the central valuation fact and it is well inside the normal range for European listed developers with a large non-income-producing component, which commonly trade at 25-40% discounts.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 6.24 / 8.97 - 1",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high",
+   "value": -30.4,
+   "unit": "% discount to published NAV"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Capital structure",
+   "columns": [
+    "Item",
+    "Value",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Share price",
+     "EUR 6.24",
+     "Medium — corroborated three ways; one source shows EUR 7.02"
+    ],
+    [
+     "Shares outstanding",
+     "170.93m",
+     "High"
+    ],
+    [
+     "Market capitalisation",
+     "~EUR 1.05-1.07bn",
+     "High"
+    ],
+    [
+     "Total borrowings",
+     "EUR 1,470m",
+     "HIGH — disclosed, split EUR 815m holdco / EUR 655m malls"
+    ],
+    [
+     "Group cash at 31 Mar 2026",
+     "EUR 831m",
+     "HIGH — disclosed"
+    ],
+    [
+     "Net debt",
+     "~EUR 639m",
+     "Medium — but part of the cash is customer money"
+    ],
+    [
+     "Average borrowing cost",
+     "3.8%",
+     "High"
+    ],
+    [
+     "Nearest maturity",
+     "EUR 320m at 3.4%, 2027",
+     "High"
+    ],
+    [
+     "Published NAV per share",
+     "EUR 8.97 (31 Mar 2026)",
+     "HIGH — company-published"
+    ],
+    [
+     "Discount to NAV",
+     "~30%",
+     "Medium"
+    ],
+    [
+     "Investment portfolio",
+     ">EUR 3.8bn",
+     "High as stated — NOT attributable to shareholders"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] Unusually for this batch, the debt is precisely disclosed and it is the equity bridge that is opaque."
+  },
+  {
+   "title": "The gap this dossier cannot close",
+   "columns": [
+    "Step",
+    "EUR m"
+   ],
+   "rows": [
+    [
+     "Stated investment portfolio",
+     ">3,800"
+    ],
+    [
+     "Less net debt",
+     "-639"
+    ],
+    [
+     "Would imply NAV of",
+     "~3,161"
+    ],
+    [
+     "Published NAV",
+     "~1,533"
+    ],
+    [
+     "UNEXPLAINED",
+     "~1,600"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Roughly EUR 1.6bn of claims sit between the portfolio value and shareholders' net asset value. Customer contract liabilities, remaining state consideration, minorities and deferred tax are the plausible candidates. Until that is disclosed, the EUR 3.8bn figure should not be used in any per-share calculation — and it is not used in Phase 5."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The bridge from EUR 3.8bn portfolio value to EUR 1,533m net asset value",
+   "whyItMatters": "Roughly EUR 1.6bn of claims are unaccounted for. This is the largest single unknown in the dossier and it determines what shareholders actually own.",
+   "resolvedBy": "Balance sheet and NAV reconciliation in the annual report"
+  },
+  {
+   "item": "Customer contract liabilities within the EUR 831m cash balance",
+   "whyItMatters": "Determines economic net debt. Part of the answer to the gap above.",
+   "resolvedBy": "Balance sheet"
+  },
+  {
+   "item": "Remaining consideration owed to the Greek state for the Ellinikon site",
+   "whyItMatters": "A senior claim ahead of equity, and another part of the answer.",
+   "resolvedBy": "Annual report; concession documentation"
+  },
+  {
+   "item": "Minority interests in the Ellinikon and mall vehicles",
+   "whyItMatters": "The malls have historically had third-party co-investors. Minorities reduce what reaches LAMDA shareholders.",
+   "resolvedBy": "Annual report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly EUR 1.6bn sits unexplained between the stated portfolio value and published net asset value, and its composition determines what shareholders own.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Part of the EUR 831m cash balance is customer pre-payment, so economic net debt is higher than the EUR 639m computed here.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "A EUR 320m bond at 3.4% matures in 2027 and refinances into a higher-rate market; the 2032 issue was priced at 3.8%.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "Return on capital cannot be assessed for years — the company is loss-making by design and roughly a fifth of the way through the programme.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "H1 2026 report with the balance sheet and NAV reconciliation",
+   "window": "Q4 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Refinancing of the EUR 320m 2027 bond",
+   "window": "2026-2027",
+   "impact": "Medium",
+   "probability": 0.85
+  },
+  {
+   "text": "An updated independent portfolio valuation",
+   "window": "Annual",
+   "impact": "High",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "The debt is disclosed with unusual precision: EUR 1,470m of borrowings, split EUR 815m holding company and EUR 655m malls, at an average cost of 3.8% — genuinely cheap for a Greek developer, with a long maturity profile.",
+  "Against EUR 831m of group cash that is roughly EUR 639m of net debt, which is modest gearing for a developer. But part of that cash is customer pre-payment, so economic net debt is higher by an amount this dossier cannot quantify.",
+  "The reconciliation this dossier cannot complete: a stated portfolio above EUR 3.8bn against published net asset value of about EUR 1,533m, with net debt explaining only EUR 639m of the EUR 2.27bn difference. Roughly EUR 1.6bn of other claims must sit in between.",
+  "That does not invalidate the published net asset value, which is independently valued and is used as the primary anchor in Phase 5. It does mean the EUR 3.8bn portfolio figure must never be used in a per-share calculation, and it is not used in this dossier.",
+  "At EUR 6.24 against EUR 8.97 of net asset value the shares trade at about a 30% discount — well inside the 25-40% range at which European developers with a large non-income-producing component normally trade."
+ ],
+ "thesisImpact": "Phase 4 establishes the valuation anchor as published net asset value rather than the headline portfolio figure, quantifies the discount at about 30%, and records a EUR 1.6bn reconciliation gap that any buyer should resolve before acting. Phase 5 values the company on discount-to-NAV and a conservative sum-of-the-parts, with no discounted cash flow.",
+ "model": {
+  "sharesOut": 170.93,
+  "netDebt": 0
+ }
+}

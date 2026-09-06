@@ -1,0 +1,197 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "LAMDA Development S.A.",
+  "ticker": "ATHEX: LAMDA",
+  "sector": "real estate",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 6.24,
+  "priceUnit": "share",
+  "asOf": "2026-09-06",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy. Findings rest on search-result summaries of LAMDA's Q1 2026 results, the FY2025 results presentation, broker material and Greek press.",
+   "PRICE. EUR 6.24 is used. It is corroborated three ways: a direct quote, a reported market capitalisation of ~EUR 1.05bn on 170.93m shares (EUR 6.14), and a back-out from a EUR 10.04 analyst target quoted at +61.03% (EUR 6.23). One source shows EUR 7.02; that quote is treated as an outlier and the sensitivity is stated in Phase 5.",
+   "A DATA CONFLICT IS RECORDED, NOT RESOLVED. One source reports NAV of EUR 0.3bn on GAV of EUR 1.8bn at 31.12.2025. That is irreconcilable with the company's published NAV per share of EUR 8.97 at 31.03.2026 (EUR 1,533m on 170.93m shares) and with a stated investment portfolio above EUR 3.8bn. The EUR 8.97 figure is company-published and is used; the EUR 0.3bn figure is not used anywhere."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "This is a different animal from the seven energy companies. LAMDA is two businesses bolted together: a mature, cash-generating income portfolio of four shopping centres and a marina, and The Ellinikon — a multi-decade megaproject on the former Athens airport site that consumes capital and sells homes.",
+   "label": "FACT",
+   "source": "LAMDA corporate structure and Q1 2026 results",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-02",
+   "claim": "The pricing power in the income portfolio is genuine and demonstrated. Q1 2026 operating malls EBITDA was a record EUR 24.9m, up 5% year on year, and Flisvos Marina a record EUR 4.5m, up 12%. Dominant retail assets in a market with little competing prime supply is a real position.",
+   "label": "FACT",
+   "source": "LAMDA Q1 2026 results",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high",
+   "value": 24.9,
+   "unit": "EUR m Q1 2026 malls EBITDA"
+  },
+  {
+   "id": "p1-03",
+   "claim": "The pricing power at Ellinikon is scarcity of a kind that genuinely cannot be replicated: a 6.2 million square metre coastal site inside Athens, acquired through a state privatisation that will not recur. Riviera Tower units are selling at an average of about EUR 14,000 per square metre, which is price discovery at the very top of the Greek market.",
+   "label": "FACT",
+   "source": "Greek press on Riviera Tower pricing",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 14000,
+   "unit": "EUR per sqm, Riviera Tower average"
+  },
+  {
+   "id": "p1-04",
+   "claim": "But the developer is a price-taker on everything that matters to its cost base. Construction cost inflation, Greek labour availability and interest rates are all exogenous, and a development company's margin is the residual between a sale price fixed years in advance and a build cost incurred later.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the development model",
+   "asOf": "2026-09-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-05",
+   "claim": "The regulatory architecture is unusually favourable and unusually binding at once. The Ellinikon operates under a bespoke legal framework with a dedicated planning regime, which removes the permitting risk that would kill a project of this scale elsewhere — and ties the entire venture to a single counterparty relationship with the Greek state.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the concession structure",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-06",
+   "claim": "The mature assets are funding the development, and the arithmetic shows it starkly. Malls and marina generated EUR 29.4m of EBITDA in Q1, while group consolidated EBITDA before asset valuations was only EUR 12.0-12.3m. Ellinikon and corporate consumed roughly EUR 17m in the quarter.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 24.9 + 4.5 against group EBITDA before valuations",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "And the group posted a net loss of EUR 17.7m in Q1 2026 on record revenue of EUR 143m, up 35%. Revenue up a third and a loss at the bottom is the signature of a business in the heaviest part of a development cycle, carrying EUR 1,470m of borrowings against assets that are not yet finished.",
+   "label": "FACT",
+   "source": "LAMDA Q1 2026 results",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The two businesses inside one share",
+   "columns": [
+    "",
+    "Income portfolio",
+    "The Ellinikon"
+   ],
+   "rows": [
+    [
+     "Assets",
+     "4 shopping centres + Flisvos Marina",
+     "6.2m sqm former Athens airport site"
+    ],
+    [
+     "Q1 2026 EBITDA",
+     "EUR 29.4m (record)",
+     "Negative — consumes capital"
+    ],
+    [
+     "Pricing power",
+     "Dominant prime retail, little competing supply",
+     "Irreplaceable site; EUR ~14,000/sqm at Riviera Tower"
+    ],
+    [
+     "Cash character",
+     "Generates",
+     "Consumes capital, receives pre-sale proceeds"
+    ],
+    [
+     "Risk",
+     "Consumer, cap rates",
+     "Construction cost, delivery, absorption"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The equity is a claim on both. The income portfolio funds the development, and the development is where the value is claimed to be."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The Ellinikon concession terms and remaining consideration owed to the Greek state",
+   "whyItMatters": "It is a senior claim ahead of equity and is not visible in the summaries available here. It is one of the candidate explanations for the gap identified in Phase 4.",
+   "resolvedBy": "Annual report; HRADF concession documentation"
+  },
+  {
+   "item": "Occupancy, WAULT and rent mark-to-market across the four malls",
+   "whyItMatters": "The income portfolio is the funding engine and the valuation floor. Its durability cannot be assessed without lease-expiry and covenant data.",
+   "resolvedBy": "Annual report portfolio disclosure"
+  },
+  {
+   "item": "Construction cost inflation assumed in the Ellinikon budget",
+   "whyItMatters": "A developer's margin is the residual between a sale price fixed early and a build cost incurred later. This is the most sensitive unmodelled variable.",
+   "resolvedBy": "Not disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "A development company is a price-taker on construction cost, labour and interest rates, and its margin is a residual between prices fixed early and costs incurred later.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The group posted a EUR 17.7m net loss on record revenue, carrying EUR 1,470m of borrowings against assets that are not yet finished.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The whole venture is tied to a single counterparty relationship with the Greek state through a bespoke legal framework.",
+   "severity": "medium",
+   "probability": "low"
+  },
+  {
+   "text": "Sources disagree materially on NAV, and one widely available figure is irreconcilable with the company's own published number.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Riviera Tower completion",
+   "window": "Late 2026 / early 2027",
+   "impact": "High",
+   "probability": 0.75
+  },
+  {
+   "text": "First Ellinikon retail opening",
+   "window": "2026-2027",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "H1 2026 results",
+   "window": "Q4 2026",
+   "impact": "High",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "LAMDA is two businesses in one share: a mature income portfolio of four shopping centres and a marina, and The Ellinikon, a multi-decade megaproject that consumes capital.",
+  "The income portfolio's pricing power is real and demonstrated — record Q1 EBITDA of EUR 24.9m at the malls, up 5%, and EUR 4.5m at Flisvos Marina, up 12%.",
+  "The Ellinikon's scarcity is genuine and unrepeatable: a 6.2m square metre coastal site inside Athens from a privatisation that will not happen twice, with Riviera Tower selling at around EUR 14,000 per square metre.",
+  "But the mature assets are funding the development. Malls and marina produced EUR 29.4m of EBITDA in Q1 while group EBITDA before valuations was EUR 12.0-12.3m — Ellinikon and corporate consumed roughly EUR 17m in the quarter.",
+  "And the group lost EUR 17.7m on record revenue of EUR 143m, up 35%. Revenue up a third and a loss at the bottom is what the heaviest part of a development cycle looks like."
+ ],
+ "thesisImpact": "Phase 1 establishes that this is a development company with an income portfolio attached, not a property investor with a project. Phase 5 must value the two halves separately and must use net asset value rather than earnings, because earnings are currently negative by design.",
+ "model": {
+  "sharesOut": 170.93
+ }
+}

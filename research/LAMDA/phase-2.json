@@ -1,0 +1,248 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "LAMDA Development S.A.",
+  "ticker": "ATHEX: LAMDA",
+  "sector": "real estate",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 6.24,
+  "priceUnit": "share",
+  "asOf": "2026-09-06",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Shares outstanding 170.93m."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The stated asset base is large: total investment portfolio value above EUR 3.8bn at 31 March 2026, against a published net asset value of EUR 8.97 per share, or roughly EUR 1,533m.",
+   "label": "FACT",
+   "source": "LAMDA Q1 2026 results",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high",
+   "value": 3.8,
+   "unit": "EUR bn investment portfolio"
+  },
+  {
+   "id": "p2-02",
+   "claim": "The Ellinikon is being built at genuine pace and the numbers are specific. Cumulative project investment reached EUR 1.1bn by 31 March 2026 and is guided to about EUR 1.6bn by year-end, a run rate near EUR 125m a quarter. Roughly 1,000 homes have been sold, with 300-350 more to be released, bringing phase one to about 1,300.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "LAMDA Q1 2026 results and management commentary",
+   "asOf": "2026-07-08",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 1.6,
+   "unit": "EUR bn cumulative Ellinikon investment by end-2026"
+  },
+  {
+   "id": "p2-03",
+   "claim": "The income portfolio is the real asset base in valuation terms. Annualising Q1, the four malls and Flisvos Marina generate roughly EUR 118m of EBITDA. At a 7% capitalisation rate that is about EUR 1.69bn of gross asset value — more than the entire market capitalisation of EUR 1.05bn.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 29.4 x 4 / 0.07",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 118,
+   "unit": "EUR m annualised income portfolio EBITDA"
+  },
+  {
+   "id": "p2-04",
+   "claim": "That is the single most useful observation in this dossier. Against EUR 655m of malls-level debt, the income portfolio alone supports roughly EUR 1.03bn of equity value, or about EUR 6.03 per share — close to the entire share price. On that arithmetic the market is paying very little for The Ellinikon.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: (1,686 - 655) / 170.93",
+   "asOf": "2026-09-06",
+   "confidence": "low",
+   "impact": "high",
+   "value": 6.03,
+   "unit": "EUR per share from the income portfolio alone"
+  },
+  {
+   "id": "p2-05",
+   "claim": "The bottleneck is not land or permitting — the bespoke Ellinikon planning framework removes both — it is construction capacity. Greek contractors, skilled labour and materials are being consumed simultaneously by this project, PPC's generation build, IPTO's grid programme and the broader post-recovery construction cycle.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the PPC and ADMIE dossiers in this batch",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-06",
+   "claim": "The asset quality is barbelled in the same way as the business. Four dominant malls with proven cash flow at one end; at the other, an asset whose value depends on selling roughly 1,300 homes in phase one and many thousands over two decades into a market whose depth at EUR 14,000 per square metre is unproven.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-07",
+   "claim": "Absorption is the variable that decides the outcome and it is not yet tested at scale. Roughly 1,000 homes sold is a real number and a small one against the total programme, and the first units have not yet been delivered — Riviera Tower completes around late 2026 or early 2027.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed sales and completion timetable",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The income portfolio as a valuation floor",
+   "columns": [
+    "Step",
+    "Value",
+    "Basis"
+   ],
+   "rows": [
+    [
+     "Q1 2026 malls EBITDA",
+     "EUR 24.9m",
+     "Record, +5% year on year"
+    ],
+    [
+     "Q1 2026 Flisvos Marina EBITDA",
+     "EUR 4.5m",
+     "Record, +12%"
+    ],
+    [
+     "Annualised",
+     "~EUR 118m",
+     "[ANALYST ESTIMATE] Q1 is seasonally the weakest retail quarter"
+    ],
+    [
+     "Gross asset value at a 7% cap rate",
+     "~EUR 1.69bn",
+     "[ANALYST ESTIMATE]"
+    ],
+    [
+     "Less malls-level debt",
+     "EUR 655m",
+     "Disclosed"
+    ],
+    [
+     "Implied equity from income assets alone",
+     "~EUR 1.03bn, or ~EUR 6.03/share",
+     "Against a share price of EUR 6.24"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] If this arithmetic is right, the market is paying roughly the value of the malls and marina and ascribing almost nothing to The Ellinikon. That is the investment case in one table — and it rests on an assumed cap rate."
+  },
+  {
+   "title": "The Ellinikon build, as disclosed",
+   "columns": [
+    "Measure",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Cumulative investment at 31 Mar 2026",
+     "~EUR 1.1bn"
+    ],
+    [
+     "Guided cumulative investment at end-2026",
+     "~EUR 1.6bn"
+    ],
+    [
+     "Quarterly capex run rate",
+     "~EUR 125m"
+    ],
+    [
+     "Homes sold to date",
+     "~1,000"
+    ],
+    [
+     "Further releases planned in 2026",
+     "300-350"
+    ],
+    [
+     "Riviera Tower pricing",
+     "~EUR 14,000/sqm average"
+    ],
+    [
+     "Riviera Tower completion",
+     "Late 2026 / early 2027"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] Construction is real and on a documented schedule. Delivery is what has not yet been demonstrated."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The independent valuation basis and cap rates for the malls",
+   "whyItMatters": "The 7% assumed here is the single most sensitive input in the valuation floor. A 100bp change moves the income portfolio's value by roughly EUR 220m, or EUR 1.29 per share.",
+   "resolvedBy": "Annual report valuation note"
+  },
+  {
+   "item": "Total Ellinikon programme cost and gross development value",
+   "whyItMatters": "Cumulative spend to date is disclosed; the total is not. Without it the development margin cannot be sized.",
+   "resolvedBy": "Investor presentation"
+  },
+  {
+   "item": "Occupancy and WAULT across the four malls",
+   "whyItMatters": "The floor rests on the durability of EUR 118m of EBITDA, which cannot be assessed without lease-expiry data.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Unsold inventory and forward absorption rates",
+   "whyItMatters": "About 1,000 homes sold is disclosed. The denominator is not, so the absorption rate cannot be computed.",
+   "resolvedBy": "Investor presentation"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Absorption at roughly EUR 14,000 per square metre is unproven at scale, and the first units have not yet been delivered.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Greek construction capacity is being consumed simultaneously by this project, PPC's generation build and IPTO's grid programme.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The valuation floor rests on an assumed 7% cap rate; a 100bp move is worth about EUR 1.29 per share.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Total programme cost and gross development value are not disclosed here, so the development margin cannot be sized.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Riviera Tower completion and first residential deliveries",
+   "window": "Late 2026 / early 2027",
+   "impact": "Very high",
+   "probability": 0.75
+  },
+  {
+   "text": "Release of the next 300-350 residential units and their absorption rate",
+   "window": "H2 2026",
+   "impact": "High",
+   "probability": 0.8
+  },
+  {
+   "text": "First Ellinikon retail opening",
+   "window": "2026-2027",
+   "impact": "High",
+   "probability": 0.7
+  }
+ ],
+ "conclusions": [
+  "The stated portfolio is above EUR 3.8bn against a published net asset value of about EUR 1,533m, and the reconciliation between those two figures is the subject of Phase 4.",
+  "The Ellinikon is being built at documented pace: EUR 1.1bn cumulative investment by March, guided to about EUR 1.6bn by year-end, around EUR 125m a quarter, with roughly 1,000 homes sold and 300-350 more to release.",
+  "But the income portfolio is the real valuation anchor. Annualising Q1, the malls and marina generate roughly EUR 118m of EBITDA — about EUR 1.69bn of gross asset value at a 7% cap rate.",
+  "Net of EUR 655m of malls debt that is roughly EUR 6.03 per share against a share price of EUR 6.24. On that arithmetic the market is paying for the malls and the marina and ascribing almost nothing to The Ellinikon.",
+  "The untested variable is absorption. Roughly 1,000 homes sold is real and small against the programme, no units have yet been delivered, and the depth of the Greek market at EUR 14,000 per square metre is unproven."
+ ],
+ "thesisImpact": "Phase 2 produces the central observation: the income portfolio alone approximately supports the share price, so the market is valuing The Ellinikon at close to nothing. Phase 5 must test whether that is a mispricing or a correct discount for delivery risk, and the answer turns on an assumed cap rate this dossier cannot source.",
+ "model": {
+  "sharesOut": 170.93
+ }
+}
