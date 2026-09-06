@@ -1,0 +1,288 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "ADMIE (IPTO) Holding S.A.",
+  "ticker": "ATHEX: ADMIE",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 4.49,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "LOOK-THROUGH BASIS. All balance-sheet figures below are ADMIE Holding's 51% share of IPTO. Look-through net debt of ~EUR 714m is DERIVED from an assumed IPTO net debt of ~EUR 1.4bn after the EUR 1bn equity injection, against a 2026 RAB of roughly EUR 4.2bn — implying about 33% gearing, conservative for a European TSO. This is the weakest input in the dossier and the sensitivity is stated in Phase 5.",
+   "Shares outstanding of 362.86m is HIGH confidence: 232m plus 130,864,197 issued in June 2026, cross-checking exactly against a reported EUR 1.60bn market capitalisation at EUR 4.49."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "The share count is the one figure in this dossier known with precision, and it is the one the thesis omits: 362.86m shares after the June 2026 issue of 130,864,197 new shares at EUR 4.17, against 232m before. That is a 56% increase.",
+   "label": "FACT",
+   "source": "ADMIE Holding capital increase documentation; cross-checked against reported market capitalisation",
+   "asOf": "2026-06-18",
+   "confidence": "high",
+   "impact": "high",
+   "value": 362.86,
+   "unit": "m shares outstanding"
+  },
+  {
+   "id": "p4-02",
+   "claim": "The dilution was executed well, and that deserves saying. A non-preemptive book-build at EUR 4.17 against a market around EUR 4.29-4.73 is a modest discount, which is a materially better outcome for continuing holders than the deeply discounted rights issues common in this market.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the offer terms",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-03",
+   "claim": "The money went where it should. The proceeds funded ADMIE Holding's pro-rata share of a EUR 1bn equity injection into IPTO, which reduces the operating company's gearing ahead of a EUR 6bn build. Equity raised to strengthen a regulated balance sheet before a RAB doubling is the textbook use of a capital increase.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the use-of-proceeds disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-04",
+   "claim": "That is the substantive difference from PPC and it is worth drawing. Both diluted heavily in 2026; PPC raised EUR 4.5bn for 15% of a EUR 24.2bn programme in five liberalised markets while targeting a rising dividend, whereas ADMIE Holding raised roughly EUR 530-546m to recapitalise a legal monopoly whose returns are set by a regulator. The same action, in a much lower-risk container.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the PPC dossier",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-05",
+   "claim": "At EUR 4.49 and 362.86m shares the market capitalisation is about EUR 1.63bn. Against an estimated look-through 2026 RAB of roughly EUR 2.14bn and look-through net debt of roughly EUR 714m, the implied enterprise value is about EUR 2.34bn, or roughly 1.09x look-through RAB.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 1.09,
+   "unit": "x look-through RAB at the market price"
+  },
+  {
+   "id": "p4-06",
+   "claim": "That multiple is the whole question. European transmission operators typically trade at a premium to RAB when the asset base is growing and the allowed return exceeds the cost of capital, and at or below RAB when it is not. Paying about 1.09x for an asset base set to nearly double by 2029 is not demanding — provided the allowed return holds.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from European TSO valuation convention",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-07",
+   "claim": "Return on capital is the input the regulator sets, not the company. Look-through FY2025 profit of roughly EUR 67.5m against look-through equity of roughly EUR 1.43bn is about 4.7% — depressed, because the equity was injected before the assets it funds are earning. A normalised post-build return on equity nearer 8.5% is the reasonable assumption, against an estimated cost of equity of about 7.5% for a regulated Greek network.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p4-08",
+   "claim": "A discounted cash flow is excluded for the same structural reason as at PPC and is not fudged: with roughly EUR 6bn of capital expenditure against a RAB of EUR 3.3bn, free cash flow is negative across the whole explicit window. The valuation uses the regulated asset base, justified price-to-book and a look-through sum-of-the-parts, with a dividend discount cross-check computed separately.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the capital plan",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Capital structure, look-through at 51%",
+   "columns": [
+    "Item",
+    "Value",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Share price",
+     "EUR 4.49",
+     "Medium — EUR 4.29 quoted 29 July"
+    ],
+    [
+     "Shares outstanding",
+     "362.86m",
+     "HIGH — 232m + 130,864,197"
+    ],
+    [
+     "Market capitalisation",
+     "~EUR 1.63bn",
+     "High — cross-checks to a reported EUR 1.60bn"
+    ],
+    [
+     "IPTO RAB 2025",
+     "~EUR 3.3bn",
+     "High — disclosed"
+    ],
+    [
+     "IPTO RAB 2029 target",
+     "~EUR 7bn",
+     "High — guided"
+    ],
+    [
+     "Look-through RAB 2026E",
+     "~EUR 2.14bn",
+     "Low — 51% of an estimated EUR 4.2bn"
+    ],
+    [
+     "Look-through net debt",
+     "~EUR 714m",
+     "LOW — derived; the weakest input here"
+    ],
+    [
+     "Implied EV / look-through RAB",
+     "~1.09x",
+     "Low"
+    ],
+    [
+     "Look-through book value per share",
+     "~EUR 3.94",
+     "Low"
+    ],
+    [
+     "Trailing look-through P/E",
+     "~24x",
+     "Low — accounting basis uncertain"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The share count is precise and the balance sheet is derived. That is the opposite of most dossiers in this batch and it is worth noticing: here the dilution is the certain part."
+  },
+  {
+   "title": "How the two 2026 Greek dilutions compare",
+   "columns": [
+    "",
+    "PPC",
+    "ADMIE Holding"
+   ],
+   "rows": [
+    [
+     "Amount raised",
+     "EUR 4.5bn",
+     "~EUR 530-546m"
+    ],
+    [
+     "Share-count increase",
+     "+62%",
+     "+56%"
+    ],
+    [
+     "Structure",
+     "Share capital increase",
+     "Non-preemptive book-build at EUR 4.17"
+    ],
+    [
+     "Funds",
+     "15% of a EUR 24.2bn programme",
+     "51% of a EUR 1bn injection into IPTO"
+    ],
+    [
+     "Business funded",
+     "Generation and supply in five liberalised markets",
+     "A legal monopoly on a regulated return"
+    ],
+    [
+     "Dividend policy alongside",
+     "EUR 0.80 rising to EUR 1.40",
+     "Unclear on the enlarged count"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] Same action, very different container. Diluting to recapitalise a regulated monopoly is a far better proposition than diluting to build merchant generation."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "IPTO net debt and gearing against the RAB",
+   "whyItMatters": "Derived at roughly EUR 1.4bn. It sets look-through net debt, which drives every valuation output in Phase 5. The single largest input uncertainty here.",
+   "resolvedBy": "IPTO financial statements"
+  },
+  {
+   "item": "The allowed WACC and the regulatory reset date",
+   "whyItMatters": "For a regulated network the allowed return is the return. It determines whether a premium to RAB is justified at all.",
+   "resolvedBy": "RAE regulatory decisions"
+  },
+  {
+   "item": "Look-through shareholders' equity",
+   "whyItMatters": "The justified price-to-book method carries 35% weight and rests on an estimated EUR 1.43bn look-through book.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Accounting treatment — consolidation versus equity method",
+   "whyItMatters": "Determines whether reported figures are group or 51% share, which changes the trailing multiple by roughly a factor of two.",
+   "resolvedBy": "Annual report accounting policy note"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Look-through net debt is derived rather than sourced and drives every valuation output.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The allowed WACC is set by the regulator and is the entire return architecture; a reset is the principal event risk and its timing is unknown here.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Look-through return on equity of about 4.7% is currently well below any reasonable cost of equity, because equity was injected before the assets it funds are earning.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "The share count rose 56% and the thesis does not mention it.",
+   "severity": "high",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 results with IPTO net debt, RAB progression and the accounting basis",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "Regulatory decision on the allowed WACC",
+   "window": "Unknown",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "Evidence that newly commissioned RAB is earning the allowed return",
+   "window": "2027-2029",
+   "impact": "High",
+   "probability": 0.7
+  }
+ ],
+ "conclusions": [
+  "The share count is the one figure here known with precision, and it is the one the thesis omits: 362.86m after June's issue of 130,864,197 shares at EUR 4.17, against 232m before — a 56% increase.",
+  "But the dilution was executed well and used well. A modest discount in a non-preemptive book-build, with the proceeds funding a EUR 1bn equity injection that strengthens a regulated balance sheet before a RAB doubling. That is the textbook use of a capital increase.",
+  "That is the substantive difference from PPC. Both diluted heavily in 2026, but ADMIE Holding diluted to recapitalise a legal monopoly earning a regulated return, while PPC diluted to build merchant generation in five liberalised markets. Same action, much lower-risk container.",
+  "At EUR 4.49 the market pays roughly 1.09x look-through regulated asset base. For an asset base set to nearly double by 2029 that is not a demanding multiple — provided the allowed return holds.",
+  "A discounted cash flow is excluded for the same structural reason as at PPC: with roughly EUR 6bn of capex against a EUR 3.3bn RAB, free cash flow is negative across the whole explicit window."
+ ],
+ "thesisImpact": "Phase 4 establishes that this equity should be valued on its regulated asset base, that the market is paying about 1.09x it, and that the 56% dilution — while real and unmentioned by the thesis — was raised at a fair price and deployed into the one balance sheet in this batch where a regulator guarantees a return on it.",
+ "model": {
+  "sharesOut": 362.86,
+  "netDebt": 714,
+  "book": {
+   "bvps": 3.94,
+   "coe": 0.075,
+   "growth": 0.035,
+   "roe": {
+    "bear": 0.075,
+    "base": 0.085,
+    "bull": 0.095
+   }
+  }
+ }
+}

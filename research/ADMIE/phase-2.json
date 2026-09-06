@@ -1,0 +1,239 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "ADMIE (IPTO) Holding S.A.",
+  "ticker": "ATHEX: ADMIE",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 4.49,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "All figures are a look-through of IPTO at ADMIE Holding's 51% where stated."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The asset base is the strongest barrier to entry in this batch, stronger even than Constellation's nuclear fleet, because it is a legal monopoly rather than merely a physical one. Nobody may build a competing Greek transmission network at any price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the regulatory structure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-02",
+   "claim": "The RAB trajectory is specific: roughly EUR 3.3bn in 2025 to about EUR 7bn by 2029, funded by roughly EUR 6bn of capital expenditure over 2026-2029 and a EUR 1bn equity injection into IPTO.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "IPTO 2026-2029 Strategic Plan",
+   "asOf": "2026-06-16",
+   "confidence": "high",
+   "impact": "high",
+   "value": 6,
+   "unit": "EUR bn capex 2026-2029"
+  },
+  {
+   "id": "p2-03",
+   "claim": "The finding that materially qualifies the thesis. The Great Sea Interconnector — the Crete-Cyprus-Israel link, and the flagship 'massive interconnector project' — is a special purpose vehicle established by IPTO in January 2024 in which the French infrastructure investor Meridiam has become the MAJORITY shareholder. IPTO is the promoter; it is no longer the principal owner.",
+   "label": "FACT",
+   "source": "Great Sea Interconnector project company disclosures and Cypriot press",
+   "asOf": "2026-08-13",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-04",
+   "claim": "The consequence is that the largest single project in the thesis contributes far less to ADMIE Holding shareholders than the framing implies. A minority stake in a separately financed SPV, held through a 51% subsidiary, is a small fraction of a project whose headline cost runs to billions.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the ownership chain",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-05",
+   "claim": "Part of that project is also not yet approved. An investment request for the Cyprus-Israel section was submitted to the Cypriot and Israeli regulators in August 2026, so a segment of the flagship link remains at the regulatory-application stage rather than under construction.",
+   "label": "FACT",
+   "source": "Cypriot press on the GSI investment request",
+   "asOf": "2026-08-13",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-06",
+   "claim": "The de-risking is genuine and cuts both ways. Selling down a technically difficult, geopolitically exposed deep-water interconnector across the eastern Mediterranean to a specialist infrastructure fund removes a large execution and financing risk from a company whose equity is valued for its safety.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-07",
+   "claim": "The core domestic build is where the value actually sits and it is far less glamorous: island interconnections, the Crete link, network reinforcement to absorb renewable generation, and the substations and transformers that Greek solar and wind require to reach load.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the RAB plan composition",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-08",
+   "claim": "IPTO faces the same equipment bottleneck as PPC and from the same side of the trade. A EUR 6bn network programme is bought into transformer lead times of roughly 128 weeks and prices up about 77% since 2019. For a regulated operator the exposure is milder — cost overruns are typically added to the RAB and recovered — but schedule slippage delays the RAB growth on which the whole case rests.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the Siemens Energy dossier in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The regulated asset base — the entire investment case in four rows",
+   "columns": [
+    "Measure",
+    "Value",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "RAB 2025",
+     "~EUR 3.3bn",
+     "The starting point"
+    ],
+    [
+     "RAB 2029 target",
+     "~EUR 7bn",
+     "Very nearly a doubling"
+    ],
+    [
+     "Capex 2026-2029",
+     "~EUR 6bn",
+     "The mechanism"
+    ],
+    [
+     "IPTO equity injection",
+     "EUR 1bn",
+     "ADMIE Holding funded 51% via its own EUR 530-546m raise"
+    ]
+   ],
+   "note": "[MANAGEMENT GUIDANCE] In a regulated network, RAB growth converts almost mechanically into earnings growth. This is the cleanest growth mechanism in the batch — and shareholders paid for part of it."
+  },
+  {
+   "title": "The interconnector story, as it actually stands",
+   "columns": [
+    "Element",
+    "Status",
+    "IPTO's economic exposure"
+   ],
+   "rows": [
+    [
+     "Great Sea Interconnector SPV",
+     "Established Jan 2024 by IPTO",
+     "Meridiam is now MAJORITY shareholder"
+    ],
+    [
+     "Crete-Cyprus section",
+     "Advanced",
+     "Minority, through the SPV"
+    ],
+    [
+     "Cyprus-Israel section",
+     "Investment request submitted Aug 2026",
+     "Not yet approved"
+    ],
+    [
+     "Domestic island interconnections",
+     "In the RAB plan",
+     "Full, through the 51% stake"
+    ],
+    [
+     "Network reinforcement for renewables",
+     "In the RAB plan",
+     "Full, through the 51% stake"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The project the thesis leads with is the one ADMIE Holding shareholders own least of. The value sits in the unglamorous domestic RAB."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "IPTO's residual percentage stake in the Great Sea Interconnector SPV",
+   "whyItMatters": "It is the difference between the flagship project being a material asset and being a rounding error for ADMIE Holding shareholders.",
+   "resolvedBy": "Annual report investment note"
+  },
+  {
+   "item": "RAB composition by project",
+   "whyItMatters": "Determines how much of the EUR 7bn 2029 target is domestic and regulated versus dependent on the interconnector SPVs.",
+   "resolvedBy": "Investor presentation"
+  },
+  {
+   "item": "Regulatory treatment of interconnector assets",
+   "whyItMatters": "Whether cross-border links enter the Greek RAB, earn a separate return, or sit outside the regulated perimeter entirely.",
+   "resolvedBy": "RAE decisions"
+  },
+  {
+   "item": "Equipment procurement cover for the EUR 6bn programme",
+   "whyItMatters": "Cost overruns are typically recoverable through the RAB, but schedule slippage delays RAB growth, which is the whole case.",
+   "resolvedBy": "Not disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The flagship Great Sea Interconnector is majority-owned by Meridiam, so ADMIE Holding shareholders own a minority of an SPV through a 51% subsidiary — far less exposure than the thesis implies.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The Cyprus-Israel section was only submitted for regulatory investment approval in August 2026 and is not yet approved.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "A EUR 6bn programme is being procured into 128-week transformer lead times; cost is usually recoverable through the RAB, but schedule slippage delays the RAB growth the case rests on.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "The RAB composition by project is not disclosed here, so how much of the EUR 7bn target is domestic and regulated cannot be verified.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Regulatory approval of the Cyprus-Israel GSI section",
+   "window": "2027",
+   "impact": "Medium",
+   "probability": 0.5
+  },
+  {
+   "text": "Crete interconnection and island links entering the RAB",
+   "window": "2026-2028",
+   "impact": "High",
+   "probability": 0.8
+  },
+  {
+   "text": "Annual RAB disclosure confirming progress toward EUR 7bn",
+   "window": "Annual",
+   "impact": "High",
+   "probability": 0.8
+  }
+ ],
+ "conclusions": [
+  "The asset base has the strongest barrier in this batch — stronger than Constellation's nuclear fleet, because it is a legal monopoly rather than merely a physical one. Nobody may build a competing Greek transmission network at any price.",
+  "The RAB trajectory is the entire investment case and it is specific: about EUR 3.3bn in 2025 to roughly EUR 7bn by 2029 on roughly EUR 6bn of capex plus a EUR 1bn equity injection.",
+  "The thesis's flagship project is the one shareholders own least of. The Great Sea Interconnector is an SPV in which Meridiam has become the majority shareholder; IPTO is the promoter, not the principal owner, and ADMIE Holding reaches it only through a 51% subsidiary.",
+  "Part of it is also not yet approved: the Cyprus-Israel section was submitted for regulatory investment approval only in August 2026.",
+  "That de-risking cuts both ways and is probably a good thing. Selling down a technically difficult, geopolitically exposed deep-water Mediterranean cable to a specialist infrastructure fund removes a large execution risk from an equity whose whole appeal is safety. The value sits in the unglamorous domestic build."
+ ],
+ "thesisImpact": "Phase 2 confirms the RAB mechanism and relocates the value. The interconnector headline overstates what ADMIE Holding shareholders own; the domestic regulated build understates it. Phase 5 should value the look-through RAB and treat the GSI stake as a small separate item rather than as the story.",
+ "model": {
+  "sharesOut": 362.86
+ }
+}
