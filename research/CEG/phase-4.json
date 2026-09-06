@@ -1,0 +1,209 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Constellation Energy Corporation",
+  "ticker": "NASDAQ: CEG",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1,
+  "price": 283.78,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment egress proxy.",
+   "CONFIDENCE WARNING. Shares outstanding (~362m) and net debt (~USD 30bn post-Calpine) are unsourced estimates. A 15% error in either moves fair value by more than the gap to the market price."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "The Calpine acquisition materially increased leverage. Net debt is estimated at approximately USD 30bn post-transaction against an estimated market capitalisation of roughly USD 103bn \u2014 but both figures are estimates and neither could be sourced.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the transaction structure and pre-deal balance sheet",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p4-02",
+   "claim": "This is the weakest evidence base of any dossier in this series. Share count and net debt are the two inputs that convert enterprise value to per-share value, and both are estimated. The rating is stated with that limitation explicit.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-03",
+   "claim": "Estimated FY2026 adjusted EBITDA of approximately USD 9.5bn against an estimated enterprise value of roughly USD 133bn implies about 14x \u2014 a normal multiple for a merchant power producer with a contracted nuclear component.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 14,
+   "unit": "x FY2026E EBITDA"
+  },
+  {
+   "id": "p4-04",
+   "claim": "The Brazos Valley divestiture at USD 860m for 606 MW implies roughly USD 1.42m per MW for a merchant ERCOT gas plant \u2014 a useful external mark on dispatchable capacity value.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 860 / 606",
+   "asOf": "2026-08-06",
+   "confidence": "medium",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-05",
+   "claim": "Return on invested capital cannot be assessed. The Calpine acquisition closed within the year, the capital base has been transformed, and the fleet is mid-way through a contracting transition.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-06",
+   "claim": "Nuclear sustaining capital is the structural claim on cash flow that distinguishes this from an infrastructure asset. Refuelling, licence renewal and life extension are permanent, large and non-discretionary, and they are not quantified in the available disclosure.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-07",
+   "claim": "Leverage is the principal balance-sheet risk. A merchant generator carrying roughly USD 30bn of net debt against volatile wholesale earnings has materially less resilience than the contracted-infrastructure framing in the thesis implies.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Estimated capital structure \u2014 all figures are estimates",
+   "columns": [
+    "Item",
+    "Estimate",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Shares outstanding",
+     "~362m",
+     "Low \u2014 derived from pre-deal count plus stock consideration"
+    ],
+    [
+     "Market capitalisation",
+     "~USD 103bn",
+     "Low \u2014 follows from the share count"
+    ],
+    [
+     "Net debt",
+     "~USD 30bn",
+     "Low \u2014 post-Calpine"
+    ],
+    [
+     "Enterprise value",
+     "~USD 133bn",
+     "Low"
+    ],
+    [
+     "FY2026E adjusted EBITDA",
+     "~USD 9.5bn",
+     "Low"
+    ],
+    [
+     "EV / EBITDA",
+     "~14x",
+     "Low"
+    ],
+    [
+     "P/E on guidance midpoint",
+     "~23.6x",
+     "HIGH \u2014 does not depend on the share count"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The final row is the only valuation anchor here that does not rest on an estimate, which is why it carries disproportionate weight in the conclusion."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Actual shares outstanding post-Calpine",
+   "whyItMatters": "Every per-share figure depends on it. This is the most important missing number in the dossier.",
+   "resolvedBy": "10-Q cover page"
+  },
+  {
+   "item": "Actual net debt post-Calpine",
+   "whyItMatters": "Determines enterprise value and the leverage assessment.",
+   "resolvedBy": "10-Q balance sheet"
+  },
+  {
+   "item": "Nuclear sustaining capital expenditure",
+   "whyItMatters": "Determines free cash flow conversion from a fleet whose maintenance requirement is unusually large.",
+   "resolvedBy": "10-K capex disclosure"
+  },
+  {
+   "item": "Adjusted EBITDA, reported",
+   "whyItMatters": "Estimated at USD 9.5bn from adjusted EPS. The company guides on EPS, so the EBITDA bridge is inferred.",
+   "resolvedBy": "10-Q"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Share count and net debt are both unsourced estimates, and together they determine every per-share valuation figure here.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Roughly USD 30bn of net debt against volatile merchant earnings is materially less resilient than a contracted-infrastructure framing implies.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Nuclear sustaining capital is large, permanent and unquantified in the available disclosure.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q3 2026 10-Q \u2014 share count, net debt and the EBITDA bridge",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "Completion of the Brazos Valley sale",
+   "window": "H2 2026",
+   "impact": "Low",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "This is the weakest evidence base in the series. Shares outstanding and net debt are both estimates, and they are precisely the inputs that convert enterprise value into per-share value.",
+  "The one reliable anchor is the earnings multiple: at USD 283.78 against a guidance midpoint of USD 12.00, the stock trades at approximately 23.6x FY2026 adjusted operating earnings, and that figure does not depend on the share count.",
+  "Leverage is the real balance-sheet story. Roughly USD 30bn of estimated net debt against volatile merchant earnings is a different risk profile from the contracted-infrastructure framing in the thesis.",
+  "Nuclear sustaining capital \u2014 refuelling, licence renewal, life extension \u2014 is permanent, large and unquantified. It is the gap between this fleet's EBITDA and its free cash flow.",
+  "Return on capital cannot be assessed: the acquisition closed within the year and the capital base has been transformed."
+ ],
+ "thesisImpact": "Phase 4 requires the valuation in Phase 5 to be presented with an explicit confidence caveat, and gives disproportionate weight to the one multiple that does not depend on estimated inputs.",
+ "model": {
+  "sharesOut": 362,
+  "netDebt": 30000,
+  "wacc": {
+   "bear": 0.095,
+   "base": 0.085,
+   "bull": 0.078
+  },
+  "terminalGrowth": {
+   "bear": 0.02,
+   "base": 0.025,
+   "bull": 0.03
+  }
+ }
+}

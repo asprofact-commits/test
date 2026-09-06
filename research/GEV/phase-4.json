@@ -1,0 +1,60 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"GE Vernova Inc.","ticker":"NYSE: GEV","sector":"industrials","currency":"USD","fxToUsd":1,"price":943.34,"priceUnit":"share","asOf":"2026-09-05","phase":4,"phaseName":"Capital structure & returns on capital",
+  "assumedContext":["No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.","Net cash of approximately USD 10bn is an analyst estimate, not a sourced figure — a declared gap."]},
+ "findings":[
+  {"id":"p4-01","claim":"There is no balance sheet stress. GE Vernova doubled its dividend and increased its buyback authorisation while simultaneously funding a 50% gas turbine capacity expansion.","label":"FACT","source":"GE Vernova multi-year outlook release","asOf":"2026-07-22","confidence":"medium","impact":"high"},
+  {"id":"p4-02","claim":"Reported free cash flow is exceptional and misleading in equal measure. Q2 2026 free cash flow of USD 5.1bn exceeded all of 2025, and FY2026 guidance of USD 11.5-12.5bn is roughly twice guided adjusted EBITDA of about USD 6.0bn.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 results and guidance","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p4-03","claim":"Underlying free cash flow — adjusted EBITDA of roughly USD 6.0bn less capex and cash tax — is estimated at approximately USD 3.5-4.0bn, roughly a third of the reported guidance figure. The difference is customer advances on a backlog growing at 88%.","label":"ANALYST ESTIMATE","source":"Derived from the guidance and normal capital equipment economics","asOf":"2026-09-05","confidence":"low","impact":"high","value":3750,"unit":"USD m estimated underlying FCF"},
+  {"id":"p4-04","claim":"At USD 943.34 and approximately 266m shares the market capitalisation is roughly USD 251bn. On estimated FY2026 adjusted EBITDA of USD 6.0bn and estimated net cash of USD 10bn, the enterprise value to EBITDA multiple is approximately 40x.","label":"ANALYST ESTIMATE","source":"Derived: 251 market cap less 10 net cash, over 6.0 EBITDA","asOf":"2026-09-05","confidence":"medium","impact":"high","value":40,"unit":"x FY2026E EBITDA"},
+  {"id":"p4-05","claim":"Reported price-to-earnings figures for this company are inconsistent and should not be relied on. Market data services show 26.96x and 31.44x, but Q2 net income of USD 0.6bn annualises to approximately USD 2.4bn, which against a USD 251bn market capitalisation is over 100x. Even allowing for a materially stronger second half, the multiple is well above 50x.","label":"ANALYST ESTIMATE","source":"Derived; reported multiples from Morningstar and analyst commentary","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p4-06","claim":"Return on invested capital cannot be assessed meaningfully. The company was separated from General Electric in April 2024, is two years into an unprecedented order cycle, and is expanding capacity 50%. There is no through-cycle record.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-07","claim":"The genuine balance-sheet risk is the reversal of customer advances. If order intake normalises from 88% growth to flat, the working capital inflow becomes an outflow while revenue is still being recognised — a mechanism that has surprised investors in every previous capital equipment cycle.","label":"ANALYST ESTIMATE","source":"Derived from the structure of advance-funded order books","asOf":"2026-09-05","confidence":"medium","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Reported versus underlying cash generation",
+   "columns":["Measure","Reported / guided","Assessment"],
+   "rows":[
+    ["FY2026 free cash flow guidance","USD 11.5-12.5bn","Includes customer advances on an order book growing 88%"],
+    ["FY2026 adjusted EBITDA","~USD 6.0bn at midpoint","The earnings the business actually generated"],
+    ["Estimated underlying free cash flow","~USD 3.5-4.0bn","EBITDA less capex and cash tax"],
+    ["Implied FCF / EBITDA","~2.0x reported, ~0.6x underlying","The gap is the balance sheet, not the business"]
+   ],
+   "note":"[MANAGEMENT GUIDANCE] for the first two rows, [ANALYST ESTIMATE] for the rest. The underlying figure is an estimate and is flagged as low confidence — but the direction is not in doubt, because free cash flow cannot exceed EBITDA by 2x from operations."},
+  {"title":"Valuation multiples on the different bases",
+   "columns":["Basis","Multiple","Comment"],
+   "rows":[
+    ["EV / FY2026E adjusted EBITDA","~40x","The honest operating multiple"],
+    ["Market cap / guided FY2026 FCF","~21x","Flattered by customer advances"],
+    ["Market cap / estimated underlying FCF","~67x","The comparable figure"],
+    ["Reported P/E, market data","26.96x to 31.44x","Inconsistent with Q2 net income of USD 0.6bn"]
+   ],
+   "note":"[ANALYST ESTIMATE] The spread between 21x and 67x on cash flow depending on which figure is used is the single most important thing to understand about this equity."}
+ ],
+ "gaps":[
+  {"item":"Change in contract liabilities in the cash flow statement","whyItMatters":"This is the disclosure that would quantify the customer advance component exactly, and it is the most important missing number in this dossier.","resolvedBy":"10-Q cash flow statement"},
+  {"item":"Actual net cash and debt","whyItMatters":"Estimated at USD 10bn net cash. It moves per-share value by roughly USD 38.","resolvedBy":"10-Q balance sheet"},
+  {"item":"Capex required for the 30 GW capacity target","whyItMatters":"Determines how much of any cash flow is genuinely free.","resolvedBy":"Capex guidance"},
+  {"item":"Reconciliation of the reported P/E figures","whyItMatters":"Market data services show 27-31x against a derived figure above 50x. One of them is wrong and it matters.","resolvedBy":"The income statement"}
+ ],
+ "risks":[
+  {"text":"Reported free cash flow is roughly twice EBITDA on customer advances. The market appears to be capitalising it as if it were earnings.","severity":"high","probability":"high"},
+  {"text":"When order growth normalises the working capital inflow becomes an outflow — the classic capital equipment cycle surprise.","severity":"high","probability":"medium"},
+  {"text":"Return on capital has no through-cycle record; the company was separated from GE in April 2024.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 cash flow — whether the advance-driven inflow continues","window":"Oct 2026","impact":"High","probability":0.9},
+  {"text":"FY2026 10-K contract liability disclosure","window":"Feb 2027","impact":"High","probability":0.9}
+ ],
+ "conclusions":[
+  "There is no balance-sheet stress: the company doubled its dividend and raised its buyback while funding a 50% capacity expansion.",
+  "But the reported free cash flow is not what it appears. FY2026 guidance of USD 11.5-12.5bn against roughly USD 6.0bn of adjusted EBITDA is free cash flow at twice earnings, which in a capital equipment business is customer advances on an order book growing 88%.",
+  "Estimated underlying free cash flow is roughly USD 3.5-4.0bn — about a third of the guided figure. On that basis the equity trades at roughly 67x cash generation rather than the 21x the headline suggests.",
+  "The honest operating multiple is approximately 40x FY2026E EBITDA. Reported price-to-earnings figures from market data services of 27-31x cannot be reconciled with Q2 net income of USD 0.6bn and should not be relied on.",
+  "Return on capital cannot be assessed: two years since separation from GE, mid-cycle, mid-expansion. There is no through-cycle record to test the bull case against."
+ ],
+ "thesisImpact":"Phase 4 supplies the reason this equity is more expensive than it looks. The market is capitalising a cash flow figure that is substantially customer deposits, at a moment when order growth of 88% maximises that inflow. Phase 5 models underlying cash generation instead, and the gap between the two is the investment case.",
+ "model":{"sharesOut":266,"netDebt":-10000,
+  "wacc":{"bear":0.110,"base":0.100,"bull":0.093},
+  "terminalGrowth":{"bear":0.020,"base":0.0275,"bull":0.0325}}
+}

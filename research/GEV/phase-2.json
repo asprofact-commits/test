@@ -1,0 +1,46 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"GE Vernova Inc.","ticker":"NYSE: GEV","sector":"industrials","currency":"USD","fxToUsd":1,"price":943.34,"priceUnit":"share","asOf":"2026-09-05","phase":2,"phaseName":"Asset base & physical bottlenecks","assumedContext":["No primary filing could be retrieved; every external domain is blocked by this environment egress proxy."]},
+ "findings":[
+  {"id":"p2-01","claim":"The productive asset base is heavy-manufacturing capacity for turbines, transformers and switchgear — genuinely scarce industrial plant that takes years to add.","label":"ANALYST ESTIMATE","source":"Derived from the product set","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p2-02","claim":"Capacity is the binding constraint and it is being relieved on a published schedule: 20 GW of annual gas turbine output in Q3 2026, 24 GW in 2028, and actions in train to reach 30 GW in 2030.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p2-03","claim":"Against a 116 GW gas turbine backlog and 20 GW of annual output, the queue is roughly 5.8 years long at current capacity, falling to under 4 years once 30 GW is reached.","label":"ANALYST ESTIMATE","source":"Derived: 116 / 20 and 116 / 30","asOf":"2026-09-05","confidence":"high","impact":"high","value":5.8,"unit":"years of backlog at current output"},
+  {"id":"p2-04","claim":"That arithmetic is the whole cyclical question. A 5.8-year queue supports scarcity pricing; a sub-4-year queue with three suppliers expanding does not, and the backlog is a fixed quantity that depletes as it is delivered.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-05","claim":"Electrification faces a genuinely tighter and longer-lived bottleneck than gas turbines: transformers and switchgear have global lead times measured in years, with far more constrained supplier capacity and far less new entry.","label":"ANALYST ESTIMATE","source":"Derived from the electrification market structure; corroborated by the parallel Siemens Energy backlog in this batch","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-06","claim":"Prolec GE contributes approximately USD 3.1bn of the USD 14.5-15.0bn Electrification revenue guidance — a transformer business acquired into exactly the shortage the segment is monetising.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 guidance","asOf":"2026-07-22","confidence":"high","impact":"medium"},
+  {"id":"p2-07","claim":"Capital intensity is moderate for the scale of expansion under way, and the company has funded a 50% capacity increase while doubling the dividend and increasing the buyback authorisation — which indicates the expansion is not straining the balance sheet.","label":"FACT","source":"GE Vernova multi-year outlook release; Q2 2026 results","asOf":"2026-07-22","confidence":"medium","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"The backlog clock",
+   "columns":["Measure","Value","Implication"],
+   "rows":[
+    ["Gas turbine backlog","116 GW","Target 125 GW under contract by year end"],
+    ["Current annual output","20 GW (Q3 2026 run rate)","~5.8 years of queue"],
+    ["2028 output target","24 GW","~4.8 years at constant backlog"],
+    ["2030 output target","30 GW","~3.9 years at constant backlog"],
+    ["Total backlog value","USD 176bn","~3.8x FY2026E revenue of ~USD 46bn"]
+   ],
+   "note":"[FACT/MANAGEMENT GUIDANCE] with [ANALYST ESTIMATE] on the queue arithmetic. The backlog is a stock, not a flow — it converts to revenue and depletes unless replaced at the same rate."}
+ ],
+ "gaps":[
+  {"item":"Capacity expansion plans of Siemens Energy and Mitsubishi Power","whyItMatters":"Determines whether the industry shortage ends in 2028 or 2032, which is the difference between the bull and bear cases.","resolvedBy":"Siemens Energy is analysed separately in this batch; Mitsubishi is not"},
+  {"item":"Capital expenditure required for the 30 GW target","whyItMatters":"Determines how much of the guided free cash flow is genuinely free.","resolvedBy":"10-K cash flow statement"},
+  {"item":"Backlog cancellation and slot-reservation terms","whyItMatters":"A backlog with weak cancellation penalties is a much softer asset than one with binding deposits.","resolvedBy":"Not disclosed"}
+ ],
+ "risks":[
+  {"text":"The backlog is a depleting stock. At 30 GW of output the 116 GW queue is under four years, and three suppliers are expanding into the same demand.","severity":"high","probability":"medium"},
+  {"text":"Capacity expansion by all major suppliers simultaneously is the classic mechanism by which industrial shortages become gluts.","severity":"high","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"20 GW annual output run rate confirmed","window":"Q3 2026","impact":"Medium","probability":0.9},
+  {"text":"Competitor capacity announcements","window":"Ongoing","impact":"High","probability":0.6}
+ ],
+ "conclusions":[
+  "The asset base is genuinely scarce heavy-manufacturing capacity, and the bottleneck is real — but it is being relieved by the company itself on a published schedule.",
+  "The queue arithmetic is the whole cyclical question: 116 GW against 20 GW of output is 5.8 years; against 30 GW it is under four. The backlog is a depleting stock, not a perpetual annuity.",
+  "Electrification faces a tighter and longer-lived bottleneck than gas turbines — transformers and switchgear have less new entry and longer lead times — which makes it arguably the better business inside the group.",
+  "Capital intensity is manageable: the company is funding a 50% capacity increase while doubling the dividend and raising the buyback authorisation."
+ ],
+ "thesisImpact":"Phase 2 reframes the backlog from an asset to a clock. The USD 176bn is real, but it converts over roughly six years at current capacity and under four at the 2030 target. Phase 5 must value what the business earns after the queue clears, not annualise the queue.",
+ "model":{"sharesOut":266}
+}

@@ -1,0 +1,114 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"GE Vernova Inc.","ticker":"NYSE: GEV","sector":"industrials","currency":"USD","fxToUsd":1,"price":943.34,"priceUnit":"share","asOf":"2026-09-05","phase":5,"phaseName":"Valuation, stress tests & IC memo",
+  "assumedContext":[
+   "No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.",
+   "The discounted cash flow is built on ESTIMATED UNDERLYING free cash flow, not the guided USD 11.5-12.5bn, because that figure is substantially customer advances. This is the single most consequential judgement in the dossier and it is stated openly so a reader who disagrees can flex it.",
+   "Net cash of approximately USD 10bn is an estimate.",
+   "Sector peers are omitted from the peer table because six comparable companies are being analysed in the same batch; the cross-company comparison is the peer set."]},
+ "findings":[
+  {"id":"p5-01","claim":"At USD 943.34 the market capitalisation is approximately USD 251bn on roughly 266m shares, giving an enterprise value of about USD 241bn against estimated FY2026 adjusted EBITDA of USD 6.0bn — approximately 40x.","label":"ANALYST ESTIMATE","source":"Derived from market data and FY2026 guidance","asOf":"2026-09-05","confidence":"medium","impact":"high","value":40,"unit":"x FY2026E EBITDA"},
+  {"id":"p5-02","claim":"A discounted cash flow on estimated underlying free cash flow of USD 5bn rising to USD 11bn across 2027-31, a 10% WACC and 2.75% terminal growth, gives approximately USD 512 per share — about 46% below the market price.","label":"ANALYST ESTIMATE","source":"Derived; workings reproduced in the workspace model","asOf":"2026-09-05","confidence":"low","impact":"high","value":512,"unit":"USD per share"},
+  {"id":"p5-03","claim":"An EV/EBITDA valuation at 28x gives approximately USD 669, and a sum-of-the-parts — Power at 22x segment EBITDA, Electrification at 25x, Wind at 0.3x revenue — gives approximately USD 642.","label":"ANALYST ESTIMATE","source":"Derived from segment guidance","asOf":"2026-09-05","confidence":"low","impact":"high"},
+  {"id":"p5-04","claim":"Weighted 40% DCF, 35% EV/EBITDA and 25% sum-of-the-parts, the base case is approximately USD 599 and the probability-weighted fair value approximately USD 599 — roughly 36% below the market price.","label":"ANALYST ESTIMATE","source":"Derived; computed in the workspace","asOf":"2026-09-05","confidence":"low","impact":"high","value":599,"unit":"USD per share"},
+  {"id":"p5-05","claim":"The sell-side is overwhelmingly positive and this analysis is far below it: the average twelve-month price target is USD 1,236.43 with a high of USD 1,450 and a low of USD 940, and 30 analysts rate the stock a buy with none recommending a sell.","label":"CONSENSUS","source":"Analyst consensus via market data services","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-06","claim":"Notably, the lowest published target of USD 940 is essentially the current price. Even the most cautious covering analyst sees no downside, which is itself a signal about how uniformly the scarcity narrative is held.","label":"ANALYST ESTIMATE","source":"Derived from the target range","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-07","claim":"Reverse valuation: to justify USD 251bn at a normalised 20x EBITDA — a generous multiple for a cyclical industrial — the business must reach approximately USD 12.5bn of EBITDA, more than double the FY2026 guided figure. At the guided 12-14% margin that implies revenue of roughly USD 90bn, about double the FY2026 guidance.","label":"ANALYST ESTIMATE","source":"Derived: 251 / 20 = 12.55 EBITDA; 12.55 / 0.135 = 93 revenue","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-08","claim":"That is not impossible. It is roughly what delivering the 30 GW capacity target at sustained pricing would produce toward the end of the decade. The price is a bet that the scarcity survives the capacity build — the precise tension identified in Phase 1.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Valuation by method, base case",
+   "columns":["Method","Value per share","vs USD 943","Weight","Why this weight"],
+   "rows":[
+    ["EV/EBITDA at 28x","~USD 669","-29%","35%","28x is already generous for a cyclical industrial"],
+    ["Sum of the parts","~USD 642","-32%","25%","Power 22x, Electrification 25x, Wind 0.3x sales"],
+    ["Discounted cash flow","~USD 512","-46%","40%","Built on estimated UNDERLYING free cash flow, not the advance-inflated guidance"],
+    ["Justified P/B","n/a","—","0%","Not meaningful two years after separation"],
+    ["Blended base case","~USD 599","-36%","100%","Probability-weighted: ~USD 599"]
+   ],
+   "note":"[ANALYST ESTIMATE] throughout, and the confidence here is lower than in any dossier in this series except SpaceX. Every method depends on judgements about a two-year-old company mid-cycle."},
+  {"title":"What the price requires",
+   "columns":["Requirement","Implied","FY2026 guidance","Assessment"],
+   "rows":[
+    ["EBITDA to justify USD 251bn at 20x","~USD 12.5bn","~USD 6.0bn","Roughly double"],
+    ["Revenue at the guided 12-14% margin","~USD 90bn","USD 45.5-46.5bn","Roughly double"],
+    ["Timing","Late decade","30 GW capacity target is 2030","Achievable if pricing holds"],
+    ["Condition","Scarcity survives a 50% capacity build","All three suppliers expanding","The central question"]
+   ],
+   "note":"[ANALYST ESTIMATE] The price is not absurd — it is a specific bet that the shortage outlasts the expansion designed to end it."}
+ ],
+ "gaps":[
+  {"item":"Change in contract liabilities","whyItMatters":"Would quantify the customer advance component exactly and settle whether the DCF should use USD 12bn or USD 4bn. Nothing else in this dossier matters as much.","resolvedBy":"10-Q cash flow statement"},
+  {"item":"Competitor capacity expansion","whyItMatters":"Determines whether the shortage ends in 2028 or 2032.","resolvedBy":"Siemens Energy is analysed separately in this batch"},
+  {"item":"Backlog margin profile and cancellation terms","whyItMatters":"Determines whether USD 176bn converts at 12-14% or 17-19%, and how firm it is.","resolvedBy":"Not disclosed"},
+  {"item":"Sourced net cash and WACC components","whyItMatters":"The DCF carries 40% of the weight and this is a cyclical industrial where the discount rate is genuinely uncertain.","resolvedBy":"10-Q; market data"}
+ ],
+ "risks":[
+  {"text":"Reported free cash flow of roughly twice EBITDA is customer advances, and the market appears to be capitalising it as earnings.","severity":"high","probability":"high"},
+  {"text":"The 50% capacity expansion is the mechanism that ends the scarcity premium, and all three suppliers are expanding at once.","severity":"high","probability":"medium"},
+  {"text":"This analysis is 36% below the market and far below a sell-side range whose lowest target is the current price. Being alone is not evidence of being right.","severity":"medium","probability":"medium"},
+  {"text":"Confidence is low. Two years since separation from GE, no through-cycle record, and the most important cash flow disclosure is unavailable.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 cash flow — whether the advance-driven inflow continues or reverses","window":"Oct 2026","impact":"High","probability":0.9},
+  {"text":"125 GW of gas turbine backlog under contract","window":"End 2026","impact":"Medium","probability":0.7},
+  {"text":"FY2026 10-K contract liability disclosure","window":"Feb 2027","impact":"High","probability":0.9},
+  {"text":"First quarter of decelerating order intake","window":"2027","impact":"High","probability":0.5}
+ ],
+ "conclusions":[
+  "The operating claims in the investment thesis are confirmed. The USD 176bn backlog is real, orders grew 88% organically, gas turbine backlog is 116 GW, and demand from data centres and grid replacement is physical rather than narrative.",
+  "The valuation claim is not tested by those facts. At approximately 40x FY2026E EBITDA on a business guiding 12-14% margins, GE Vernova is priced as a structural growth compounder rather than a cyclical industrial in an order boom.",
+  "The most important finding is in the cash flow. Guided free cash flow of USD 11.5-12.5bn against roughly USD 6.0bn of adjusted EBITDA is roughly twice earnings, which comes from customer advances on an order book growing 88%. Underlying free cash flow is estimated at roughly a third of the guided figure.",
+  "Blended fair value is approximately USD 599 against USD 943 — roughly 36% below. This sits far beneath a sell-side consensus of USD 1,236 whose lowest target, USD 940, is the current price.",
+  "The reverse valuation makes the bet explicit: the price requires roughly double the current EBITDA at a generous 20x multiple. That is achievable by 2030 if scarcity pricing survives a 50% capacity expansion — which is precisely what the expansion is designed to end."
+ ],
+ "thesisImpact":"The five phases confirm the thesis's operating claims and reject its valuation implication. GE Vernova is an excellent business in an extraordinary cycle, priced as though the cycle is a permanent structural condition. The correct posture is to want to own this at a lower price, and to watch the cash flow statement rather than the order book.",
+ "memo":{
+  "rating":"AVOID",
+  "weighting":"DCF 40%, EV/EBITDA 35%, sum-of-the-parts 25%. The DCF is built on estimated UNDERLYING free cash flow of roughly USD 4-5bn rather than the guided USD 11.5-12.5bn, because that guidance is substantially customer advances. This single judgement drives the conclusion and is stated openly: a reader who believes the guided figure is sustainable earnings should flex it in the workspace, and will get a very different answer. Confidence in this rating is LOW — lower than for Apple, Alphabet or Mastercard — because the company is two years old as a standalone, has no through-cycle record, and the disclosure that would settle the cash flow question is not available here.",
+  "nonConsensus":[
+   {"market":"Free cash flow guidance of USD 11.5-12.5bn shows the earnings power of the backlog.","us":"It shows the balance sheet effect of an order book growing 88%. Free cash flow at twice adjusted EBITDA is not operating cash generation in a capital equipment business — it is customer deposits on equipment not yet built. Note that management raised the cash flow guidance by roughly USD 5bn while leaving the EBITDA margin guidance unchanged. That is the tell.","evidence":"Phase 3 and 4: FY2026 guidance of USD 11.5-12.5bn FCF against 12-14% EBITDA margin on USD 45.5-46.5bn of revenue."},
+   {"market":"The USD 176bn backlog derisks the next decade.","us":"The backlog is a stock that depletes as it converts. At 116 GW against 20 GW of annual output the queue is 5.8 years; at the 2030 target of 30 GW it is under four. The company is deliberately halving the scarcity that justifies its pricing, and Siemens Energy and Mitsubishi are expanding into the same demand.","evidence":"Phase 2: the queue arithmetic against the published capacity schedule."},
+   {"market":"GE Vernova is the premier infrastructure equity of the electrification cycle.","us":"On franchise, yes. On price, it trades at roughly 40x EBITDA with a consolidated margin of 12-14% and a structurally loss-making Wind segment whose orders fell 40%. The premier franchise and the premier price are different propositions, and the thesis conflates them.","evidence":"Phase 1 and 4: segment margins of 17-20% diluted to 12-14%; Wind orders down 40%."}
+  ],
+  "fears":[
+   {"text":"This analysis is 36% below the market and below the lowest of thirty published targets. Thirty analysts rate it a buy and none rate it a sell.","why":"When the entire covering universe is on the other side, the base rate favours them. The specific risk is that the electrification cycle is genuinely multi-decade and that a 2028-30 EBITDA of USD 12bn+ makes today's price look cheap in hindsight."},
+   {"text":"The demand driver is physical and enormous. Data centre load growth and grid replacement are not narratives — they are construction projects with financing attached.","why":"Unlike most expensive equities, the demand here is visible and contracted. The bear case rests on pricing normalising, not on demand disappointing."},
+   {"text":"Electrification may be a structurally better business than the analysis credits, with transformer and switchgear shortages that outlast the gas turbine cycle by years.","why":"It is guided to 18-20% margins on USD 14.5-15.0bn of revenue with far less new supply entering than in turbines."}
+  ],
+  "sellTriggers":[
+   "Free cash flow falls below adjusted EBITDA in any two consecutive quarters, confirming the advance reversal",
+   "Order intake growth falls below 10% year on year for two consecutive quarters",
+   "Gas turbine backlog falls below 110 GW without a corresponding price increase",
+   "Consolidated adjusted EBITDA margin fails to exceed 14% in FY2027",
+   "A competitor announces gas turbine capacity expansion beyond 25 GW annually",
+   "Wind segment losses widen rather than narrow in FY2027"
+  ],
+  "reEntry":"Blended fair value is approximately USD 599 and the bull case approximately USD 796. A 20% margin of safety implies adding below approximately USD 480, which is far below the 52-week range and therefore not a realistic near-term entry. The more useful test is evidentiary: two consecutive quarters in which free cash flow approximates adjusted EBITDA — demonstrating that the cash is operating rather than advances — would materially change this analysis, as would consolidated margins sustained above 16%."
+ },
+ "model":{
+  "sharesOut":266,
+  "netDebt":-10000,
+  "wacc":{"bear":0.110,"base":0.100,"bull":0.093},
+  "terminalGrowth":{"bear":0.020,"base":0.0275,"bull":0.0325},
+  "fcf":{
+   "bear":[4000,4500,5000,5500,6000],
+   "base":[5000,6500,8000,9500,11000],
+   "bull":[6000,8000,10500,13000,16000]},
+  "assetBase":{"label":"FY2026E adjusted EBITDA","value":6000,"multiple":{"bear":20,"base":28,"bull":36}},
+  "sotp":[
+   {"name":"Power (gas turbines)","method":"EV/EBITDA","metric":4000,"multiple":22,"stake":1.0},
+   {"name":"Electrification (grid)","method":"EV/EBITDA","metric":2800,"multiple":25,"stake":1.0},
+   {"name":"Wind","method":"EV/Sales","metric":9000,"multiple":0.3,"stake":1.0}],
+  "peers":[
+   {"name":"GE Vernova (subject)","self":true,"evEbitda":40.2,"dy":0.3},
+   {"name":"S&P 500 (index)","pe":25.6},
+   {"name":"Mastercard (cross-reference)","pe":29.4,"evEbitda":22.7}],
+  "targets":{
+   "bear":{"price3y":550,"dividends3y":9.0},
+   "base":{"price3y":1050,"dividends3y":9.0},
+   "bull":{"price3y":1600,"dividends3y":9.0}},
+  "probabilities":{"bear":0.30,"base":0.45,"bull":0.25},
+  "weights":{"dcf":0.40,"asset":0.35,"sotp":0.25,"pb":0.0}
+ }
+}

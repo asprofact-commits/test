@@ -1,0 +1,163 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Constellation Energy Corporation",
+  "ticker": "NASDAQ: CEG",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1,
+  "price": 283.78,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment egress proxy, including sec.gov.",
+   "CONFIDENCE WARNING. Two inputs that drive every per-share figure are unsourced estimates: shares outstanding (~362m, derived from the pre-Calpine count plus stock consideration) and net debt (~USD 30bn post-Calpine). A 15% error in either moves fair value by more than the gap to the market price. This dossier's confidence is materially lower than the Apple or Mastercard equivalents and the rating reflects that."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The asset base is genuinely irreplaceable: the largest US nuclear fleet, now combined with Calpine's dispatchable gas capacity. New nuclear cannot be permitted and built on any timescale relevant to current demand.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the fleet composition and nuclear build timelines",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-02",
+   "claim": "Operating performance is excellent. Nuclear capacity factor was 93.0% for the owned fleet in Q2 2026, across 106 total outage days including 86 planned refuelling days over six outages.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 93.0,
+   "unit": "% nuclear capacity factor"
+  },
+  {
+   "id": "p2-03",
+   "claim": "Capacity growth comes from uprates rather than new build \u2014 the Walmart PPA enables a 30 MW expansion at Dresden. Uprates are cheap megawatts but they are incremental, not transformational.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p2-04",
+   "claim": "The bottleneck is physical and favours the incumbent: no new nuclear capacity can enter this market for a decade or more, which is the structural reason the contracted premium exists and should persist.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-05",
+   "claim": "Constellation agreed to sell the Brazos Valley Energy Center, a 606 MW ERCOT gas plant, for USD 860m before adjustments \u2014 the last asset sale required under the Calpine regulatory commitments.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p2-06",
+   "claim": "Nuclear is capital-intensive in a way the thesis does not address: refuelling outages, licence renewals and life-extension capital are permanent, large and non-discretionary. Six outages in a single quarter is the normal cost of running this fleet.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the outage disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The asset base and what constrains it",
+   "columns": [
+    "Asset",
+    "Character",
+    "Constraint"
+   ],
+   "rows": [
+    [
+     "Nuclear fleet",
+     "Largest in the US; 93.0% capacity factor",
+     "Licence renewal, refuelling capex, no new build possible"
+    ],
+    [
+     "Calpine gas fleet",
+     "Dispatchable, acquired 2026",
+     "Merchant exposure; one divestiture required and agreed"
+    ],
+    [
+     "Retail supply",
+     "Leading US competitive supplier",
+     "Margin competition"
+    ],
+    [
+     "Uprates",
+     "30 MW at Dresden via the Walmart PPA",
+     "Incremental, not transformational"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The barrier to entry here is the strongest in this batch: no competitor can build the primary asset at all."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Nuclear maintenance and life-extension capital expenditure",
+   "whyItMatters": "Non-discretionary, large and permanent. It determines how much of EBITDA becomes free cash flow, which drives the whole valuation.",
+   "resolvedBy": "10-K capex disclosure"
+  },
+  {
+   "item": "Post-Calpine consolidated capacity by fuel and region",
+   "whyItMatters": "The merchant exposure cannot be sized without it.",
+   "resolvedBy": "10-K fleet disclosure"
+  },
+  {
+   "item": "Licence renewal timetable across the fleet",
+   "whyItMatters": "Each renewal is a regulatory event with binary outcomes for individual units.",
+   "resolvedBy": "NRC filings"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Nuclear refuelling, licence renewal and life-extension capital are permanent and non-discretionary, and the free cash flow conversion cannot be assessed without them.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "An operational event at a single large unit is a material earnings event; six outages a quarter is normal, an unplanned extended outage is not.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Completion of the Brazos Valley divestiture",
+   "window": "H2 2026",
+   "impact": "Low",
+   "probability": 0.9
+  },
+  {
+   "text": "Further uprate announcements tied to PPAs",
+   "window": "Ongoing",
+   "impact": "Medium",
+   "probability": 0.6
+  }
+ ],
+ "conclusions": [
+  "The asset base has the strongest entry barrier in this batch: no competitor can build the primary asset at all on any relevant timescale.",
+  "Operating execution is excellent \u2014 a 93.0% nuclear capacity factor across six outages including 86 planned refuelling days.",
+  "Growth comes from uprates, which are cheap megawatts but incremental. The 30 MW at Dresden is representative in scale.",
+  "The cost the thesis omits: nuclear refuelling, licence renewal and life-extension capital are permanent, large and non-discretionary, and they determine how much EBITDA becomes free cash flow."
+ ],
+ "thesisImpact": "Phase 2 confirms an exceptional and irreplaceable asset base while identifying the disclosure that Phase 5 most needs: sustaining capital expenditure. A nuclear fleet's EBITDA and its free cash flow are further apart than in almost any other asset class.",
+ "model": {
+  "sharesOut": 362
+ }
+}

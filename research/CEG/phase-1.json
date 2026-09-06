@@ -1,0 +1,183 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Constellation Energy Corporation",
+  "ticker": "NASDAQ: CEG",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1,
+  "price": 283.78,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment egress proxy, including sec.gov.",
+   "CONFIDENCE WARNING. Two inputs that drive every per-share figure are unsourced estimates: shares outstanding (~362m, derived from the pre-Calpine count plus stock consideration) and net debt (~USD 30bn post-Calpine). A 15% error in either moves fair value by more than the gap to the market price. This dossier's confidence is materially lower than the Apple or Mastercard equivalents and the rating reflects that."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "Constellation is the largest US private-sector power producer following the Calpine acquisition, which closed earlier in 2026 and combines the largest emissions-free generator with Calpine's dispatchable gas fleet and the leading competitive retail supply business.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results and merger commentary",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-02",
+   "claim": "Pricing power in the nuclear fleet is contractual and demonstrably premium: 920 MW of nuclear power purchase agreements were signed in Q2 2026 alone with investment-grade counterparties at an average contract duration of 18.5 years.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 920,
+   "unit": "MW signed in the quarter"
+  },
+  {
+   "id": "p1-03",
+   "claim": "Approximately 30% of clean baseload output is now under long-term contract. That confirms the thesis directionally \u2014 and bounds it: roughly 70% remains merchant and exposed to wholesale price and capacity auction outcomes.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the Q2 2026 disclosure",
+   "asOf": "2026-08-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-04",
+   "claim": "The counterparties disclosed are broader than the thesis implies. The named agreement is with Walmart \u2014 176 MW enabling a 30 MW uprate at Dresden \u2014 and the rest are described as investment-grade customers rather than specifically hyperscalers.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p1-05",
+   "claim": "The product is genuinely scarce: always-on, zero-carbon baseload cannot be built quickly, cannot be sited freely, and cannot be replicated by renewables plus storage at the reliability level hyperscalers contract for. That is the source of the premium.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the physical characteristics of nuclear baseload",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-06",
+   "claim": "Regulatory dependence is unusually high and cuts both ways: nuclear licence extensions, PJM capacity auction design, state-level clean energy credits and federal production tax credits all materially affect realised prices, and none are under the company's control.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the regulatory structure of US merchant nuclear",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "Higher PJM capacity prices were cited as a driver of the Q2 2026 earnings increase, which illustrates the point precisely \u2014 a material part of the earnings improvement came from an auction outcome rather than from a commercial decision.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Where the pricing power is contractual and where it is not",
+   "columns": [
+    "Output",
+    "Basis",
+    "Duration",
+    "Assessment"
+   ],
+   "rows": [
+    [
+     "~30% of clean baseload",
+     "Long-term PPAs, investment-grade counterparties",
+     "18.5 years average",
+     "Genuinely premium and genuinely locked"
+    ],
+    [
+     "~70% of clean baseload",
+     "Merchant / wholesale",
+     "Spot to short-term",
+     "Exposed to power prices and capacity auctions"
+    ],
+    [
+     "Calpine gas fleet",
+     "Dispatchable, merchant",
+     "Short",
+     "Cyclical, hedges the nuclear position"
+    ],
+    [
+     "Retail supply",
+     "Customer contracts",
+     "Short to medium",
+     "Margin-driven, competitive"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The thesis describes the 30%. The equity owns all of it."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The realised price premium in the nuclear PPAs",
+   "whyItMatters": "The entire thesis rests on 'significant pricing premiums'. The volume and duration are disclosed; the price is not. Without it the premium is asserted rather than measured.",
+   "resolvedBy": "Not disclosed; contract pricing is confidential"
+  },
+  {
+   "item": "Merchant versus contracted margin split",
+   "whyItMatters": "Roughly 70% of clean baseload is merchant. The earnings sensitivity to power prices cannot be sized without it.",
+   "resolvedBy": "10-Q segment and hedging disclosure"
+  },
+  {
+   "item": "PJM capacity auction outlook",
+   "whyItMatters": "Higher capacity prices were a cited Q2 driver. Auction outcomes are volatile and set administratively.",
+   "resolvedBy": "PJM auction results"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly 70% of clean baseload output remains merchant, so the contracted-premium story covers under a third of the fleet.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "A material part of the Q2 earnings improvement came from PJM capacity prices \u2014 an administrative auction outcome, not a commercial win.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "Nuclear licensing, clean energy credits and capacity market design are all outside company control and all materially affect realised price.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Further nuclear PPA announcements with hyperscalers",
+   "window": "Ongoing",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Next PJM capacity auction",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "The thesis is directionally correct and quantitatively bounded. Constellation has signed 920 MW of nuclear PPAs at an 18.5-year average duration with investment-grade counterparties, and roughly 30% of clean baseload is now contracted.",
+  "That leaves roughly 70% merchant. The equity is a claim on both, and the contracted-premium narrative describes under a third of the fleet.",
+  "The named counterparty in the quarter is Walmart, not a hyperscaler. The thesis phrase 'directly to tech hyperscalers' is narrower than what the disclosure supports.",
+  "The product scarcity is real: always-on zero-carbon baseload cannot be built quickly or sited freely, which is why it commands a premium at all.",
+  "Regulatory dependence is unusually high. Higher PJM capacity prices were a cited driver of the Q2 beat \u2014 an auction outcome rather than a commercial achievement."
+ ],
+ "thesisImpact": "Phase 1 confirms the mechanism in the thesis and shrinks its scope. The contracted nuclear premium is real, growing and long-dated, but it covers about 30% of the fleet. Phase 5 must value a company that is roughly one-third contracted utility and two-thirds merchant generator, not a fully contracted infrastructure asset.",
+ "model": {
+  "sharesOut": 362
+ }
+}
