@@ -1,0 +1,191 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Public Power Corporation S.A.",
+  "ticker": "ATHEX: PPC",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 22.9,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy. Findings rest on search-result summaries of PPC's H1 2026 results, the 2026-2030 Strategic Plan, the April 2026 capital raising announcement and Greek financial press.",
+   "PRICE UNCERTAINTY. Two September 2026 quotes differ by 5%: EUR 22.90 (most recent) and EUR 24.10 (3 September). EUR 22.90 is used; at EUR 24.10 every gap-to-fair-value figure in this dossier widens by about four percentage points.",
+   "MATERIAL EVENT THE THESIS OMITS. PPC completed a EUR 4.5bn share capital increase in April 2026, issuing 228m new shares against 369m existing — a 62% increase in the share count. Every per-share figure here uses 597m shares."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "The defensive framing in the thesis is right about the structure. PPC is a vertically integrated incumbent spanning regulated distribution through HEDNO, generation, and retail supply in Greece, with the dominant retail position in its home market.",
+   "label": "FACT",
+   "source": "PPC group structure and H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-02",
+   "claim": "Only part of the earnings base is genuinely regulated, and it is not wholly owned. HEDNO, the Greek distribution network operator, is the regulated asset — and PPC sold 49% of it to Macquarie, so a substantial share of the most defensive cash flow in the group accrues to minorities rather than to PPC shareholders.",
+   "label": "FACT",
+   "source": "HEDNO ownership structure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-03",
+   "claim": "The rest is competitive. Generation and supply in Greece, Romania, Italy, Bulgaria and Croatia compete on price in liberalised markets. PPC is a price-taker in wholesale power and a price-competitor in retail, which is a materially weaker position than the 'defensive utility' framing implies.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the market structure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-04",
+   "claim": "The strategic transformation is real and well advanced. Renewable installed capacity reached 7.3 GW at H1 2026, up 1 GW year on year, and now represents 58% of total group installed capacity. Lignite phase-out completes in 2026 and 40% of oil-fired generation on the Greek islands is to be decommissioned.",
+   "label": "FACT",
+   "source": "PPC H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 7.3,
+   "unit": "GW renewable capacity, 58% of total"
+  },
+  {
+   "id": "p1-05",
+   "claim": "Operating delivery has been good. H1 2026 adjusted EBITDA was EUR 1.24bn and adjusted net income after minorities EUR 0.4bn, and the FY2025 target of EUR 2.0bn adjusted EBITDA was achieved.",
+   "label": "FACT",
+   "source": "PPC H1 2026 and FY2025 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 1.24,
+   "unit": "EUR bn H1 2026 adjusted EBITDA"
+  },
+  {
+   "id": "p1-06",
+   "claim": "The thesis phrase 'low-volatility yield investment' does not describe a company mid-way through a EUR 24.2bn capital programme that has just diluted its shareholders by 62%. Utilities are defensive when they are harvesting a rate base; PPC is building one.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the strategic plan and the capital raise",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "The regulatory environment is a genuine asset. Greece has a supportive framework for renewables and grid investment, EU recovery funding has co-financed part of the transition, and the lignite exit is policy-backed rather than contested. That reduces execution risk on the build.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the Greek policy framework",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The thesis sentence, tested clause by clause",
+   "columns": [
+    "Claim",
+    "Verdict",
+    "Evidence"
+   ],
+   "rows": [
+    [
+     "Southeastern European utility",
+     "Confirmed and expanding",
+     "Greece, Romania, Italy, Bulgaria, Croatia"
+    ],
+    [
+     "EUR 24.2bn strategic expansion plan",
+     "Confirmed exactly",
+     "2026-2030 Strategic Plan"
+    ],
+    [
+     "Double generation capacity by 2030",
+     "Confirmed",
+     "12.6 GW to 24.3 GW; net additions 2.4 GW a year"
+    ],
+    [
+     "300 MW AI data centre campus in Kozani",
+     "Confirmed as a plan — NO SIGNED TENANT",
+     "Talks with four hyperscalers; see Phase 3"
+    ],
+    [
+     "Defensive, low-volatility yield investment",
+     "Contradicted",
+     "62% share-count increase in April 2026 to fund the build"
+    ],
+    [
+     "Implied: therefore buy",
+     "Not tested by those facts",
+     "Phase 5"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The plan is exactly as described. The characterisation of the equity as defensive is the part that does not survive."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Regulated versus competitive EBITDA split",
+   "whyItMatters": "Determines how much of the earnings base is genuinely defensive. It is the single most important disclosure for a utility and it is not available here.",
+   "resolvedBy": "Interim report segment note"
+  },
+  {
+   "item": "HEDNO's standalone regulated asset base and allowed return",
+   "whyItMatters": "The regulated core is 51%-owned. Its value and the minority claim against it drive the equity bridge in Phase 5.",
+   "resolvedBy": "HEDNO regulatory filings"
+  },
+  {
+   "item": "Retail market share and churn in Greece",
+   "whyItMatters": "The supply business is competitive and the incumbent position is eroding in most liberalised markets.",
+   "resolvedBy": "Regulator statistics"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The company diluted shareholders by 62% in April 2026 to fund the build. A 'defensive yield investment' does not normally require a EUR 4.5bn equity call.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The regulated core, HEDNO, is only 51% owned, so a substantial part of the most defensive cash flow belongs to minorities.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Generation and supply across five countries are competitive and price-taking, not regulated.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Completion of the lignite phase-out",
+   "window": "2026",
+   "impact": "Medium",
+   "probability": 0.9
+  },
+  {
+   "text": "FY2026 results against the EUR 2.4bn adjusted EBITDA target",
+   "window": "Q1 2027",
+   "impact": "High",
+   "probability": 0.85
+  }
+ ],
+ "conclusions": [
+  "The structure in the thesis is right: a vertically integrated Southeastern European incumbent with regulated distribution, generation and retail supply.",
+  "But the regulated core is only 51% owned. PPC sold 49% of HEDNO to Macquarie, so a substantial share of the most defensive cash flow in the group accrues to minorities.",
+  "Everything else is competitive. Generation and supply across five countries are price-taking businesses in liberalised markets, not regulated ones.",
+  "The transformation is genuinely well advanced: 7.3 GW of renewables, up 1 GW year on year and now 58% of installed capacity, with the lignite exit completing in 2026.",
+  "The characterisation that fails is 'defensive, low-volatility yield investment'. A company that raised EUR 4.5bn of equity in April 2026 — a 62% increase in its share count — to fund a EUR 24.2bn build is not harvesting a rate base. It is building one, and shareholders are paying for it."
+ ],
+ "thesisImpact": "Phase 1 confirms the plan and rejects the framing. This is a growth utility mid-construction, not a defensive yield asset, and the equity has already been diluted by 62% to fund it. Phase 5 must value it per share on the enlarged count and must deduct the minority claim on the regulated core.",
+ "model": {
+  "sharesOut": 597
+ }
+}

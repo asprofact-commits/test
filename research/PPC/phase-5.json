@@ -1,0 +1,421 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Public Power Corporation S.A.",
+  "ticker": "ATHEX: PPC",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 22.9,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing retrievable; every external domain is blocked by this environment's egress proxy.",
+   "NO DISCOUNTED CASH FLOW. It is excluded deliberately, not omitted by oversight. With EUR 24.2bn of capex against roughly EUR 2.6bn a year of funds from operations, free cash flow is negative across the entire explicit forecast window; a DCF would place effectively all value in the terminal value and would be a worse instrument than the three used here. Weights are EV/EBITDA 50%, justified price-to-book 25%, sum-of-the-parts 25%.",
+   "Net debt (~EUR 5.0bn) and minority interest (~EUR 3.2bn) are both DERIVED. Together they are EUR 8.2bn against a EUR 13.7bn market capitalisation, and a 20% error in the pair moves fair value by roughly 12%.",
+   "The share price itself is uncertain by about 5%: EUR 22.90 is used, and a 3 September quote of EUR 24.10 also exists.",
+   "Sector peers are omitted; the batch companies are the peer set."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "An EV/EBITDA valuation at 8.5x FY2026E adjusted EBITDA of EUR 2.4bn, less roughly EUR 5.0bn of net debt and EUR 3.2bn of minorities, gives approximately EUR 20 per share against a market price of EUR 22.90. The market is paying about 9.2x on the same basis.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 20,
+   "unit": "EUR per share, EV/EBITDA method"
+  },
+  {
+   "id": "p5-02",
+   "claim": "A justified price-to-book on a normalised post-build return on equity of 8.8% against an 8.5% cost of equity and 3% growth gives a multiple of about 1.05x on estimated book value of EUR 18.43 — approximately EUR 19 per share.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: (ROE - g) / (COE - g)",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-03",
+   "claim": "A sum-of-the-parts valuing distribution at 10x, renewables at 10x, conventional generation and supply at 6x and the Romanian and Southeastern European portfolio at 7x segment EBITDA gives roughly EUR 20.1bn of enterprise value and approximately EUR 19.9 per share after net debt and minorities.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-04",
+   "claim": "Weighted 50% EV/EBITDA, 25% justified price-to-book and 25% sum-of-the-parts, the base case is approximately EUR 20.1 and the probability-weighted fair value approximately EUR 20.1 — roughly 12% below the market price. All three methods agree within 5% of each other, which is the tightest clustering in the series.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 20,
+   "unit": "EUR per share"
+  },
+  {
+   "id": "p5-05",
+   "claim": "The most useful tension in this dossier: fair value sits roughly 12% below the price while the expected three-year internal rate of return is positive, at roughly 6%. The dividend does that work. In the base case an investor earns the yield and waits for the build, and earns very little from a re-rating.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-06",
+   "claim": "Reverse valuation: at EUR 22.90 the price implies roughly 9.2x FY2026E EBITDA and about 1.24x book against a current return on equity of 6.4%. To justify 1.24x book the normalised return on equity must reach about 9.8%, roughly 340 basis points above where it stands. The price is a specific bet that EUR 24.2bn of new assets earn well above the current fleet's return.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "The single largest swing factor is not in the model. A signed Kozani anchor tenant with a 10-year power purchase agreement would convert 300 MW from [Unfunded Planned] to [Approved / Committed Pipeline], de-risk part of the Greek renewable build against curtailment, and justify a materially higher multiple. Its absence is why the base case is what it is.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from Phase 3",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "Honest limitation: the 12% gap is close to the combined uncertainty in derived net debt, derived minority interest and a share price quoted 5% apart across two sources. The rating rests more securely on the qualitative findings — 62% dilution, a return on equity below the cost of equity, and no contracted data-centre tenant — than on the arithmetic.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs EUR 22.90",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "EV/EBITDA at 8.5x",
+     "~EUR 20.4",
+     "-11%",
+     "50%",
+     "Low — net debt and minorities derived"
+    ],
+    [
+     "Justified price-to-book at ~1.05x",
+     "~EUR 19.4",
+     "-15%",
+     "25%",
+     "Low — book value estimated"
+    ],
+    [
+     "Sum of the parts",
+     "~EUR 19.9",
+     "-13%",
+     "25%",
+     "Low — segment EBITDA estimated"
+    ],
+    [
+     "Discounted cash flow",
+     "EXCLUDED",
+     "—",
+     "0%",
+     "Negative FCF across the plan; not a valid instrument"
+    ],
+    [
+     "Blended base case",
+     "~EUR 20.1",
+     "-12%",
+     "100%",
+     "Probability-weighted ~EUR 19.9"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Three independent methods land within 5% of each other, all below the price. That agreement is the strongest quantitative statement in this dossier."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "25%",
+     "Kozani partner not signed; capex inflation on a supply-constrained equipment market; Greek capture prices fall further; dividend rebased",
+     "~EUR 16.0",
+     "-8.7%"
+    ],
+    [
+     "Base",
+     "50%",
+     "FY2026 delivers EUR 2.4bn; build proceeds broadly on plan; dividend progresses toward EUR 1.40; no re-rating",
+     "~EUR 20.1",
+     "+7.1%"
+    ],
+    [
+     "Bull",
+     "25%",
+     "Kozani anchor tenant signed; new capacity earns above the cost of capital; the Southeastern European expansion delivers; multiple re-rates toward Western European utilities",
+     "~EUR 24.3",
+     "+20.0%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The bull case is entirely about the Kozani tenant and the return on new capacity. Both are knowable events rather than hopes, which makes this a watchable position."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Whether a Kozani anchor tenant has been signed since May 2026",
+   "whyItMatters": "The single most valuable piece of news this company could produce, and the difference between the base and bull cases. The egress restriction here means it cannot be checked today.",
+   "resolvedBy": "Company announcement"
+  },
+  {
+   "item": "Reported net debt and minority interest",
+   "whyItMatters": "Both derived. Together EUR 8.2bn against a EUR 13.7bn market capitalisation, and comparable in size to the 12% gap.",
+   "resolvedBy": "Interim report"
+  },
+  {
+   "item": "Regulated versus competitive EBITDA split",
+   "whyItMatters": "The sum-of-the-parts carries 25% weight and rests on an estimated split; the regulated share is also what determines the right multiple for the whole.",
+   "resolvedBy": "Interim report segment note"
+  },
+  {
+   "item": "Achieved capture prices on the Greek renewable fleet",
+   "whyItMatters": "Determines whether 5 GW of Greek additions produce proportionate EBITDA or run into curtailment.",
+   "resolvedBy": "Annual report operating data"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The share count rose 62% in April 2026 to fund the plan, and the thesis does not mention it.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Return on equity of about 6.4% is below the cost of equity and stays depressed through the build, capping the justified price-to-book near 1x against a market at about 1.24x.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The Kozani campus has no signed anchor tenant and PPC funds only about a third of Phase I.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "PPC buys equipment into a market with roughly 128-week lead times and prices up 77% since 2019, which puts real cost and schedule risk on a EUR 24.2bn programme.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Net debt, minority interest and even the share price are uncertain by amounts comparable to the 12% gap to fair value.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Kozani anchor tenant and joint venture announcement",
+   "window": "H2 2026",
+   "impact": "Very high",
+   "probability": 0.55
+  },
+  {
+   "text": "FY2026 results — EUR 2.4bn EBITDA target, reported net debt, minority interest and the segment split",
+   "window": "Q1 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "First evidence that newly commissioned capacity earns above the cost of capital",
+   "window": "2028-2030",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "Greek storage entering service and lifting renewable capture prices",
+   "window": "2027-2029",
+   "impact": "High",
+   "probability": 0.6
+  },
+  {
+   "text": "Progression of the dividend toward the EUR 1.40 2030 target",
+   "window": "Annual",
+   "impact": "Medium",
+   "probability": 0.8
+  }
+ ],
+ "conclusions": [
+  "Every operating claim in the thesis is confirmed: the EUR 24.2bn plan, the near-doubling of capacity to 24.3 GW by 2030, and the 300 MW Kozani campus as an announced project. The characterisation of the equity is what fails.",
+  "PPC raised EUR 4.5bn in April 2026, issuing 228m shares against 369m existing — a 62% increase in the share count. A 'defensive, low-volatility yield investment' does not normally require an equity call of that size, and the thesis does not mention it.",
+  "The Kozani campus has no signed anchor tenant. PPC funds about a third of a EUR 3.5bn Phase I and is in talks with four hyperscalers. Under this protocol that is [Unfunded Planned] and earns zero base-case weight — the sharpest contrast in the batch with Constellation's 920 MW signed at 18.5-year duration.",
+  "Three independent methods — enterprise multiple, justified price-to-book and sum-of-the-parts — land within 5% of each other at roughly EUR 20.1, about 12% below the market price. A discounted cash flow is excluded because free cash flow is negative across the whole plan.",
+  "The return, in the base case, is the dividend. Fair value sits below the price and the expected three-year IRR is still positive at roughly 6%, entirely because of a 3.5% yield rising toward EUR 1.40 by 2030. An investor here is paid to wait for a build, not to own a re-rating."
+ ],
+ "thesisImpact": "The five phases confirm the plan and reject the framing. PPC is a growth utility mid-construction whose shareholders have just funded 15% of a EUR 24.2bn programme through 62% dilution, whose return on equity is below its cost of equity, and whose most exciting project has no counterparty. The dividend is real and is what makes the position holdable.",
+ "memo": {
+  "rating": "HOLD — income only, not a growth position",
+  "weighting": "EV/EBITDA 50%, justified price-to-book 25%, sum-of-the-parts 25%, discounted cash flow excluded at 0%. The exclusion is deliberate and is the most important methodological choice in this dossier: with EUR 24.2bn of capex against roughly EUR 2.6bn a year of funds from operations, free cash flow is negative throughout the explicit window and a DCF would put effectively all value in the terminal value. The model returns roughly -12%, which on its own would read as AVOID. I am stating HOLD, for a reason and not as a hedge: the gap is close to the combined uncertainty in a derived net debt figure, a derived minority interest and a share price quoted 5% apart across two sources — and the 3.5% dividend, rising toward EUR 1.40 by 2030, produces a positive expected IRR even from a fair value below the price. This is a position to hold for income while the build is proven, not one to buy for growth.",
+  "nonConsensus": [
+   {
+    "market": "PPC is a defensive, low-volatility yield investment tethered to the inevitable expansion of the regional grid.",
+    "us": "It raised EUR 4.5bn of equity in April 2026, issuing 228m shares against 369m existing — a 62% increase in the share count — to fund a EUR 24.2bn build. Utilities are defensive when they harvest a rate base; PPC is building one, and shareholders paid for 15% of it. Every per-share figure drawn from pre-raise data is overstated by a factor of 1.62.",
+    "evidence": "Phase 4: the April 2026 capital raising announcement and the disclosed 54/31/15 funding mix."
+   },
+   {
+    "market": "The 300 MW Kozani AI data centre campus underpins the growth case.",
+    "us": "There is no signed anchor tenant. PPC has been in talks with Google, Meta, AWS and Microsoft toward a joint venture with a land lease and a 10-year PPA; partner selection was targeted for end of summer 2026 and none has been announced. PPC's EUR 1.2bn is about a third of a EUR 3.5bn Phase I — without a partner the project does not proceed at the announced scale. Constellation signed 920 MW at 18.5-year average duration. PPC has a shortlist.",
+    "evidence": "Phase 3: the Kozani process as reported, and the funding split."
+   },
+   {
+    "market": "The equity is cheap on a utility multiple.",
+    "us": "It is cheap on enterprise value at roughly 9.2x EBITDA and expensive on earnings at roughly 19.5x, and both are true. The gap is depreciation, interest and Macquarie's 49% of HEDNO — the regulated core, which is the only genuinely defensive asset in the group and is only 51% owned. On book value the picture is clearest: a 6.4% return on equity against an 8.5% cost of equity justifies about 1.05x book, and the market pays about 1.24x.",
+    "evidence": "Phase 4: the multiple divergence and the justified price-to-book calculation."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The demand is genuinely inevitable. Southeastern European grids must be expanded and interconnected, the lignite exit is policy-backed rather than contested, and PPC is the incumbent positioned to do it. The thesis is right about the direction.",
+    "why": "Betting against a policy-backed, physically necessary build-out has a poor base rate, and this is the strongest argument against the rating."
+   },
+   {
+    "text": "A signed Kozani tenant would change the case materially and quickly. It would convert 300 MW to committed, de-risk part of the Greek renewable build against curtailment, and justify a higher multiple. Four hyperscalers are reportedly at the table.",
+    "why": "This is a knowable event with a real probability, not a hope, and it is why the position is worth watching rather than avoiding."
+   },
+   {
+    "text": "The dividend is substantial, growing and covered: EUR 0.80 rising toward EUR 1.40 by 2030, roughly 24% compound from EUR 0.40 in 2024.",
+    "why": "It produces a positive expected return even from a fair value below the price, and it is what makes HOLD rather than AVOID the honest call."
+   }
+  ],
+  "sellTriggers": [
+   "Kozani partner process concluding without an agreement, or lapsing past end-2026 without an announcement",
+   "FY2026 adjusted EBITDA below EUR 2.3bn",
+   "Any reduction to the EUR 0.80 dividend or to the EUR 1.40 2030 target",
+   "Net debt to EBITDA rising above 3.0x, approaching the 3.5x threshold",
+   "A further equity raise of any size — the second dilution would confirm the plan is underfunded",
+   "Capex guidance for the plan rising materially above EUR 24.2bn on equipment cost inflation",
+   "Evidence that Greek renewable capture prices are falling faster than the storage build can offset"
+  ],
+  "reEntry": "Blended fair value is approximately EUR 20.1 with a bear case of approximately EUR 16.0 and a bull case of approximately EUR 24.3. Below roughly EUR 18 the shares would sit under all three valuation methods with a 4.4% dividend yield and a base-case IRR above 14%, which would justify a full position. At EUR 22.90 the appropriate holding is income-sized, not growth-sized. The evidentiary test is a single event rather than a price: a signed Kozani anchor tenant with a disclosed PPA term. That one announcement would move 300 MW from [Unfunded Planned] to committed and would legitimately re-rate the equity."
+ },
+ "model": {
+  "sharesOut": 597,
+  "netDebt": 5000,
+  "minorities": 3200,
+  "book": {
+   "bvps": 18.43,
+   "coe": 0.085,
+   "growth": 0.03,
+   "roe": {
+    "bear": 0.075,
+    "base": 0.088,
+    "bull": 0.102
+   }
+  },
+  "assetBase": {
+   "label": "FY2026E adjusted EBITDA",
+   "value": 2400,
+   "multiple": {
+    "bear": 7.0,
+    "base": 8.5,
+    "bull": 10.0
+   }
+  },
+  "sotp": [
+   {
+    "name": "Distribution (HEDNO, consolidated)",
+    "method": "EV/EBITDA",
+    "metric": 700,
+    "multiple": 10,
+    "stake": 1.0
+   },
+   {
+    "name": "Renewables (7.3 GW)",
+    "method": "EV/EBITDA",
+    "metric": 650,
+    "multiple": 10,
+    "stake": 1.0
+   },
+   {
+    "name": "Conventional generation and supply (Greece)",
+    "method": "EV/EBITDA",
+    "metric": 750,
+    "multiple": 6,
+    "stake": 1.0
+   },
+   {
+    "name": "Romania and Southeastern Europe",
+    "method": "EV/EBITDA",
+    "metric": 300,
+    "multiple": 7,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "PPC (subject)",
+    "self": true,
+    "pe": 19.5,
+    "evEbitda": 9.2,
+    "dy": 3.5
+   },
+   {
+    "name": "Metlen (cross-reference)",
+    "pe": 10.6,
+    "evEbitda": 7.7
+   },
+   {
+    "name": "Constellation Energy (cross-reference)",
+    "pe": 23.6,
+    "evEbitda": 14.0
+   },
+   {
+    "name": "Siemens Energy (cross-reference)",
+    "pe": 30.4,
+    "evEbitda": 17.0
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 15,
+    "dividends3y": 2.4
+   },
+   "base": {
+    "price3y": 25,
+    "dividends3y": 3.15
+   },
+   "bull": {
+    "price3y": 36,
+    "dividends3y": 3.6
+   }
+  },
+  "probabilities": {
+   "bear": 0.25,
+   "base": 0.5,
+   "bull": 0.25
+  },
+  "weights": {
+   "dcf": 0.0,
+   "asset": 0.5,
+   "pb": 0.25,
+   "sotp": 0.25
+  }
+ }
+}

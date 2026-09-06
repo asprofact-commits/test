@@ -1,0 +1,244 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Public Power Corporation S.A.",
+  "ticker": "ATHEX: PPC",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 22.9,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Share count is 597m following the April 2026 capital increase (369m existing plus 228m new)."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The capacity plan is specific and large: from roughly 12.6 GW of installed capacity today to 24.3 GW in 2030, through net annual additions of about 2.4 GW in renewables, flexible generation and storage.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "PPC Strategic Plan 2026-2030",
+   "asOf": "2026-05-18",
+   "confidence": "high",
+   "impact": "high",
+   "value": 24.3,
+   "unit": "GW installed capacity target 2030"
+  },
+  {
+   "id": "p2-02",
+   "claim": "It decomposes across three geographies: Greece adds 5 GW to reach 13.3 GW despite the full lignite phase-out and the decommissioning of 40% of island oil-fired generation; Romania triples to 5.3 GW; and Italy, Bulgaria and Croatia together reach 3.5 GW.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "PPC Strategic Plan 2026-2030",
+   "asOf": "2026-05-18",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-03",
+   "claim": "That is the finding the thesis's 'defensive' framing cannot absorb. Roughly 45% of the 2030 capacity target sits outside Greece, in Romania, Italy, Bulgaria and Croatia — markets PPC has entered recently and where it is a challenger, not an incumbent. Execution risk is concentrated precisely where the company has least history.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 11.0 GW of 24.3 GW outside Greece",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-04",
+   "claim": "The genuinely defensive asset is the distribution network, and PPC owns 51% of it. HEDNO's regulated asset base grows with the grid investment the thesis correctly identifies as inevitable — but 49% of that growth accrues to Macquarie.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the HEDNO ownership structure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-05",
+   "claim": "PPC is on the wrong side of the bottleneck identified in the Siemens Energy dossier. It is a buyer of transformers, switchgear and turbines into a market with roughly 128-week lead times and prices up 77% since 2019. A EUR 24.2bn programme executed into that market carries cost and schedule risk that a plan drawn in 2026 may not fully price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the Siemens Energy dossier in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-06",
+   "claim": "The renewables build faces a second constraint the plan does not resolve: Greek solar is already experiencing curtailment and negative midday capture prices. Adding 5 GW into a system with limited interconnection and storage depth risks each incremental megawatt earning less than the last.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the Greek market structure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-07",
+   "claim": "The company recognises this: the plan explicitly includes storage alongside renewables and flexible generation, which is the correct response and also an admission that unhedged solar additions are worth less than headline capacity implies.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the plan composition",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium"
+  },
+  {
+   "id": "p2-08",
+   "claim": "H1 2026 investment ran at EUR 1.4bn, an annualised EUR 2.8bn against a plan averaging roughly EUR 4.8bn a year to 2030. The spending rate has to rise materially from here, which is where cost inflation and supply-chain risk bite.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: EUR 1.4bn H1 2026 versus EUR 24.2bn over five years",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The 2030 capacity plan, by geography",
+   "columns": [
+    "Market",
+    "2030 target",
+    "Change",
+    "PPC's position"
+   ],
+   "rows": [
+    [
+     "Greece",
+     "13.3 GW",
+     "+5 GW, net of full lignite exit",
+     "Incumbent"
+    ],
+    [
+     "Romania",
+     "5.3 GW",
+     "Triple from 2025",
+     "Recent entrant"
+    ],
+    [
+     "Italy, Bulgaria, Croatia",
+     "3.5 GW",
+     "From a small base",
+     "New entrant"
+    ],
+    [
+     "Group total",
+     "24.3 GW",
+     "From ~12.6 GW",
+     "~45% of the target is outside Greece"
+    ]
+   ],
+   "note": "[MANAGEMENT GUIDANCE/ANALYST ESTIMATE] The defensive part of the story is the Greek grid. The growth part is in markets where PPC is a challenger."
+  },
+  {
+   "title": "Where the plan is exposed",
+   "columns": [
+    "Constraint",
+    "Nature",
+    "Assessment"
+   ],
+   "rows": [
+    [
+     "Equipment supply",
+     "~128-week transformer lead times, prices +77% since 2019",
+     "PPC is the buyer, not the seller — the wrong side of the batch's bottleneck"
+    ],
+    [
+     "Greek solar capture prices",
+     "Curtailment and negative midday pricing",
+     "Each incremental MW may earn less than the last"
+    ],
+    [
+     "Spending rate",
+     "EUR 2.8bn annualised vs ~EUR 4.8bn a year required",
+     "Must rise materially, into an inflating supply chain"
+    ],
+    [
+     "New-market execution",
+     "~45% of 2030 capacity outside Greece",
+     "Challenger position, least operating history"
+    ],
+    [
+     "Regulated asset ownership",
+     "51% of HEDNO",
+     "The defensive asset is minority-shared"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] None of these makes the plan wrong. Together they explain why a 24.3 GW target should not be valued as though it were already built."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Capex phasing across 2026-2030",
+   "whyItMatters": "H1 2026 ran at roughly EUR 2.8bn annualised against a plan averaging EUR 4.8bn. Whether the shortfall is phasing or slippage changes the whole delivery assessment.",
+   "resolvedBy": "Strategic plan detail"
+  },
+  {
+   "item": "Achieved capture prices on the Greek renewable fleet",
+   "whyItMatters": "Determines whether 5 GW of additions produce proportionate EBITDA. Curtailment risk is the largest unquantified operating variable.",
+   "resolvedBy": "Interim report operating data"
+  },
+  {
+   "item": "Contracted versus merchant split of the renewable fleet",
+   "whyItMatters": "7.3 GW of renewables under CfD is a different asset from 7.3 GW selling into a curtailed spot market.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Equipment procurement cover for the 2027-2030 build",
+   "whyItMatters": "The plan is executed into a supply-constrained market. Whether prices are locked determines whether EUR 24.2bn is a budget or an aspiration.",
+   "resolvedBy": "Not disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly 45% of the 2030 capacity target is outside Greece in markets PPC entered recently, so execution risk is concentrated where it has least history.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "PPC buys the equipment whose scarcity makes Siemens Energy and GE Vernova valuable. A EUR 24.2bn programme into 128-week lead times carries real cost and schedule risk.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Greek solar curtailment and negative midday capture prices mean incremental renewable megawatts may earn materially less than the existing fleet.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The spending rate must rise from roughly EUR 2.8bn annualised to about EUR 4.8bn a year, into an inflating supply chain.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Capex run-rate rising toward the plan level",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Greek storage capacity entering service and lifting capture prices",
+   "window": "2027-2029",
+   "impact": "High",
+   "probability": 0.6
+  },
+  {
+   "text": "Romanian capacity additions delivered on schedule",
+   "window": "2027-2030",
+   "impact": "Medium",
+   "probability": 0.6
+  }
+ ],
+ "conclusions": [
+  "The capacity plan is exactly as the thesis describes: roughly 12.6 GW to 24.3 GW by 2030, through net additions of about 2.4 GW a year.",
+  "But roughly 45% of that target sits outside Greece — Romania tripling to 5.3 GW, and Italy, Bulgaria and Croatia reaching 3.5 GW — in markets where PPC is a challenger rather than an incumbent. The execution risk is concentrated where the company has least history.",
+  "The genuinely defensive asset is the Greek distribution network, and PPC owns 51% of it. The inevitable grid expansion the thesis correctly identifies delivers 49% of its regulated return to Macquarie.",
+  "PPC sits on the wrong side of this batch's central bottleneck. It buys the transformers and turbines whose scarcity makes Siemens Energy and GE Vernova valuable, into 128-week lead times and prices up 77% since 2019.",
+  "And the Greek renewable build faces curtailment and negative midday capture prices, so incremental megawatts may earn less than the existing fleet. The plan's inclusion of storage is the right response and an implicit admission of the problem."
+ ],
+ "thesisImpact": "Phase 2 confirms the plan's scale and identifies why it should not be valued as delivered. The equipment market, the capture-price trend, the required step-up in spending and the challenger position in 45% of the target all argue for valuing PPC on what it earns now rather than on what the 2030 capacity implies.",
+ "model": {
+  "sharesOut": 597
+ }
+}

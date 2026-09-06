@@ -1,0 +1,328 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Public Power Corporation S.A.",
+  "ticker": "ATHEX: PPC",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 22.9,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "NET DEBT (~EUR 5.0bn) IS DERIVED, NOT SOURCED. The capital raise was sized so that net debt to EBITDA stays 'well below' the group's 3.5x threshold, and the plan is funded 54% from operations, 31% from a net debt increase and 15% from the equity raise. A EUR 7.5bn debt increase over the plan against a 2030 EBITDA of roughly EUR 3.5bn and a 3.5x ceiling implies a starting position of roughly EUR 4.75bn. EUR 5.0bn is used.",
+   "MINORITY INTEREST (~EUR 3.2bn) IS ALSO DERIVED, from Macquarie's 49% of HEDNO plus smaller regional minorities. Together with net debt it is EUR 8.2bn against a EUR 13.7bn market capitalisation, and a 20% error in the pair moves fair value by roughly 12%."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "The event that dominates this dossier: PPC raised EUR 4.5bn in April 2026 through a share capital increase, issuing 228m new shares against 369m existing — a 62% increase in the share count, to fund the 2026-2030 plan.",
+   "label": "FACT",
+   "source": "PPC capital raising announcement",
+   "asOf": "2026-04-23",
+   "confidence": "high",
+   "impact": "high",
+   "value": 4.5,
+   "unit": "EUR bn share capital increase"
+  },
+  {
+   "id": "p4-02",
+   "claim": "The thesis describes the plan the money funds and not the dilution that funded it. That is the largest single omission in any of the seven descriptions in this batch, because it changes every per-share figure by a factor of 1.62.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-03",
+   "claim": "The funding structure is disclosed and disciplined: of the EUR 24.2bn programme, 54% is to come from funds from operations, 31% from a net debt increase and 15% from the equity raise. That is a conservative mix for a utility build and it is the strongest fact in this phase.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "PPC Strategic Plan 2026-2030",
+   "asOf": "2026-05-18",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-04",
+   "claim": "The equity raise was explicitly sized to keep net debt to EBITDA well below the group's 3.5x threshold through the build. Balance-sheet discipline is not in question here; the question is what shareholders paid for it.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "PPC capital raising announcement",
+   "asOf": "2026-04-23",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-05",
+   "claim": "The multiples diverge sharply and the divergence is the finding. On an enterprise basis PPC looks inexpensive at roughly 9.2x FY2026E EBITDA once net debt and minorities are added back to the market capitalisation. On a per-share basis it looks expensive at roughly 19.5x adjusted earnings. Both are true, and the gap is depreciation, interest and the minority claim.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 9.2,
+   "unit": "x FY2026E EV/EBITDA at the market price"
+  },
+  {
+   "id": "p4-06",
+   "claim": "Return on equity is low and will stay low through the build. Roughly EUR 0.7bn of adjusted net income against post-raise equity of roughly EUR 11bn is about 6.4%, below any reasonable cost of equity for a Greek utility. That is normal mid-construction and it is also the reason the shares should not trade far above book.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 6.4,
+   "unit": "% FY2026E return on equity"
+  },
+  {
+   "id": "p4-07",
+   "claim": "A normalised post-build return on equity of roughly 8.8% is a fair assumption for 2030, against an estimated cost of equity of about 8.5% for a Greek utility. On the justified price-to-book relationship that supports a multiple of only about 1.05x book — which is the honest ceiling on this equity until the assets earn.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: (ROE - g) / (COE - g)",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p4-08",
+   "claim": "A discounted cash flow is not a valid instrument for this company at this point and is excluded rather than fudged. With EUR 24.2bn of capex against roughly EUR 2.6bn a year of funds from operations, free cash flow is deeply negative across the entire explicit forecast window; any DCF would place effectively all value in the terminal value. The valuation in Phase 5 uses EV/EBITDA, justified price-to-book and a sum-of-the-parts instead, and says so.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the plan's funding profile",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Capital structure",
+   "columns": [
+    "Item",
+    "Value",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Share price",
+     "EUR 22.90",
+     "Medium — a 3 September quote of EUR 24.10 also exists"
+    ],
+    [
+     "Shares outstanding",
+     "597m",
+     "HIGH — 369m + 228m issued April 2026"
+    ],
+    [
+     "Market capitalisation",
+     "~EUR 13.7bn",
+     "Medium"
+    ],
+    [
+     "Net debt",
+     "~EUR 5.0bn",
+     "LOW — derived from the leverage ceiling and funding mix"
+    ],
+    [
+     "Minority interest",
+     "~EUR 3.2bn",
+     "LOW — Macquarie's 49% of HEDNO plus regional minorities"
+    ],
+    [
+     "Enterprise value",
+     "~EUR 22.2bn",
+     "Low"
+    ],
+    [
+     "FY2026E adjusted EBITDA",
+     "EUR 2.4bn",
+     "HIGH — reaffirmed target"
+    ],
+    [
+     "EV / EBITDA at market",
+     "~9.2x",
+     "Medium"
+    ],
+    [
+     "P/E on adjusted earnings",
+     "~19.5x",
+     "Medium"
+    ],
+    [
+     "Book value per share",
+     "~EUR 18.43",
+     "Low — post-raise equity ~EUR 11bn"
+    ],
+    [
+     "Dividend yield",
+     "3.5%",
+     "High — EUR 0.80 target"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The share count is the one hard number here and it is the one the thesis omits."
+  },
+  {
+   "title": "The dividend against the raise",
+   "columns": [
+    "Flow",
+    "Amount",
+    "Direction"
+   ],
+   "rows": [
+    [
+     "April 2026 share capital increase",
+     "EUR 4.5bn",
+     "From shareholders"
+    ],
+    [
+     "Dividends 2026-2030 at EUR 0.80 rising to EUR 1.40",
+     "~EUR 3.3bn",
+     "To shareholders"
+    ],
+    [
+     "Net equity injection over the plan",
+     "~EUR 1.2bn",
+     "From shareholders"
+    ],
+    [
+     "Debt increase funding the plan",
+     "~EUR 7.5bn",
+     "31% of EUR 24.2bn"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Raising EUR 4.5bn and returning EUR 3.3bn of it over the same period is defensible as dividend-policy signalling. It is not obviously the most efficient way to fund a build, and it deserves to be stated."
+  },
+  {
+   "title": "The batch, on one page",
+   "columns": [
+    "Company",
+    "EV/EBITDA",
+    "Balance sheet",
+    "Rating"
+   ],
+   "rows": [
+    [
+     "Metlen",
+     "~7.7x",
+     "~EUR 1.6bn net debt, 1.7x",
+     "HOLD / accumulate"
+    ],
+    [
+     "PPC",
+     "~9.2x",
+     "~EUR 5bn net debt (est.), 62% dilution",
+     "Phase 5"
+    ],
+    [
+     "Constellation Energy",
+     "~14x",
+     "~USD 30bn net debt",
+     "HOLD"
+    ],
+    [
+     "Siemens Energy",
+     "~17x",
+     "~EUR 8bn net cash",
+     "HOLD"
+    ],
+    [
+     "GE Vernova",
+     "~40x",
+     "~USD 10bn net cash",
+     "AVOID"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] PPC is the second-cheapest on enterprise value and the second-most-expensive on earnings. That inversion is the dilution."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Reported net debt at 30 June 2026",
+   "whyItMatters": "Derived from the leverage ceiling and funding mix rather than sourced. It is the largest input uncertainty in the dossier.",
+   "resolvedBy": "Interim report balance sheet"
+  },
+  {
+   "item": "Minority interest carrying value and its share of EBITDA",
+   "whyItMatters": "Estimated at ~EUR 3.2bn. Together with net debt it is EUR 8.2bn against a EUR 13.7bn market capitalisation.",
+   "resolvedBy": "Interim report"
+  },
+  {
+   "item": "Post-raise shareholders' equity",
+   "whyItMatters": "The justified price-to-book method carries 25% weight and rests on an estimated EUR 11bn book.",
+   "resolvedBy": "Interim report balance sheet"
+  },
+  {
+   "item": "The subscription price of the April 2026 capital increase",
+   "whyItMatters": "It sets the reference point against which existing holders should judge the current price, and it is not in the available summaries.",
+   "resolvedBy": "Capital raising prospectus"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The share count rose 62% in April 2026. Every per-share figure in the thesis, if drawn from pre-raise data, is overstated by a factor of 1.62.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Return on equity of roughly 6.4% is below any reasonable cost of equity and will stay depressed through the build, which caps the justified price-to-book multiple near 1x.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Net debt and minority interest are both derived, and together they are EUR 8.2bn against a EUR 13.7bn market capitalisation.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Free cash flow is deeply negative across the plan, so the equity depends on the build completing on budget and on schedule into a supply-constrained equipment market.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Interim and annual reports disclosing reported net debt and minority interest",
+   "window": "Q1 2027",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Evidence that returns on newly commissioned capacity exceed the cost of capital",
+   "window": "2028-2030",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "Delivery of the EUR 0.80 dividend and progression toward EUR 1.40",
+   "window": "Annual",
+   "impact": "Medium",
+   "probability": 0.8
+  }
+ ],
+ "conclusions": [
+  "The event that dominates this dossier is the April 2026 capital raise: EUR 4.5bn, 228m new shares against 369m existing, a 62% increase in the share count. The thesis describes the plan the money funds and not the dilution that funded it.",
+  "The funding structure itself is conservative and well disclosed — 54% from operations, 31% from new debt, 15% from equity — and was sized to keep leverage well below the 3.5x ceiling. Balance-sheet discipline is not the problem.",
+  "The multiples diverge sharply: roughly 9.2x FY2026E EBITDA on an enterprise basis, but about 19.5x adjusted earnings per share. Both are true, and the gap is depreciation, interest and the minority claim on HEDNO.",
+  "Return on equity of about 6.4% is below any reasonable cost of equity and will stay depressed through the build. Even a normalised 8.8% post-build return against an 8.5% cost of equity justifies only about 1.05x book.",
+  "A discounted cash flow is excluded rather than fudged. With EUR 24.2bn of capex against roughly EUR 2.6bn a year of funds from operations, free cash flow is negative throughout the explicit window and any DCF would put effectively all value in the terminal value."
+ ],
+ "thesisImpact": "Phase 4 establishes the arithmetic that decides the rating: 597m shares, a return on equity below the cost of equity through 2030, and a justified price-to-book near 1x. Phase 5 values the company on enterprise multiples, justified book value and a sum-of-the-parts, with the discounted cash flow deliberately excluded and the reason stated.",
+ "model": {
+  "sharesOut": 597,
+  "netDebt": 5000,
+  "minorities": 3200,
+  "book": {
+   "bvps": 18.43,
+   "coe": 0.085,
+   "growth": 0.03,
+   "roe": {
+    "bear": 0.075,
+    "base": 0.088,
+    "bull": 0.102
+   }
+  }
+ }
+}
