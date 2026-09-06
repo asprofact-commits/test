@@ -1,0 +1,594 @@
+<title>Alphabet Investment Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4;
+  --ink:#10161C; --ink-2:#47535F; --ink-3:#7A8794;
+  --line:#DDE3E9; --line-2:#C6D0D8;
+  --accent:#1F5C7A; --accent-ink:#0A4A66; --accent-soft:rgba(31,92,122,.09);
+  --pos:#2F7A55; --warn:#B07414; --neg:#A33A2E;
+  --neg-soft:rgba(163,58,46,.10); --pos-soft:rgba(47,122,85,.10); --warn-soft:rgba(176,116,20,.12);
+  --s1:#0A6E9E; --s2:#C2571A;
+  --serif:'IBM Plex Serif',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1418; --surface:#161E24; --surface-2:#1C262D;
+    --ink:#E8EDF1; --ink-2:#A3B0BB; --ink-3:#6E7D89;
+    --line:#24303A; --line-2:#33424E;
+    --accent:#5FA8C9; --accent-ink:#8CC5DE; --accent-soft:rgba(95,168,201,.12);
+    --pos:#5CB185; --warn:#D9A05B; --neg:#D4796B;
+    --neg-soft:rgba(212,121,107,.14); --pos-soft:rgba(92,177,133,.14); --warn-soft:rgba(217,160,91,.14);
+    --s1:#2E8FBF; --s2:#D4783C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1418; --surface:#161E24; --surface-2:#1C262D;
+  --ink:#E8EDF1; --ink-2:#A3B0BB; --ink-3:#6E7D89;
+  --line:#24303A; --line-2:#33424E;
+  --accent:#5FA8C9; --accent-ink:#8CC5DE; --accent-soft:rgba(95,168,201,.12);
+  --pos:#5CB185; --warn:#D9A05B; --neg:#D4796B;
+  --neg-soft:rgba(212,121,107,.14); --pos-soft:rgba(92,177,133,.14); --warn-soft:rgba(217,160,91,.14);
+  --s1:#2E8FBF; --s2:#D4783C;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 72px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* masthead */
+header{border-bottom:2px solid var(--ink);margin-bottom:28px;padding:30px 0 16px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.4vw,46px);line-height:1.05;
+  margin:8px 0 6px;text-wrap:balance;letter-spacing:-.01em}
+.ident{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;font-family:var(--mono);
+  font-size:12.5px;color:var(--ink-2)}
+.ident b{color:var(--ink);font-weight:500}
+
+/* verdict */
+.verdict{display:grid;grid-template-columns:minmax(240px,1.15fr) 1fr;gap:0;
+  border:1px solid var(--line);background:var(--surface);margin-bottom:30px}
+@media(max-width:760px){.verdict{grid-template-columns:1fr}}
+.vmain{padding:26px 28px;border-right:1px solid var(--line)}
+@media(max-width:760px){.vmain{border-right:none;border-bottom:1px solid var(--line)}}
+.rating{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--neg)}
+.rating small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:400;margin-bottom:9px}
+.vmain p{margin:14px 0 0;font-size:14px;color:var(--ink-2);max-width:46ch}
+.vstats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.vstat{background:var(--surface);padding:18px 20px}
+.vstat .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
+.vstat .v{font-family:var(--mono);font-size:26px;font-weight:500;margin-top:5px;font-variant-numeric:tabular-nums}
+.vstat .n{font-size:12px;color:var(--ink-3);margin-top:2px}
+.neg{color:var(--neg)}.pos{color:var(--pos)}.warnc{color:var(--warn)}
+
+/* sections */
+section{margin-bottom:40px}
+h2{font-family:var(--serif);font-size:24px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+.lede{color:var(--ink-2);font-size:14.5px;margin:0 0 20px;max-width:68ch}
+h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-ink);margin:0 0 12px;font-weight:600}
+.panel{background:var(--surface);border:1px solid var(--line);padding:22px 24px}
+.rule{height:1px;background:var(--line);border:0;margin:0 0 22px}
+
+/* chart */
+.chart{background:var(--surface);border:1px solid var(--line);padding:20px 22px 14px}
+.chart figcaption{font-size:12.5px;color:var(--ink-3);margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 14px;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.swatch{width:11px;height:11px;border-radius:2px;display:inline-block}
+
+/* tables */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;padding:0 14px 9px 0;border-bottom:1px solid var(--line-2);white-space:nowrap}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:last-child,th:last-child{padding-right:0}
+.r{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr.em td{background:var(--accent-soft);font-weight:600}
+tbody tr:last-child td{border-bottom:none}
+
+/* phases */
+.phase{border:1px solid var(--line);background:var(--surface);margin-bottom:14px}
+.phead{display:flex;align-items:baseline;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);
+  background:var(--surface-2)}
+.pnum{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--accent);line-height:1}
+.ptitle{font-family:var(--serif);font-size:18px;font-weight:600;flex:1}
+.pmeta{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+.pbody{padding:18px 22px 20px}
+ul.find{list-style:none;padding:0;margin:0}
+ul.find li{padding:9px 0 9px 0;border-bottom:1px dashed var(--line);font-size:14px}
+ul.find li:last-child{border-bottom:none}
+.tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;padding:2px 6px;border-radius:2px;
+  text-transform:uppercase;font-weight:600;margin-right:8px;white-space:nowrap;vertical-align:1.5px}
+.t-fact{background:var(--pos-soft);color:var(--pos)}
+.t-stat{background:var(--accent-soft);color:var(--accent-ink)}
+.t-est{background:var(--warn-soft);color:var(--warn)}
+.t-cons{background:var(--surface-2);color:var(--ink-2)}
+.t-mgmt{background:var(--warn-soft);color:var(--warn)}
+
+/* callout */
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:16px 20px;margin:18px 0}
+.callout.danger{border-left-color:var(--neg);background:var(--neg-soft)}
+.callout p{margin:0;font-size:14.5px}
+.callout .big{font-family:var(--serif);font-size:22px;font-weight:600;display:block;margin-bottom:6px;letter-spacing:-.01em}
+
+/* lists */
+ol.pts{counter-reset:p;list-style:none;padding:0;margin:0;display:grid;gap:14px}
+ol.pts li{counter-increment:p;position:relative;padding-left:36px;font-size:14.5px}
+ol.pts li:before{content:counter(p);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:11px;
+  font-weight:600;color:var(--accent-ink);border:1px solid var(--line-2);width:22px;height:22px;
+  display:grid;place-items:center;border-radius:50%}
+ol.pts b{font-weight:600}
+ol.pts .ev{display:block;font-size:12.5px;color:var(--ink-3);margin-top:4px;font-style:italic}
+ul.plain{margin:0;padding-left:20px;font-size:14.5px}
+ul.plain li{margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:800px){.grid2{grid-template-columns:1fr}}
+
+/* meter */
+.meter{height:5px;background:var(--line);border-radius:3px;overflow:hidden;margin:8px 0 4px}
+.meter i{display:block;height:100%;background:var(--accent);border-radius:3px}
+
+.warnbox{border:1px solid var(--line-2);border-left:3px solid var(--warn);background:var(--surface);
+  padding:15px 18px;font-size:13.5px;color:var(--ink-2);margin-bottom:26px}
+.warnbox b{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:44px;padding-top:20px;font-size:12px;color:var(--ink-3)}
+footer a{color:var(--accent-ink)}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--paper);font-family:var(--mono);
+  font-size:11.5px;padding:6px 9px;border-radius:3px;opacity:0;transition:opacity .12s;z-index:9;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Investment committee dossier · five-phase protocol</div>
+  <h1>Alphabet Inc.</h1>
+  <div class="ident">
+    <span>NASDAQ:&nbsp;<b>GOOGL</b></span>
+    <span>Price <b class="num">$338.72</b></span>
+    <span>Mkt cap <b class="num">$4.1tn</b></span>
+    <span>Clean FY26E P/E <b class="num">29.8×</b></span>
+    <span>As of <b class="num">2026-09-05</b></span>
+  </div>
+</header>
+
+<div class="warnbox">
+  <b>Evidence provenance.</b> No primary filing was retrievable — every external domain is blocked by this
+  environment's network egress proxy. All 56 findings rest on search-result summaries of Alphabet's 8-K/10-Q
+  releases and reputable press, not on filings read in full. Nineteen gaps are declared and ranked; the largest
+  is the depreciation policy on compute assets, which sits directly under 80% of the valuation weight.
+</div>
+
+<div class="verdict">
+  <div class="vmain">
+    <div class="rating" style="color:var(--warn)"><small>Rating — analyst, against a model output of AVOID</small>HOLD / NEUTRAL</div>
+    <p>The arithmetic returns <b>AVOID at −10.7%</b>, 0.7 percentage points past the HOLD boundary. Stated as HOLD
+       because a 100bp change in WACC moves fair value by roughly 15% — the model cannot distinguish −10.7% from
+       −9.9%, and letting a threshold manufacture that precision would be false. <b>A do-not-chase call, not a
+       get-out call.</b></p>
+  </div>
+  <div class="vstats">
+    <div class="vstat"><div class="k">Fair value</div><div class="v">$302</div><div class="n">probability-weighted blend</div></div>
+    <div class="vstat"><div class="k">vs market</div><div class="v neg">−11%</div><div class="n">$338.72 today</div></div>
+    <div class="vstat"><div class="k">Expected 3y IRR</div><div class="v pos">+3.5%</div><div class="n">positive despite the discount</div></div>
+    <div class="vstat"><div class="k">Evidence score</div><div class="v">93%</div><div class="n">56 findings · 5 of 5 phases</div></div>
+  </div>
+</div>
+
+<section>
+  <h2>The finding that changes the dossier</h2>
+  <p class="lede">Alphabet is widely described as the cheapest megacap at roughly 17× earnings. That multiple is
+     computed on trailing earnings containing $77.1bn of after-tax unrealised gains on SpaceX and one private
+     holding. Alphabet disclosed the reconciliation itself.</p>
+  <figure class="chart" style="margin:0">
+    <svg viewBox="0 0 720 210" role="img" aria-label="Reported Q2 2026 diluted EPS of $9.11 splits into $6.26 of unrealised equity gain and $2.85 of operating earnings. The $2.85 closely matches the $2.88 analyst consensus. On clean earnings the price/earnings multiple is 29.8 times rather than the headline 17.0 times.">
+      <g font-family="IBM Plex Mono, monospace" font-size="11">
+        <text x="0" y="14" fill="var(--ink-2)" font-size="11" font-family="IBM Plex Sans, sans-serif">Q2 2026 reported diluted EPS</text>
+        <rect data-t="Unrealised gain on equity securities — SpaceX and one private holding, $6.26/share after tax" x="0" y="26" width="494" height="34" rx="4" fill="var(--warn)" opacity=".42"/>
+        <rect data-t="Operating earnings — $2.85/share" x="498" y="26" width="222" height="34" rx="4" fill="var(--accent)"/>
+        <text x="14" y="48" fill="var(--ink)" font-weight="600">$6.26 unrealised gain</text>
+        <text x="512" y="48" fill="#FFFFFF" font-weight="600">$2.85 operating</text>
+        <text x="720" y="18" fill="var(--ink)" text-anchor="end" font-weight="600" font-size="13">$9.11 reported</text>
+
+        <line x1="498" y1="66" x2="498" y2="80" stroke="var(--ink-3)" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="0" y="94" fill="var(--ink-2)" font-size="11" font-family="IBM Plex Sans, sans-serif">The $2.85 clean figure matches the $2.88 analyst consensus — the sell-side was forecasting operating earnings all along.</text>
+
+        <text x="0" y="126" fill="var(--ink-2)" font-size="11" font-family="IBM Plex Sans, sans-serif">Resulting price / earnings multiple</text>
+        <rect data-t="Headline P/E on trailing reported earnings — 17.0x" x="0" y="138" width="200" height="30" rx="4" fill="var(--warn)" opacity=".42"/>
+        <text x="14" y="158" fill="var(--ink)" font-weight="600">17.0× headline</text>
+        <rect data-t="P/E on clean FY2026E operating earnings — 29.8x" x="0" y="172" width="351" height="30" rx="4" fill="var(--accent)"/>
+        <text x="14" y="192" fill="#FFFFFF" font-weight="600">29.8× clean</text>
+        <text x="212" y="158" fill="var(--ink-3)" font-size="10.5" font-family="IBM Plex Sans, sans-serif">what the screens show</text>
+        <text x="363" y="192" fill="var(--ink)" font-size="10.5" font-family="IBM Plex Sans, sans-serif" font-weight="600">at the peer median of ~30×, not below it</text>
+      </g>
+    </svg>
+    <figcaption>Alphabet's own disclosure: the $99.0bn net gain on equity securities increased the tax provision
+      by $21.9bn, net income by $77.1bn and diluted EPS by $6.26. The distortion is in the market's summary
+      statistic, not in the company's reporting.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Valuation football field</h2>
+  <p class="lede">Unlike the Apple dossier, the methods disagree sharply — and the disagreement is informative.
+     The DCF is the outlier and the least reliable instrument for a company two years into a capex cycle, so it
+     carries 20% rather than the default 45%.</p>
+  <figure class="chart" style="margin:0">
+    <svg viewBox="0 0 720 250" role="img" aria-label="Valuation ranges by method against the $338.72 market price. EV/EBITDA $258 to $398 with a base of $328, sum-of-the-parts $310, DCF $96 to $372 with a base of $212, and the blended range $246 to $358 with a base of $298.">
+      <g font-family="IBM Plex Mono, monospace" font-size="11">
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="150" y1="26" x2="150" y2="196"/><line x1="285" y1="26" x2="285" y2="196"/>
+          <line x1="420" y1="26" x2="420" y2="196"/><line x1="555" y1="26" x2="555" y2="196"/>
+        </g>
+        <g fill="var(--ink-3)" text-anchor="middle">
+          <text x="150" y="214">$0</text><text x="285" y="214">$100</text>
+          <text x="420" y="214">$200</text><text x="555" y="214">$300</text>
+        </g>
+        <line x1="607" y1="18" x2="607" y2="200" stroke="var(--ink)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="607" y="13" text-anchor="middle" fill="var(--ink)" font-weight="600">Market $338.72</text>
+        <g fill="var(--ink)" font-size="12">
+          <text x="0" y="52" font-family="IBM Plex Sans, sans-serif">EV/EBITDA @ 18×</text>
+          <text x="0" y="96" font-family="IBM Plex Sans, sans-serif">Sum of the parts</text>
+          <text x="0" y="140" font-family="IBM Plex Sans, sans-serif">Discounted cash flow</text>
+          <text x="0" y="184" font-family="IBM Plex Sans, sans-serif" font-weight="600">Blended</text>
+        </g>
+        <g fill="var(--ink-3)" font-size="10">
+          <text x="0" y="65">40% weight</text><text x="0" y="109">40% weight</text>
+          <text x="0" y="153">20% weight · 90% terminal</text><text x="0" y="197" fill="var(--ink-2)">weighted result</text>
+        </g>
+        <g>
+          <rect data-t="EV/EBITDA · bear $258 → bull $398" x="498" y="41" width="190" height="14" rx="4" fill="var(--accent)" opacity=".38"/>
+          <rect x="591" y="37" width="3" height="22" fill="var(--accent-ink)"/>
+          <text x="696" y="52" fill="var(--ink)" font-weight="600">$328</text>
+
+          <rect data-t="Sum of the parts · single build, $310" x="563" y="85" width="11" height="14" rx="4" fill="var(--accent)" opacity=".38"/>
+          <rect x="567" y="81" width="3" height="22" fill="var(--accent-ink)"/>
+          <text x="582" y="96" fill="var(--ink)" font-weight="600">$310</text>
+
+          <rect data-t="DCF · bear $96 → bull $372. 89.6% of base-case value is terminal" x="279" y="129" width="373" height="14" rx="4" fill="var(--accent)" opacity=".24"/>
+          <rect x="437" y="125" width="3" height="22" fill="var(--accent-ink)"/>
+          <text x="660" y="140" fill="var(--ink)" font-weight="600">$212</text>
+
+          <rect data-t="Blended · bear $246 → bull $358" x="482" y="173" width="151" height="14" rx="4" fill="var(--accent)" opacity=".62"/>
+          <rect x="552" y="168" width="3" height="24" fill="var(--ink)"/>
+          <text x="641" y="184" fill="var(--ink)" font-weight="600">$298</text>
+        </g>
+        <text x="150" y="238" fill="var(--ink-3)" font-size="10.5" font-family="IBM Plex Sans, sans-serif">Bar spans bear to bull · tick marks the base case · the DCF's width is itself the argument for down-weighting it</text>
+      </g>
+    </svg>
+    <figcaption>Probability-weighted fair value $302 (bear 20% / base 55% / bull 25%). Justified price-to-book is
+      excluded as not economically meaningful. The reverse DCF implies ~5.1% perpetual growth at a 9.0% WACC —
+      demanding, but less so than Apple's 5.7% on roughly 21% revenue growth versus Apple's ~15%.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>The capex cycle, and where it converts</h2>
+  <p class="lede">An asset-light software company became an infrastructure business in eighteen months. What
+     separates Alphabet from the rest of the AI capex cohort is that it can already point to the line where the
+     money is converting.</p>
+  <div class="grid2">
+    <figure class="chart" style="margin:0">
+      <svg viewBox="0 0 340 200" role="img" aria-label="Capital expenditure: $91.4bn in fiscal 2025, guided to $195 to $205bn in fiscal 2026, and consensus of about $257bn in fiscal 2027.">
+        <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="34" y1="150" x2="340" y2="150"/><line x1="34" y1="105" x2="340" y2="105"/>
+            <line x1="34" y1="60" x2="340" y2="60"/>
+          </g>
+          <g fill="var(--ink-3)" text-anchor="end">
+            <text x="28" y="154">0</text><text x="28" y="109">$100bn</text><text x="28" y="64">$200bn</text>
+          </g>
+          <rect data-t="FY2025 actual capex $91.4bn" x="52" y="109" width="72" height="41" rx="4" fill="var(--accent)" opacity=".45"/>
+          <text x="88" y="103" fill="var(--ink)" text-anchor="middle" font-weight="600">$91</text>
+          <rect data-t="FY2026 guidance $195-205bn, raised mid-year from $180-190bn" x="142" y="60" width="72" height="90" rx="4" fill="var(--accent)" opacity=".7"/>
+          <text x="178" y="54" fill="var(--ink)" text-anchor="middle" font-weight="600">$200</text>
+          <rect data-t="FY2027 consensus ~$257bn — no guided peak" x="232" y="34" width="72" height="116" rx="4" fill="var(--accent)"/>
+          <text x="268" y="28" fill="var(--ink)" text-anchor="middle" font-weight="600">$257</text>
+          <g fill="var(--ink-2)" text-anchor="middle" font-size="10.5" font-family="IBM Plex Sans, sans-serif">
+            <text x="88" y="168">FY2025</text><text x="178" y="168">FY2026E</text><text x="268" y="168">FY2027E</text>
+          </g>
+          <g fill="var(--ink-3)" text-anchor="middle" font-size="9.5">
+            <text x="88" y="181">actual</text><text x="178" y="181">guided</text><text x="268" y="181">consensus</text>
+          </g>
+          <text x="34" y="196" fill="var(--ink-3)" font-size="10" font-family="IBM Plex Sans, sans-serif">More than doubling, with no guided peak</text>
+        </g>
+      </svg>
+    </figure>
+    <figure class="chart" style="margin:0">
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--s1)"></i>Cloud revenue growth</span>
+        <span><i class="swatch" style="background:var(--s2)"></i>Cloud operating margin</span>
+      </div>
+      <svg viewBox="0 0 340 168" role="img" aria-label="Google Cloud: revenue growth of 36 percent in fiscal 2025 rising to 82 percent in the second quarter of 2026, while operating margin rose from 20.7 percent to 35.6 percent.">
+        <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="30" y1="120" x2="340" y2="120"/><line x1="30" y1="78" x2="340" y2="78"/><line x1="30" y1="36" x2="340" y2="36"/>
+          </g>
+          <g fill="var(--ink-3)" text-anchor="end">
+            <text x="24" y="124">0%</text><text x="24" y="82">40%</text><text x="24" y="40">80%</text>
+          </g>
+          <rect data-t="Cloud revenue growth, FY2025: +36%" x="62" y="82" width="46" height="38" rx="4" fill="var(--s1)"/>
+          <text x="85" y="76" fill="var(--ink)" text-anchor="middle" font-weight="600">36%</text>
+          <rect data-t="Cloud operating margin, Q2 2025: 20.7%" x="112" y="98" width="46" height="22" rx="4" fill="var(--s2)"/>
+          <text x="135" y="92" fill="var(--ink)" text-anchor="middle" font-weight="600">21%</text>
+          <rect data-t="Cloud revenue growth, Q2 2026: +82%" x="196" y="34" width="46" height="86" rx="4" fill="var(--s1)"/>
+          <text x="219" y="28" fill="var(--ink)" text-anchor="middle" font-weight="600">82%</text>
+          <rect data-t="Cloud operating margin, Q2 2026: 35.6%" x="246" y="83" width="46" height="37" rx="4" fill="var(--s2)"/>
+          <text x="269" y="77" fill="var(--ink)" text-anchor="middle" font-weight="600">36%</text>
+          <g fill="var(--ink-2)" text-anchor="middle" font-size="10.5" font-family="IBM Plex Sans, sans-serif">
+            <text x="110" y="140">FY2025 / Q2 2025</text><text x="244" y="140">Q2 2026</text>
+          </g>
+          <text x="30" y="160" fill="var(--ink-3)" font-size="10" font-family="IBM Plex Sans, sans-serif">Margin expanding while volume accelerates — compensated capex</text>
+        </g>
+      </svg>
+    </figure>
+  </div>
+  <div class="callout">
+    <p><span class="big">$514bn of contracted backlog.</span>
+    More than four times total company revenue and roughly nine times annualised Cloud revenue. Most AI capex
+    stories rest on speculative demand; Alphabet's rests on a contracted order book. <b>The bottleneck is capacity,
+    not customers</b> — which justifies the spending, and also means it cannot stop while the backlog is unbuilt.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The capital structure inverted in one year</h2>
+  <div class="panel">
+    <div class="tw"><table>
+      <thead><tr><th>Policy</th><th class="r">H1 2025</th><th class="r">H1 2026</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td>Share repurchases</td><td class="r">$28.3bn</td><td class="r">$0</td><td>Halted — $69.5bn still authorised</td></tr>
+        <tr><td>Equity issuance</td><td class="r">none</td><td class="r">$84.75bn</td><td>Largest in US corporate history; $10bn Berkshire anchor</td></tr>
+        <tr><td>Long-term debt</td><td class="r">~$49bn</td><td class="r">~$98bn</td><td>Roughly doubled</td></tr>
+        <tr><td>Dividend</td><td class="r">initiated 2024</td><td class="r">$0.22/qtr</td><td>Raised 5% — while issuing stock</td></tr>
+        <tr class="em"><td>Free cash flow</td><td class="r">strongly positive</td><td class="r">−$5.9bn</td><td>First negative quarter since the 2004 IPO</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted" style="margin-top:12px">Every line moved the same direction at once. A company that returned
+      roughly $70bn a year to shareholders now funds itself the way a utility funds a grid buildout. There is no
+      solvency question — ~$142bn net cash against ~$170bn of operating income — but there is a genuine funding
+      question, and the answer is selling stock while paying a dividend.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Alphabet and Apple on identical methodology</h2>
+  <p class="lede">Both dossiers were run through the same five phases, the same taxonomy and the same valuation
+     engine, three weeks apart in price terms. The comparison is the clearest argument in either.</p>
+  <div class="panel">
+    <div class="tw"><table>
+      <thead><tr><th></th><th class="r">Alphabet</th><th class="r">Apple</th></tr></thead>
+      <tbody>
+        <tr><td>Headline P/E</td><td class="r">~17.0×</td><td class="r">~36.9×</td></tr>
+        <tr class="em"><td>Clean P/E on operating earnings</td><td class="r">~29.8×</td><td class="r">~36.9×</td></tr>
+        <tr><td>Revenue growth, FY2026E</td><td class="r">~21%</td><td class="r">~14.7%</td></tr>
+        <tr><td>Implied perpetual growth at the price</td><td class="r">~5.1%</td><td class="r">~5.7%</td></tr>
+        <tr><td>Implied WACC at 3.5% terminal growth</td><td class="r">~7.6%</td><td class="r">~6.9%</td></tr>
+        <tr><td>AI posture</td><td class="r">Building at ~$200bn/yr</td><td class="r">Renting at ~$1bn/yr</td></tr>
+        <tr><td>Capital returns</td><td class="r">Buybacks halted; $84.75bn raise</td><td class="r">$100bn buyback</td></tr>
+        <tr class="em"><td>Fair value vs price</td><td class="r">−11%</td><td class="r">−32%</td></tr>
+        <tr><td>Rating</td><td class="r">HOLD / NEUTRAL</td><td class="r">AVOID</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted" style="margin-top:12px">The headline comparison that makes Alphabet look half the price of
+      Apple does not survive cleaning the earnings. It is still the cheaper of the two, on faster growth — just
+      not by the margin the screens suggest.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The five phases</h2>
+
+  <div class="phase">
+    <div class="phead"><span class="pnum">1</span><span class="ptitle">Pricing-power architecture</span><span class="pmeta">13 findings</span></div>
+    <div class="pbody">
+      <p style="margin:0 0 14px;font-size:14.5px"><b>The antitrust overhang largely resolved — favourably.</b>
+         The break-up scenario that hung over this equity for two years did not happen at district level in either case.</p>
+      <ul class="find">
+        <li><span class="tag t-stat">Statute</span>Judge Mehta declined the severest remedies: <b>no Chrome divestiture, no Android breakup, no ban on distribution payments</b>. Exclusivity and tying limited; Apple payments allowed but capped at 12-month terms.</li>
+        <li><span class="tag t-stat">Statute</span>On <b>2 September 2026</b> Judge Brinkema <b>rejected all three DOJ structural remedies</b> in the ad tech case, including AdX divestiture. Behavioural remedies only. Final Judgment due 2 October.</li>
+        <li><span class="tag t-fact">Fact</span>Search revenue grew <b>17% to $63.3bn</b> in Q2 2026 — two years after generative AI was first predicted to erode it.</li>
+        <li><span class="tag t-est">Estimate</span>The same 12-month rule that repriced Apple's largest profit line capped Alphabet's largest single cost. Alphabet must <b>re-win the ~$20bn Apple default annually</b> and cannot buy exclusivity at any price.</li>
+        <li><span class="tag t-cons">Consensus</span>ChatGPT's share of AI assistants fell <b>below 50% for the first time</b> (from 87.2% two years earlier) while Gemini rose above 21%; Gemini's chatbot traffic share went 5.7% → 27.7%.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phead"><span class="pnum">2</span><span class="ptitle">Asset base &amp; physical bottlenecks</span><span class="pmeta">10 findings</span></div>
+    <div class="pbody">
+      <ul class="find">
+        <li><span class="tag t-mgmt">Guidance</span>FY2026 capex guidance <b>raised to $195–205bn</b> from $180–190bn, against $91.4bn actually spent in FY2025.</li>
+        <li><span class="tag t-cons">Consensus</span>FY2027 consensus <b>~$257bn</b>, and the CFO warned spending will rise significantly further. <b>There is no guided peak.</b></li>
+        <li><span class="tag t-cons">Consensus</span>Roughly <b>60% of 2026 capex is short-lived compute</b>. A 3–4 year useful life instead of 5–6 implies materially higher depreciation — the largest single unknown in this dossier.</li>
+        <li><span class="tag t-fact">Fact</span>Alphabet has begun <b>selling TPUs externally</b>, with agreements to supply multiple gigawatts to customers running their own data centres.</li>
+        <li><span class="tag t-est">Estimate</span>Alphabet owns all four layers — silicon, data centre, model, distribution. No competitor holds all four. It is taking the exact opposite side of Apple's trade at a ratio of roughly <b>200 to 1</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phead"><span class="pnum">3</span><span class="ptitle">Demand &amp; monetisation structure</span><span class="pmeta">11 findings</span></div>
+    <div class="pbody">
+      <div class="tw"><table>
+        <thead><tr><th>Quarter</th><th class="r">Revenue</th><th class="r">Growth</th><th class="r">Op. income</th><th class="r">Cloud</th><th class="r">Cloud growth</th></tr></thead>
+        <tbody>
+          <tr><td>Q1 2026</td><td class="r">$109.9bn</td><td class="r">+16%</td><td class="r">$39.7bn</td><td class="r">$20.0bn</td><td class="r">+63%</td></tr>
+          <tr><td>Q2 2026</td><td class="r">$119.8bn</td><td class="r pos">+24%</td><td class="r">$40.8bn</td><td class="r">$24.8bn</td><td class="r pos">+82%</td></tr>
+          <tr><td>FY2025</td><td class="r">$402.8bn</td><td class="r">+15%</td><td class="r">~$132bn</td><td class="r">$58.7bn</td><td class="r">+36%</td></tr>
+          <tr class="em"><td>FY2026E</td><td class="r">$488–498bn</td><td class="r">~+21%</td><td class="r">~$170bn</td><td class="r">~$95bn</td><td class="r">~+62%</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin:14px 0 0;font-size:13.5px;color:var(--ink-2)">Revenue growth <b>accelerated</b> from 15% to a
+        consensus 21% while operating income grew 30% in both reported quarters. The fastest-growing segment carries
+        the highest incremental margin — the opposite of the trap this protocol exists to catch. Applying the
+        classification discipline flatters Alphabet unusually: <b>most of the demand sits in "existing contracted",
+        not in narrative.</b></p>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phead"><span class="pnum">4</span><span class="ptitle">Capital structure &amp; returns on capital</span><span class="pmeta">12 findings</span></div>
+    <div class="pbody">
+      <ul class="find">
+        <li><span class="tag t-fact">Fact</span>Q2 2026 other income was a <b>net gain of $98.0bn</b>, primarily unrealised gains on SpaceX and one private holding — up $95.3bn year on year.</li>
+        <li><span class="tag t-fact">Fact</span>Alphabet quantified it: the gain added <b>$21.9bn of tax, $77.1bn of net income and $6.26 of diluted EPS</b>. Reported $9.11 is $2.85 operating plus $6.26 paper.</li>
+        <li><span class="tag t-est">Estimate</span>So the headline <b>~17× P/E is ~29.8×</b> on clean FY2026E operating earnings — at the peer median of ~30×, not below it.</li>
+        <li><span class="tag t-fact">Fact</span>Q2 2026 free cash flow was <b>−$5.9bn</b>, the first cash-negative quarter since the 2004 IPO.</li>
+        <li><span class="tag t-est">Estimate</span>Return on capital <b>cannot be measured mid-cycle</b> — the denominator is being rebuilt at ~$200bn a year. That means the central claim of the bull case is currently unfalsifiable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="phead"><span class="pnum">5</span><span class="ptitle">Valuation &amp; investment committee memo</span><span class="pmeta">10 findings</span></div>
+    <div class="pbody">
+      <div class="tw"><table>
+        <thead><tr><th>Scenario</th><th class="r">Prob.</th><th class="r">WACC</th><th class="r">Term. g</th><th class="r">Fair value</th><th class="r">Upside</th><th class="r">3y IRR</th></tr></thead>
+        <tbody>
+          <tr><td><b>Bear</b><br><span style="font-size:12.5px;color:var(--ink-3)">Depreciation lives shorten; Cloud decays below 40%; capex above $250bn without margin follow-through; D.C. Circuit revives structural remedies</span></td>
+              <td class="r">20%</td><td class="r">9.8%</td><td class="r">2.0%</td><td class="r">$246</td><td class="r neg">−27%</td><td class="r neg">−9.3%</td></tr>
+          <tr><td><b>Base</b><br><span style="font-size:12.5px;color:var(--ink-3)">Capex peaks in 2027; Cloud compounds down toward 40%; Search holds low teens; depreciation lives hold</span></td>
+              <td class="r">55%</td><td class="r">9.0%</td><td class="r">3.5%</td><td class="r">$298</td><td class="r neg">−12%</td><td class="r pos">+3.3%</td></tr>
+          <tr><td><b>Bull</b><br><span style="font-size:12.5px;color:var(--ink-3)">Backlog converts faster; TPU external sales scale; capex plateaus 2027; FCF inflects sharply in 2028</span></td>
+              <td class="r">25%</td><td class="r">8.4%</td><td class="r">4.0%</td><td class="r">$358</td><td class="r pos">+6%</td><td class="r pos">+14.1%</td></tr>
+          <tr class="em"><td>Probability-weighted</td><td class="r">100%</td><td class="r">—</td><td class="r">—</td><td class="r">$302</td><td class="r neg">−11%</td><td class="r pos">+3.5%</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin:14px 0 0;font-size:13.5px;color:var(--ink-2)">Bear weight is 20% rather than 25% because the
+        September 2026 ad tech ruling removed the structural-remedy tail that would otherwise sit in it.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Why the market is mispricing this</h2>
+  <div class="panel">
+    <ol class="pts">
+      <li><b>Market believes:</b> Alphabet is the cheapest megacap at ~17× earnings.<br>
+        <b>We believe:</b> That multiple rests on $77.1bn of after-tax unrealised gains. Clean, it is ~29.8× — at the
+        peer median. <em>The single most common reason given for owning this stock does not survive checking.</em>
+        <span class="ev">Evidence — Phase 4: Alphabet's own reconciliation of the $9.11 reported EPS.</span></li>
+      <li><b>Market believes:</b> The AI capex boom threatens Alphabet's cash generation.<br>
+        <b>We believe:</b> Alphabet is the only hyperscaler that can already show where the money converts — Cloud
+        +82% with margin 20.7% → 35.6%, behind $514bn of contracted backlog. A compensated build against contracted
+        demand, which is why the bottleneck is capacity rather than customers.
+        <span class="ev">Evidence — Phases 2–3: Q2 2026 Cloud segment disclosures and the backlog figure.</span></li>
+      <li><b>Market believes:</b> Antitrust is an unquantifiable overhang.<br>
+        <b>We believe:</b> At district level it resolved, and resolved well — no Chrome divestiture, no Android
+        breakup, and all three ad tech structural remedies rejected on 2 September. What remains is conduct
+        regulation and an appeal, not dismemberment.
+        <span class="ev">Evidence — Phase 1: Mehta remedy terms; Brinkema ruling 2026-09-02.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>What the consensus is correctly terrified of</h2>
+  <div class="panel">
+    <ol class="pts">
+      <li><b>Free cash flow has gone negative for the first time since the 2004 IPO</b>, buybacks are halted, and
+        Alphabet is funding a $200bn-a-year build with debt and the largest equity raise in US corporate history —
+        while still paying a dividend. A genuine change in financial character, in a single year.</li>
+      <li><b>~60% of capex is short-lived compute and the useful-life assumption is unverifiable from outside.</b>
+        Six-year to four-year lives would cut reported earnings by tens of billions with no change in the business —
+        and it sits directly under the two methods carrying 80% of the valuation weight.</li>
+      <li><b>FY2027 capex consensus is ~$257bn with no stated peak.</b> Open-ended capital commitment against
+        partly-trusted demand is how capital cycles end badly, and the whole sector is doing it simultaneously.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="grid2">
+    <div>
+      <h2 style="font-size:20px">Catalyst calendar</h2>
+      <div class="panel" style="padding:18px 20px">
+        <div class="tw"><table>
+          <thead><tr><th>Window</th><th>Catalyst</th><th class="r">Prob.</th></tr></thead>
+          <tbody>
+            <tr><td class="num">Oct 2026</td><td>Q3: Cloud growth rate, whether FCF stays negative, whether buybacks resume</td><td class="r">95%</td></tr>
+            <tr><td class="num">Sep–Oct 26</td><td>Unsealed ad tech opinion; Final Judgment due 2 Oct</td><td class="r">90%</td></tr>
+            <tr><td class="num">Feb 2027</td><td>FY2026 10-K — depreciation lives and backlog conversion</td><td class="r">95%</td></tr>
+            <tr><td class="num">Feb 2027</td><td>FY2027 capex guidance</td><td class="r">95%</td></tr>
+            <tr><td class="num">2027</td><td>D.C. Circuit ruling on the search case</td><td class="r">50%</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div>
+      <h2 style="font-size:20px">Trigger-to-sell</h2>
+      <div class="panel" style="padding:18px 20px">
+        <ul class="plain">
+          <li>Cloud revenue growth <b>below 35%</b> YoY for two consecutive quarters</li>
+          <li>Operating margin <b>below 30%</b> for two consecutive quarters on rising depreciation</li>
+          <li>FY2027 capex guided <b>above $280bn</b> without a corresponding rise in backlog</li>
+          <li>Search revenue growth <b>below 8%</b> YoY in any quarter</li>
+          <li>D.C. Circuit <b>revives a structural remedy</b> in either case</li>
+          <li>Clean P/E on operating earnings <b>above 35×</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Evidence quality and declared gaps</h2>
+  <div class="grid2">
+    <div class="panel">
+      <h3>Evidence score — 93%</h3>
+      <div class="meter"><i style="width:93%"></i></div>
+      <div class="tw"><table><tbody>
+        <tr><td>Completeness</td><td class="r">100% · 5 of 5 phases, 56 findings</td></tr>
+        <tr><td>Quality of what is here</td><td class="r">84%</td></tr>
+        <tr><td>Sourced and dated</td><td class="r">56 of 56</td></tr>
+        <tr><td>Declared gaps</td><td class="r">19</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="panel">
+      <h3>The four gaps that matter most</h3>
+      <ol class="pts" style="gap:11px">
+        <li><b>Depreciation policy on compute assets.</b> Largest determinant of the two methods carrying 80% of the weight.</li>
+        <li><b>Cloud backlog conversion period.</b> $514bn over three years is a different asset from over twelve.</li>
+        <li><b>Sourced WACC components.</b> A 100bp error moves fair value ~15% — more than the entire gap to market.</li>
+        <li><b>No primary filing was readable.</b> Every figure rests on search-result summaries.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Not investment advice.</b> This dossier applies a fixed five-phase protocol to figures gathered from
+     secondary sources and shows its whole reasoning so it can be argued with. The DCF here carries 20% weight
+     precisely because 89.6% of its value is terminal. Labels such as <span class="tag t-fact" style="margin:0">Fact</span>
+     record what a source claimed, not independent verification. Check primary sources before acting on any of it.</p>
+  <p style="margin-top:10px">Generated by the <span class="num">/invest</span> five-phase protocol · analysis date
+     2026-09-05 · underlying phase data <span class="num">research/GOOGL/phase-1…5.json</span>.</p>
+</footer>
+
+</div>
+<div id="tip" role="status"></div>
+<script>
+(function(){
+  var tip=document.getElementById('tip');
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    el.style.cursor='crosshair';
+    el.addEventListener('pointerenter',function(){ tip.textContent=el.getAttribute('data-t'); tip.style.opacity='1'; });
+    el.addEventListener('pointermove',function(e){
+      var x=e.clientX+14, y=e.clientY-30;
+      if(x+tip.offsetWidth>window.innerWidth-8) x=e.clientX-tip.offsetWidth-14;
+      if(y<8) y=e.clientY+22;
+      tip.style.left=x+'px'; tip.style.top=y+'px';
+    });
+    el.addEventListener('pointerleave',function(){ tip.style.opacity='0'; });
+  });
+})();
+</script>
