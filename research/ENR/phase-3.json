@@ -1,0 +1,286 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Siemens Energy AG",
+  "ticker": "XETRA: ENR",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 143.68,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on the Q3 FY2026 earnings release and FY2025 results.",
+   "Fiscal year ends 30 September. FY2026 revenue of ~EUR 45bn is derived from FY2025's EUR 39.1bn and guided comparable growth of 14-16%."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "Q3 FY2026 was a record on every line: orders EUR 17.9bn, revenue EUR 11.4bn (+18.5% comparable), profit before special items EUR 1,623m at a 14.2% margin, and net income EUR 1,188m, up more than 70% year on year.",
+   "label": "FACT",
+   "source": "Siemens Energy Q3 FY2026 earnings release",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 11.4,
+   "unit": "EUR bn Q3 revenue"
+  },
+  {
+   "id": "p3-02",
+   "claim": "FY2026 guidance: comparable revenue growth of 14-16% and a profit margin before special items of 10-12%, with management trending to the upper end. On FY2025 revenue of EUR 39.1bn that implies roughly EUR 45bn of revenue and roughly EUR 5.2-5.4bn of profit before special items.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Siemens Energy FY2026 outlook, confirmed at Q3",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 45,
+   "unit": "EUR bn FY2026E revenue"
+  },
+  {
+   "id": "p3-03",
+   "claim": "The scale of the turnaround is the story the thesis undersells. FY2025 profit before special items was EUR 2,355m at a 6.0% margin and net income EUR 1,685m. FY2026 guides to roughly EUR 4bn of net income — a doubling in one year, on a margin that has also doubled.",
+   "label": "FACT",
+   "source": "Siemens Energy FY2025 results and FY2026 guidance",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-04",
+   "claim": "The finding that drives this dossier, and it repeats GE Vernova's exactly. FY2026 free cash flow pre-tax is guided at around EUR 8bn against net income of around EUR 4bn and profit before special items of roughly EUR 5.3bn. Management attributes the increase explicitly to customer advance payments and reservation fees associated with the strong order intake.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Siemens Energy FY2026 outlook and Q3 FY2026 commentary",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 8,
+   "unit": "EUR bn FY2026E FCF pre-tax"
+  },
+  {
+   "id": "p3-05",
+   "claim": "The mechanism is arithmetic, not accounting doubt. Book-to-bill of 1.57x means customers are prepaying against orders faster than the company converts them to revenue. When book-to-bill approaches 1.0x the advance pool stops growing and free cash flow converges toward profit plus depreciation — roughly EUR 5.5bn pre-tax rather than EUR 8bn.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed book-to-bill and cash flow drivers",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-06",
+   "claim": "The difference from GE Vernova is one of degree, and it favours Siemens Energy. GE Vernova guides free cash flow at roughly twice adjusted EBITDA; Siemens Energy guides it at roughly 1.5x profit before special items. The distortion is present in both and materially smaller here.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the GE Vernova dossier in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-07",
+   "claim": "Demand classification: the EUR 162bn backlog is [Existing Contracted]; the FY2026 guidance is [Management Guidance] and largely covered by that backlog; continued 1.5x book-to-bill through 2028 is [Approved / Committed Pipeline] on the demonstrated intake rate; and the assumption that current margin levels persist beyond the capacity build is [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-08",
+   "claim": "The credit market has already ratified the operational turnaround: Moody's reaffirmed Baa1 and moved the outlook to positive in June 2026, and S&P upgraded to BBB+ stable in July 2026.",
+   "label": "FACT",
+   "source": "Rating agency actions, June and July 2026",
+   "asOf": "2026-07-31",
+   "confidence": "high",
+   "impact": "medium"
+  }
+ ],
+ "tables": [
+  {
+   "title": "FY2025 to FY2026: the size of the turnaround",
+   "columns": [
+    "Measure",
+    "FY2025",
+    "FY2026E",
+    "Change"
+   ],
+   "rows": [
+    [
+     "Revenue",
+     "EUR 39.1bn",
+     "~EUR 45bn",
+     "+14-16% comparable"
+    ],
+    [
+     "Profit before special items",
+     "EUR 2,355m",
+     "~EUR 5.3bn",
+     "More than doubled"
+    ],
+    [
+     "Margin before special items",
+     "6.0%",
+     "10-12%, upper end",
+     "Roughly doubled"
+    ],
+    [
+     "Net income",
+     "EUR 1,685m",
+     "~EUR 4.0bn",
+     "Roughly doubled"
+    ],
+    [
+     "Free cash flow pre-tax",
+     "—",
+     "~EUR 8.0bn",
+     "EUR 7.2bn already booked at 9M"
+    ],
+    [
+     "Order backlog",
+     "—",
+     "EUR 162bn",
+     "All-time high"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] The operating turnaround is not in question. What the guidance does not separate is how much of the cash flow is earned and how much is borrowed from customers."
+  },
+  {
+   "title": "The cash flow tell",
+   "columns": [
+    "Measure",
+    "FY2026E",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "Free cash flow pre-tax",
+     "~EUR 8.0bn",
+     "Guided; EUR 7.2bn at 9M"
+    ],
+    [
+     "Profit before special items",
+     "~EUR 5.3bn",
+     "FCF is ~1.5x this"
+    ],
+    [
+     "Net income",
+     "~EUR 4.0bn",
+     "FCF is ~2.0x this"
+    ],
+    [
+     "Q3 book-to-bill",
+     "1.57x",
+     "The advance pool is still filling"
+    ],
+    [
+     "Underlying FCF at 1.0x book-to-bill",
+     "~EUR 5.5bn pre-tax",
+     "[ANALYST ESTIMATE] Roughly a EUR 2.5bn annual gap"
+    ]
+   ],
+   "note": "[MANAGEMENT GUIDANCE/ANALYST ESTIMATE] Management states the cause plainly — customer advance payments and reservation fees. This is not hidden. It is simply not the same thing as earnings power, and the DCF must use the underlying figure."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "EUR 162bn order backlog",
+     "Contracted, all-time high",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "FY2026 guidance",
+     "Largely backlog-covered",
+     "[Management Guidance]",
+     "Full"
+    ],
+    [
+     "Continued ~1.5x book-to-bill to 2028",
+     "Demonstrated intake rate",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "Current margins persisting past the capacity build",
+     "Assumption",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The near term is exceptionally well covered. What earns zero weight is the assumption that scarcity margins survive a 50% industry capacity expansion."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The change in contract liabilities and customer advances",
+   "whyItMatters": "It is the single number that would settle whether the DCF should use EUR 8bn or EUR 5.5bn of pre-tax free cash flow. Nothing else in this dossier matters as much.",
+   "resolvedBy": "Quarterly cash flow statement and balance sheet"
+  },
+  {
+   "item": "Special items and their run rate",
+   "whyItMatters": "The company guides on profit before special items. The gap to statutory profit determines what shareholders actually earn.",
+   "resolvedBy": "Quarterly report"
+  },
+  {
+   "item": "Segment revenue and profit split for FY2026",
+   "whyItMatters": "The sum-of-the-parts in Phase 5 rests on estimated segment profit, derived from segment guidance rather than reported.",
+   "resolvedBy": "Annual report segment disclosure"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly EUR 2.5bn of the guided EUR 8bn free cash flow is customer advances on a still-growing order book, and it stops accruing when book-to-bill reaches 1.0x.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The margin doubled in one year. Extrapolating that rate is the mistake the price would have to be making for this to be expensive.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Guidance is on profit before special items, and the special items run rate is not established here.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 results and FY2027 guidance",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "First quarter in which book-to-bill falls below 1.2x",
+   "window": "2027-2028",
+   "impact": "High",
+   "probability": 0.5
+  },
+  {
+   "text": "Completion of the second EUR 1bn buyback tranche",
+   "window": "H2 2026",
+   "impact": "Low",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "The operating turnaround is real and large: margin before special items has roughly doubled from 6.0% to a guided 10-12% at the upper end, and net income roughly doubles to about EUR 4bn.",
+  "Q3 was a record quarter on orders, revenue, margin and net income, and the credit agencies have ratified it with an S&P upgrade to BBB+ and a positive Moody's outlook.",
+  "The finding that drives the valuation is the same one found at GE Vernova: free cash flow pre-tax is guided at around EUR 8bn against roughly EUR 5.3bn of profit before special items, and management attributes the difference to customer advance payments on record order intake.",
+  "At 1.57x book-to-bill the advance pool is still filling. At 1.0x it stops, and underlying free cash flow converges toward roughly EUR 5.5bn pre-tax — a gap of about EUR 2.5bn a year.",
+  "The distortion is materially smaller here than at GE Vernova, which guides free cash flow at roughly twice adjusted EBITDA. Siemens Energy guides it at roughly 1.5x profit before special items."
+ ],
+ "thesisImpact": "Phase 3 establishes that the DCF must be run on underlying free cash flow of roughly EUR 5.5bn pre-tax, not the guided EUR 8bn. Using the headline figure would overstate fair value by roughly 40%. That single adjustment is the difference between this dossier's answer and the sell-side consensus.",
+ "model": {
+  "sharesOut": 854
+ }
+}

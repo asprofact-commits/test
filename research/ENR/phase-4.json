@@ -1,0 +1,292 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Siemens Energy AG",
+  "ticker": "XETRA: ENR",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 143.68,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 4,
+  "phaseName": "Capital structure & returns on capital",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on the Q3 FY2026 earnings release, FY2025 results and rating agency actions.",
+   "Net cash is an ANALYST ESTIMATE. FY2025 adjusted net cash was EUR 4.79bn; EUR 7.2bn of pre-tax free cash flow has been generated in 9M FY2026 against cash taxes, dividends and an in-progress buyback. EUR 8bn is used and the sensitivity is disclosed in Phase 5."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p4-01",
+   "claim": "The balance sheet is the strongest of the three companies analysed so far in this batch. Siemens Energy holds net cash, where GE Vernova holds an estimated USD 10bn net cash and Constellation carries an estimated USD 30bn of net debt against merchant earnings.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the GEV and CEG dossiers",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-02",
+   "claim": "The credit market has ratified it independently: Moody's reaffirmed Baa1 and moved the outlook to positive in June 2026; S&P upgraded to BBB+ with a stable outlook in July 2026.",
+   "label": "FACT",
+   "source": "Rating agency actions, June and July 2026",
+   "asOf": "2026-07-31",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p4-03",
+   "claim": "Capital return is now substantial and explicit: up to EUR 10bn to shareholders by the end of 2028, of which up to EUR 6bn is share buyback. On a EUR 122bn market capitalisation that is roughly 8% of the equity returned over three years.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Siemens Energy capital markets day",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 10,
+   "unit": "EUR bn capital return to 2028"
+  },
+  {
+   "id": "p4-04",
+   "claim": "Roughly EUR 6bn of investment is planned by 2028, about a third of it in transformer and switchgear plants. Set against roughly EUR 8bn of annual pre-tax free cash flow, the growth capital requirement is modest — this is not a company that has to choose between growth and returning cash.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Siemens Energy capital markets day",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-05",
+   "claim": "But the capital return is partly funded by the customer advances identified in Phase 3. Roughly EUR 2.5bn a year of the free cash flow is prepayment on a growing order book rather than earnings. A buyback funded from that source is durable only for as long as book-to-bill stays above 1.0x.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the Phase 3 cash flow analysis",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p4-06",
+   "claim": "Return on capital is genuinely high and genuinely new. On roughly EUR 4bn of FY2026E net income against an equity base of roughly EUR 20bn, return on equity is approaching 20% — but FY2025 return on equity was under 9%, and the fleet of businesses generating it has been profitable at this level for four quarters.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from FY2025 results and FY2026 guidance",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 20,
+   "unit": "% FY2026E return on equity"
+  },
+  {
+   "id": "p4-07",
+   "claim": "There is no through-cycle record to test it against. Siemens Energy was spun out of Siemens AG in 2020, required a German government guarantee package in 2023 after the Siemens Gamesa quality failures, and has been profitable at this level for one year. The base rate for extrapolating a one-year margin doubling is poor.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the corporate history",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p4-08",
+   "claim": "Valuation multiples, all on estimated inputs: at EUR 143.68 and roughly 854m shares the market capitalisation is about EUR 122bn. Against roughly EUR 4bn of FY2026E net income that is about 30.4x earnings; against roughly EUR 6.8bn of estimated FY2026E EBITDA and about EUR 114bn of enterprise value, about 17x.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 30.4,
+   "unit": "x FY2026E earnings"
+  },
+  {
+   "id": "p4-09",
+   "claim": "That 17x enterprise value to EBITDA is the number that reframes the batch. GE Vernova trades at roughly 40x on the same measure for a franchise facing the same capacity-expansion tension, with a still-loss-making wind business and no better balance sheet.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the GE Vernova dossier",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Capital structure and multiples",
+   "columns": [
+    "Item",
+    "Value",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Share price",
+     "EUR 143.68",
+     "High"
+    ],
+    [
+     "Shares outstanding",
+     "~854m",
+     "Medium — 9M weighted-average basic, buyback in progress"
+    ],
+    [
+     "Market capitalisation",
+     "~EUR 122bn",
+     "High"
+    ],
+    [
+     "Net cash",
+     "~EUR 8bn",
+     "LOW — estimated; FY2025 adjusted net cash was EUR 4.79bn"
+    ],
+    [
+     "Enterprise value",
+     "~EUR 114bn",
+     "Medium"
+    ],
+    [
+     "FY2026E net income",
+     "~EUR 4.0bn",
+     "High — guided"
+    ],
+    [
+     "FY2026E profit before special items",
+     "~EUR 5.3bn",
+     "Medium — derived from margin guidance"
+    ],
+    [
+     "FY2026E EBITDA",
+     "~EUR 6.8bn",
+     "Low — D&A estimated"
+    ],
+    [
+     "P/E",
+     "~30.4x",
+     "Medium"
+    ],
+    [
+     "EV / EBITDA",
+     "~17x",
+     "Low"
+    ],
+    [
+     "Credit rating",
+     "BBB+ / Baa1 positive",
+     "High"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Net cash is the weakest input, but the company holds net cash rather than net debt, so an error there moves fair value far less than the equivalent error at Constellation."
+  },
+  {
+   "title": "Balance sheet, across the batch so far",
+   "columns": [
+    "Company",
+    "Net position",
+    "EV / EBITDA",
+    "Assessment"
+   ],
+   "rows": [
+    [
+     "Siemens Energy",
+     "~EUR 8bn net cash (est.)",
+     "~17x",
+     "BBB+, upgraded July 2026"
+    ],
+    [
+     "GE Vernova",
+     "~USD 10bn net cash (est.)",
+     "~40x",
+     "Strong balance sheet, demanding price"
+    ],
+    [
+     "Constellation Energy",
+     "~USD 30bn net debt (est.)",
+     "~14x",
+     "Leveraged merchant generator"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Cross-references to the other dossiers in this batch. Siemens Energy has GE Vernova's balance sheet at less than half its multiple."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Reported net cash at 30 June 2026",
+   "whyItMatters": "Estimated at EUR 8bn. It moves enterprise value and therefore every multiple, though less severely than at a leveraged company.",
+   "resolvedBy": "Quarterly balance sheet"
+  },
+  {
+   "item": "Depreciation and amortisation",
+   "whyItMatters": "The EBITDA estimate of EUR 6.8bn rests on an assumed EUR 1.5bn of D&A. The EV/EBITDA multiple carries 40% of the valuation weight.",
+   "resolvedBy": "Quarterly report"
+  },
+  {
+   "item": "Shares outstanding net of buyback",
+   "whyItMatters": "The 854m figure is the 9M weighted average; up to EUR 6bn of buyback is authorised, which would retire roughly 5% of the shares.",
+   "resolvedBy": "Quarterly report cover"
+  },
+  {
+   "item": "Shareholders' equity",
+   "whyItMatters": "The return-on-equity estimate of ~20% rests on an assumed EUR 20bn equity base.",
+   "resolvedBy": "Quarterly balance sheet"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The capital return programme is partly funded by customer advances rather than earnings, and it is durable only while book-to-bill exceeds 1.0x.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "There is no through-cycle record. The company was spun out in 2020, needed a state guarantee package in 2023, and has been profitable at this level for one year.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Return on equity has gone from under 9% to approaching 20% in a single year. Extrapolating that is the specific mistake the price would have to be making.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Net cash, D&A and shareholders' equity are all estimated, so the EV/EBITDA and return-on-equity figures carry real error bars.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 annual report — net cash, D&A, equity and the segment split",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "Further buyback tranches under the EUR 6bn authorisation",
+   "window": "2026-2028",
+   "impact": "Medium",
+   "probability": 0.85
+  },
+  {
+   "text": "Moody's upgrade to A3 on the positive outlook",
+   "window": "2027",
+   "impact": "Low",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "The balance sheet is the strongest in the batch: net cash, a BBB+ rating upgraded in July 2026, and a Moody's outlook moved to positive.",
+  "Capital return is substantial — up to EUR 10bn by 2028 including up to EUR 6bn of buyback, roughly 8% of the market capitalisation — and the EUR 6bn growth investment programme is comfortably covered.",
+  "But part of that cash is borrowed from customers. Roughly EUR 2.5bn a year of free cash flow is prepayment on a growing order book, and a buyback funded from that source lasts only while book-to-bill exceeds 1.0x.",
+  "Return on equity of approaching 20% is genuinely high and genuinely new — it was under 9% in FY2025, and there is no through-cycle record to test it against.",
+  "The multiple is the finding. At roughly 17x enterprise value to EBITDA against GE Vernova's roughly 40x, Siemens Energy offers the same demand exposure, a comparable balance sheet and a better-fixed wind business at less than half the price."
+ ],
+ "thesisImpact": "Phase 4 establishes that the equity is not expensive on absolute multiples and is conspicuously cheap on relative ones. It also establishes the two adjustments Phase 5 must make: run the DCF on underlying rather than guided free cash flow, and treat a one-year margin doubling as unproven rather than as a new baseline.",
+ "model": {
+  "sharesOut": 854,
+  "netDebt": -8000,
+  "wacc": {
+   "bear": 0.09,
+   "base": 0.08,
+   "bull": 0.073
+  },
+  "terminalGrowth": {
+   "bear": 0.015,
+   "base": 0.02,
+   "bull": 0.025
+  }
+ }
+}
