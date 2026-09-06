@@ -1,0 +1,320 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Meta Platforms, Inc.",
+    "ticker": "NASDAQ: META",
+    "sector": "software",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 615.20,
+    "priceUnit": "share",
+    "asOf": "2026-09-06",
+    "phase": 4,
+    "phaseName": "Capital structure, balance-sheet risk & returns on capital",
+    "assumedContext": [
+      "Network egress blocked except the search index; the year-by-year maturity ladder, the FY2026 D&A figure and the 2016-2020 invested-capital series could not be retrieved.",
+      "The ~$279bn of not-yet-commenced leases is NOT added to net debt, because Phase 5's free-cash-flow forecast already carries lease payments through operating cash flow and finance-lease principal inside capex. Adding it to net debt would double-count.",
+      "Invested capital of $254.8bn is derived from BVPS $102.52 x 2.55bn shares plus $83.66bn debt less $90.26bn cash and securities."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p4-01",
+      "claim": "Invested capital at 2026-06-30 is approximately $254.8bn: equity ~$261.4bn (BVPS $102.52 x 2.55bn shares) plus $83.66bn long-term debt less $90.26bn cash and marketable securities. Reported net debt is negative $6.6bn - a net cash position.",
+      "label": "ANALYST ESTIMATE",
+      "value": 254800,
+      "unit": "USD m invested capital",
+      "source": "Derived from Meta Q2 2026 10-Q balance-sheet items (long-term debt $83.66bn, cash and securities $90.26bn) and reported Q2 2026 book value per share of $102.52",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-02",
+      "claim": "Meta issued $30bn of senior unsecured notes on 2025-10-30 (30-year at +98bp, 40-year at +110bp, on a $125bn order book) and $25bn in May 2026 in six series maturing 2031-2066 with coupons of 4.55%-6.45%. Long-term debt stood at $83.66bn at 2026-06-30 with no near-term maturity wall.",
+      "label": "FACT",
+      "value": 83660,
+      "unit": "USD m long-term debt",
+      "source": "Meta Q2 2026 10-Q; market reporting on the October 2025 and May 2026 issues",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p4-03",
+      "claim": "Interest expense rose $542m (+225%) in Q2 2026 and $864m (+180%) in H1 2026 versus the prior-year periods, off FY2025 interest expense of $1,165m, implying a FY2026 run-rate near $3.1bn and $6-8bn by 2028 at a $50bn annual issuance pace.",
+      "label": "FACT",
+      "value": 3100,
+      "unit": "USD m implied FY2026 interest expense",
+      "source": "Meta Q2 2026 10-Q interest-expense disclosure; FY2025 interest expense per FY2025 results",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "medium"
+    },
+    {
+      "id": "p4-04",
+      "claim": "S&P affirmed AA- with a stable outlook (2025-02-05) and Moody's affirmed Aa3 stable, projecting total debt/EBITDA below 1.0x for YE2026 and YE2027 and revenue growth above 20% in 2026 and 18% in 2027. In July 2026 Moody's warned that unprecedented AI spending threatens the credit quality of Amazon, Meta and Alphabet.",
+      "label": "FACT",
+      "source": "cbonds report of S&P affirmation 2025-02-05; Investing.com report of Moody's affirmation; CNBC 2026-07-24 on the Moody's sector warning",
+      "asOf": "2026-07-24",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p4-05",
+      "claim": "Debt headroom against the rating agencies' modelled 1.0x total debt/EBITDA is roughly $36bn on FY2026E EBITDA of ~$120bn - about three months of capex at the guided run-rate. At 2.0x the headroom is ~$156bn, about thirteen months. No statutory issuance cap or binding covenant was identified.",
+      "label": "ANALYST ESTIMATE",
+      "value": 36000,
+      "unit": "USD m headroom at 1.0x debt/EBITDA",
+      "source": "Derived from Moody's stated sub-1.0x expectation and an estimated FY2026E EBITDA of ~$120bn (operating income ~$85bn plus ~$35bn D&A)",
+      "asOf": "2026-09-06",
+      "confidence": "low",
+      "impact": "high"
+    },
+    {
+      "id": "p4-06",
+      "claim": "Estimated funding gap of about $6.9bn in FY2026 and $5.5bn in FY2027 (operating cash flow less capex, dividends and maturities), covered by the $25bn May 2026 issuance. The gap assumes zero buybacks: shareholders are the residual funder of the capital programme through the return they are not receiving.",
+      "label": "ANALYST ESTIMATE",
+      "value": -6900,
+      "unit": "USD m FY2026E funding gap",
+      "source": "Derived from Phase 3 cash-flow work and FY2026 capex guidance of $130-145bn",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-07",
+      "claim": "Historical ROIC (GuruFocus, constant definition): 43.26% (2021), 20.47% (2022), 27.09% (2023), 34.25% (2024), 36.85% (2025), 32.39% (Q1 2026 annualised), against an estimated WACC of 7.3-9.5% - a positive spread of 12 to 36 points in every year for which data exists.",
+      "label": "FACT",
+      "value": 36.85,
+      "unit": "% ROIC FY2025",
+      "source": "GuruFocus META ROIC page, retrieved 2026-09-06; WACC series is an analyst estimate on a constant method (risk-free plus 1.15 x 4.5% ERP)",
+      "asOf": "2025-12-31",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-08",
+      "claim": "Incremental ROIC on the current capital vintage is 1.4% for 2025-2026E (delta NOPAT $1.4bn on delta invested capital ~$103bn) and 6.4% for 2025-2028E (delta NOPAT $22.4bn on ~$350bn), both below a 9.5% WACC. Meta is consuming the excess returns of its legacy franchise to fund a programme earning below its cost of capital.",
+      "label": "ANALYST ESTIMATE",
+      "value": 6.4,
+      "unit": "% incremental ROIC 2025-2028E",
+      "source": "Derived at a 16% tax rate from FY2025 actual operating income, FY2026 expense guidance, an FY2028E operating income estimate of $110bn, and capex less estimated D&A",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-09",
+      "claim": "The 2025-28 capital vintage clears a 9.5% cost of capital at an FY2028 operating income of $122.9bn - a 35.3% operating margin on ~$348bn of revenue, versus 41.4% in FY2025 and an estimated 33.7% in FY2026. The repair is arithmetically specific and within management's control.",
+      "label": "ANALYST ESTIMATE",
+      "value": 35.3,
+      "unit": "% FY2028 operating margin required",
+      "source": "Derived: required delta NOPAT of $33.3bn (=$350bn x 9.5%) grossed up at a 16% tax rate and added to FY2025 operating income of $83.28bn",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-10",
+      "claim": "The dominant sensitivity is the discount rate, not the income statement: a 100bp rise in WACC cuts base-case DCF value by roughly 17% (about $85 per share) while costing the credit only about $1bn a year of pre-tax income. The US 10-year Treasury at 4.79% on 2026-09-04, its highest since November 2023, is a large part of why the shares fell 15% over twelve months while revenue grew 28%.",
+      "label": "ANALYST ESTIMATE",
+      "value": 4.79,
+      "unit": "% US 10-year Treasury yield",
+      "source": "Treasury yield per CNBC/TradingEconomics 2026-09-04; DCF sensitivity derived from the Phase 5 base-case model",
+      "asOf": "2026-09-04",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p4-11",
+      "claim": "About 56% of revenue is non-US (Q2 2026: Europe $14.3bn, Asia-Pacific $11.2bn, Rest of World $8.5bn of $60.3bn regional revenue) against an overwhelmingly USD cost base, so a 10% move in the dollar moves operating income by about $14.1bn, roughly 17%, with no offset.",
+      "label": "ANALYST ESTIMATE",
+      "value": 14100,
+      "unit": "USD m operating income effect per 10% USD move",
+      "source": "Derived from Meta Q2 2026 regional revenue disclosure, assuming full translation pass-through and no local-currency price response",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-12",
+      "claim": "The sector-relevant input-cost shock is the useful life of a GPU. Cutting server life from 5.5 to 4.0 years would add roughly $20bn to FY2028 depreciation (about 18% of operating income); extending it to 7.0 years would cut D&A by roughly $12bn with zero cash effect. The FY2022 precedent shows the operating leverage: revenue fell 1% and operating income fell 38%, from $46.75bn to $28.94bn.",
+      "label": "ANALYST ESTIMATE",
+      "value": 20000,
+      "unit": "USD m FY2028 D&A increase if life cut to 4.0 years",
+      "source": "Derived from the cumulative 2025-28 IT capital base and Meta's 5.5-year policy disclosed 2025-01-29; FY2022 figures per Meta historical income statements",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Invested capital at 2026-06-30",
+      "columns": ["Component", "USD bn", "Label"],
+      "rows": [
+        ["Total stockholders' equity", "261.4", "ANALYST ESTIMATE (BVPS $102.52 x 2.55bn shares)"],
+        ["+ Long-term debt", "83.66", "FACT"],
+        ["- Cash and marketable securities", "(90.26)", "FACT"],
+        ["= Invested capital", "254.8", "Derived"],
+        ["Memo: reported net debt", "(6.6) i.e. net cash", "Derived"],
+        ["Memo: not-yet-commenced leases", "~279", "FACT (magnitude), commencing 2026-2036"],
+        ["Memo: Hyperion SPV debt, off balance sheet", "27", "FACT; Meta holds 20% of JV equity"],
+        ["Historical equity: 2020 / 2022 / 2023 / 2024 / 2025", "128.29 / 125.71 / 153.17 / 182.64 / 217.24", "FACT"]
+      ]
+    },
+    {
+      "title": "Debt stack and cost",
+      "columns": ["Issue / facility", "Size", "Terms", "Date"],
+      "rows": [
+        ["Senior unsecured notes", "$30bn", "30-yr at +98bp, 40-yr at +110bp; $125bn order book", "2025-10-30"],
+        ["Senior unsecured notes", "$25bn", "Six series maturing 2031-2066, coupons 4.55%-6.45%", "May 2026"],
+        ["Long-term debt total", "$83.66bn", "Fixed rate, long dated - no near-term wall", "2026-06-30"],
+        ["Hyperion SPV (off balance sheet)", "$27bn + $2.5bn equity", "A+ rated; PIMCO $18bn, BlackRock $3bn anchors", "Oct 2025"],
+        ["El Paso financing", "~$13bn", "Reportedly costlier than the 2025 deal", "2026"],
+        ["Interest expense FY2025 / Q2 2026 / H1 2026", "$1,165m / ~$783m / ~$1,344m", "+225% and +180% y/y", "2026-06-30"]
+      ],
+      "note": "[GAP] The year-by-year maturity ladder could not be retrieved under this session's egress policy."
+    },
+    {
+      "title": "Headroom against every binding constraint",
+      "columns": ["Constraint", "Position", "Headroom", "Years of capex funded"],
+      "rows": [
+        ["Moody's modelled total debt/EBITDA < 1.0x", "$83.66bn drawn on ~$120bn FY2026E EBITDA", "~$36bn", "~0.25"],
+        ["2.0x debt/EBITDA (comfortable single-A)", "-", "~$156bn", "~1.1"],
+        ["Statutory issuance cap", "None - Meta is not a regulated issuer", "n/a", "n/a"],
+        ["Covenants", "Not disclosed; IG notes typically negative pledge only", "Assume non-binding", "n/a"],
+        ["Liquidity", "$90.26bn cash and marketable securities", "$90.26bn", "~0.65"],
+        ["Unused buyback authorisation (already sacrificed)", "$25.03bn, zero repurchases in H1 2026", "-", "~0.18"]
+      ],
+      "note": "The binding constraint is the rating, and behind it the controlling shareholder's own tolerance - evidenced by the buyback suspension and the reported consideration of an equity offering."
+    },
+    {
+      "title": "Sensitivity 1: interest rates",
+      "columns": ["Shock", "Transmission", "FY2028E P&L effect", "Effect on DCF fair value"],
+      "rows": [
+        ["+100bp", "Applies only to ~$50bn/yr of new issuance, not the fixed-rate stock", "~-$1.0bn/yr (~1% of operating income)", "~-17% (base DCF ~$501 to ~$416/share)"],
+        ["+200bp", "Same mechanism, two years of issuance", "~-$2.0bn/yr", "~-30%"]
+      ],
+      "note": "With ~87% of base-case DCF value in the terminal value, a 100bp rate move is worth roughly seventeen times more to this equity than to this credit."
+    },
+    {
+      "title": "Sensitivity 2: 10% move in the US dollar",
+      "columns": ["Shock", "Revenue effect", "Cost effect", "Operating income effect"],
+      "rows": [
+        ["USD -10% (dollar weakens)", "+$14.1bn (+5.6%)", "~0 - cost base is USD", "+$14.1bn, ~+17%"],
+        ["USD +10% (dollar strengthens)", "-$14.1bn (-5.6%)", "~0", "-$14.1bn, ~-17%"]
+      ],
+      "note": "56% of revenue is non-US against an overwhelmingly USD cost base. Assumes full translation pass-through - the upper bound of the effect."
+    },
+    {
+      "title": "Sensitivity 3: server useful life (the sector's input-cost shock)",
+      "columns": ["Scenario", "Server life", "FY2028E D&A", "Change", "Operating income effect"],
+      "rows": [
+        ["Current policy", "5.5 yrs", "~$55bn", "-", "-"],
+        ["Obsolescence faster than assumed", "4.0 yrs", "~$75bn", "+$20bn", "-$20bn, ~-18%"],
+        ["Life extended again", "7.0 yrs", "~$43bn", "-$12bn", "+$12bn, ~+11%, zero cash effect"]
+      ],
+      "note": "Historical precedent for committed-cost operating leverage: FY2022 revenue -1%, operating income -38% ($46.75bn to $28.94bn). The 2027 committed cost base is roughly three times the 2022 base."
+    },
+    {
+      "title": "ROIC vs WACC",
+      "columns": ["Year", "ROIC", "WACC (est.)", "Spread"],
+      "rows": [
+        ["2021", "43.26%", "~7.3%", "+36.0pp"],
+        ["2022", "20.47%", "~8.6%", "+11.9pp"],
+        ["2023", "27.09%", "~9.7%", "+17.4pp"],
+        ["2024", "34.25%", "~9.5%", "+24.8pp"],
+        ["2025", "36.85%", "~9.4%", "+27.5pp"],
+        ["Q1 2026 annualised", "32.39%", "~9.5%", "+22.9pp"],
+        ["2016-2020", "[GAP] invested-capital series unavailable", "-", "-"],
+        ["INCREMENTAL 2025-2026E", "1.4%", "9.5%", "-8.1pp"],
+        ["INCREMENTAL 2025-2028E", "6.4%", "9.5%", "-3.1pp"]
+      ],
+      "note": "[FACT] ROIC series per GuruFocus, constant definition. [ANALYST ESTIMATE] WACC series and both incremental figures. Average ROIC is extraordinary; incremental ROIC on the new vintage is below cost of capital. That divergence is the entire investment case."
+    },
+    {
+      "title": "Conditions for a durable positive spread",
+      "columns": ["Condition", "Required", "Current", "Plausible?"],
+      "rows": [
+        ["FY2028 operating margin", "35.3%", "FY2025 41.4%; FY2026E 33.7%", "Yes - the base case. Requires expense growth below revenue growth from 2027, which follows automatically from a capex plateau"],
+        ["Revenue per GW above $12.8bn", "Capex per GW below $40bn or gross margin above 80%", "Unknown", "Possible; unmeasurable on current disclosure"],
+        ["A second revenue stream at $20bn+", "Meta AI subscriptions, agents, licensing", "~$2bn (messaging run-rate)", "Not in the base case"]
+      ],
+      "note": "This is a self-inflicted and controllable compression, not a cyclical or structural one. Nothing in Meta's competitive position or demand has deteriorated - management chose to triple the capital base, and can choose otherwise."
+    }
+  ],
+  "gaps": [
+    {
+      "item": "FY2027 capital expenditure",
+      "whyItMatters": "The single most valuable number in front of this stock. Across the plausible range it moves base-case fair value by roughly 30%",
+      "resolvedBy": "Q3 2026 results (late October) or Q4 2026 results (late January 2027)"
+    },
+    {
+      "item": "Consensus FY2026 EPS of $31.72 cannot be reconciled to management's own expense guidance",
+      "whyItMatters": "On ~$252bn of revenue and $165-169bn of guided expenses, EPS lands nearer $27 - about 14% below consensus. The headline 19.4x P/E may rest on a number the company's guidance does not support",
+      "resolvedBy": "Post-Q3 consensus revisions, or a management bridge"
+    },
+    {
+      "item": "Year-by-year debt maturity ladder",
+      "whyItMatters": "Confirms the absence of a wall and sharpens the refinancing-rate sensitivity",
+      "resolvedBy": "The 10-K debt note - egress-blocked in this session"
+    },
+    {
+      "item": "FY2026 D&A and the invested-capital roll-forward",
+      "whyItMatters": "Every incremental-ROIC figure rests on estimated changes in invested capital",
+      "resolvedBy": "Primary cash-flow statement and balance sheet"
+    },
+    {
+      "item": "2016-2020 ROIC series",
+      "whyItMatters": "Would extend the returns test to the full decade the protocol asks for, covering a pre-ATT, pre-Reality-Labs period",
+      "resolvedBy": "SEC XBRL companyfacts - egress-blocked in this session"
+    },
+    {
+      "item": "Covenant terms on the notes and the Hyperion SPV",
+      "whyItMatters": "Would confirm that no covenant binds before the rating does, and whether Meta carries recourse to the SPV",
+      "resolvedBy": "Indentures and the JV agreement"
+    }
+  ],
+  "risks": [
+    {"text": "Incremental ROIC of 1-6% against a 9.5% WACC: the franchise's excess returns are funding a programme that earns below its cost of capital", "severity": "high", "probability": "high"},
+    {"text": "Rating headroom of roughly $36bn against the agencies' modelled sub-1.0x debt/EBITDA is about three months of capex; a downgrade path would raise the cost of the next $100bn", "severity": "medium", "probability": "medium"},
+    {"text": "A 100bp rise in the discount rate removes ~17% of equity value because ~87% of DCF value sits in the terminal value - the risk that has already driven the 15% twelve-month de-rating", "severity": "high", "probability": "medium"},
+    {"text": "A 10% stronger dollar costs roughly $14.1bn of operating income, about 17%, with no cost-side offset", "severity": "medium", "probability": "medium"},
+    {"text": "Shortening server life to 4 years would add ~$20bn to FY2028 depreciation, ~18% of operating income, with no change in cash", "severity": "medium", "probability": "low"}
+  ],
+  "catalysts": [
+    {"text": "FY2027 capex guidance - the disclosure that resolves the central variable", "window": "late January 2027", "impact": "High", "probability": 0.9},
+    {"text": "First quarter of positive incremental operating margin above 20%, evidencing the plateau", "window": "2027-2028", "impact": "High", "probability": 0.45},
+    {"text": "Rating action or outlook change from Moody's or S&P on AI capital intensity", "window": "next 12 months", "impact": "Medium", "probability": 0.3},
+    {"text": "Resumption of buybacks against the $25.03bn unused authorisation", "window": "2027-2028", "impact": "High", "probability": 0.35},
+    {"text": "Equity issuance to fund the programme - the single most negative capital-allocation signal available", "window": "next 18 months", "impact": "High", "probability": 0.2}
+  ],
+  "conclusions": [
+    "The balance sheet funds the plan comfortably for now: AA-/Aa3, no near-term maturity wall, a ~$6.9bn FY2026 funding gap against $90.26bn of liquidity and a $25bn issuance already completed. The constraint is the rating agencies' patience - roughly $36bn of headroom, about three months of capex.",
+    "Meta's average ROIC is among the best in the listed world and has been for a decade: 36.85% in 2025 against an estimated 9.4% WACC. No serious bear case can ignore it.",
+    "Incremental ROIC on the 2025-28 capital vintage is 1.4-6.4% against a 9.5% WACC. The legacy franchise's excess returns are funding a programme that earns below its cost of capital - the exact failure mode the growth-is-not-value guardrail exists to detect.",
+    "The spread turns durably positive at a 35.3% FY2028 operating margin, versus 41.4% in 2025 and 33.7% estimated for 2026. Achievable, and the base case, but it requires the capex plateau rather than a demand surprise.",
+    "The dominant sensitivity is the discount rate, not the income statement. A 100bp WACC move is worth ~17% of equity value against ~$1bn a year to the credit; the 10-year at 4.79% is already the largest driver of the twelve-month de-rating."
+  ],
+  "thesisImpact": "Explains Phase 3's margin failure and shows how much of it is reversible: the franchise earns 37% on capital while the new capital earns 1-6%. The repair condition is arithmetically specific - a 35.3% FY2028 operating margin - and sits within management's control. This converts the case from a quality judgement into a timing judgement on one variable, and it tells Phase 5 to weight down a DCF whose terminal value carries 87% of the answer.",
+  "model": {
+    "sharesOut": 2550,
+    "netDebt": -6600,
+    "minorities": 0,
+    "wacc": {"bear": 0.108, "base": 0.095, "bull": 0.088},
+    "terminalGrowth": {"bear": 0.015, "base": 0.030, "bull": 0.035},
+    "assetBase": {
+      "label": "Invested capital",
+      "value": 254800,
+      "multiple": {"bear": 3.0, "base": 4.3, "bull": 5.5}
+    },
+    "book": {
+      "bvps": 102.52,
+      "coe": 0.100,
+      "growth": 0.030,
+      "roe": {"bear": 0.15, "base": 0.24, "bull": 0.30}
+    }
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Meta Platforms, Inc.",
+    "ticker": "NASDAQ: META",
+    "sector": "software",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 615.20,
+    "priceUnit": "share",
+    "asOf": "2026-09-06",
+    "phase": 1,
+    "phaseName": "Pricing-power architecture",
+    "assumedContext": [
+      "Session network egress is blocked for all domains except the search index; WebFetch returns EGRESS_BLOCKED and curl reports CONNECT 403 against data.sec.gov, fred.stlouisfed.org and stockanalysis.com. Figures sourced to Meta filings reached this analysis via search-index summaries of those filings, not the documents themselves.",
+      "Phases 2-5 not yet run at time of writing; capex and balance-sheet figures cited here are carried forward and re-derived in Phase 4."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p1-01",
+      "claim": "Q2 2026 advertising revenue growth decomposes exactly into impressions +14% and price per ad +12% ((1.14 x 1.12) - 1 = +27.7% vs +27% reported), on Family daily active people of 3.60bn, up only 3% y/y.",
+      "label": "FACT",
+      "value": 27,
+      "unit": "% y/y ad revenue growth",
+      "source": "Meta Q2 2026 results, 8-K exhibit 99.1 filed 2026-07-29 (via search-index summary)",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-02",
+      "claim": "Q2 2026 revenue rose 28% to $60.80bn while total costs and expenses rose 55%; operating margin fell from 43% to 31%.",
+      "label": "FACT",
+      "value": 31,
+      "unit": "% operating margin",
+      "source": "Meta Q2 2026 results, 8-K exhibit 99.1 filed 2026-07-29; CNBC 2026-07-29",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-03",
+      "claim": "Europe delivered the fastest price-per-ad growth of any region at +19% y/y, despite being the jurisdiction with the most restrictive data-combination regime (DMA).",
+      "label": "FACT",
+      "value": 19,
+      "unit": "% y/y price per ad, Europe",
+      "source": "Meta Q2 2026 earnings presentation (via search-index summary), 2026-07-29",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p1-04",
+      "claim": "In FTC v. Meta the court held the FTC failed to prove Meta currently holds monopoly power in personal social networking; no divestiture of Instagram or WhatsApp. The reasoning rested on finding real competition from TikTok and YouTube.",
+      "label": "REGULATORY STATUTE",
+      "source": "US District Court for the District of Columbia (Boasberg J.), decision 2025-11-18; Sullivan & Cromwell client memo; NPR and CNBC reporting",
+      "asOf": "2025-11-18",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-05",
+      "claim": "Meta agreed a youth-safety settlement with 47-52 state attorneys general reported at $16.7-18bn, payable annually over 10 years, with 30% of the sum released only if YouTube and TikTok adopt equivalent design measures (one-hour daily limit, nighttime block, age assurance).",
+      "label": "REGULATORY STATUTE",
+      "value": 17000,
+      "unit": "USD m (midpoint of reported range)",
+      "source": "CNBC ($16.7bn), NPR and PBS ($17bn), Variety ('up to $18bn'), all 2026-08-26; trial before Gonzalez Rogers J., N.D. Cal.",
+      "asOf": "2026-08-26",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p1-06",
+      "claim": "Meta booked a $2.4bn charge for legal proceedings in Q2 2026 G&A, before the August state AG settlement was agreed - so the settlement is not fully provisioned in the 2026-06-30 balance sheet.",
+      "label": "FACT",
+      "value": 2400,
+      "unit": "USD m",
+      "source": "Meta Q2 2026 results; Variety 2026-07-29; qz.com 2026-07-30",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-07",
+      "claim": "The European Commission fined Meta EUR 200m for DMA non-compliance over the pay-or-consent model and required a genuine less-personalised alternative; Meta rolled the less-personalised option out more broadly into 2026.",
+      "label": "REGULATORY STATUTE",
+      "value": 200,
+      "unit": "EUR m",
+      "source": "European Commission DMA non-compliance decision, 2025-04-22; EU Perspectives 2026-03",
+      "asOf": "2025-04-22",
+      "confidence": "high",
+      "impact": "medium"
+    },
+    {
+      "id": "p1-08",
+      "claim": "Mark Zuckerberg holds 99.7% of Class B stock (10 votes per share), equating to roughly 13% of economics and approximately 61% of voting power. Meta is a controlled company; no minority mechanism can alter capital allocation.",
+      "label": "FACT",
+      "value": 61,
+      "unit": "% voting power",
+      "source": "Meta proxy materials and shareholder proposal filings; Harvard Law CorpGov Forum; Public Citizen analysis",
+      "asOf": "2026-05-27",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-09",
+      "claim": "Meta repurchased zero Class A shares in the six months to 2026-06-30 with $25.03bn of authorisation unused, while paying a $0.525/quarter dividend ($1.353bn in Q2) against Q2 free cash flow of $0.784bn - the dividend was funded with debt.",
+      "label": "FACT",
+      "value": 25030,
+      "unit": "USD m unused buyback authorisation",
+      "source": "Meta Q2 2026 10-Q filed 2026-07-29 (via search-index summary)",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-10",
+      "claim": "OpenAI launched advertising in ChatGPT on 2026-02-09 and a self-serve Ads Manager, reaching roughly $1bn annualised ad revenue run-rate from about $100m six months earlier; the TikTok US joint venture closed with roughly 80% non-Chinese ownership, removing TikTok's regulatory overhang with US advertisers.",
+      "label": "FACT",
+      "value": 1000,
+      "unit": "USD m annualised OpenAI ad run-rate",
+      "source": "Axios 2026-04-09 and 2026-05-05; Benzinga 2026-08; Marketing Dive on TikTok US JV NewFront, 2026",
+      "asOf": "2026-08-31",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p1-11",
+      "claim": "Meta trades at 19.4x consensus 2026 EPS of $31.72 and 18.2x consensus 2027 EPS of $33.89 at $615.20, versus Alphabet at roughly 16.8-17.0x, Microsoft 26.7x, Apple 36.1x, Netflix 31.2x and Oracle 25.0x; the shares are down about 15% over twelve months against a 52-week range of $520.26-$790.80.",
+      "label": "CONSENSUS",
+      "value": 18.2,
+      "unit": "x consensus 2027 EPS",
+      "source": "stockanalysis.com and TipRanks consensus aggregates; fullratio, financecharts, macrotrends and public.com peer P/E pages, retrieved 2026-09-06",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "medium"
+    },
+    {
+      "id": "p1-12",
+      "claim": "Cost of equity derived at 10.0%: risk-free 4.79% (US 10-year Treasury, 2026-09-04) plus beta 1.15 times an equity risk premium of 4.5%.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0.100,
+      "unit": "cost of equity, decimal",
+      "source": "Derived. Risk-free from US 10-year Treasury yield 4.79% reported 2026-09-04 (CNBC/TradingEconomics); beta and ERP are analyst assumptions stated in Phase 1 section 1.4",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Price-setting mechanism: input to residual",
+      "columns": ["Input", "Mechanism", "Lag", "Who bears the residual"],
+      "rows": [
+        ["Advertiser demand", "Open auction, bid per outcome", "None - continuous", "Meta; budget cuts hit price within the quarter"],
+        ["Ranking quality (GEM, Andromeda)", "Better conversion prediction raises willingness-to-pay per impression", "2-4 quarters from deployment", "Meta captures most; advertisers keep the rest as ROAS"],
+        ["Ad load / new surfaces", "More inventory at constant demand lowers price, raises volume", "1-2 quarters", "Meta: new surfaces monetise below Feed at launch"],
+        ["Consented-data availability", "Signal loss degrades targeting, lowers bids", "Immediate on policy change", "Meta, concentrated in the affected geography"],
+        ["Competitive inventory supply", "TikTok, Google, retail media, OpenAI cap the clearing price", "Continuous", "Meta"]
+      ],
+      "note": "[FACT] mechanics per Meta Q2 2026 disclosure and Meta Engineering GEM post 2025-11-10. Lags are [ANALYST ESTIMATE]."
+    },
+    {
+      "title": "Q2 2026 revenue and pricing by region",
+      "columns": ["Region", "Q2 2026 revenue (USD bn)", "y/y growth", "Price per ad y/y"],
+      "rows": [
+        ["US & Canada", "26.3", "+32%", "+10%"],
+        ["Europe", "14.3", "+24%", "+19%"],
+        ["Asia-Pacific", "11.2", "+19%", "n/d"],
+        ["Rest of World", "8.5", "+36%", "+15%"],
+        ["Total", "60.8", "+28%", "+12%"]
+      ],
+      "note": "[FACT] Meta Q2 2026 results, quarter ended 2026-06-30. Regional lines sum to $60.3bn against $60.8bn total revenue; treat splits as plus or minus 1%."
+    },
+    {
+      "title": "Statutory override events and equity impact",
+      "columns": ["Order / case", "Date", "Holding", "Equity impact"],
+      "rows": [
+        ["FTC v. Meta (D.D.C.)", "2025-11-18", "No current monopoly power; no divestiture of Instagram or WhatsApp", "Removed the largest structural risk; reasoning rests on real TikTok/YouTube competition"],
+        ["EC DMA non-compliance (pay-or-consent)", "2025-04-22", "EUR 200m fine; genuine less-personalised option required", "Fine immaterial; the remedy is a permanent constraint on data combination"],
+        ["State AG youth-safety settlement (N.D. Cal.)", "2026-08-26", "$16.7-18bn over 10 years plus binding design changes; 30% contingent on rivals adopting equivalents", "About $1.7bn/yr cash; design mandates attack the impression term of the revenue identity"],
+        ["Bellwether jury verdict, social-media addiction", "2026-03-26", "Meta and YouTube found liable", "The event that priced the August settlement"]
+      ],
+      "note": "[REGULATORY STATUTE] Sullivan & Cromwell, NPR, CNBC, PBS, Al Jazeera and European Commission sources as dated."
+    },
+    {
+      "title": "Ownership and alignment",
+      "columns": ["Holder / class", "Economic interest", "Voting power", "Alignment note"],
+      "rows": [
+        ["Mark Zuckerberg (Class B, 10 votes)", "~13%", "~61%", "Holds 99.7% of Class B; decisive on every vote"],
+        ["Class A float", "~87%", "~39%", "No mechanism to alter capital allocation"]
+      ],
+      "note": "[FACT] Meta proxy materials; one-share-one-vote proposal filed for the 2026-05-27 AGM is determined in advance by the 61% block."
+    }
+  ],
+  "gaps": [
+    {
+      "item": "EU consented-user share after the less-personalised ads rollout",
+      "whyItMatters": "Determines whether Europe's +19% price per ad is durable pricing power or an artefact of a shrinking consented impression pool - the difference between a re-rating and a value trap in the region that is 24% of revenue",
+      "resolvedBy": "Meta disclosing EU consented DAP, or a DMA compliance report"
+    },
+    {
+      "item": "Full text of the state AG settlement and the amount already provisioned",
+      "whyItMatters": "Sizes the incremental Q3 2026 charge (estimated $14-15bn pre-tax) and the impression impact of the mandated design changes",
+      "resolvedBy": "The settlement order and Meta's Q3 2026 10-Q"
+    },
+    {
+      "item": "Price per ad by surface (Feed vs Reels vs Threads vs WhatsApp Status)",
+      "whyItMatters": "Determines whether new inventory is accretive or dilutive to realised price - the core question for Phase 3's incremental margin",
+      "resolvedBy": "Not disclosed; would require advertiser channel checks"
+    },
+    {
+      "item": "Reconciliation of the $16.7bn / $17bn / $18bn settlement figures",
+      "whyItMatters": "Plus or minus $1.3bn on the Q3 charge and on the 10-year cash schedule",
+      "resolvedBy": "Primary court filing - unreachable under this session's egress policy"
+    }
+  ],
+  "risks": [
+    {"text": "Pricing power is engineered, not contractual: the 12% price-per-ad gain must be re-bought each year with compute, so the cost of maintaining price rises with the price itself", "severity": "high", "probability": "high"},
+    {"text": "Design mandates from the youth-safety settlement act on impressions rather than price - the first regulatory instrument to attack the volume term of Meta's revenue identity", "severity": "medium", "probability": "medium"},
+    {"text": "Controlled-company structure leaves minorities with no mechanism to influence a capital programme now running at $130-145bn a year", "severity": "high", "probability": "high"},
+    {"text": "Antitrust victory rested on a finding of real competition from TikTok and YouTube; TikTok's US JV and OpenAI's ad platform make that finding more accurate every quarter", "severity": "medium", "probability": "medium"}
+  ],
+  "catalysts": [
+    {"text": "Q3 2026 results: incremental charge for the state AG settlement, first full quarter of the design mandates, and the first 2027 capex signal", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "Meta discloses 2027 capital expenditure guidance - the single largest driver of the equity value", "window": "Q4 2026 results, late January 2027", "impact": "High", "probability": 0.9},
+    {"text": "European Commission assessment of whether the less-personalised ads option satisfies the DMA remedy", "window": "H1 2027", "impact": "Medium", "probability": 0.5},
+    {"text": "Resumption of share repurchases against the $25.03bn unused authorisation - the clearest signal that the capex peak has passed", "window": "2027-2028", "impact": "High", "probability": 0.35}
+  ],
+  "conclusions": [
+    "All of Meta's growth is price times impressions on a flat user base: Family DAP +3% while impressions rose 14% and price per ad 12%. The revenue identity closes exactly. This is an intensity story, not a reach story.",
+    "The price-setting mechanism is a machine-learning system, not a contract or a tariff. It must be re-purchased annually with compute, which makes Phase 4's capex the direct input to Phase 1's price.",
+    "The structural legal risk was removed in November 2025 with the FTC verdict and replaced in August 2026 by a $16.7-18bn youth-safety settlement whose design mandates attack impressions rather than price.",
+    "Meta is a controlled company: 61% of votes in one hand, buybacks suspended, dividend funded with debt, capex guidance raised twice in 2026. There is no minority mechanism and therefore no governance catalyst to close the discount.",
+    "Europe prices fastest of any region (+19% per ad) under the heaviest data regulation - the most counter-consensus fact in this phase and unexplained on public disclosure.",
+    "Structural discount assessment: Meta's 18.2x 2027 consensus P/E versus the mega-cap set is a governance-plus-capex-uncertainty discount that no governance event can dissolve. It closes only through demonstrated returns on the capital programme."
+  ],
+  "thesisImpact": "Reframes the company from 'cheap mega-cap with an AI option' to 'an auction whose clearing price is a function of compute spend, run by a controlling shareholder who has suspended shareholders' claim on cash while that spend runs'. Every later phase tests one question: does the compute buy more price than it costs?",
+  "model": {
+    "sharesOut": 2550,
+    "book": {
+      "coe": 0.100
+    }
+  }
+}

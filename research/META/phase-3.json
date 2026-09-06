@@ -1,0 +1,276 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Meta Platforms, Inc.",
+    "ticker": "NASDAQ: META",
+    "sector": "software",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 615.20,
+    "priceUnit": "share",
+    "asOf": "2026-09-06",
+    "phase": 3,
+    "phaseName": "Demand & monetisation structure",
+    "assumedContext": [
+      "Network egress blocked except the search index; filing figures reached this analysis via search-index summaries.",
+      "Meta discloses no AI-attributable revenue line. All revenue-per-gigawatt statements are inferences from consolidated figures, not measurements.",
+      "FY2026 revenue of ~$252bn is an analyst estimate built from reported Q1 ($56.31bn) and Q2 ($60.80bn), guided Q3 ($61-64bn) and an estimated Q4 (~$72bn)."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p3-01",
+      "claim": "Meta has essentially no contracted revenue: no take-or-pay, no minimum-volume floor, no indexation and no multi-year offtake stands behind roughly $240bn of annual advertising. Every dollar is re-won in a spot auction.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0,
+      "unit": "USD m contracted revenue",
+      "source": "Structural conclusion from Meta's disclosed revenue model (Q2 2026 results and 10-Q); no contracted-revenue or RPO disclosure exists in Meta's reporting",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p3-02",
+      "claim": "Incremental operating margin for FY2026E is 3.3% against an FY2025 average operating margin of 41.4%: revenue rises about $51.0bn (to ~$252bn from $200.97bn) while operating income rises about $1.7bn (to ~$85bn from $83.28bn) on guided expenses of $165-169bn. Adding back the $2.4bn legal charge and severance lifts incremental margin only to about 11%.",
+      "label": "ANALYST ESTIMATE",
+      "value": 3.3,
+      "unit": "% incremental operating margin",
+      "source": "Derived from Meta FY2025 actuals and FY2026 total-expense guidance of $165-169bn given with Q2 2026 results, 2026-07-29",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-03",
+      "claim": "Q2 2026 free cash flow was $784m, down about 91% y/y, as $31.08bn of capex consumed roughly 98% of $31.86bn of operating cash flow. Dividends of $1,353m in the quarter exceeded free cash flow by about $569m - the dividend is being funded with borrowings.",
+      "label": "FACT",
+      "value": 784,
+      "unit": "USD m quarterly free cash flow",
+      "source": "Meta Q2 2026 results, 2026-07-29",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p3-04",
+      "claim": "FY2026E free cash flow is approximately zero (estimated range -$9bn to +$6bn): H1 2026 operating cash flow $64.09bn and capex $50.94bn gave $13.17bn of first-half FCF, against full-year capex guidance of $130-145bn.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0,
+      "unit": "USD m FY2026E free cash flow",
+      "source": "Derived from reported Q1 and Q2 2026 cash flows and FY2026 capex guidance",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-05",
+      "claim": "At a $165bn annual capital programme each year of spending adds roughly $53bn to the annual revenue Meta must earn simply to cover its cost of capital (4.1 GW at $12.8bn/GW), against actual annual revenue increments of about $51-53bn. At the $180bn run-rate implied by 2027-28 plans the hurdle grows about $58bn a year - faster than revenue.",
+      "label": "ANALYST ESTIMATE",
+      "value": 53000,
+      "unit": "USD m per year of additional required revenue",
+      "source": "Derived from the Phase 2 unit cost curve ($12.8bn revenue required per GW per year at $40bn/GW) and FY2026 capex guidance",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-06",
+      "claim": "WhatsApp paid messaging surpassed a $2.0bn annual run-rate at Q4 2025, and more than 1 million businesses used Meta Business Agents weekly in Q2 2026 after global availability on WhatsApp and Messenger; early business-AI deployments in Mexico and the Philippines generate over 1 million weekly conversations each.",
+      "label": "FACT",
+      "value": 2000,
+      "unit": "USD m annual run-rate, WhatsApp paid messaging",
+      "source": "Meta Q4 2025 commentary (Futurum summary); Meta Q2 2026 disclosure and trade press, 2026",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "medium"
+    },
+    {
+      "id": "p3-07",
+      "claim": "Consumer AI monetisation remains pre-revenue at scale: Meta AI Plus and Premium are in test markets (Singapore, Guatemala), Vibes moved to a freemium credit model, and a Hatch agent platform with a reported $199.99/month tier and a 'Watermelon' model is described only from internal documents.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Yahoo Finance/Forkast reporting on Hatch and Watermelon, 2026; tech-insider and ALM Corp summaries of Meta AI Plus/Premium and Vibes, 2026. Classified [Unfunded Planned Project] under the Phase 3 taxonomy",
+      "asOf": "2026-08-31",
+      "confidence": "low",
+      "impact": "medium"
+    },
+    {
+      "id": "p3-08",
+      "claim": "Meta open-weighted Muse Spark 1.2 and open-sourced the Muse Glimmer on-device family, deliberately foregoing model-licensing revenue. The AI capital programme must therefore be justified entirely through advertising and first-party products - there is no licensing annuity.",
+      "label": "FACT",
+      "source": "CNBC 2026-08-10 on Meta open-sourcing its most powerful model; Fox Business on the Zuckerberg superintelligence memo",
+      "asOf": "2026-08-10",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p3-09",
+      "claim": "An independent revenue bridge lands on the consensus FY2027 number of about $305bn: FY2026E ~$252bn plus roughly $24bn of price, $26bn of impressions including Threads and WhatsApp Status, $5bn of business messaging, less about $2bn of youth-safety design drag. The disagreement with the market is not about revenue but about what the revenue costs.",
+      "label": "ANALYST ESTIMATE",
+      "value": 305000,
+      "unit": "USD m FY2027E revenue",
+      "source": "Derived bridge in Phase 3 section 3.1; consensus revenue of ~$305bn for 2027 per sell-side aggregates (tikr, stockanalysis.com), retrieved 2026-09-06",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-10",
+      "claim": "Reality Labs generated $431m of revenue against a $4,619m operating loss in Q2 2026, a 2% wider loss than the $4,530m of Q2 2025, while Family of Apps operating income fell 6% to $23,394m from $24,971m.",
+      "label": "FACT",
+      "value": -4619,
+      "unit": "USD m quarterly Reality Labs operating loss",
+      "source": "Meta Q2 2026 results and 10-Q, 2026-07-29",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "medium"
+    },
+    {
+      "id": "p3-11",
+      "claim": "The highest-value commercial structures available to a capital-intensive business are absent: no upfront customer contributions to infrastructure cost, no take-or-pay, no indexation. Only premium tiers and emerging usage-based billing (messaging, agents) are in use.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Assessment of Meta's disclosed commercial terms across advertising, messaging and subscription products, Q2 2026 results and product reporting",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Demand table: source, counterparty, size, classification",
+      "columns": ["Source", "Counterparty / market", "Unit driver", "Size", "Start", "Class"],
+      "rows": [
+        ["Core Feed/Reels ad load and price", "~10m advertisers, no concentration", "Impressions x price per ad", "$59.36bn/qtr, +27% y/y", "Live", "Approved / Committed"],
+        ["Ranking-model uplift (GEM, Andromeda)", "Same", "Price per ad", "+12% y/y, ~$25bn annualised", "Live", "Approved / Committed"],
+        ["Threads ads", "UK, EU, Brazil rollout", "New impression supply", "Not disclosed", "2026", "Approved / Committed"],
+        ["WhatsApp Status ads", "Global, phased", "New impression supply", "Not disclosed", "Through FY2026", "Approved / Committed"],
+        ["WhatsApp paid messaging", "Businesses, esp. LatAm/APAC", "Conversations", ">$2.0bn annual run-rate", "Live", "Approved / Committed"],
+        ["Business AI agents", ">1m businesses weekly", "Conversations, subscription + usage", "Revenue not disclosed", "Q2 2026 global", "Approved / Committed (product); Unfunded Planned (pricing)"],
+        ["Meta AI Plus / Premium", "Singapore, Guatemala tests", "Subscribers x ARPU", "Not disclosed", "Test", "Unfunded Planned"],
+        ["Hatch agent platform, reported $199.99/mo", "Reported from internal documents", "Subscribers", "Not launched", "n/d", "Unfunded Planned"],
+        ["Vibes freemium credits", "Consumer", "Credit packs", "Not disclosed", "Live", "Unfunded Planned"],
+        ["Muse model family / API tokens", "Developers", "Tokens", "Open weights suppress direct monetisation", "Live", "Speculative"],
+        ["Reality Labs hardware", "Consumer", "Units", "$431m/qtr", "Live", "Approved / Committed, immaterial"],
+        ["Personal superintelligence, enterprise AI, agentic commerce", "n/a", "n/a", "Unbounded in narrative", "n/a", "Speculative - zero weight"]
+      ]
+    },
+    {
+      "title": "Volume totals by classification bucket (FY2027E incremental revenue)",
+      "columns": ["Class", "Test", "FY2027E incremental revenue"],
+      "rows": [
+        ["Existing Contracted", "Signed, binding, take-or-pay", "~$0bn"],
+        ["Approved / Committed Pipeline", "Shipping product, inventory live", "~$50bn"],
+        ["Unfunded Planned Project", "Announced or trialled, not launched at scale", "~$3-8bn"],
+        ["Speculative Demand", "Extrapolation, MOU, aspiration", "Unbounded, weighted zero"]
+      ],
+      "note": "A $137bn annual capital programme with a zero-dollar contracted book is a materially different risk object from the same capex with signed offtake."
+    },
+    {
+      "title": "Demand bridge FY2025 to FY2027E (USD bn)",
+      "columns": ["Step", "USD bn", "Basis"],
+      "rows": [
+        ["FY2025 revenue", "200.97", "FACT"],
+        ["+ Price per ad", "+26", "ANALYST ESTIMATE, ~12% on the ad base"],
+        ["+ Impressions (ad load, new surfaces)", "+28", "ANALYST ESTIMATE, ~14%"],
+        ["- Regional and mix drag", "-3", "ANALYST ESTIMATE, APAC at +19% dilutes the blend"],
+        ["= FY2026E revenue", "~252", "Q1 and Q2 actual, Q3 guided, Q4 estimated"],
+        ["+ Price per ad", "+24", "Decelerating off a larger base"],
+        ["+ Impressions incl. Threads, WhatsApp Status", "+26", "Marginal new supply"],
+        ["+ Business messaging and agents", "+5", "From a >$2bn run-rate"],
+        ["- Youth-safety design mandates", "-2", "First regulatory instrument to cut impressions directly"],
+        ["= FY2027E revenue", "~305", "Matches consensus"]
+      ]
+    },
+    {
+      "title": "Free cash flow test",
+      "columns": ["", "FY2025", "H1 2026", "FY2026E"],
+      "rows": [
+        ["Operating cash flow", "$115.8bn (derived)", "$64.09bn", "~$136bn (est.)"],
+        ["Capex incl. finance leases", "$72.22bn", "$50.94bn", "$130-145bn (guidance)"],
+        ["Free cash flow", "$43.59bn", "$13.17bn", "~$0bn (range -$9bn to +$6bn)"],
+        ["Dividends paid", "n/d", "~$2.7bn", "~$5.4bn"],
+        ["Buybacks", "n/d", "$0", "$0"]
+      ]
+    },
+    {
+      "title": "Does incremental revenue clear the Phase 2 hurdle?",
+      "columns": ["Item", "Arithmetic", "Result"],
+      "rows": [
+        ["Capacity added 2025+2026", "($72.22bn + $137.5bn) / $40bn per GW", "~5.2 GW"],
+        ["Revenue required from that vintage", "5.2 GW x $12.8bn", "~$67bn/yr at maturity"],
+        ["Capacity added 2027E at $165bn", "$165bn / $40bn per GW", "~4.1 GW"],
+        ["Additional revenue required", "4.1 GW x $12.8bn", "~$53bn/yr"],
+        ["Actual annual revenue increments", "FY2025 / FY2026E / FY2027E", "+$36.5bn / +$51.0bn / +$53.0bn"],
+        ["Conclusion", "Hurdle growth vs revenue growth", "The programme runs to stand still at $165bn; it falls behind at $180bn+"]
+      ]
+    },
+    {
+      "title": "Commercial structures: available vs in use",
+      "columns": ["Mechanism", "In use?", "Economics if used"],
+      "rows": [
+        ["Upfront customer contributions to infrastructure", "No", "Would shift data-centre capex to the customer - highest-value structure available, entirely absent"],
+        ["Long-term contracts with take-or-pay", "No", "Would convert spot revenue into a contracted book and re-rate the multiple"],
+        ["Volume commitments / minimum spend", "Limited, undisclosed", "Modest floor"],
+        ["Indexation", "No", "n/a"],
+        ["Premium / priority tiers", "Partially - Meta Verified, Meta AI Plus/Premium, Business Agent subscriptions, Vibes credits", "High margin, small; the only structural monetisation innovation"],
+        ["Usage-based billing", "Emerging - messaging >$2bn run-rate, agent conversations", "Genuinely incremental, low capital intensity, best economics in the company"],
+        ["Model / API licensing", "Deliberately foregone - Muse Spark 1.2 open-weighted, Muse Glimmer open-source", "Gives away direct monetisation of the compute for ecosystem position"]
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "item": "Any AI-attributable revenue line",
+      "whyItMatters": "There is no disclosed figure against which the $137bn programme can be tested. It is the highest-value missing disclosure in the company and the reason every return calculation here carries a range",
+      "resolvedBy": "Meta breaking out business messaging, agents and AI subscriptions, as it once did for Reality Labs"
+    },
+    {
+      "item": "Threads and WhatsApp Status advertising revenue and price per ad",
+      "whyItMatters": "These are the marginal new impression supply; their realised price determines whether new inventory is accretive or dilutive to the blended price per ad",
+      "resolvedBy": "Surface-level or segment disclosure"
+    },
+    {
+      "item": "Meta AI subscription funnel: subscribers, ARPU, test-market conversion",
+      "whyItMatters": "Determines whether consumer AI ever leaves the Unfunded Planned bucket and enters the base case",
+      "resolvedBy": "Company disclosure or third-party app-store revenue estimates"
+    },
+    {
+      "item": "Advertiser concentration and budget elasticity",
+      "whyItMatters": "With no contracts, elasticity is the only defence in a downturn; a spot book with concentrated advertisers is far more fragile than a spot book without",
+      "resolvedBy": "Not disclosed"
+    },
+    {
+      "item": "Actual revenue per gigawatt of installed compute",
+      "whyItMatters": "The single input that would confirm or destroy the $12.8bn per GW hurdle on which this phase's conclusion rests",
+      "resolvedBy": "Meta disclosing fleet GW alongside AI-attributable revenue"
+    }
+  ],
+  "risks": [
+    {"text": "Zero contracted revenue against a $137bn annual capital programme: advertisers can cut budgets instantly and at no cost, while the capex and lease commitments cannot be cut at all", "severity": "high", "probability": "medium"},
+    {"text": "Incremental operating margin of 3.3% against a 41.4% average means growth is currently diluting returns rather than compounding them", "severity": "high", "probability": "high"},
+    {"text": "Open-weighting the models forgoes any licensing annuity, so the entire capital programme must be recovered through advertising and first-party products", "severity": "medium", "probability": "high"},
+    {"text": "Youth-safety design mandates cut impressions rather than price - a direct attack on the volume term that has been carrying revenue growth", "severity": "medium", "probability": "medium"}
+  ],
+  "catalysts": [
+    {"text": "First disclosed revenue figure for business messaging, agents or Meta AI subscriptions - would convert the central gap into an underwritable line", "window": "Q4 2026 - FY2027", "impact": "High", "probability": 0.4},
+    {"text": "Threads and WhatsApp Status ads reach full rollout, revealing whether new inventory is accretive to blended price per ad", "window": "H1 2027", "impact": "Medium", "probability": 0.7},
+    {"text": "Meta AI Plus / Hatch launched beyond test markets at a disclosed price point", "window": "2027", "impact": "Medium", "probability": 0.45},
+    {"text": "A quarter in which incremental operating margin returns above 20%, confirming the capex plateau has begun", "window": "2027-2028", "impact": "High", "probability": 0.45}
+  ],
+  "conclusions": [
+    "Meta's contracted revenue is approximately zero. A $137bn annual capital programme is underwritten by a spot auction with no floor, no offtake and no indexation.",
+    "Incremental operating margin is 3.3% against an average of 41.4%, computed from management's own expense guidance. Growth dilutes returns.",
+    "Free cash flow reaches roughly zero in FY2026 and the dividend is debt-funded: Q2 free cash flow of $784m against $1,353m of dividends.",
+    "The required-revenue hurdle is growing as fast as revenue. At a $165-180bn capital run-rate the annual increase in required revenue ($53-58bn) matches or exceeds the actual annual revenue increase ($51-53bn). The base case needs a capex plateau, not a demand surprise.",
+    "An independent revenue bridge reproduces the consensus $305bn for FY2027. The disagreement with the market is not about revenue; it is about what the revenue costs.",
+    "This demand destroys value at the margin today and relocates value from shareholders to competitive position. It should be underwritten as defensive capex at defensive returns, not as growth capex at growth returns."
+  ],
+  "thesisImpact": "Narrows the investment question to one variable. Demand is real and needs no heroic assumptions; the failure is in converting demand into incremental profit, and it is arithmetically attributable to the capital programme rather than to competition, regulation or user decline. Everything else in this company is working. The question Phase 4 must stress and Phase 5 must price is: when does capex plateau?",
+  "model": {
+    "sharesOut": 2550,
+    "fcf": {
+      "bear": [-22500, -6000, 23600, 56600, 77500],
+      "base": [0, 17000, 46000, 80000, 109000],
+      "bull": [11400, 42500, 86000, 132000, 174000]
+    }
+  }
+}

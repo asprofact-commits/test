@@ -1,0 +1,279 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Meta Platforms, Inc.",
+    "ticker": "NASDAQ: META",
+    "sector": "software",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 615.20,
+    "priceUnit": "share",
+    "asOf": "2026-09-06",
+    "phase": 2,
+    "phaseName": "Productive asset base & physical bottlenecks",
+    "assumedContext": [
+      "Network egress blocked for all domains except the search index; no primary filing was retrievable. Filing-sourced figures reached this analysis through search-index summaries.",
+      "Meta does not disclose installed compute capacity in GW. Unit economics are anchored on the reported '$200bn / 5 GW' Hyperion programme figure divided by 5, and are labelled ANALYST ESTIMATE throughout.",
+      "FY2024 capex was not independently sourced in this run and is excluded from all calculations."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p2-01",
+      "claim": "FY2026 capital expenditure guidance including finance-lease principal is $130-145bn, raised twice during 2026 from an original $115-135bn. Q2 2026 alone was $31.08bn, up from $17.0bn in Q2 2025; H1 2026 totalled $50.94bn against $30.7bn.",
+      "label": "MANAGEMENT GUIDANCE",
+      "value": 137500,
+      "unit": "USD m (guidance midpoint)",
+      "source": "Meta Q2 2026 results, 2026-07-29; Q1 2026 results, 2026-04-29; Blockspace 2026-07-30",
+      "asOf": "2026-07-29",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-02",
+      "claim": "FY2025 capital expenditure including finance-lease principal was $72.22bn, against FY2025 revenue of $200.97bn and free cash flow of $43.59bn.",
+      "label": "FACT",
+      "value": 72220,
+      "unit": "USD m",
+      "source": "Meta Q4 and FY2025 results, reported 2026-01-28",
+      "asOf": "2025-12-31",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-03",
+      "claim": "Management declined to guide 2027 capital expenditure on the Q2 2026 call, stating only that plans are geared to maximising capacity in 2026 and 2027 with flexibility to keep growing in 2028 and beyond.",
+      "label": "MANAGEMENT GUIDANCE",
+      "source": "Susan Li, Meta Q2 2026 earnings call, 2026-07-29 (transcript summaries)",
+      "asOf": "2026-07-29",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-04",
+      "claim": "The Hyperion campus in Richland Parish, Louisiana is financed through a Blue Owl JV in which Meta holds 20% and Blue Owl-managed funds 80%; a Morgan Stanley-arranged SPV issued $27bn of A+ rated debt plus $2.5bn of equity anchored by PIMCO ($18bn) and BlackRock ($3bn). The debt sits off Meta's balance sheet and Meta leases the 4m sq ft facility back.",
+      "label": "FACT",
+      "value": 27000,
+      "unit": "USD m off-balance-sheet SPV debt",
+      "source": "Business Standard 2025-10-17; Global Data Center Hub; Data Center Frontier; Innovative Centre financing note",
+      "asOf": "2026-08-31",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-05",
+      "claim": "Meta has disclosed approximately $279bn of lease obligations for data centres, colocation and network infrastructure scheduled to commence from the remainder of 2026 through 2036 - a claim on future cash roughly 42x the reported net cash position.",
+      "label": "FACT",
+      "value": 279000,
+      "unit": "USD m not-yet-commenced lease commitments",
+      "source": "Meta filings as summarised in Global Data Center Hub and related reporting, 2026. Could not be tied to a specific 10-Q note under this session's egress policy",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-06",
+      "claim": "Prometheus (New Albany, Ohio) is a roughly 1 GW AI compute facility coming online in 2026. Hyperion targets phase 1 in 2028, about 1.5 GW online by end-2027 on one account, 2 GW by 2030 and a 5 GW stretch, on ~3,650 acres after a 1,400-acre expansion in February 2026. Meta had 32 identified AI data centres as of May 2026.",
+      "label": "FACT",
+      "value": 5,
+      "unit": "GW Hyperion stretch capacity",
+      "source": "Data Center Frontier; Quartz 2026-07; The Next Web; redact.dev data centre census, May 2026",
+      "asOf": "2026-07-31",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-07",
+      "claim": "Entergy Louisiana is building 10 gas-fired power plants to serve Hyperion, tripled from the 3 originally planned, with a March 2026 agreement adding 7 plants generating 5.2 GW. Electric power, not silicon, is the binding physical constraint.",
+      "label": "FACT",
+      "value": 10,
+      "unit": "gas-fired plants",
+      "source": "The Next Web; Data Center Frontier; measuredai analysis of the Entergy agreements, 2026-03",
+      "asOf": "2026-03-31",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-08",
+      "claim": "Derived unit economics: at an all-in $40bn per GW (70% IT on a 5.5-year life, 30% shell on 20 years), each gigawatt carries $5.69bn of annual depreciation, $0.45bn of power at 85% load and $60/MWh, $0.30bn of O&M and a $3.80bn capital charge at a 9.5% WACC - an economic cost of $10.24bn per GW per year, equal to about $12.8bn of incremental revenue at an 80% incremental gross margin.",
+      "label": "ANALYST ESTIMATE",
+      "value": 12800,
+      "unit": "USD m revenue required per GW per year",
+      "source": "Derived in Phase 2 section 2.2. Inputs: reported $200bn/5GW Hyperion programme figure; $29.5bn Hyperion SPV funding; Meta's 5.5-year server life disclosure of 2025-01-29; analyst assumptions for load factor, power price and WACC, each stated",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-09",
+      "claim": "Mix-shift test: the +12% price per ad on $59.36bn of Q2 ad revenue is worth about $6.36bn in the quarter (~$25.4bn annualised), against a y/y cost increase of $14.9bn in the quarter (~$12.5bn ex the $2.4bn legal charge and severance, ~$50bn annualised). The price uplift recovers about 51% of the cost increase that produced it; ad load supplies the rest.",
+      "label": "ANALYST ESTIMATE",
+      "value": 51,
+      "unit": "% of cost growth recovered by price growth",
+      "source": "Derived from Meta Q2 2026 reported revenue, pricing and cost growth. Attribution of the price term to compute is an analyst judgement",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-10",
+      "claim": "Meta extended the useful life of certain servers and network assets to 5.5 years effective 2025-01-01, expected to cut FY2025 depreciation by approximately $2.9bn. Seventy percent of data-centre capital is IT equipment on this life, so the 2026 fleet addition alone implies roughly $25bn a year of depreciation for 5.5 years regardless of whether the revenue arrives.",
+      "label": "FACT",
+      "value": 5.5,
+      "unit": "years server useful life",
+      "source": "Meta Q4 2024 earnings release, 2025-01-29, accounting-estimate change disclosure",
+      "asOf": "2025-01-01",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-11",
+      "claim": "Estimated FY2026 split of the capital programme: about $30bn maintenance (approximating the D&A run-rate) and about $107.5bn growth capex - roughly 78% of the programme is capital committed to output that is neither built nor contracted.",
+      "label": "ANALYST ESTIMATE",
+      "value": 107500,
+      "unit": "USD m growth capex FY2026E",
+      "source": "Derived: FY2026 guidance midpoint $137.5bn less estimated maintenance capex of ~$30bn, scaled from FY2025 D&A of ~$18.6bn (FY2025 EBITDA ~$101.9bn less EBIT $83.28bn)",
+      "asOf": "2026-09-06",
+      "confidence": "low",
+      "impact": "high"
+    },
+    {
+      "id": "p2-12",
+      "claim": "Headcount fell to about 74,700 at 2026-03-31 from 76,834 at 2025-12-31; approximately 8,000 further roles were cut from 2026-05-20 with about 6,000 open roles cancelled and 7,000 staff reassigned into AI pods. Meta Superintelligence Labs holds about 1,300 researchers, with reported individual packages up to $300m over four years.",
+      "label": "FACT",
+      "value": 74700,
+      "unit": "employees",
+      "source": "sqmagazine and trade-press compilations of Meta headcount disclosures and layoff reporting, 2026",
+      "asOf": "2026-05-31",
+      "confidence": "medium",
+      "impact": "medium"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Capital programme by period",
+      "columns": ["Period", "Capex incl. finance-lease principal", "y/y", "Label"],
+      "rows": [
+        ["FY2025", "$72.22bn", "~+84% (implied)", "FACT"],
+        ["Q1 2026", "$19.84bn", "n/d", "FACT"],
+        ["Q2 2026", "$31.08bn", "+83%", "FACT"],
+        ["H1 2026", "$50.94bn", "+66%", "FACT"],
+        ["FY2026 guidance", "$130-145bn", "+80-101%", "MANAGEMENT GUIDANCE"],
+        ["FY2027", "Not guided", "n/a", "MANAGEMENT GUIDANCE (refusal)"]
+      ],
+      "note": "The refusal to guide 2027 is the single largest open variable in the valuation. Phase 5 treats it as the primary swing input."
+    },
+    {
+      "title": "Unit cost curve per gigawatt per year",
+      "columns": ["Component", "Arithmetic", "USD bn/yr"],
+      "rows": [
+        ["IT depreciation", "$28bn / 5.5 yrs", "5.09"],
+        ["Shell depreciation", "$12bn / 20 yrs", "0.60"],
+        ["Power", "7.45 TWh at $60/MWh (85% load)", "0.45"],
+        ["O&M, staffing, networking", "0.75% of capital", "0.30"],
+        ["Cash + D&A cost (accounting breakeven)", "sum", "6.44"],
+        ["Capital charge", "$40bn x 9.5% WACC", "3.80"],
+        ["ECONOMIC COST PER GW PER YEAR", "sum", "10.24"],
+        ["Revenue required per GW", "$10.24bn / 80% incremental gross margin", "12.80"]
+      ],
+      "note": "[ANALYST ESTIMATE] every input stated in Phase 2 section 2.2. This is the hurdle each Phase 3 demand claim must clear."
+    },
+    {
+      "title": "Off-balance-sheet and committed structures",
+      "columns": ["Structure", "Size", "Meta's interest", "Accounting"],
+      "rows": [
+        ["Hyperion JV (Blue Owl)", "$27bn SPV debt + $2.5bn equity", "20% of JV equity", "SPV debt off Meta's balance sheet; Meta leases the facility back"],
+        ["Not-yet-commenced leases", "~$279bn, commencing 2026-2036", "100% obligor", "Enters as ROU asset and lease liability on commencement"],
+        ["El Paso, Texas", "~$13bn being raised", "n/d", "n/d"]
+      ],
+      "note": "Reported net debt of about negative $6.6bn at 2026-06-30 does not reflect these claims. Phase 4 quantifies the adjusted position."
+    },
+    {
+      "title": "Bottleneck table",
+      "columns": ["Constraint", "Binding?", "Evidence", "Resolution path", "Execution risk"],
+      "rows": [
+        ["Electric power and interconnection", "Yes - primary", "Entergy building 10 gas plants for Hyperion, tripled from 3; 7 more plants / 5.2 GW agreed March 2026", "Self-procured generation, behind-the-meter gas, long-dated PPAs", "High - multi-year turbine lead times, state PSC approval, ratepayer opposition"],
+        ["Capital", "Yes - newly binding in 2026", "Buybacks suspended; $25bn notes May 2026 at 4.55-6.45%; $30bn Oct 2025; $27bn off-BS SPV; ~$13bn El Paso; equity offering reportedly considered", "Debt, private credit, JV equity, possible equity issuance", "Medium - access is not in doubt at AA-/Aa3; the price of access is rising"],
+        ["Accelerator supply", "Partially", "Not a disclosed 2026 constraint; spend implies allocation secured", "Vendor contracts, MTIA silicon", "Medium"],
+        ["Land, water, permitting", "Localised", "Hyperion footprint expanded 1,400 acres in Feb 2026 - expansion succeeded", "Site banking", "Low-medium"],
+        ["Frontier talent", "Yes", "~1,300 MSL researchers; packages to $300m/4yrs; ~600 MSL layoffs indicate churn as well as scarcity", "Compensation, acquisition", "Medium"]
+      ]
+    },
+    {
+      "title": "Delay scenario: Hyperion phase 1 slips from 2028 to 2030",
+      "columns": ["Item", "Effect"],
+      "rows": [
+        ["Capacity deferred", "~1.5-2.0 GW"],
+        ["Revenue deferred", "$19-26bn/yr from 2028, at the $12.8bn/GW economic-breakeven revenue"],
+        ["Capex deferred", "Little. Land, shell, power contracts and the lease schedule are already committed"],
+        ["Net effect", "Two years of depreciation and lease expense (~$11-13bn/yr) against no incremental revenue"]
+      ],
+      "note": "Committed cost against uncommitted revenue is the structural shape of the bear case in Phase 5."
+    },
+    {
+      "title": "Is the capex compensated?",
+      "columns": ["Test", "Regulated utility", "Meta"],
+      "rows": [
+        ["Does capex enter a rate base?", "Yes, at an allowed ROE", "No"],
+        ["Is recovery legally assured?", "Yes, subject to prudence review", "No"],
+        ["Recovery mechanism", "Tariff", "Higher clearing price in an auction Meta does not control"],
+        ["If output is not needed", "Stranded-cost recovery often available", "Total loss, depreciated over 5.5 years"],
+        ["Asset life", "30-60 years", "5.5 years for the ~70% of cost that is IT equipment"]
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "item": "Meta's installed and planned compute capacity stated in GW",
+      "whyItMatters": "Every unit-economic figure in this phase is anchored on capacity inferred from a press-reported programme cost. A company-stated GW number would convert a range of estimates into arithmetic",
+      "resolvedBy": "Meta disclosing fleet gigawatts, as some infrastructure peers now do"
+    },
+    {
+      "item": "Whether server useful life was extended again from 5.5 years to 7 years",
+      "whyItMatters": "A 7-year life cuts annual IT depreciation per GW from $5.09bn to $4.00bn - roughly a 10% reduction in the economic hurdle and a large non-cash boost to reported EPS",
+      "resolvedBy": "The accounting-estimate note in Meta's FY2026 10-K"
+    },
+    {
+      "item": "Tie-out of the ~$279bn not-yet-commenced lease figure to the filing",
+      "whyItMatters": "It is the largest single claim on Meta's future cash identified anywhere in this analysis",
+      "resolvedBy": "The 10-Q lease commitments note - unreachable under this session's egress policy"
+    },
+    {
+      "item": "Named project delays with dated slippage",
+      "whyItMatters": "The delay case is modelled generically because no specific slipped milestone was found in public sources; a dated slip would let the bear case be calibrated rather than assumed",
+      "resolvedBy": "Construction permits and utility interconnection dockets"
+    },
+    {
+      "item": "FY2025 depreciation and amortisation: derived at ~$18.6bn, but one third-party source reports TTM D&A of $37.4bn",
+      "whyItMatters": "Doubles or halves the maintenance/growth capex split and moves the ROIC denominator",
+      "resolvedBy": "The primary FY2025 cash-flow statement"
+    }
+  ],
+  "risks": [
+    {"text": "Committed cost against uncommitted revenue: the lease schedule and power contracts commence on the landlord's and the utility's timetable, while the revenue depends on demand that Phase 3 must still find", "severity": "high", "probability": "high"},
+    {"text": "A 5.5-year IT asset life means capital must be recovered inside 5.5 years or not at all - there is no stranded-cost mechanism in a competitive business", "severity": "high", "probability": "medium"},
+    {"text": "Power is the binding constraint and its resolution depends on ten gas-fired plants clearing state approval and multi-year turbine lead times", "severity": "medium", "probability": "medium"},
+    {"text": "Capital became a binding constraint in 2026: buybacks suspended, dividend debt-funded, and an equity offering reportedly under consideration", "severity": "medium", "probability": "medium"}
+  ],
+  "catalysts": [
+    {"text": "Prometheus (~1 GW, Ohio) comes online - the first large tranche of the new fleet to carry depreciation and, if the thesis works, revenue", "window": "H2 2026", "impact": "Medium", "probability": 0.8},
+    {"text": "FY2026 10-K accounting-estimate note reveals whether server life was extended beyond 5.5 years", "window": "late January 2027", "impact": "Medium", "probability": 0.9},
+    {"text": "Hyperion phase 1 milestones confirm or slip the 2028 date", "window": "2027", "impact": "High", "probability": 0.6},
+    {"text": "A further off-balance-sheet JV or SPV financing, or an equity offering, that reveals the true funding plan for 2027 capex", "window": "next 12 months", "impact": "High", "probability": 0.55}
+  ],
+  "conclusions": [
+    "The productive asset base is power-constrained compute, not software. A utility partner is building ten gas-fired power stations to energise one campus; Meta has moved into procuring generation to relieve the constraint.",
+    "Each gigawatt must generate roughly $10.2bn a year of incremental gross profit, about $12.8bn of revenue, to earn its cost of capital. That is the hurdle every Phase 3 demand claim must clear.",
+    "The +12% price per ad recovers only about half of the cost increase that produced it (~$25bn annualised against ~$50bn ex-legal). Ad load, which is finite, is filling the gap.",
+    "About 78% of the FY2026 programme - roughly $107bn - is growth capex committed to output that is neither built nor contracted.",
+    "The liability side was built alongside the asset side: a reported net-cash balance sheet coexists with ~$279bn of not-yet-commenced leases and a $27bn off-balance-sheet SPV in which Meta holds 20% of the equity and 100% of the operational need."
+  ],
+  "thesisImpact": "Converts the Phase 1 narrative into a falsifiable test. Compute buys price; compute costs $12.8bn of revenue per GW per year. Phase 3 must find that revenue in named, classified demand, or the capital programme is dilutive by construction.",
+  "model": {
+    "sharesOut": 2550,
+    "assetBase": {
+      "label": "Invested capital",
+      "value": 254000
+    }
+  }
+}
