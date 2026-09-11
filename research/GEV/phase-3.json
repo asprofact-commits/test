@@ -1,0 +1,57 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"GE Vernova Inc.","ticker":"NYSE: GEV","sector":"industrials","currency":"USD","fxToUsd":1,"price":943.34,"priceUnit":"share","asOf":"2026-09-05","phase":3,"phaseName":"Demand & monetisation structure","assumedContext":["No primary filing could be retrieved; every external domain is blocked by this environment egress proxy."]},
+ "findings":[
+  {"id":"p3-01","claim":"Q2 2026 revenue was USD 11.1bn, up 22% reported and 12% organically, with net income of USD 0.6bn at a 5.8% net margin and adjusted EBITDA of USD 1.2bn at an 11.3% margin.","label":"FACT","source":"GE Vernova Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high","value":11100,"unit":"USD m"},
+  {"id":"p3-02","claim":"Full-year 2026 guidance was raised to revenue of USD 45.5-46.5bn from USD 44.5-45.5bn, with adjusted EBITDA margin held at 12-14%, implying approximately USD 6.0bn of adjusted EBITDA at the midpoint.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 guidance","asOf":"2026-07-22","confidence":"high","impact":"high","value":6000,"unit":"USD m FY2026E adj EBITDA"},
+  {"id":"p3-03","claim":"Free cash flow guidance was raised dramatically, to USD 11.5-12.5bn from USD 6.5-7.5bn — an increase of roughly USD 5bn at the midpoint in a single quarter.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 guidance","asOf":"2026-07-22","confidence":"high","impact":"high","value":12000,"unit":"USD m FY2026E FCF"},
+  {"id":"p3-04","claim":"That guidance implies free cash flow of roughly USD 12bn against adjusted EBITDA of roughly USD 6bn — free cash flow at approximately twice EBITDA. In a capital equipment business that is only possible through large customer advance payments on a rapidly growing order book.","label":"ANALYST ESTIMATE","source":"Derived: 12.0 / 6.0 from the company's own guidance ranges","asOf":"2026-09-05","confidence":"high","impact":"high","value":2.0,"unit":"x FCF to EBITDA"},
+  {"id":"p3-05","claim":"Customer advances are a liability, not earnings. They are cash received for equipment not yet built, and they reverse as the backlog converts to revenue or if order growth slows. Q2 free cash flow of USD 5.1bn — more than all of 2025 — is the same phenomenon in a single quarter.","label":"ANALYST ESTIMATE","source":"Derived from the FCF-to-EBITDA relationship and the order growth rate","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-06","claim":"Demand classification: the USD 176bn backlog is [Existing Contracted] subject to cancellation terms that are not disclosed; the 2028 and 2030 capacity targets are [Approved / Committed Pipeline]; and the assumption that scarcity pricing persists beyond the current queue is [Speculative Demand] earning zero base-case weight.","label":"ANALYST ESTIMATE","source":"Applying the Phase 3 classification test","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-07","claim":"Growth is currently margin-accretive at the segment level — Power guided to 18-20% organic revenue growth at a 17-19% segment margin — but the consolidated margin guidance of 12-14% has not been raised alongside revenue, so group profitability is not yet improving as fast as the top line.","label":"ANALYST ESTIMATE","source":"Derived from the guidance structure","asOf":"2026-07-22","confidence":"high","impact":"high"}
+ ],
+ "tables":[
+  {"title":"FY2026 guidance and what it implies",
+   "columns":["Measure","Guidance","Implication"],
+   "rows":[
+    ["Revenue","USD 45.5-46.5bn","Raised from 44.5-45.5"],
+    ["Adjusted EBITDA margin","12-14%","Unchanged — approximately USD 6.0bn at midpoint"],
+    ["Free cash flow","USD 11.5-12.5bn","Raised from 6.5-7.5 — roughly USD 5bn increase"],
+    ["Implied FCF / EBITDA","~2.0x","Only possible with large customer advances"],
+    ["Q2 free cash flow","USD 5.1bn","More than all of 2025"]
+   ],
+   "note":"[MANAGEMENT GUIDANCE] with [ANALYST ESTIMATE] on the ratio. The unchanged margin guidance alongside a doubled cash flow guidance is the tell: the cash is coming from the balance sheet, not the income statement."},
+  {"title":"Demand classified",
+   "columns":["Source","Evidence","Class","Base-case weight"],
+   "rows":[
+    ["USD 176bn backlog","Contracted, cancellation terms undisclosed","[Existing Contracted]","Full, with a caveat"],
+    ["116 GW gas turbine queue","Contracted","[Existing Contracted]","Full"],
+    ["24 GW 2028 / 30 GW 2030 capacity","Management targets","[Approved / Committed Pipeline]","Partial"],
+    ["Scarcity pricing persisting past the queue","Assumption","[Speculative Demand]","Zero"]
+   ],
+   "note":"[ANALYST ESTIMATE] Unusually for this protocol, the demand itself is well contracted. The speculative element is not whether the orders exist but whether the pricing survives the capacity build."}
+ ],
+ "gaps":[
+  {"item":"The split of free cash flow between operating earnings and customer advances","whyItMatters":"This is the single most important disclosure for valuing GE Vernova. A 2x FCF-to-EBITDA ratio is either a working capital windfall that reverses, or evidence of something the income statement is not capturing. The two readings imply very different values.","resolvedBy":"10-Q cash flow statement — change in contract liabilities"},
+  {"item":"Backlog margin profile","whyItMatters":"Determines whether USD 176bn converts at 12-14% or at the 17-19% segment rate.","resolvedBy":"Not disclosed"},
+  {"item":"Cancellation and slot-reservation terms","whyItMatters":"Determines how firm the backlog is if data centre demand moderates.","resolvedBy":"Not disclosed"}
+ ],
+ "risks":[
+  {"text":"Reported free cash flow is running at roughly twice EBITDA on customer advances. This flatters the cash figure the market is capitalising and reverses when order growth slows.","severity":"high","probability":"high"},
+  {"text":"Consolidated margin guidance was not raised alongside revenue and free cash flow, so group profitability is improving more slowly than the headline suggests.","severity":"medium","probability":"high"},
+  {"text":"Backlog cancellation terms are undisclosed, so the firmness of USD 176bn cannot be assessed.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — whether the FCF-to-EBITDA gap persists or narrows","window":"Oct 2026","impact":"High","probability":0.9},
+  {"text":"FY2026 10-K disclosure of contract liabilities","window":"Feb 2027","impact":"High","probability":0.9}
+ ],
+ "conclusions":[
+  "The demand is genuine and unusually well contracted for this protocol: USD 176bn of backlog, orders up 88% organically, and a demand driver — data centre load and grid replacement — that is physical rather than narrative.",
+  "The critical finding is in the guidance structure. Free cash flow guidance was raised from USD 6.5-7.5bn to USD 11.5-12.5bn while adjusted EBITDA margin guidance was left unchanged at 12-14%. That is free cash flow at roughly twice EBITDA.",
+  "In a capital equipment business, free cash flow at twice EBITDA comes from customer advance payments on a rapidly growing order book. Those are deposits on equipment not yet built — a liability, not earnings — and they reverse as the backlog converts or if order growth slows.",
+  "Group profitability is improving more slowly than the top line: revenue guidance was raised, margin guidance was not.",
+  "Applying the classification test, the demand is well contracted. What is speculative is not the orders but whether the scarcity pricing survives the capacity build."
+ ],
+ "thesisImpact":"Phase 3 identifies what the market is actually capitalising. On a reported free cash flow of USD 12bn the equity looks reasonably priced; on underlying earnings of roughly USD 6bn of EBITDA and USD 0.6bn of quarterly net income it does not. Phase 5 must model underlying cash generation rather than the advance-inflated reported figure, and must say so.",
+ "model":{"sharesOut":266}
+}

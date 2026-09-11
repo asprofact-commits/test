@@ -1,0 +1,211 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Metlen Energy & Metals PLC",
+  "ticker": "LSE: MTLN / ATHEX: MYTIL",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 46.62,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy. Findings rest on search-result summaries of Metlen's H1 2026 and FY2025 results releases and reputable trade press.",
+   "Metlen redomiciled to a UK PLC with a primary London listing and a secondary Athens listing, and is a FTSE 100 constituent.",
+   "A small inconsistency in the market data is noted rather than resolved: EUR 46.62 x 142.62m shares gives ~EUR 6.65bn, while a reported market capitalisation of ~EUR 6.88bn implies ~147.6m shares. EUR 6.65bn is used and the difference is within the error bars stated in Phase 4."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "The synergy claim in the thesis is the most defensible part of it, and it is genuinely physical. Aluminium of Greece is one of the country's largest single electricity consumers, and Metlen owns the gas-fired generation that supplies it. Owning both sides of a smelter's largest input cost is a real vertical hedge, not a slogan.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the group structure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-02",
+   "claim": "But that synergy covers two of five sub-sectors. The group also contains M Renewables (development and asset rotation), M Power Projects (fixed-price EPC construction) and M Concessions (infrastructure). The link between an aluminium smelter and an EPC contractor is not a synergy, it is a conglomerate.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the segment structure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-03",
+   "claim": "There is almost no pricing power in the largest businesses. Aluminium and alumina are LME-priced commodities; Greek and European wholesale power is exchange-priced. Metlen is a price-taker in both, and its margin is a cost-position and hedging outcome rather than a pricing decision.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the commodity structure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-04",
+   "claim": "The one place where genuine pricing power is being created is gallium. Metlen took a EUR 295.5m final investment decision in January 2025 for 2m tonnes of bauxite, 1.26m tonnes of alumina and 50 tonnes of gallium a year at Agios Nikolaos — which would make it the only significant primary gallium producer in the European Union, in a market China has restricted by export control.",
+   "label": "FACT",
+   "source": "Metlen final investment decision announcement",
+   "asOf": "2025-01-16",
+   "confidence": "high",
+   "impact": "high",
+   "value": 50,
+   "unit": "tonnes annual gallium capacity"
+  },
+  {
+   "id": "p1-05",
+   "claim": "That project is funded and under construction rather than aspirational: bauxite production starts in 2026, alumina and gallium phase in from 2027, and full-scale operation is targeted for 2028.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Metlen investment announcement",
+   "asOf": "2025-01-16",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-06",
+   "claim": "The structural risk the thesis omits entirely is fixed-price construction. M Power Projects takes lump-sum EPC contracts, which have unlimited downside and capped upside, and that risk materialised: FY2025 EBITDA fell 30% to EUR 753m from EUR 1,080m, driven by project execution losses concentrated on the Protos project in the UK.",
+   "label": "FACT",
+   "source": "Metlen FY2025 results",
+   "asOf": "2026-04-09",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "The damage landed on the very segment the thesis leans on. M Renewables, Storage and Energy Transition recorded a roughly 78% year-on-year decline in profitability in 2025 because the EPC losses sit inside it. The renewables business is a developer-contractor carrying construction risk, not a yield asset.",
+   "label": "FACT",
+   "source": "Metlen FY2025 results and trade press",
+   "asOf": "2026-04-09",
+   "confidence": "high",
+   "impact": "high",
+   "value": -78,
+   "unit": "% M Renewables profitability change, FY2025"
+  },
+  {
+   "id": "p1-08",
+   "claim": "The London primary listing and FTSE 100 membership are a structural re-rating mechanism rather than an operating one. A Greek-listed conglomerate and a FTSE 100 constituent do not face the same buyer base, and part of the historic discount to European peers was a listing and index artefact that the move addresses directly.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the listing structure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The thesis sentence, tested clause by clause",
+   "columns": [
+    "Claim",
+    "Verdict",
+    "Evidence"
+   ],
+   "rows": [
+    [
+     "Highly synergistic",
+     "Partly — two of five sub-sectors",
+     "Smelter plus own generation is a real hedge; EPC and concessions are not synergies"
+    ],
+    [
+     "Energy and metals conglomerate",
+     "Confirmed, and that is the problem",
+     "Five sub-sectors including fixed-price construction"
+    ],
+    [
+     "Undervalued, steep discount to European peers",
+     "Confirmed on the multiple",
+     "~7.7x EV/EBITDA vs Siemens Energy ~17x (Phase 4)"
+    ],
+    [
+     "11.1 GW global renewable pipeline",
+     "Confirmed and understated",
+     "Pipeline now exceeds 12 GW — but only 1.2 GW is operational"
+    ],
+    [
+     "Record profitability",
+     "True of H1 2026, false of FY2025",
+     "FY2025 EBITDA fell 30% to EUR 753m; FY2026 guidance merely returns to the FY2024 level"
+    ],
+    [
+     "Implied: therefore buy",
+     "Not tested by those facts",
+     "Phase 5"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] This is the first thesis in the batch with a material factual problem rather than a scope overstatement."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Segment EBITDA split for FY2026",
+   "whyItMatters": "The sum-of-the-parts in Phase 5 is the highest-weighted method for a conglomerate, and it rests on an estimated split.",
+   "resolvedBy": "H1 2026 interim report segment note"
+  },
+  {
+   "item": "Remaining M Power Projects backlog and its contract structure",
+   "whyItMatters": "Lump-sum EPC caused a 30% group EBITDA decline once. Whether the remaining book is lump-sum or reimbursable determines whether it can happen again.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Aluminium and power hedging positions",
+   "whyItMatters": "The group is a price-taker in both. Realised margin is a hedging outcome, and the open position is the largest earnings sensitivity.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Gallium offtake and pricing arrangements",
+   "whyItMatters": "The only genuine pricing power in the group. 50 tonnes a year is strategically significant but its economics are unquantified here.",
+   "resolvedBy": "Not disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Fixed-price EPC construction sits inside the renewables segment and has already caused a 30% group EBITDA decline and a ~78% segment profitability decline in a single year.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The two largest businesses are commodity price-takers. Aluminium, alumina and wholesale power are all exchange-priced, so margin is a cost position rather than a pricing decision.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "'Highly synergistic' describes the smelter-plus-generation link and does not extend to EPC or concessions. This is a conglomerate, and conglomerate discounts exist for reasons.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Bauxite production start-up at Agios Nikolaos",
+   "window": "2026",
+   "impact": "Medium",
+   "probability": 0.8
+  },
+  {
+   "text": "First gallium and alumina output",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "FY2026 results confirming the return to ~EUR 1.1bn EBITDA",
+   "window": "Q1 2027",
+   "impact": "High",
+   "probability": 0.8
+  }
+ ],
+ "conclusions": [
+  "The synergy claim is genuinely physical where it applies: Metlen owns both an aluminium smelter and the gas generation that feeds it, which is a real vertical hedge on the smelter's largest input cost.",
+  "But it covers two of five sub-sectors. The group also contains renewables development, fixed-price EPC construction and infrastructure concessions, and the link between a smelter and an EPC contractor is not a synergy.",
+  "There is almost no pricing power in the largest businesses. Aluminium, alumina and wholesale power are exchange-priced; Metlen is a price-taker whose margin is a cost and hedging outcome.",
+  "The one place real pricing power is being created is gallium: a funded EUR 295.5m project targeting 50 tonnes a year, which would be the EU's only significant primary production of a metal China restricts by export control.",
+  "The thesis omits the risk that actually bit. Lump-sum EPC losses on the Protos project cut FY2025 group EBITDA by 30% and cut M Renewables profitability by roughly 78%. 'Record profitability' is true of H1 2026 and false of the year before it."
+ ],
+ "thesisImpact": "Phase 1 confirms the discount and reframes what is being discounted. This is not an undervalued renewables platform with a metals arm; it is a five-part conglomerate whose renewables segment carries fixed-price construction risk that has already destroyed a third of group EBITDA once. Phase 5 must value it as a conglomerate, which means weighting the sum-of-the-parts heavily.",
+ "model": {
+  "sharesOut": 142.62
+ }
+}

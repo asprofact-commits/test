@@ -1,0 +1,273 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Metlen Energy & Metals PLC",
+  "ticker": "LSE: MTLN / ATHEX: MYTIL",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 46.62,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on H1 2026 and FY2025 results releases."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "H1 2026 was a genuine record: revenue EUR 3,987m (+11%), EBITDA EUR 550m (+23%) and net profit after minorities EUR 313m (+23%), with earnings per share of EUR 2.18.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 550,
+   "unit": "EUR m H1 2026 EBITDA"
+  },
+  {
+   "id": "p3-02",
+   "claim": "The context the thesis omits. FY2025 revenue rose 25% to EUR 7,107m while EBITDA FELL 30% to EUR 753m from EUR 1,080m, and net profit after minorities halved to EUR 314m from EUR 615m. Revenue up a quarter, profit down a half, in the same year.",
+   "label": "FACT",
+   "source": "Metlen FY2025 results",
+   "asOf": "2026-04-09",
+   "confidence": "high",
+   "impact": "high",
+   "value": 753,
+   "unit": "EUR m FY2025 EBITDA"
+  },
+  {
+   "id": "p3-03",
+   "claim": "That divergence is the diagnostic finding of this dossier. Growth came from the lowest-margin activities — a more than twofold increase in Infrastructure and Concessions revenue and record M Renewables top line — while high-margin EBITDA was destroyed by lump-sum construction losses. This is a business that can grow revenue and destroy profit simultaneously.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the FY2025 disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-04",
+   "claim": "So H1 2026 is a recovery, not a breakout. FY2026 EBITDA guidance of EUR 1.00-1.15bn brackets the FY2024 outturn of EUR 1,080m almost exactly. On the guidance midpoint, three years of effort produce no EBITDA growth at all, with a 30% trough in the middle.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: FY2024 EUR 1,080m vs FY2026E EUR 1,075m midpoint",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-05",
+   "claim": "The medium-term target is where the thesis's optimism actually lives, and it is very large: EUR 1,920-2,080m of EBITDA, described as organic and excluding M&A. That is roughly an 86% increase on the FY2026 guidance midpoint from a company that has just delivered a 30% decline.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Metlen medium-term targets, reaffirmed H1 2026",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 2000,
+   "unit": "EUR m medium-term EBITDA target midpoint"
+  },
+  {
+   "id": "p3-06",
+   "claim": "Demand classification: current metals and power generation output is [Existing Contracted] and operating; the 1.2 GW operational renewables portfolio is [Existing Contracted]; the EUR 295.5m bauxite-alumina-gallium expansion is [Approved / Committed Pipeline], funded and under construction; the 1.0-1.5 GW annual asset-rotation target is [Approved / Committed Pipeline] only to the extent already contracted; and the remainder of the >12 GW pipeline, together with the roughly EUR 900m of EBITDA needed to bridge FY2026 guidance to the medium-term target, is [Unfunded Planned] or [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-07",
+   "claim": "Part of the H1 improvement is weather. Hydroelectric generation more than doubled on higher rainfall and Greek renewable generation rose 21%. A record half that includes an exceptional hydrological contribution is not a clean run rate.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "medium"
+  },
+  {
+   "id": "p3-08",
+   "claim": "The monetisation structure is unusually honest in one respect: the cash is real. Adjusted net debt fell by EUR 728m in H1 2026 and net leverage improved to 1.7x from 3.1x at end-2025. Whatever the earnings quality debate, this company converted its half into balance sheet.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 1.7,
+   "unit": "x net leverage"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Three years of EBITDA, and what the thesis calls 'record profitability'",
+   "columns": [
+    "Year",
+    "Revenue",
+    "EBITDA",
+    "Net profit",
+    "EPS"
+   ],
+   "rows": [
+    [
+     "FY2024",
+     "EUR 5,683m",
+     "EUR 1,080m",
+     "EUR 615m",
+     "EUR 4.46"
+    ],
+    [
+     "FY2025",
+     "EUR 7,107m (+25%)",
+     "EUR 753m (-30%)",
+     "EUR 314m (-49%)",
+     "EUR 2.20"
+    ],
+    [
+     "FY2026E (guidance)",
+     "—",
+     "EUR 1,000-1,150m",
+     "—",
+     "—"
+    ],
+    [
+     "H1 2026 (actual)",
+     "EUR 3,987m (+11%)",
+     "EUR 550m (+23%)",
+     "EUR 313m (+23%)",
+     "EUR 2.18"
+    ],
+    [
+     "Medium-term target",
+     "—",
+     "EUR 1,920-2,080m",
+     "—",
+     "—"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] H1 2026 net profit of EUR 313m essentially equals the whole of FY2025. That is a real recovery. But FY2026 guidance simply returns EBITDA to the FY2024 level, so the three-year growth rate is approximately zero."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "Metals and power generation output",
+     "Operating",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "1.2 GW operational renewables",
+     "Operating, 0.9 TWh in H1",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "Bauxite / alumina / gallium expansion",
+     "EUR 295.5m FID, under construction",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "1.0-1.5 GW annual asset rotation",
+     "283 MW sold in H1",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "Remainder of the >12 GW pipeline",
+     "Early-stage development",
+     "[Unfunded Planned]",
+     "Zero"
+    ],
+    [
+     "Bridge to the EUR 2bn medium-term target",
+     "~EUR 900m of EBITDA, unallocated",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The near term is well covered. What earns zero weight is the 86% EBITDA increase implied by the medium-term target, from a company that delivered a 30% decline one year ago."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The bridge from FY2026 guidance to the medium-term target",
+   "whyItMatters": "Roughly EUR 900m of incremental EBITDA is targeted with no public allocation across sub-sectors. It is the single largest unverified claim in this dossier.",
+   "resolvedBy": "Investor presentation / capital markets day"
+  },
+  {
+   "item": "Normalised hydrological contribution to H1 2026",
+   "whyItMatters": "Hydro more than doubled. Without a normalised baseline the record half cannot be weather-adjusted, and the run rate is overstated by an unknown amount.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Remaining lump-sum EPC exposure after Protos",
+   "whyItMatters": "Determines whether a 30% EBITDA hit can recur. This is the most important risk disclosure in the company.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Segment EBITDA for H1 2026",
+   "whyItMatters": "Needed to verify that M Renewables has actually recovered from the ~78% FY2025 decline rather than being carried by metals and hydro.",
+   "resolvedBy": "Interim report segment note"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The company grew revenue 25% and lost 30% of EBITDA in the same year. That combination can recur while the lump-sum EPC book runs off.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "FY2026 guidance returns EBITDA to the FY2024 level. On a three-year view the growth rate is approximately zero, which sits awkwardly against a thesis of 'record profitability'.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The medium-term target implies an 86% EBITDA increase with no public allocation. It earns zero base-case weight here.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Part of the record half is rainfall. Hydro generation more than doubled and does not compound.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 results — confirmation of the EUR 1.0-1.15bn range and the segment recovery",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "A capital markets day allocating the medium-term target across sub-sectors",
+   "window": "Unknown",
+   "impact": "High",
+   "probability": 0.5
+  },
+  {
+   "text": "Completion of the lump-sum EPC book without further losses",
+   "window": "2026-2027",
+   "impact": "High",
+   "probability": 0.6
+  }
+ ],
+ "conclusions": [
+  "H1 2026 was a genuine record: EBITDA EUR 550m up 23%, net profit EUR 313m up 23%, and net leverage down to 1.7x from 3.1x on a EUR 728m debt reduction. The cash is real.",
+  "But the thesis phrase 'record profitability' skips the year in between. FY2025 revenue rose 25% while EBITDA fell 30% and net profit halved, on lump-sum construction losses concentrated in the Protos project.",
+  "That divergence is the diagnostic finding: this is a business that can grow revenue and destroy profit in the same year, because its growth segments carry fixed-price execution risk.",
+  "So FY2026 is a recovery, not a breakout. Guidance of EUR 1.00-1.15bn brackets the FY2024 outturn of EUR 1,080m. Three years, no EBITDA growth, a 30% trough in the middle.",
+  "The medium-term target of EUR 1.92-2.08bn implies an 86% increase with no public allocation across sub-sectors. It earns zero base-case weight here, and it is where the thesis's optimism actually lives."
+ ],
+ "thesisImpact": "Phase 3 establishes that the base case must be built on roughly EUR 1.1bn of EBITDA, not on the medium-term target, and that the valuation should carry an explicit discount for demonstrated execution risk in the segment that generates the growth. The deleveraging is the strongest fact in the dossier and it is what keeps the rating from being negative.",
+ "model": {
+  "sharesOut": 142.62
+ }
+}

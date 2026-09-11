@@ -1,0 +1,258 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Vistra Corp.",
+  "ticker": "NYSE: VST",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1.0,
+  "price": 139.8,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy, including sec.gov. Findings rest on search-result summaries of Vistra's Q2 2026 results release, the hyperscaler PPA announcements and reputable financial press.",
+   "PRICE. USD 139.80 is derived from two internally consistent analyst-forecast data points (a USD 106 low target quoted at -24.18% and a USD 305 high at +118.15%, both implying USD 139.8). One source describes the stock as trading around USD 144-152. The 139.80 figure is used and the spread is inside the error bars stated in Phase 4.",
+   "Shares outstanding (~340m) and net debt (~USD 18.5bn) are estimates. Vistra guides on Adjusted EBITDA and Adjusted FCF before growth rather than on earnings, and this dossier follows that convention for the reason given in Phase 3."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "The thesis's central factual claim is CONFIRMED, and it is the only one in this batch that names its counterparties correctly. Vistra holds three 20-year power purchase agreements with Meta unlocking roughly 2.6 GW of nuclear capacity including uprates, and a separate 20-year agreement with AWS for up to 1,200 MW at Comanche Peak.",
+   "label": "FACT",
+   "source": "Vistra hyperscaler PPA announcements and analyst coverage",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 3800,
+   "unit": "MW under hyperscaler PPAs"
+  },
+  {
+   "id": "p1-02",
+   "claim": "The contract quality is the best found in this batch. Twenty-year duration against Constellation's 18.5-year average, revenue visibility described as running into the 2050s, and both counterparties are the hyperscalers the thesis names — where Constellation's disclosed counterparty last quarter was Walmart and PPC has only a shortlist.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the CEG and PPC dossiers in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-03",
+   "claim": "The AWS agreement more than triples Comanche Peak's contracted output, with power ramping from late 2027 through 2032. This is not an announcement pending a structure — it is a closed transaction with a delivery schedule.",
+   "label": "FACT",
+   "source": "Vistra PPA disclosure and analyst coverage",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-04",
+   "claim": "And now the correction that decides this dossier. Vistra's fleet is 44 GW: 27 GW gas, 8.7 GW coal, 6.5 GW nuclear, 1.3 GW solar and storage. The 3.8 GW under hyperscaler PPAs is roughly 8.6% of total capacity. The thesis says Vistra has 'successfully bypassed wholesale market volatility'. It has contracted less than a tenth of its fleet.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 3.8 GW of 44 GW",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 8.6,
+   "unit": "% of fleet under hyperscaler PPA"
+  },
+  {
+   "id": "p1-05",
+   "claim": "The market has already demonstrated the point. Vistra shares are down roughly 15% year to date and roughly 30% over twelve months, against an S&P 500 up about 13% year to date, and trade near the bottom of a 52-week range whose high was about USD 219.70.",
+   "label": "FACT",
+   "source": "Market data, September 2026",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-06",
+   "claim": "The cause is not demand and management has named it. Softer ERCOT forward prices were flagged on the Q2 2026 call. Vistra's earnings are driven substantially by merchant power prices in Texas, so the share price tracks the price of the electricity it sells rather than the quantity the market expects to need.",
+   "label": "FACT",
+   "source": "Vistra Q2 2026 earnings call commentary",
+   "asOf": "2026-08-07",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "The fuel the thesis never mentions is the second largest in the fleet. 8.7 GW of coal exceeds the 6.5 GW nuclear fleet by a third. A description built entirely on zero-carbon nuclear supplied to hyperscalers omits the plant that carries the most retirement, carbon and environmental-compliance risk on the balance sheet.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed fleet composition",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-08",
+   "claim": "The genuine pricing power that the thesis misses is retail. Vistra serves about 5 million customers across 20 states including nearly a third of all Texas electricity consumers, and an integrated generation-plus-retail position is a structural hedge that pure merchant generators do not have.",
+   "label": "FACT",
+   "source": "Vistra corporate disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The thesis sentence, tested clause by clause",
+   "columns": [
+    "Claim",
+    "Verdict",
+    "Evidence"
+   ],
+   "rows": [
+    [
+     "Long-term PPAs with hyperscalers",
+     "CONFIRMED — the best in this batch",
+     "20-year terms; ~3.8 GW total"
+    ],
+    [
+     "With Amazon and Meta specifically",
+     "CONFIRMED — both, correctly named",
+     "AWS up to 1,200 MW at Comanche Peak; Meta ~2.6 GW across three PPAs"
+    ],
+    [
+     "Nuclear capacity locked in",
+     "Confirmed for ~58% of nuclear",
+     "3.8 GW of a 6.5 GW nuclear fleet"
+    ],
+    [
+     "Highly agile independent power producer",
+     "Confirmed",
+     "44 GW fleet, 5m retail customers, ~$6.5bn of buybacks since 2021"
+    ],
+    [
+     "'Successfully bypassed wholesale market volatility'",
+     "CONTRADICTED",
+     "~8.6% of the fleet is contracted; the stock is down ~30% on ERCOT forwards"
+    ],
+    [
+     "Implied: therefore buy",
+     "Not tested by those facts",
+     "Phase 5"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] This is the most accurate thesis in the batch on its facts and the least accurate on its conclusion. Both halves matter."
+  },
+  {
+   "title": "The fleet, and what is actually contracted",
+   "columns": [
+    "Fuel",
+    "Capacity",
+    "Share of fleet",
+    "Contract status"
+   ],
+   "rows": [
+    [
+     "Natural gas",
+     "27 GW",
+     "61%",
+     "Merchant, ERCOT-weighted"
+    ],
+    [
+     "Coal",
+     "8.7 GW",
+     "20%",
+     "Merchant; retirement and carbon risk"
+    ],
+    [
+     "Nuclear",
+     "6.5 GW",
+     "15%",
+     "~3.8 GW under 20-year hyperscaler PPAs"
+    ],
+    [
+     "Solar and storage",
+     "1.3 GW",
+     "3%",
+     "Mixed"
+    ],
+    [
+     "TOTAL",
+     "44 GW",
+     "100%",
+     "~8.6% under hyperscaler PPA"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] The PPAs are excellent and they cover the smallest fuel in the fleet. The earnings come from the other 91%."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The realised price in the AWS and Meta PPAs",
+   "whyItMatters": "Duration and volume are disclosed; price is not. Whether these contracts are accretive or merely stabilising cannot be established without it.",
+   "resolvedBy": "Not disclosed; contract pricing is confidential"
+  },
+  {
+   "item": "EBITDA contribution by fuel and by segment",
+   "whyItMatters": "The sum-of-the-parts in Phase 5 depends on it, and so does any assessment of how much earnings the coal fleet actually carries.",
+   "resolvedBy": "10-K segment disclosure"
+  },
+  {
+   "item": "Coal fleet retirement schedule and decommissioning liabilities",
+   "whyItMatters": "8.7 GW of coal is a fifth of the fleet and the thesis omits it entirely. Retirement timing and cost are a direct claim on equity value.",
+   "resolvedBy": "10-K"
+  },
+  {
+   "item": "ERCOT forward curve levels assumed in guidance",
+   "whyItMatters": "Management flagged softer forwards as the driver of the de-rating. The curve assumed in the $6.8-7.6bn range is the single most important input.",
+   "resolvedBy": "Investor presentation"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly 91% of the fleet is merchant, concentrated in ERCOT gas and coal. The hyperscaler PPAs cover about 8.6% of capacity.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Management flagged softer ERCOT forward prices on the Q2 call, and the equity has already de-rated roughly 30% over twelve months on that basis.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "8.7 GW of coal — larger than the nuclear fleet — carries retirement, carbon and compliance risk that the thesis does not acknowledge.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "PPA pricing is confidential, so whether the contracts are accretive or merely stabilising is unverifiable.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "AWS Comanche Peak volumes beginning to ramp",
+   "window": "Late 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "Further hyperscaler PPAs converting merchant nuclear or gas capacity",
+   "window": "Ongoing",
+   "impact": "High",
+   "probability": 0.6
+  },
+  {
+   "text": "ERCOT forward curve stabilising or recovering",
+   "window": "2027",
+   "impact": "Very high",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "The thesis is factually correct where the others in this batch were not. Vistra genuinely holds 20-year PPAs with both Amazon and Meta — up to 1,200 MW at Comanche Peak for AWS and roughly 2.6 GW across three Meta agreements — the strongest contracted position of any company here.",
+  "But 3.8 GW is roughly 8.6% of a 44 GW fleet. The claim that Vistra has 'successfully bypassed wholesale market volatility' does not follow from contracting less than a tenth of its capacity.",
+  "The market has already demonstrated it. The shares are down roughly 30% over twelve months and sit near the bottom of their 52-week range, and management named the cause on the Q2 call: softer ERCOT forward prices.",
+  "The fleet the thesis omits is the one that matters. 27 GW of merchant gas and 8.7 GW of coal against 6.5 GW of nuclear. Coal alone exceeds nuclear by a third and carries the retirement and carbon risk.",
+  "The pricing power the thesis misses is retail: about 5 million customers across 20 states including nearly a third of Texas, which is a structural hedge a pure merchant generator does not have."
+ ],
+ "thesisImpact": "Phase 1 confirms the contracts and rejects the conclusion drawn from them. Vistra is a leveraged merchant generator with an excellent but small contracted nuclear position, not a de-risked infrastructure asset. Phase 5 must value roughly 91% merchant earnings exposed to a softening ERCOT curve, with the PPAs as a growing floor rather than as the business.",
+ "model": {
+  "sharesOut": 340
+ }
+}

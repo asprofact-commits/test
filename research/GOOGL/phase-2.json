@@ -1,0 +1,62 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Alphabet Inc.","ticker":"NASDAQ: GOOGL","sector":"software","currency":"USD","fxToUsd":1,"price":338.72,"priceUnit":"share","asOf":"2026-09-05","phase":2,"phaseName":"Asset base & physical bottlenecks",
+  "assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy. Findings rest on search-result summaries.","This is the decisive phase for Alphabet. The company has moved from asset-light software economics to utility-scale infrastructure spending in eighteen months."]},
+ "findings":[
+  {"id":"p2-01","claim":"Capital expenditure guidance for FY2026 was raised to USD 195-205bn from USD 180-190bn, against USD 91.4bn actually spent in FY2025. Capex is more than doubling in a single year.","label":"MANAGEMENT GUIDANCE","source":"Alphabet Q2 2026 earnings call, CFO Anat Ashkenazi, 2026-07-22","asOf":"2026-07-22","confidence":"high","impact":"high","value":200000,"unit":"USD m midpoint"},
+  {"id":"p2-02","claim":"Q2 2026 capex was USD 44.9bn, double the prior year, and Q1 2026 was USD 35.7bn.","label":"FACT","source":"Alphabet Q1 and Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p2-03","claim":"Consensus expects FY2027 capex of approximately USD 257bn, and the CFO warned 2027 spending will increase significantly further. The cycle is not guided to peak in 2026.","label":"CONSENSUS","source":"FactSet consensus via CNBC; Q2 2026 call","asOf":"2026-07-28","confidence":"medium","impact":"high","value":257000,"unit":"USD m"},
+  {"id":"p2-04","claim":"Compute is expected to represent roughly 60% of 2026 capex. These are short-lived assets, and the useful-life assumption is the single largest swing factor in reported hyperscaler earnings — a 3-4 year life instead of 5-6 years implies materially higher depreciation.","label":"CONSENSUS","source":"FactSet Insight; hyperscaler capex commentary, 2026","asOf":"2026-07-31","confidence":"medium","impact":"high"},
+  {"id":"p2-05","claim":"The bottleneck is capacity, not demand. Google Cloud backlog reached USD 514bn in Q2 2026 while revenue grew 82% — the constraint on cloud revenue is how fast data centres can be built.","label":"FACT","source":"Alphabet Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high","value":514000,"unit":"USD m backlog"},
+  {"id":"p2-06","claim":"Alphabet has begun selling TPUs to external customers, delivering to a select group for deployment in their own data centres, with a limited number of agreements to supply multiple gigawatts of TPU hardware.","label":"FACT","source":"Alphabet Q2 2026 earnings call; Seeking Alpha coverage","asOf":"2026-07-22","confidence":"medium","impact":"high"},
+  {"id":"p2-07","claim":"Owning the silicon is the structural difference from cloud peers: Alphabet designs the TPU, operates the data centre, trains the model and distributes it through Search, YouTube, Android and Workspace. No competitor holds all four layers.","label":"ANALYST ESTIMATE","source":"Derived from the TPU, Cloud, Gemini and distribution disclosures","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-08","claim":"Alphabet is taking the exact opposite side of the trade from Apple. Apple rents frontier AI for roughly USD 1bn a year; Alphabet is spending USD 200bn a year building it — a ratio of about 200 to 1.","label":"ANALYST ESTIMATE","source":"Derived: Alphabet FY2026 capex guidance against the reported Apple-Google Gemini arrangement","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-09","claim":"Combined 2026 capex across the big four hyperscalers is tracking past USD 700bn. Any slowdown in enterprise AI adoption would leave hundreds of billions of depreciating server and data-centre assets without the revenue to justify them.","label":"CONSENSUS","source":"FactSet Insight, 2026","asOf":"2026-07-31","confidence":"medium","impact":"high"},
+  {"id":"p2-10","claim":"Waymo was valued at USD 126bn in February 2026 and plans expansion into 20 additional cities. Other Bets revenue remains immaterial at USD 382m in Q2 2026 against an operating loss of USD 1.8bn.","label":"FACT","source":"Waymo funding round coverage, Feb 2026; Alphabet Q2 2026 results","asOf":"2026-07-22","confidence":"medium","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"The capex cycle",
+   "columns":["Period","Capex","Change","Comment"],
+   "rows":[
+    ["FY2025 actual","USD 91.4bn","—","Already elevated"],
+    ["Q1 2026","USD 35.7bn","—","Run-rate USD 143bn"],
+    ["Q2 2026","USD 44.9bn","2x YoY","Record quarter"],
+    ["FY2026 guidance","USD 195-205bn","+118% on FY2025","Raised mid-year from 180-190"],
+    ["FY2027 consensus","~USD 257bn","+28% on FY2026","CFO: will increase significantly"]
+   ],
+   "note":"[FACT] for actuals, [MANAGEMENT GUIDANCE] for FY2026, [CONSENSUS] for FY2027. Two years ago this was an asset-light business; it is now spending like a national grid operator."},
+  {"title":"What the spending is buying",
+   "columns":["Asset","Evidence","Return signal"],
+   "rows":[
+    ["Cloud capacity","Backlog USD 514bn; revenue +82%","Operating margin 20.7% to 35.6% — returns are showing up"],
+    ["TPU silicon","External sales begun; multi-gigawatt agreements","New revenue line, margin undisclosed"],
+    ["Gemini training and inference","662m monthly users; share of chatbot traffic 5.7% to 27.7%","Defends Search rather than billing directly"],
+    ["Search infrastructure","Search revenue +17% YoY","No visible AI cannibalisation yet"]
+   ],
+   "note":"[FACT] except the return-signal column [ANALYST ESTIMATE]. Unlike most of the AI capex cohort, Alphabet can point to a specific revenue line where the spending is already converting — Cloud margin expanding while growing 82%."}
+ ],
+ "gaps":[
+  {"item":"Depreciation schedule and assumed useful life for compute assets","whyItMatters":"With roughly 60% of USD 200bn going into short-lived compute, a one-year change in assumed life moves reported operating income by tens of billions. This is the largest single unknown in the entire analysis.","resolvedBy":"FY2026 10-K property and equipment note"},
+  {"item":"Cloud backlog conversion schedule","whyItMatters":"USD 514bn of backlog is the bull case, but its revenue recognition period is undisclosed. Backlog over twelve years is a different asset from backlog over three.","resolvedBy":"10-K remaining performance obligation disclosure"},
+  {"item":"TPU external sales revenue and margin","whyItMatters":"Potentially a new high-margin line that would change the return on the entire capex programme, and it is currently unquantified.","resolvedBy":"Segment disclosure if it becomes material"},
+  {"item":"Capex split between revenue-generating cloud capacity and internal AI training","whyItMatters":"The first earns a contracted return; the second is a bet. They are not the same asset and are not disclosed separately.","resolvedBy":"Not disclosed; management commentary is the only source"}
+ ],
+ "risks":[
+  {"text":"Roughly 60% of a USD 200bn programme is short-lived compute. If useful lives prove shorter than assumed, reported earnings fall sharply without any change in the business.","severity":"high","probability":"medium"},
+  {"text":"FY2027 capex consensus of ~USD 257bn is 28% above an already-doubled 2026. There is no guided peak.","severity":"high","probability":"high"},
+  {"text":"Industry-wide capex past USD 700bn creates the possibility of a sector-level overbuild in which Alphabet is punished for others' excess.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"FY2026 10-K — depreciation lives and backlog conversion schedule","window":"Feb 2027","impact":"High","probability":0.95},
+  {"text":"FY2027 capex guidance at Q4 results","window":"Feb 2027","impact":"High","probability":0.95}
+ ],
+ "conclusions":[
+  "Alphabet has converted itself from an asset-light software business into an infrastructure business in eighteen months: capex from USD 91.4bn in 2025 to a guided USD 195-205bn in 2026, with FY2027 consensus at ~USD 257bn and no guided peak.",
+  "Unlike most of the AI capex cohort, Alphabet can point to where the money is converting: Cloud grew 82% while operating margin went from 20.7% to 35.6%, with USD 514bn of backlog behind it. Margin expanding with volume is the evidence that this is compensated capex, not empire-building.",
+  "The bottleneck is capacity, not demand. That is the good version of a constraint, and it justifies spending — but it also means the spending cannot stop while the backlog is unbuilt.",
+  "Roughly 60% of the programme is short-lived compute, so the depreciation life assumption is the largest single unknown in this analysis. A shift from 6-year to 4-year lives would cut reported earnings by tens of billions with no change to the business.",
+  "Alphabet owns all four layers — silicon, data centre, model, distribution — which no competitor does, and has begun selling TPUs externally. That is the structural case for the spending being an advantage rather than a tax."
+ ],
+ "thesisImpact":"Phase 2 relocates the risk. It is not competitive and it is no longer legal — it is accounting and capital allocation. The question for Phases 4 and 5 is whether a business earning roughly USD 170bn of operating income can spend USD 200-257bn a year for several years and still be worth more at the end, and how much of the reported profit survives an honest depreciation assumption.",
+ "model":{"sharesOut":12230}
+}

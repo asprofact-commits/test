@@ -1,0 +1,126 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Space Exploration Technologies Corp. (SpaceX)","ticker":"NASDAQ: SPCX","sector":"infrastructure","currency":"USD","fxToUsd":1,"price":147.95,"priceUnit":"share","asOf":"2026-09-05","phase":5,"phaseName":"Valuation, stress tests & IC memo",
+  "assumedContext":[
+   "No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.",
+   "Net debt assumed zero — a declared gap that flatters the valuation slightly.",
+   "The DCF is weighted at only 10% and the sum-of-the-parts at 65%. Free cash flow is negative across the near term, so a DCF on this company measures the terminal assumption almost exclusively; the bear-case DCF output of under USD 1 per share is presented as evidence that the instrument breaks here, not as a forecast.",
+   "This analysis lands materially below the published sell-side range of USD 160 to USD 300. That divergence is deliberate and is explained in the memo: it follows from refusing to place speculative demand in a base case."]},
+ "findings":[
+  {"id":"p5-01","claim":"At USD 147.95 with approximately 13bn shares, SpaceX trades at roughly USD 1.92 trillion — about 57x estimated FY2026 revenue of USD 34bn and roughly 128x estimated FY2026 adjusted EBITDA of USD 15bn, while loss-making at the net line.","label":"ANALYST ESTIMATE","source":"Derived from the Q2 2026 results and the share count","asOf":"2026-09-05","confidence":"medium","impact":"high","value":57,"unit":"x FY2026E revenue"},
+  {"id":"p5-02","claim":"For comparison on identical methodology, Alphabet trades at approximately 18.6x FY2026E EBITDA and Apple at approximately 27.8x. SpaceX at roughly 128x is about five times the higher of the two.","label":"ANALYST ESTIMATE","source":"Derived; peer figures from the parallel dossiers in research/GOOGL and research/AAPL","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-03","claim":"A sum-of-the-parts on generous multiples gives approximately USD 875bn of enterprise value, or about USD 67 per share: Starlink at 32x its estimated USD 14bn of 2026 EBITDA is USD 448bn, xAI at USD 350bn is above the USD 250bn merger mark, and launch at 11x an estimated USD 7bn of revenue is USD 77bn.","label":"ANALYST ESTIMATE","source":"Derived; segment inputs from Phase 3 and the merger terms","asOf":"2026-09-05","confidence":"low","impact":"high","value":67,"unit":"USD per share"},
+  {"id":"p5-04","claim":"Those segment multiples are deliberately generous. Starlink at 32x EBITDA and 22x revenue is well above what mature subscription infrastructure businesses command; xAI is carried above its own merger mark; launch is valued at 11x revenue for a business whose largest customer is itself.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-05","claim":"The blended probability-weighted fair value is approximately USD 58 per share, roughly 61% below the market price. Even the bull case, at approximately USD 67, sits 54% below it.","label":"ANALYST ESTIMATE","source":"Derived; computed in the workspace from model.weights","asOf":"2026-09-05","confidence":"low","impact":"high","value":58,"unit":"USD per share"},
+  {"id":"p5-06","claim":"Reverse valuation: to justify USD 1.92 trillion at a mature 30x EBITDA multiple, the company must reach roughly USD 64bn of EBITDA. At Starlink's 63% margin that implies revenue of approximately USD 100bn — which is precisely management's end-2026 annualised target, against roughly USD 31bn annualised today.","label":"ANALYST ESTIMATE","source":"Derived: 1,923 / 30 = 64.1 EBITDA; 64.1 / 0.63 = 101.7 revenue","asOf":"2026-09-05","confidence":"medium","impact":"high","value":100,"unit":"USD bn revenue required"},
+  {"id":"p5-07","claim":"The market price is therefore approximately consistent with management's USD 100bn target being delivered and sustained at Starlink-like margins across the whole group. The current price does not embed the target as an aspiration; it embeds it as an accomplished fact.","label":"ANALYST ESTIMATE","source":"Derived from the reverse valuation","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-08","claim":"Published price targets range from USD 160 at Argus to USD 300 at Morgan Stanley, with Bernstein at USD 248 and Bank of America at USD 235 — an 88% spread between the lowest and highest. That dispersion is itself a finding: the sell-side does not agree on what this company is worth within a factor of two.","label":"CONSENSUS","source":"Morgan Stanley, Bernstein, BofA, Argus via Yahoo Finance and TradingKey","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p5-09","claim":"This analysis sits about 64% below the lowest published target. The divergence is methodological rather than factual: the sell-side is capitalising Starship economics, space-based data centres and a multi-year subscriber ramp that this protocol classifies as speculative demand and assigns zero base-case weight.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p5-10","claim":"Expected three-year IRR is approximately -1.3%, spanning -26% in the bear case to +29% in the bull. The distribution is extremely wide, which is the honest characterisation of a three-month-old listing with two quarters of reported results.","label":"ANALYST ESTIMATE","source":"Derived from the scenario targets","asOf":"2026-09-05","confidence":"low","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Valuation by method, base case",
+   "columns":["Method","Value per share","vs USD 147.95","Weight","Why this weight"],
+   "rows":[
+    ["Sum of the parts","~USD 67","-55%","65%","The only frame that respects three different businesses with different economics"],
+    ["EV/EBITDA at 40x FY2026E","~USD 46","-69%","25%","40x is already an aggressive multiple for a loss-making group"],
+    ["Discounted cash flow","~USD 17","-89%","10%","Down-weighted heavily: FCF is negative throughout the near term and the instrument breaks"],
+    ["Justified P/B","n/a","—","0%","Not meaningful"],
+    ["Blended base case","~USD 57","-61%","100%","Probability-weighted: ~USD 58"]
+   ],
+   "note":"[ANALYST ESTIMATE] throughout. The bear-case DCF returns under USD 1 per share, which is not a forecast but a demonstration that a discounted cash flow cannot value a company whose free cash flow does not turn positive within the explicit period."},
+  {"title":"What the price requires",
+   "columns":["Requirement","Level implied","Current","Assessment"],
+   "rows":[
+    ["Revenue to justify USD 1.92tn at 30x EBITDA","~USD 100bn","~USD 31bn annualised","Roughly 3x, and it is exactly management's target"],
+    ["EBITDA at that revenue","~USD 64bn","~USD 15bn FY2026E","Requires group-wide Starlink-like margins"],
+    ["Group EBITDA margin","~63%","Loss-making at the net line","Starlink achieves it; the group does not"],
+    ["Timeframe implied by the price","Delivered and sustained","Target is for end-2026","The price treats the target as an accomplished fact"]
+   ],
+   "note":"[ANALYST ESTIMATE] This is the cleanest statement of the investment case in either direction. If the USD 100bn target is real and durable at high margin, the price is roughly fair. If it is not, there is a long way down."},
+  {"title":"Scenarios",
+   "columns":["Scenario","Prob.","Trigger set","Fair value","3y IRR"],
+   "rows":[
+    ["Bear","30%","The USD 100bn target is missed by a wide margin; lockup supply overwhelms a 5% float; xAI burn continues; Starship slips","~USD 51","-26%"],
+    ["Base","45%","Starlink compounds toward 17m subscribers; AI revenue grows but does not transform the group; Starship reaches cadence late; revenue reaches ~USD 60bn by 2028","~USD 57","-1.8%"],
+    ["Bull","25%","The ARR target is substantially delivered; Starship economics arrive; AI segment scales on third-party demand; group margin approaches Starlink's","~USD 67","+29%"]
+   ],
+   "note":"[ANALYST ESTIMATE] Note how narrow the fair-value range is relative to the IRR range: the three-year targets differ far more than the intrinsic estimates, because the outcome depends on a multiple the market assigns rather than on cash flows anyone can currently forecast."}
+ ],
+ "gaps":[
+  {"item":"The bridge from a USD 31bn run rate to a USD 100bn ARR target","whyItMatters":"The entire gap between this analysis and the sell-side reduces to whether this number is credible. It is the single most valuable disclosure the company could make.","resolvedBy":"Q3 2026 results, November 2026"},
+  {"item":"Balance sheet — net debt, cash, IPO proceeds","whyItMatters":"Assumed zero. Every per-share figure moves directly with it.","resolvedBy":"10-Q"},
+  {"item":"Exact share count","whyItMatters":"~13bn is derived from lockup coverage; a 10% error moves per-share value 10%.","resolvedBy":"10-Q cover page"},
+  {"item":"Segment operating income for AI and launch","whyItMatters":"Only Starlink's profitability is disclosed. The sum-of-the-parts values two segments on revenue multiples because no earnings figure exists for them.","resolvedBy":"Segment note"},
+  {"item":"The independent valuation basis for the USD 250bn ascribed to xAI","whyItMatters":"USD 350bn of an USD 875bn sum-of-the-parts rests on a related-party mark carried above its own merger value.","resolvedBy":"Merger proxy and S-1"}
+ ],
+ "risks":[
+  {"text":"The price appears to embed management's USD 100bn ARR target as delivered rather than as a target, with no disclosed bridge from the current USD 31bn run rate.","severity":"high","probability":"high"},
+  {"text":"Roughly 12.4bn shares become freely tradable by 8 December 2026 against a 639m IPO float, and all price discovery to date has occurred on under 5% of the company.","severity":"high","probability":"high"},
+  {"text":"The company is loss-making with negative consolidated free cash flow while funding three capital programmes at once.","severity":"high","probability":"high"},
+  {"text":"USD 350bn of the sum-of-the-parts rests on a related-party mark for xAI set by the acquirer's own controlling shareholder.","severity":"high","probability":"medium"},
+  {"text":"This analysis is far below every published target, so the risk of being wrong in the other direction — of underwriting too little optionality in a genuinely extraordinary company — is real and is not dismissed.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — the first real test of the trajectory toward the USD 100bn target","window":"Nov 2026","impact":"High","probability":0.95},
+  {"text":"Full lockup expiry — ~95% of the share base becomes tradable","window":"2026-12-08","impact":"High","probability":1.0},
+  {"text":"Starship reaching regular multi-flight-per-month cadence","window":"H1 2027","impact":"High","probability":0.4},
+  {"text":"First full-year results and 10-K as a public company","window":"Feb-Mar 2027","impact":"High","probability":0.95}
+ ],
+ "conclusions":[
+  "SpaceX is an extraordinary operating business at a price that, on every conventional method, is not defensible. It trades at roughly 57x FY2026E revenue and 128x FY2026E adjusted EBITDA while loss-making — about five times Apple's EBITDA multiple and seven times Alphabet's.",
+  "A deliberately generous sum-of-the-parts — Starlink at 32x EBITDA, xAI carried above its own merger mark, launch at 11x revenue — reaches roughly USD 875bn of enterprise value, or about USD 67 per share against a market price of USD 147.95.",
+  "The reverse valuation is the cleanest statement of the case: to justify the price at a mature 30x EBITDA the group needs roughly USD 100bn of revenue at Starlink-like margins. That is precisely management's end-2026 target, against roughly USD 31bn annualised today. The market is pricing the target as an accomplished fact.",
+  "The distribution of outcomes is genuinely wide and this analysis does not pretend otherwise: published targets span USD 160 to USD 300, an 88% spread, and this work sits 64% below the lowest of them.",
+  "The divergence from the street is methodological, not factual. The sell-side capitalises Starship economics, space-based data centres and a multi-year ramp; this protocol classifies those as speculative demand and gives them zero base-case weight."
+ ],
+ "thesisImpact":"The five phases converge on a company whose franchise is close to unimpeachable and whose share price is disconnected from anything currently measurable. The correct posture is neither dismissal nor participation at this price: it is to define what evidence would justify paying up, and wait for it. The Q3 report in November and the full lockup expiry in December supply both the evidence and the mechanism.",
+ "memo":{
+  "rating":"AVOID",
+  "weighting":"Sum-of-the-parts 65%, EV/EBITDA 25%, DCF 10%. The DCF is nearly worthless here — free cash flow is negative throughout the explicit period and the bear case returns under USD 1 per share, which demonstrates the instrument's failure rather than the company's value. The sum-of-the-parts carries the weight because this is three businesses with three different economics. AVOID is a price call on an exceptional company, and it is stated with lower confidence than the Apple or Alphabet ratings: this is a three-month-old listing with two quarters of reported results, and the honest error bar is wide in both directions.",
+  "nonConsensus":[
+   {"market":"SpaceX is expensive but justified by its optionality — Starship, Mars, space-based data centres.","us":"Quantify the optionality and it has to carry roughly USD 1.05 trillion, the gap between a generous USD 875bn sum-of-the-parts and the USD 1.92tn market price. That is more than the entire market capitalisation of all but a handful of companies on earth, ascribed to assets that are not yet commercially operating.","evidence":"Phase 5: the sum-of-the-parts build against the market price; Phase 2: Starship pre-commercial, no space data centre in operation."},
+   {"market":"The USD 100bn annualised revenue target for end-2026 is achievable — Deutsche Bank called it 'likely very achievable'.","us":"It requires roughly tripling the run rate in two quarters and no bridge has been disclosed. More importantly, the reverse valuation shows the current price already requires that USD 100bn to be delivered and sustained at Starlink-like group margins. The target is not upside to the price; it is the justification for it.","evidence":"Phase 3: Q2 revenue of USD 7.8bn, ~USD 31bn annualised, against the USD 100bn target."},
+   {"market":"The August lockup expiry passed without a crash, so the supply overhang is behind us.","us":"911.5 million shares unlocked in August. Roughly 12.4 billion more become tradable by 8 December. All price discovery so far has happened on under 5% of the company — the overhang is almost entirely ahead, not behind.","evidence":"Phase 4: lockup schedule against the 638.9m IPO float."}
+  ],
+  "fears":[
+   {"text":"This analysis may simply be wrong in the way that conventional analysis has been wrong about this company for twenty years. Every conservative valuation of SpaceX since 2012 has been too low.","why":"It is the strongest argument against this rating and it deserves to be stated first. A method that gives zero weight to unproven capability will systematically undervalue a company whose defining characteristic is delivering unproven capability."},
+   {"text":"Starlink is a genuinely superb business — 12 million subscribers doubling year on year, ~85% recurring, an estimated 63% EBITDA margin — and it is being valued here at 32x EBITDA inside a group the market values far higher.","why":"If Starlink alone reaches 40 or 50 million subscribers, the sum-of-the-parts anchor used here is far too low."},
+   {"text":"The related-party structure and the concentration of control mean the usual public-market checks are weak, and the largest single component of the sum-of-the-parts is a mark the controlling shareholder set on both sides of a transaction.","why":"This is a governance risk that no amount of operating excellence offsets, and it is the reason to demand a wider margin of safety here than for a comparable business with dispersed ownership."}
+  ],
+  "sellTriggers":[
+   "Q3 2026 revenue below USD 9bn, implying no credible path to the USD 100bn ARR target",
+   "Starlink net subscriber additions below 1.2 million in any quarter",
+   "Consolidated free cash flow still negative in FY2027 with no guided crossover",
+   "Any equity issuance at or below the prevailing price to fund the AI build",
+   "Starship failing to reach a monthly flight cadence by end-2027",
+   "Disclosure that the xAI segment's revenue is substantially intra-group rather than third-party"
+  ],
+  "reEntry":"Blended fair value is approximately USD 58, and the generous bull sum-of-the-parts is approximately USD 67. Nothing in this work supports buying at USD 147.95. The disciplined posture is to hold the evidence test rather than a price target: a credible, disclosed bridge to the USD 100bn run rate, two consecutive quarters of positive consolidated free cash flow, and completion of the December lockup at a stable price would each independently justify revisiting. Absent those, this is an exceptional business to admire and not to own at this multiple."
+ },
+ "model":{
+  "sharesOut":13000,
+  "netDebt":0,
+  "wacc":{"bear":0.140,"base":0.120,"bull":0.105},
+  "terminalGrowth":{"bear":0.025,"base":0.035,"bull":0.045},
+  "fcf":{
+   "bear":[-8000,-6000,-3000,0,4000],
+   "base":[-6000,-2000,6000,16000,28000],
+   "bull":[-4000,4000,20000,42000,70000]},
+  "assetBase":{"label":"FY2026E adjusted EBITDA","value":15000,"multiple":{"bear":25,"base":40,"bull":60}},
+  "sotp":[
+   {"name":"Starlink connectivity","method":"EV/EBITDA","metric":14000,"multiple":32,"stake":1.0},
+   {"name":"xAI / AI segment","method":"Merger mark, marked up","metric":350000,"multiple":1,"stake":1.0},
+   {"name":"Launch","method":"EV/Sales","metric":7000,"multiple":11,"stake":1.0}],
+  "peers":[
+   {"name":"SpaceX (subject)","self":true,"evEbitda":128.2,"dy":0},
+   {"name":"Apple","pe":36.9,"evEbitda":27.8,"ndEbitda":-0.36,"dy":0.33},
+   {"name":"Alphabet (clean)","pe":29.8,"evEbitda":18.6,"ndEbitda":-0.66,"dy":0.26}],
+  "targets":{
+   "bear":{"price3y":60,"dividends3y":0},
+   "base":{"price3y":140,"dividends3y":0},
+   "bull":{"price3y":320,"dividends3y":0}},
+  "probabilities":{"bear":0.30,"base":0.45,"bull":0.25},
+  "weights":{"dcf":0.10,"asset":0.25,"sotp":0.65,"pb":0.0}
+ }
+}

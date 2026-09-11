@@ -1,0 +1,70 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Mastercard Incorporated","ticker":"NYSE: MA","sector":"financials","currency":"USD","fxToUsd":1,"price":580.00,"priceUnit":"share","asOf":"2026-09-05","phase":4,"phaseName":"Capital structure & returns on capital",
+  "assumedContext":[
+   "No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.",
+   "Net debt of approximately USD 8bn is an analyst estimate, not a sourced figure — a declared gap. At roughly 1.6% of market capitalisation it moves per-share value by about USD 9, so the conclusion does not turn on it.",
+   "The banking profile does not apply: there is no loan book, no credit risk and no CET1 ratio. Mastercard bears no credit exposure on the transactions it switches — issuers do."]},
+ "findings":[
+  {"id":"p4-01","claim":"Mastercard generated approximately USD 17.2bn of free cash flow in 2025 on USD 32.8bn of net revenue — a free cash flow margin of roughly 52%, the highest of any company examined under this protocol.","label":"ANALYST ESTIMATE","source":"Derived: 17.2 / 32.8; FCF figure from capital-return coverage","asOf":"2025-12-31","confidence":"medium","impact":"high","value":17200,"unit":"USD m"},
+  {"id":"p4-02","claim":"In December 2025 the board authorised a new USD 14bn share repurchase programme, with approximately USD 4.2bn still remaining under the prior authorisation, and raised the quarterly dividend 14% to USD 0.87 from USD 0.76.","label":"FACT","source":"Mastercard investor news, December 2025","asOf":"2025-12-05","confidence":"high","impact":"high","value":14000,"unit":"USD m buyback authorisation"},
+  {"id":"p4-03","claim":"The dividend yield is approximately 0.58% at USD 580. As with Apple, this is a buyback story rather than an income story — the USD 14bn authorisation is roughly 2.8% of market capitalisation.","label":"ANALYST ESTIMATE","source":"Derived: dividend yield from market data; 14 / 507 market cap","asOf":"2026-09-05","confidence":"high","impact":"medium"},
+  {"id":"p4-04","claim":"Critically, and unlike Apple's buyback at 37x earnings or Alphabet's halted programme, Mastercard is repurchasing stock at approximately 29x forward earnings while compounding free cash flow in the low-to-mid teens. The buyback is neither obviously value-destructive nor a rescue.","label":"ANALYST ESTIMATE","source":"Derived; comparison from research/AAPL and research/GOOGL","asOf":"2026-09-05","confidence":"medium","impact":"medium"},
+  {"id":"p4-05","claim":"There is no funding constraint of any kind. Net debt is estimated at roughly USD 8bn against approximately USD 19.5bn of estimated FY2026 free cash flow — under half a year's cash generation.","label":"ANALYST ESTIMATE","source":"Derived; net debt is an estimate and a declared gap","asOf":"2026-09-05","confidence":"low","impact":"medium"},
+  {"id":"p4-06","claim":"Return on invested capital is extraordinarily high and exceeds the cost of capital by a very wide margin, but the precise ratio is not economically meaningful: sustained buybacks have reduced book equity to a small fraction of the economic asset base, and the principal asset — the network — was never capitalised.","label":"ANALYST ESTIMATE","source":"Derived from the capital structure and the FCF margin","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-07","claim":"The sensitivity that matters is not rates but currency and consumer spending. Mastercard guides on a currency-neutral basis precisely because reported growth is materially affected by the dollar, and cross-border volume — its highest-rate line — is a direct function of international travel and trade.","label":"ANALYST ESTIMATE","source":"Derived from the currency-neutral guidance convention","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-08","claim":"Rate sensitivity is immaterial. With roughly USD 8bn of net debt, a 200bp move is on the order of USD 160m of pre-tax interest against approximately USD 21.5bn of estimated FY2026 operating income — under 1%.","label":"ANALYST ESTIMATE","source":"Derived: 8,000 x 2%","asOf":"2026-09-05","confidence":"medium","impact":"low"},
+  {"id":"p4-09","claim":"The genuine balance-sheet exposure is contingent rather than funded: the USD 38bn interchange settlement is shared with Visa and largely covered by amounts previously accrued and by the litigation escrow established for exactly this purpose, but the final split and any incremental charge are not established here.","label":"ANALYST ESTIMATE","source":"Derived from the settlement structure; the escrow arrangement is long-standing","asOf":"2026-09-05","confidence":"low","impact":"high"},
+  {"id":"p4-10","claim":"Estimated FY2026 free cash flow of approximately USD 19.5bn on a USD 507bn market capitalisation is a free cash flow yield of roughly 3.8%, against a 10-year Treasury in the low fours. The equity is priced close to a risk-free yield with mid-teens growth attached.","label":"ANALYST ESTIMATE","source":"Derived: 19.5 / 507","asOf":"2026-09-05","confidence":"medium","impact":"high","value":3.8,"unit":"% FCF yield"}
+ ],
+ "tables":[
+  {"title":"Capital structure and returns",
+   "columns":["Item","Value","Comment"],
+   "rows":[
+    ["FY2025 free cash flow","~USD 17.2bn","~52% of net revenue"],
+    ["FY2026E free cash flow","~USD 19.5bn","~3.8% yield on market cap"],
+    ["Net debt","~USD 8bn (estimate)","Under half a year of free cash flow"],
+    ["Buyback authorised Dec 2025","USD 14bn","~2.8% of market cap, plus USD 4.2bn remaining prior"],
+    ["Dividend","USD 0.87/qtr, +14%","~0.58% yield"],
+    ["FY2025 operating margin","57.6%","Up 230bp year on year"]
+   ],
+   "note":"[FACT] for the authorisation and dividend; [ANALYST ESTIMATE] elsewhere. There is no capital structure question in this name."},
+  {"title":"Sensitivities, ranked by what actually matters",
+   "columns":["Shock","Effect","Why"],
+   "rows":[
+    ["Consumer spending and cross-border travel","Direct and large","Revenue is a toll on volume; cross-border is the highest-rate line"],
+    ["US dollar strength","Material","Reported growth differs from currency-neutral; guidance is given currency-neutral for this reason"],
+    ["Premium and rewards card mix","Potentially large, newly live","Honor-all-cards ends; merchants may decline the highest-interchange cards"],
+    ["Rail substitution","Structural, unmeasured","Attacks cross-border first"],
+    ["Interest rates +200bp","~USD 160m pre-tax, under 1% of operating income","Minimal net debt"]
+   ],
+   "note":"[ANALYST ESTIMATE] The conventional balance-sheet sensitivities are irrelevant here. Everything that matters is on the volume and mix side of the toll."}
+ ],
+ "gaps":[
+  {"item":"Actual net debt, cash and investments","whyItMatters":"Estimated at USD 8bn. It moves per-share value by about USD 9 — small, but it is an estimate presented alongside precise figures and should be labelled as such.","resolvedBy":"10-Q balance sheet"},
+  {"item":"Mastercard's share of the USD 38bn settlement and any incremental charge","whyItMatters":"The settlement is shared with Visa and substantially pre-accrued, but the split and any top-up are not established. It is the one genuine balance-sheet item in this dossier.","resolvedBy":"10-Q litigation note and the EDNY final judgment"},
+  {"item":"Cross-border revenue as a share of the total","whyItMatters":"Needed to size both the FX sensitivity and the substitution exposure — the two things that actually matter here.","resolvedBy":"10-K disaggregation"},
+  {"item":"Sourced WACC components","whyItMatters":"The DCF carries 50% of the weight in Phase 5 for this company, so the discount rate matters more here than in any other dossier in the series.","resolvedBy":"Live 10-year Treasury and a published beta"}
+ ],
+ "risks":[
+  {"text":"The free cash flow yield of roughly 3.8% is close to the risk-free rate, so the equity is priced for growth to continue at mid-teens rates for a long time.","severity":"medium","probability":"high"},
+  {"text":"The settlement liability is shared and largely pre-accrued but not established here — the one real balance-sheet unknown.","severity":"medium","probability":"medium"},
+  {"text":"Cross-border volume is both the growth engine and the exposure, and it is sensitive to travel, trade and the dollar simultaneously.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — guided to the high end of low double digits","window":"Oct 2026","impact":"Medium","probability":0.95},
+  {"text":"Next capital return authorisation","window":"Dec 2026","impact":"Low","probability":0.85},
+  {"text":"EDNY final judgment and any incremental settlement charge","window":"H2 2026","impact":"Medium","probability":0.75}
+ ],
+ "conclusions":[
+  "There is no capital structure question. Roughly USD 8bn of net debt against approximately USD 19.5bn of estimated FY2026 free cash flow, and a free cash flow margin near 52% — the highest in this series.",
+  "Returns on capital exceed the cost of capital by an extraordinary margin, but the precise ratio is not meaningful because buybacks have shrunk book equity and the network was never capitalised. This is the same treatment applied to Apple, for the same reason.",
+  "The buyback is being executed at approximately 29x forward earnings on a business compounding free cash flow in the low-to-mid teens — neither the value destruction of Apple's programme at 37x nor the retreat of Alphabet's halt.",
+  "Conventional sensitivities are irrelevant: a 200bp rate move is under 1% of operating income. What matters is consumer spending, cross-border travel, the dollar, and the newly live question of premium card mix.",
+  "A free cash flow yield of roughly 3.8% against a 10-year Treasury in the low fours means the equity is priced close to a risk-free yield with mid-teens growth attached. That is the whole valuation question in one sentence."
+ ],
+ "thesisImpact":"Phase 4 removes every balance-sheet and returns concern and leaves a clean, well-defined valuation problem. Because the cash flows are unusually stable and predictable, the discounted cash flow becomes the most trustworthy instrument for this company rather than the least — the reverse of the Alphabet and SpaceX dossiers, and the reason its weight is raised to 50% in Phase 5.",
+ "model":{"sharesOut":874,"netDebt":8000,
+  "wacc":{"bear":0.093,"base":0.085,"bull":0.080},
+  "terminalGrowth":{"bear":0.025,"base":0.035,"bull":0.0375}}
+}

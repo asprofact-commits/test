@@ -1,0 +1,460 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "LAMDA Development S.A.",
+  "ticker": "ATHEX: LAMDA",
+  "sector": "real estate",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 6.24,
+  "priceUnit": "share",
+  "asOf": "2026-09-06",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing retrievable; every external domain is blocked by this environment's egress proxy.",
+   "EVERYTHING HERE IS ON AN EQUITY BASIS AND netDebt IS DELIBERATELY SET TO ZERO. Both methods already deduct debt inside themselves: the primary method applies a discount to published NET asset value, and the sum-of-the-parts values the income portfolio net of its own EUR 655m of malls debt. Subtracting the EUR 639m group net debt again would double-count it. This is a deliberate modelling choice, not a missing input.",
+   "NO DISCOUNTED CASH FLOW. A development company mid-programme has lumpy, negative and pre-sale-distorted free cash flow; a DCF would be a worse instrument than the two used. Weights are discount-to-NAV 55%, sum-of-the-parts 45%.",
+   "NO PRICE-TO-BOOK. For a marked-to-market property company net asset value IS book, so a P/B method would restate the primary method rather than add to it.",
+   "The stated EUR 3.8bn portfolio figure is NOT used anywhere in this valuation. Phase 4 shows roughly EUR 1.6bn of claims between it and shareholders' net asset value that cannot be identified from available disclosure.",
+   "Sector peers are omitted; cross-references are to the Greek companies analysed in the preceding batch."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "Applying a 25% discount to the company's published net asset value of EUR 8.97 gives approximately EUR 6.73 per share. The market at EUR 6.24 is applying about 30%.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-06",
+   "confidence": "low",
+   "impact": "high",
+   "value": 6.73,
+   "unit": "EUR per share, discount-to-NAV method"
+  },
+  {
+   "id": "p5-02",
+   "claim": "A deliberately conservative sum-of-the-parts — the income portfolio at a 7.5% capitalisation rate net of its EUR 655m of debt, The Ellinikon at EUR 400m, less EUR 150m of capitalised corporate overhead — gives approximately EUR 6.83 per share.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "low",
+   "impact": "high",
+   "value": 6.83,
+   "unit": "EUR per share, sum-of-the-parts"
+  },
+  {
+   "id": "p5-03",
+   "claim": "Weighted 55% discount-to-NAV and 45% sum-of-the-parts, the base case is approximately EUR 6.78 and the probability-weighted fair value approximately EUR 6.72 — roughly 8% above the market price. Both methods land within 2% of each other.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-06",
+   "confidence": "low",
+   "impact": "high",
+   "value": 6.72,
+   "unit": "EUR per share"
+  },
+  {
+   "id": "p5-04",
+   "claim": "The most striking single number in this dossier is a cross-check rather than a valuation. At a 7% capitalisation rate the income portfolio alone is worth about EUR 6.03 per share net of malls debt, against a share price of EUR 6.24. On that arithmetic an investor is paying for the four malls and the marina and receiving The Ellinikon for close to nothing.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: (118/0.07 - 655) / 170.93",
+   "asOf": "2026-09-06",
+   "confidence": "low",
+   "impact": "high",
+   "value": 6.03,
+   "unit": "EUR per share from income assets alone at a 7% cap rate"
+  },
+  {
+   "id": "p5-05",
+   "claim": "That cross-check is powerful and fragile in the same breath. It rests entirely on an assumed capitalisation rate this dossier cannot source: at 7% the income portfolio is EUR 6.03 per share, at 8% it is EUR 4.79, at 6.5% it is EUR 6.79. A 150bp range moves the figure by EUR 2.00 per share, a third of the price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived sensitivity",
+   "asOf": "2026-09-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p5-06",
+   "claim": "Published analyst targets average roughly EUR 11.19 with a median of EUR 11.32 from about 13 ratings, and a separate five-analyst average of EUR 10.04. This analysis sits roughly 40% below the broader consensus — the same direction and a similar magnitude to every dossier in the preceding energy batch.",
+   "label": "CONSENSUS",
+   "source": "Analyst targets via market data services",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 11.19,
+   "unit": "EUR average price target"
+  },
+  {
+   "id": "p5-07",
+   "claim": "The gap to consensus is explainable in one line: consensus appears to capitalise the full Ellinikon development value, while this analysis gives zero base-case weight to absorption of many thousands of units at around EUR 14,000 per square metre over twenty years and carries The Ellinikon at EUR 400m — well below its EUR 1.1bn of cumulative invested capital.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "Reverse valuation: at EUR 6.24 the price implies a 30% discount to published net asset value. To justify no discount at all, the market would need to believe the development programme carries no delivery risk. To justify a 45% discount it would need to believe The Ellinikon is worth materially less than its invested capital. The truth is very likely between, which is why the honest answer here is a narrow one.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs EUR 6.24",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Discount to published NAV at 25%",
+     "~EUR 6.73",
+     "+8%",
+     "55%",
+     "Low — NAV is company-published"
+    ],
+    [
+     "Sum of the parts (conservative)",
+     "~EUR 6.83",
+     "+9%",
+     "45%",
+     "Low — cap rate assumed"
+    ],
+    [
+     "Discounted cash flow",
+     "EXCLUDED",
+     "—",
+     "0%",
+     "Lumpy, negative, pre-sale-distorted"
+    ],
+    [
+     "Price to book",
+     "EXCLUDED",
+     "—",
+     "0%",
+     "NAV is book; would restate the primary method"
+    ],
+    [
+     "Blended base case",
+     "~EUR 6.78",
+     "+9%",
+     "100%",
+     "Probability-weighted ~EUR 6.72"
+    ],
+    [
+     "Memo: income portfolio alone at 7%",
+     "~EUR 6.03",
+     "-3%",
+     "cross-check",
+     "The floor, and it is close to the price"
+    ],
+    [
+     "Sell-side average",
+     "EUR 11.19",
+     "+79%",
+     "cross-check",
+     "13 ratings; a second source shows EUR 10.04"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Two methods within 2% of each other, and a floor from the income assets that sits within 3% of the share price. The narrowness is real; so is the dependence on an unsourced cap rate."
+  },
+  {
+   "title": "Cap rate sensitivity — the input that decides everything",
+   "columns": [
+    "Cap rate on the income portfolio",
+    "Implied GAV",
+    "Equity per share, net of malls debt"
+   ],
+   "rows": [
+    [
+     "6.5%",
+     "~EUR 1,815m",
+     "~EUR 6.79"
+    ],
+    [
+     "7.0%",
+     "~EUR 1,686m",
+     "~EUR 6.03"
+    ],
+    [
+     "7.5%",
+     "~EUR 1,573m",
+     "~EUR 5.37"
+    ],
+    [
+     "8.0%",
+     "~EUR 1,475m",
+     "~EUR 4.79"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] A 150bp range moves the floor by EUR 2.00 per share — about a third of the share price. Anyone acting on this dossier should source the independent valuation before anything else."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "30%",
+     "Absorption slows at EUR 14,000/sqm; construction cost inflation compresses the development margin; Greek retail cap rates widen; the 2027 refinancing repriced sharply higher",
+     "~EUR 6.03",
+     "-7.1%"
+    ],
+    [
+     "Base",
+     "50%",
+     "Riviera Tower delivers on schedule; the next 300-350 units absorb; malls hold their EBITDA; the NAV discount narrows modestly",
+     "~EUR 6.78",
+     "+13.8%"
+    ],
+    [
+     "Bull",
+     "20%",
+     "Deliveries land well and prove the product; absorption accelerates; the discount to NAV compresses toward 10% as Ellinikon becomes income-producing",
+     "~EUR 7.61",
+     "+27.3%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The bear probability is set at 30% rather than 25% because nothing has been delivered yet and the equity bridge cannot be reconciled from available disclosure."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The bridge from EUR 3.8bn portfolio value to EUR 1,533m net asset value",
+   "whyItMatters": "Roughly EUR 1.6bn of claims cannot be identified. This is the reason the rating is not a buy, and it is the first thing any purchaser should resolve.",
+   "resolvedBy": "Balance sheet and NAV reconciliation in the annual report"
+  },
+  {
+   "item": "Independent capitalisation rates on the four malls",
+   "whyItMatters": "The entire valuation floor rests on an assumed 7%. A 150bp range moves it by EUR 2.00 per share.",
+   "resolvedBy": "Annual report valuation note"
+  },
+  {
+   "item": "Customer contract liabilities inside the EUR 831m cash balance",
+   "whyItMatters": "Determines economic net debt and how much of the pre-sale cash is genuinely the company's.",
+   "resolvedBy": "Balance sheet"
+  },
+  {
+   "item": "Remaining construction cost against homes already sold",
+   "whyItMatters": "The obligation standing against more than EUR 1.7bn of proceeds received.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "H1 2026 results",
+   "whyItMatters": "Only Q1 2026 was available, so this dossier is a quarter stale.",
+   "resolvedBy": "H1 2026 report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly EUR 1.6bn of claims sit unexplained between stated portfolio value and shareholders' net asset value. Until that is reconciled the equity bridge is not established.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The valuation floor rests on an unsourced capitalisation rate; a 150bp range moves it by about a third of the share price.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "More than EUR 1.7bn of cumulative proceeds includes pre-sales for homes not yet built, so both the cash balance and the cash-flow picture flatter the underlying position.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Nothing has been delivered. Buyer satisfaction, resale pricing and the second-hand market at EUR 14,000 per square metre are all untested.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "This analysis sits roughly 40% below a consensus of about EUR 11.19 from 13 analysts. When the covering universe is on the other side, the base rate favours them.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Riviera Tower completion and first residential deliveries",
+   "window": "Late 2026 / early 2027",
+   "impact": "Very high",
+   "probability": 0.75
+  },
+  {
+   "text": "H1 2026 results with the balance sheet and NAV reconciliation",
+   "window": "Q4 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Absorption of the next 300-350 unit release",
+   "window": "H2 2026",
+   "impact": "High",
+   "probability": 0.8
+  },
+  {
+   "text": "First Ellinikon retail opening",
+   "window": "2026-2027",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Refinancing of the EUR 320m 2027 bond",
+   "window": "2026-2027",
+   "impact": "Medium",
+   "probability": 0.85
+  }
+ ],
+ "conclusions": [
+  "LAMDA trades at about a 30% discount to its published net asset value of EUR 8.97, which is well inside the 25-40% range normal for European developers with a large non-income-producing component. Blended fair value is approximately EUR 6.78 base and EUR 6.72 probability-weighted, roughly 8% above the price.",
+  "The most striking figure is a cross-check: at a 7% capitalisation rate the four malls and the marina alone are worth about EUR 6.03 per share net of their debt, against a EUR 6.24 share price. An investor is paying for the income portfolio and receiving The Ellinikon for close to nothing.",
+  "That cross-check is powerful and fragile at once. It rests on a capitalisation rate this dossier cannot source, and a 150bp range moves it by EUR 2.00 per share — a third of the price.",
+  "The mechanism finding is the third instance of one pattern in this series. More than EUR 1.7bn of cumulative Ellinikon proceeds against EUR 1.1bn of cumulative spend is not a profitable project; it is customers paying in advance for homes not yet built, exactly as GE Vernova's and Siemens Energy's customers prepay for equipment not yet delivered.",
+  "And roughly EUR 1.6bn of claims cannot be identified between the stated EUR 3.8bn portfolio and the EUR 1,533m net asset value. That gap, not the valuation, is why this is not a buy today."
+ ],
+ "thesisImpact": "The five phases find a genuinely interesting asset at a defensible discount, with an income portfolio that approximately covers the share price on its own — and an equity bridge that cannot be reconciled from available disclosure. The mispricing may well be real. It cannot be verified from here, and that distinction is the whole of the rating.",
+ "memo": {
+  "rating": "HOLD — do not buy until the NAV bridge is reconciled",
+  "weighting": "Discount-to-NAV 55%, sum-of-the-parts 45%, with the discounted cash flow and price-to-book both excluded at zero. Everything is computed on an equity basis with net debt set to zero deliberately, because both methods already deduct debt internally. The model returns roughly +8% and the memo does not overrule the arithmetic — it overrules the conclusion someone might draw from it. An 8% gap on a company whose EUR 3.8bn stated portfolio and EUR 1,533m net asset value differ by EUR 1.6bn of claims I cannot identify is not a margin of safety; it is a rounding error inside an unresolved reconciliation. The rating would move to a buy on one disclosure, and the memo names it.",
+  "nonConsensus": [
+   {
+    "market": "The Ellinikon is generating cash — more than EUR 1.7bn of cumulative proceeds against EUR 1.1bn of cumulative investment.",
+    "us": "That is pre-sale money, not profit. Customers are paying for homes that have not been built, and the construction obligation against those receipts is still outstanding. It is structurally identical to the customer-advance effect found at GE Vernova, where free cash flow ran at twice adjusted EBITDA, and at Siemens Energy, where it ran at 1.5 times profit before special items. Three companies, three sectors, one mechanism — and in each case the cash is real and is not the same thing as earnings. The practical consequence is that EUR 831m of group cash is not all free.",
+    "evidence": "Phase 3: cumulative proceeds against cumulative spend, and management's own guidance of ~EUR 600m of residential inflows against ~EUR 500m of Ellinikon capex in 2026."
+   },
+   {
+    "market": "The company's investment portfolio is worth more than EUR 3.8bn.",
+    "us": "That figure is not attributable to shareholders and should never be used per share. Published net asset value is EUR 1,533m, and net debt of EUR 639m explains only part of the EUR 2.27bn difference. Roughly EUR 1.6bn of other claims — most plausibly customer contract liabilities, remaining consideration owed to the Greek state, minorities and deferred tax — sit between the portfolio and the equity, and none of them can be identified from available disclosure.",
+    "evidence": "Phase 4: the GAV-to-NAV bridge, stated as unexplained rather than smoothed over."
+   },
+   {
+    "market": "This is an Ellinikon story.",
+    "us": "At a 7% capitalisation rate the four malls and Flisvos Marina alone support about EUR 6.03 per share net of their EUR 655m of debt, against a share price of EUR 6.24. The market is paying for the mature assets and ascribing almost nothing to the megaproject. The interesting question is not whether The Ellinikon is valuable — it is why the market has decided it is worth roughly zero, and whether a EUR 1.6bn unexplained equity bridge is part of the answer.",
+    "evidence": "Phase 2: the income portfolio floor and its cap-rate sensitivity."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The site genuinely cannot be replicated. A 6.2 million square metre coastal parcel inside Athens came from a privatisation that will not happen again, and Riviera Tower is clearing at around EUR 14,000 per square metre.",
+    "why": "Scarcity of that kind does not usually stay cheap, and roughly 1,000 homes sold is real money from real buyers rather than a projection."
+   },
+   {
+    "text": "The income portfolio is compounding while the development is built. Malls EBITDA up 5% to a record and the marina up 12%, with an average borrowing cost of 3.8% and a long maturity profile.",
+    "why": "The funding engine is working, which is what allows the development to proceed without an equity call — a real distinction from PPC and ADMIE Holding, both of which diluted heavily in 2026."
+   },
+   {
+    "text": "Thirteen analysts average about EUR 11.19 and this analysis sits 40% below.",
+    "why": "The same pattern appeared in all seven energy dossiers, and the honest reading remains twofold: it is either a real edge from refusing to capitalise speculative absorption, or a systematic bias from a protocol built to resist narrative. The base rate favours the analysts."
+   }
+  ],
+  "sellTriggers": [
+   "Riviera Tower delivery slipping beyond H1 2027",
+   "Absorption on the next 300-350 unit release materially below the pace of the first 1,000",
+   "Any downward revision to the published net asset value per share",
+   "Malls EBITDA declining year on year for two consecutive quarters",
+   "Greek prime retail capitalisation rates widening beyond 8%",
+   "The EUR 320m 2027 bond refinanced at a coupon above 5.5%",
+   "Any equity raise — this company's ability to self-fund is central to the case",
+   "Disclosure showing customer contract liabilities materially above EUR 800m"
+  ],
+  "reEntry": "Blended fair value is approximately EUR 6.78 with a bear case of about EUR 6.03 — which is also the income-portfolio floor — and a bull case of about EUR 7.61. Below roughly EUR 5.40 the shares would sit under the income portfolio's value even at an 8% capitalisation rate, meaning The Ellinikon would be valued at less than zero; that is a full position regardless of the reconciliation. Between EUR 5.40 and EUR 6.24 it is a hold. The evidentiary test is a single document rather than a price: the balance sheet reconciling EUR 3.8bn of portfolio value to EUR 1,533m of net asset value, together with the independent capitalisation rates on the malls. Those two disclosures would convert this from an interesting discount into a measurable one, and they arrive with the H1 2026 report."
+ },
+ "model": {
+  "sharesOut": 170.93,
+  "netDebt": 0,
+  "assetBase": {
+   "label": "Published NAV (EUR m, already net of debt)",
+   "value": 1533,
+   "multiple": {
+    "bear": 0.6,
+    "base": 0.75,
+    "bull": 0.92
+   }
+  },
+  "sotp": [
+   {
+    "name": "Income portfolio at a 7.5% cap rate, net of EUR 655m malls debt",
+    "method": "cap rate, equity basis",
+    "metric": 918,
+    "multiple": 1.0,
+    "stake": 1.0
+   },
+   {
+    "name": "The Ellinikon — conservative equity interest",
+    "method": "below invested capital",
+    "metric": 400,
+    "multiple": 1.0,
+    "stake": 1.0
+   },
+   {
+    "name": "Capitalised corporate overhead",
+    "method": "deduction",
+    "metric": -150,
+    "multiple": 1.0,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "LAMDA Development (subject)",
+    "self": true,
+    "pb": 0.7
+   },
+   {
+    "name": "PPC (cross-reference)",
+    "pe": 19.5,
+    "evEbitda": 9.2,
+    "pb": 1.24
+   },
+   {
+    "name": "ADMIE Holding (cross-reference)",
+    "pe": 24.1,
+    "pb": 1.14
+   },
+   {
+    "name": "Metlen (cross-reference)",
+    "pe": 10.6,
+    "evEbitda": 7.7
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 5.0,
+    "dividends3y": 0
+   },
+   "base": {
+    "price3y": 9.0,
+    "dividends3y": 0.2
+   },
+   "bull": {
+    "price3y": 12.5,
+    "dividends3y": 0.4
+   }
+  },
+  "probabilities": {
+   "bear": 0.3,
+   "base": 0.5,
+   "bull": 0.2
+  },
+  "weights": {
+   "dcf": 0.0,
+   "asset": 0.55,
+   "sotp": 0.45,
+   "pb": 0.0
+  }
+ }
+}

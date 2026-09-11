@@ -1,0 +1,59 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Mastercard Incorporated","ticker":"NYSE: MA","sector":"financials","currency":"USD","fxToUsd":1,"price":580.00,"priceUnit":"share","asOf":"2026-09-05","phase":2,"phaseName":"Asset base & structural bottlenecks","assumedContext":["No primary filing could be retrieved; every external domain is blocked by this environment egress proxy. The banking profile does not apply to this company — see phase 1 meta."]},
+ "findings":[
+  {"id":"p2-01","claim":"There is effectively no physical asset base. The productive asset is a switching network plus the two-sided installed base of issuers and merchants — neither of which appears on the balance sheet.","label":"ANALYST ESTIMATE","source":"Derived from the business model","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p2-02","claim":"The economics of that are visible in the margin: FY2025 operating margin of 57.6%, up from 55.3%, with net revenue growing 16% to USD 32.8bn. Incremental transactions cost almost nothing to switch.","label":"FACT","source":"Mastercard FY2025 results","asOf":"2025-12-31","confidence":"high","impact":"high","value":32800,"unit":"USD m FY2025 net revenue"},
+  {"id":"p2-03","claim":"Free cash flow of approximately USD 17.2bn in 2025 on USD 32.8bn of net revenue is a 52% free cash flow margin — among the highest of any business examined under this protocol, and roughly double Apple's.","label":"ANALYST ESTIMATE","source":"Derived: 17.2 / 32.8; Apple comparison from research/AAPL","asOf":"2025-12-31","confidence":"medium","impact":"high","value":52,"unit":"% FCF margin"},
+  {"id":"p2-04","claim":"Because price-to-book and conventional asset-based methods are meaningless for a company whose principal asset is a network and whose book equity has been reduced by sustained buybacks, they are excluded from Phase 5 rather than reported as misleadingly high.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"high","impact":"medium"},
+  {"id":"p2-05","claim":"The bottleneck is not capacity, capital or technology. It is regulatory and political permission to charge the toll — the constraint that has been tightened repeatedly by interchange regulation in the EU, by Durbin in the US, and now by the USD 38bn settlement.","label":"ANALYST ESTIMATE","source":"Derived from the regulatory history","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p2-06","claim":"The second structural constraint is rail substitution. Real-time account-to-account systems and stablecoins do not need Mastercard's switching asset at all, which is a different kind of threat from a competitor building a better network.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p2-07","claim":"Mastercard is buying into the substitute rather than defending against it: BVNK for up to USD 1.8bn on closing at end-2026, plus a reported network stablecoin with Visa. Capital is being redirected from returning cash toward owning the replacement rail.","label":"FACT","source":"Global Finance Magazine; Forbes 2026-06-11","asOf":"2026-06-30","confidence":"medium","impact":"high"},
+  {"id":"p2-08","claim":"Capital intensity remains negligible even so. The BVNK price of up to USD 1.8bn is roughly 10% of a single year's free cash flow — a rounding error against Alphabet's USD 200bn or SpaceX's constellation replacement.","label":"ANALYST ESTIMATE","source":"Derived: 1.8 / 17.2","asOf":"2026-09-05","confidence":"high","impact":"medium"},
+  {"id":"p2-09","claim":"Value-added services now represent roughly 41% of net revenue — USD 3.8bn of USD 9.3bn in Q2 2026 — and are growing faster than the network itself at 20%. The asset base is quietly shifting from a pure toll road toward a software and data business.","label":"ANALYST ESTIMATE","source":"Derived from Q2 2026 segment revenue","asOf":"2026-07-30","confidence":"high","impact":"high","value":41,"unit":"% of net revenue"}
+ ],
+ "tables":[
+  {"title":"Asset intensity against the rest of this series",
+   "columns":["Company","Annual capex or equivalent","FCF margin","Character"],
+   "rows":[
+    ["Mastercard","BVNK up to USD 1.8bn, one-off","~52%","Network; effectively no physical asset base"],
+    ["Apple","~USD 4bn in H1 FY2026","~28%","Asset-light manufacturer, rents AI"],
+    ["Alphabet","USD 195-205bn guided FY2026","negative FCF","Infrastructure build"],
+    ["SpaceX","Constellation replacement plus Starship plus AI compute","negative FCF","Capital-intensive, three programmes at once"]
+   ],
+   "note":"[FACT/ANALYST ESTIMATE] Mastercard is the extreme end of the asset-light spectrum in this series. Its constraint is permission to charge, not capacity to serve."},
+  {"title":"What actually constrains this business",
+   "columns":["Constraint","Character","Status"],
+   "rows":[
+    ["Regulatory permission to charge","The binding one, historically","Tightened by the USD 38bn settlement; honor-all-cards ends"],
+    ["Rail substitution","Structural, not competitive","Credible, unmeasured; Mastercard is buying into it"],
+    ["Network capacity","Effectively unlimited","Not binding"],
+    ["Capital","Negligible requirement","Not binding"],
+    ["Consumer preference for credit and rewards","The real moat","Intact — but it is what honor-all-cards protected"]
+   ],
+   "note":"[ANALYST ESTIMATE] The last row is the load-bearing one. Consumers want rewards cards; merchants must accept them. The settlement weakens the second half of that sentence for the first time."}
+ ],
+ "gaps":[
+  {"item":"Capital allocation intent for stablecoin and rail investment beyond BVNK","whyItMatters":"If defending the rail requires sustained acquisition spending, the FCF margin that defines this business changes character.","resolvedBy":"Management commentary and subsequent transactions"},
+  {"item":"The economics of value-added services versus the network","whyItMatters":"VAS is 41% of revenue and growing faster, but its margin is not separately disclosed. If it is materially lower, the group margin trajectory is being flattered by mix in one direction and diluted in another.","resolvedBy":"Segment profitability disclosure, which Mastercard does not provide"},
+  {"item":"Cross-border revenue as a share of the total","whyItMatters":"Cross-border is both the growth driver and the line most exposed to stablecoin substitution. The exposure cannot be sized without it.","resolvedBy":"10-K revenue disaggregation"}
+ ],
+ "risks":[
+  {"text":"The binding constraint is political permission to charge, and it has been tightened repeatedly across three decades.","severity":"high","probability":"high"},
+  {"text":"Rail substitution does not require anyone to build a better network — it makes the network unnecessary for a given flow.","severity":"high","probability":"medium"},
+  {"text":"Value-added services are 41% of revenue with undisclosed margin, so the reported group margin conceals a mix shift.","severity":"medium","probability":"medium"}
+ ],
+ "catalysts":[
+  {"text":"BVNK closes and the stablecoin strategy becomes concrete","window":"End 2026","impact":"Medium","probability":0.8},
+  {"text":"FY2026 10-K disaggregation of cross-border and services revenue","window":"Feb 2027","impact":"Medium","probability":0.9}
+ ],
+ "conclusions":[
+  "This is the most asset-light business in the series by a wide margin: a ~52% free cash flow margin, effectively no physical asset base, and a capital requirement so small that a USD 1.8bn acquisition is 10% of one year's free cash flow.",
+  "Because the principal asset is a network that never appears on the balance sheet, price-to-book and conventional asset methods are excluded from Phase 5 rather than reported as misleadingly high.",
+  "The constraint on this business has never been capacity, capital or technology. It is political and regulatory permission to charge the toll — and that permission has been narrowed repeatedly, most recently by the USD 38bn settlement.",
+  "Rail substitution is a different class of threat from competition: stablecoins and account-to-account systems do not beat the network, they make it unnecessary for a given flow. Mastercard is responding by buying the substitute.",
+  "Value-added services are now roughly 41% of net revenue and growing at 20%, faster than the network. The asset base is quietly becoming a software and data business attached to a toll road."
+ ],
+ "thesisImpact":"Phase 2 confirms there is no capital or capacity risk to model and removes book-based methods from Phase 5. It also sharpens the central question: this is a business whose economics depend on permission, and the permission was narrowed in June 2026 for the first time in a way that touches the mix rather than the rate.",
+ "model":{"sharesOut":874}
+}

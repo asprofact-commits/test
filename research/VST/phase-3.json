@@ -1,0 +1,277 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Vistra Corp.",
+  "ticker": "NYSE: VST",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1.0,
+  "price": 139.8,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on the Q2 2026 results release and financial press."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "Q2 2026 produced record adjusted EBITDA of USD 1.767bn, up more than 30% year on year from USD 1.35bn. Operationally the quarter was strong.",
+   "label": "FACT",
+   "source": "Vistra Q2 2026 results",
+   "asOf": "2026-08-07",
+   "confidence": "high",
+   "impact": "high",
+   "value": 1767,
+   "unit": "USD m Q2 2026 adjusted EBITDA"
+  },
+  {
+   "id": "p3-02",
+   "claim": "And revenue missed badly: USD 4.02bn against a consensus of USD 5.73bn, down 5.5% year on year. Revenue fell 5.5% while adjusted EBITDA rose 31%, in the same quarter.",
+   "label": "FACT",
+   "source": "Vistra Q2 2026 results",
+   "asOf": "2026-08-07",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-03",
+   "claim": "That divergence is not a contradiction, it is the structure of the business. Vistra's reported revenue and GAAP net income swing on unrealised mark-to-market movements in its hedge book — Q2 net income was only USD 305m against USD 1.767bn of adjusted EBITDA. Revenue and earnings per share are poor instruments for this company; adjusted EBITDA and adjusted free cash flow before growth are the real ones, which is why this dossier excludes a price-earnings multiple.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the Q2 2026 disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-04",
+   "claim": "Full-year 2026 guidance was reaffirmed at USD 6.8-7.6bn of adjusted EBITDA, with management stating it is comfortable delivering at or above the midpoint, alongside adjusted free cash flow before growth of USD 3.925-4.725bn.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Vistra Q2 2026 results",
+   "asOf": "2026-08-07",
+   "confidence": "high",
+   "impact": "high",
+   "value": 7200,
+   "unit": "USD m FY2026E adjusted EBITDA midpoint"
+  },
+  {
+   "id": "p3-05",
+   "claim": "The cash generation is the strongest fact in this dossier. Adjusted free cash flow before growth of roughly USD 4.3bn at the midpoint against a market capitalisation of roughly USD 47.5bn is a yield of about 9.1%. Nothing else in this batch generates cash at that rate relative to price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 4,325 / 47,532",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 9.1,
+   "unit": "% FCF-before-growth yield"
+  },
+  {
+   "id": "p3-06",
+   "claim": "The exposure that broke the share price is disclosed and specific: the 2028 book is only about 72% hedged. Roughly 28% of 2028 is open to a forward curve management has described as softening.",
+   "label": "FACT",
+   "source": "Vistra hedging disclosure and analyst coverage",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 72,
+   "unit": "% of 2028 hedged"
+  },
+  {
+   "id": "p3-07",
+   "claim": "Demand classification: the roughly 3.8 GW under 20-year AWS and Meta PPAs is [Existing Contracted] at the best quality in this batch; the hedged portion of the near-term merchant book is [Existing Contracted] but short-dated; the 433 MW of contracted uprates is [Approved / Committed Pipeline] with a customer already attached; the unhedged ~28% of 2028 and beyond is merchant exposure earning no contracted weight; and any assumption that further large tranches of the 27 GW gas fleet contract with hyperscalers at premium prices is [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-08",
+   "claim": "The monetisation structure is therefore barbelled and the thesis describes only one end of it. A small, superb, twenty-year contracted nuclear book at one end; a large, cyclical, ERCOT-concentrated merchant fleet at the other. The equity is a claim on both, and the second is bigger.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Q2 2026 and the guidance",
+   "columns": [
+    "Measure",
+    "Value",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "Q2 2026 adjusted EBITDA",
+     "USD 1.767bn",
+     "Record, +31% year on year"
+    ],
+    [
+     "Q2 2026 revenue",
+     "USD 4.02bn",
+     "vs USD 5.73bn consensus — a 30% miss"
+    ],
+    [
+     "Q2 2026 net income",
+     "USD 305m",
+     "GAAP, distorted by hedge marks"
+    ],
+    [
+     "FY2026 adjusted EBITDA guidance",
+     "USD 6.8-7.6bn",
+     "Reaffirmed; comfortable at or above midpoint"
+    ],
+    [
+     "FY2026 adjusted FCF before growth",
+     "USD 3.925-4.725bn",
+     "~9.1% of market capitalisation"
+    ],
+    [
+     "2028 book hedged",
+     "~72%",
+     "~28% open to a softening curve"
+    ],
+    [
+     "Share price versus 52-week high",
+     "~-36%",
+     "USD 139.80 against a high near USD 219.70"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] Record operating performance, a 30% revenue miss and a 30% share-price decline, all in the same year. Only the middle one is an accounting artefact."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "~3.8 GW AWS and Meta PPAs",
+     "20-year terms, signed, ramping from late 2027",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "Hedged near-term merchant book",
+     "Disclosed hedge ratios",
+     "[Existing Contracted], short-dated",
+     "Full"
+    ],
+    [
+     "433 MW of contracted uprates",
+     "Customer attached under the Meta agreements",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "Retail book, ~5m customers",
+     "Operating",
+     "[Existing Contracted], short-dated",
+     "Full"
+    ],
+    [
+     "Unhedged 2028 and beyond",
+     "~28% of 2028 open",
+     "Merchant exposure",
+     "At forward curve"
+    ],
+    [
+     "Further large hyperscaler contracting of the gas fleet",
+     "Assumption",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The contracted portion is the highest quality in this batch and the smallest as a share of the whole."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Full hedge ratios by year, 2027 through 2030",
+   "whyItMatters": "The 72% figure for 2028 is the only one available here. The shape of the hedge roll-off determines when the softening curve reaches earnings.",
+   "resolvedBy": "Investor presentation"
+  },
+  {
+   "item": "EBITDA contribution of the AWS and Meta PPAs once fully ramped",
+   "whyItMatters": "The contracts are the reason to own this equity; their earnings contribution is not quantified in the available disclosure.",
+   "resolvedBy": "Not separately disclosed"
+  },
+  {
+   "item": "Growth capital expenditure",
+   "whyItMatters": "Guidance is on free cash flow BEFORE growth. The difference between that and actual free cash flow is the number the DCF needs.",
+   "resolvedBy": "10-K"
+  },
+  {
+   "item": "ERCOT forward curve assumed in the guidance range",
+   "whyItMatters": "It is the difference between the top and bottom of a USD 800m guidance range.",
+   "resolvedBy": "Investor presentation"
+  }
+ ],
+ "risks": [
+  {
+   "text": "About 28% of the 2028 book is unhedged into a forward curve management has described as softening.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Guidance is on free cash flow BEFORE growth capital expenditure, so the headline 9.1% yield overstates what reaches shareholders.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "GAAP revenue and net income are distorted by hedge marks, so the reported figures are a poor guide and the adjusted figures cannot be independently checked here.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "Any further large hyperscaler contracting of the gas fleet is speculative and earns zero base-case weight.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q3 2026 results and the first FY2027 guidance",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "AWS Comanche Peak volumes beginning to ramp",
+   "window": "Late 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "ERCOT forward curve stabilising",
+   "window": "2027",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "Additional hyperscaler PPAs",
+   "window": "Ongoing",
+   "impact": "High",
+   "probability": 0.6
+  }
+ ],
+ "conclusions": [
+  "Operationally Q2 was excellent: record adjusted EBITDA of USD 1.767bn, up more than 30%, with FY2026 guidance reaffirmed at USD 6.8-7.6bn and management comfortable at or above the midpoint.",
+  "Revenue missed consensus by 30% in the same quarter — USD 4.02bn against USD 5.73bn expected. That is hedge accounting rather than business deterioration, and it is why this dossier uses adjusted EBITDA and free cash flow and excludes a price-earnings multiple entirely.",
+  "The cash generation is the strongest fact here. Adjusted free cash flow before growth of roughly USD 4.3bn against a USD 47.5bn market capitalisation is about a 9.1% yield — the highest in this batch by a wide margin.",
+  "The exposure that broke the share price is specific and disclosed: only about 72% of the 2028 book is hedged, leaving roughly 28% open to a curve management has called softer.",
+  "The structure is barbelled and the thesis describes one end. A small, superb, twenty-year contracted nuclear book at one end; a large, cyclical, ERCOT-concentrated merchant fleet at the other. The equity is a claim on both, and the second is bigger."
+ ],
+ "thesisImpact": "Phase 3 establishes that the valuation must rest on adjusted EBITDA and free cash flow rather than on reported earnings, and that the base case must mark the unhedged book to a softening curve rather than to the record just delivered. It also establishes the strongest counter-argument to a negative view: a 9.1% cash yield is a lot to be paid while waiting.",
+ "model": {
+  "sharesOut": 340
+ }
+}

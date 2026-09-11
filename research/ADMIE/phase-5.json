@@ -1,0 +1,420 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "ADMIE (IPTO) Holding S.A.",
+  "ticker": "ATHEX: ADMIE",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 4.49,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing retrievable; every external domain is blocked by this environment's egress proxy.",
+   "LOOK-THROUGH BASIS at ADMIE Holding's 51% of IPTO throughout.",
+   "NO DISCOUNTED CASH FLOW, for the same structural reason as at PPC: with roughly EUR 6bn of capital expenditure against a EUR 3.3bn regulated asset base, free cash flow is negative across the entire explicit window. Weights are RAB multiple 45%, justified price-to-book 35%, sum-of-the-parts 20%. A dividend discount cross-check is computed separately in the findings.",
+   "Look-through net debt (~EUR 714m) is derived and is the largest input uncertainty. A 25% error in it moves fair value by roughly EUR 0.49 per share, or about 11%.",
+   "Sector peers are omitted; the batch companies are the peer set."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "A regulated-asset-base valuation at 1.15x an estimated look-through 2026 RAB of EUR 2.14bn, less look-through net debt of about EUR 714m, gives approximately EUR 4.82 per share. The market at EUR 4.49 is paying about 1.09x.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 4.82,
+   "unit": "EUR per share, RAB method"
+  },
+  {
+   "id": "p5-02",
+   "claim": "A justified price-to-book on a normalised post-build return on equity of 8.5% against a 7.5% cost of equity and 3.5% growth gives a multiple of about 1.25x on estimated look-through book value of EUR 3.94 — approximately EUR 4.93 per share.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: (ROE - g) / (COE - g)",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-03",
+   "claim": "A look-through sum-of-the-parts separating the domestic regulated RAB from the residual Great Sea Interconnector stake gives approximately EUR 4.78 per share — and its main value is analytical rather than numerical: it shows how little of this equity the flagship interconnector actually represents.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-04",
+   "claim": "Weighted 45% RAB multiple, 35% justified price-to-book and 20% sum-of-the-parts, the base case is approximately EUR 4.85 and the probability-weighted fair value approximately EUR 4.85 — roughly 8% above the market price. The three methods agree within 4% of each other, the tightest clustering in the series.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 4.85,
+   "unit": "EUR per share"
+  },
+  {
+   "id": "p5-05",
+   "claim": "A dividend discount cross-check, computed outside the model: look-through receipts rising from roughly EUR 0.09 per share now toward roughly EUR 0.22 by 2030 as the RAB doubles, capitalised at a 7.5% cost of equity and 4% long-run growth and discounted back four years, gives roughly EUR 4.70. That is within 3% of the blended figure and supports it independently.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived by hand; not part of the weighted model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 4.7,
+   "unit": "EUR per share, DDM cross-check"
+  },
+  {
+   "id": "p5-06",
+   "claim": "Reverse valuation: at EUR 4.49 the price implies about 1.09x look-through RAB. To justify only 1.0x — no premium at all — the market would have to assume the allowed return merely equals the cost of capital and that the EUR 6bn programme creates no value. For a network whose asset base nearly doubles by 2029, that is a modestly pessimistic starting point rather than an optimistic one.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "The honest caveat is that the upside is small relative to the inputs. Look-through net debt is derived, and a 25% error in it moves fair value by about EUR 0.49 — larger than the entire 8% gap to the price. The rating rests more securely on the qualitative structure than on the arithmetic.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "The batch-level conclusion: this is the lowest-risk business of the seven and the most accurately described by its thesis, with two real corrections — a 56% share-count increase the thesis omits, and a flagship interconnector that has been sold down to a Meridiam-majority SPV.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs EUR 4.49",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "RAB multiple at 1.15x",
+     "~EUR 4.82",
+     "+7%",
+     "45%",
+     "Low — look-through net debt derived"
+    ],
+    [
+     "Justified price-to-book at ~1.25x",
+     "~EUR 4.93",
+     "+10%",
+     "35%",
+     "Low — look-through book estimated"
+    ],
+    [
+     "Sum of the parts",
+     "~EUR 4.78",
+     "+6%",
+     "20%",
+     "Low"
+    ],
+    [
+     "Discounted cash flow",
+     "EXCLUDED",
+     "—",
+     "0%",
+     "Negative FCF across the build"
+    ],
+    [
+     "Dividend discount cross-check",
+     "~EUR 4.70",
+     "+5%",
+     "outside model",
+     "Low — supports the blend independently"
+    ],
+    [
+     "Blended base case",
+     "~EUR 4.85",
+     "+8%",
+     "100%",
+     "Probability-weighted ~EUR 4.85"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Four independent approaches within 5% of each other. That agreement is the strongest quantitative statement in this dossier — and it is agreement about a small number."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "25%",
+     "Allowed WACC cut at the next reset; RAB build slips on equipment lead times; dividend rebased on the enlarged count",
+     "~EUR 4.11",
+     "-4.8%"
+    ],
+    [
+     "Base",
+     "50%",
+     "RAB reaches ~EUR 7bn by 2029; allowed return holds; dividend cover rebuilds as assets commission",
+     "~EUR 4.85",
+     "+13.4%"
+    ],
+    [
+     "Bull",
+     "25%",
+     "Allowed return maintained or improved; interconnector assets enter the RAB; the multiple re-rates toward Western European TSOs",
+     "~EUR 5.59",
+     "+23.2%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] A bear case only 8% below the current price. This is by a wide margin the narrowest downside in the batch, which is what a regulated monopoly should look like."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "ADMIE Holding's dividend policy on the enlarged share count",
+   "whyItMatters": "The thesis is a yield thesis, and look-through FY2025 receipts of roughly EUR 0.09 per share do not obviously cover a EUR 0.18 payout. The most important unknown in the dossier.",
+   "resolvedBy": "Company dividend announcement"
+  },
+  {
+   "item": "IPTO net debt and gearing",
+   "whyItMatters": "Derived. A 25% error moves fair value by about EUR 0.49, larger than the entire gap to the price.",
+   "resolvedBy": "IPTO financial statements"
+  },
+  {
+   "item": "The allowed WACC and reset timetable",
+   "whyItMatters": "It is the entire return architecture and it decides whether any premium to RAB is justified.",
+   "resolvedBy": "RAE regulatory decisions"
+  },
+  {
+   "item": "The cause of the 16% FY2025 profit decline",
+   "whyItMatters": "A regulated network with a growing asset base should not normally see profit fall.",
+   "resolvedBy": "FY2025 annual report"
+  },
+  {
+   "item": "IPTO's residual stake in the Great Sea Interconnector",
+   "whyItMatters": "The difference between the flagship project being a material asset and a rounding error for these shareholders.",
+   "resolvedBy": "Annual report investment note"
+  }
+ ],
+ "risks": [
+  {
+   "text": "A regulatory reset of the allowed WACC is the principal event risk and its timing is not established here.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The yield the thesis rests on may not be covered on the enlarged share count: look-through FY2025 receipts of roughly EUR 0.09 against reported expectations of EUR 0.18-0.24.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Look-through net debt is derived, and a 25% error moves fair value by more than the 8% upside.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The flagship Great Sea Interconnector is Meridiam-majority, so shareholders own far less of the thesis's headline project than it implies.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "A EUR 6bn programme is procured into 128-week transformer lead times; schedule slippage delays the RAB growth the whole case rests on.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "The first dividend declaration on the enlarged share count",
+   "window": "2027",
+   "impact": "Very high",
+   "probability": 0.8
+  },
+  {
+   "text": "FY2026 results — IPTO net debt, RAB progression, and the cause of the FY2025 decline",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "Regulatory decision on the allowed WACC",
+   "window": "Unknown",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "Crete interconnection and island links entering the RAB",
+   "window": "2026-2028",
+   "impact": "High",
+   "probability": 0.8
+  },
+  {
+   "text": "Regulatory approval of the Cyprus-Israel GSI section",
+   "window": "2027",
+   "impact": "Medium",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "This is the lowest-risk business in the batch and the most accurately described by its thesis. IPTO is a legal monopoly remunerated on a regulated asset base — no volume risk, no price risk, no counterparty risk — and the RAB is set to go from about EUR 3.3bn in 2025 to roughly EUR 7bn by 2029.",
+  "Two corrections. The share count rose 56% in June 2026 — 130,864,197 new shares at EUR 4.17 against 232m outstanding — to fund the holding company's 51% of a EUR 1bn injection into IPTO, and the thesis does not mention it. And the flagship Great Sea Interconnector is now a Meridiam-majority SPV, so shareholders own far less of it than the framing implies.",
+  "But the dilution was raised at a fair price and deployed into the one balance sheet in this batch where a regulator guarantees a return on it. That is a materially better proposition than PPC's 62% dilution to fund merchant generation.",
+  "Blended fair value is approximately EUR 4.85 against EUR 4.49 — roughly 8% above — with the RAB multiple, justified price-to-book, sum-of-the-parts and an independent dividend discount cross-check all landing within 5% of each other.",
+  "The question the dossier cannot answer is the one the thesis cares most about. Look-through FY2025 dividend receipts of roughly EUR 0.09 per share do not obviously cover a EUR 0.18 payout on the enlarged count. That should resolve as the RAB commissions, but it is unresolved today."
+ ],
+ "thesisImpact": "The five phases confirm the defensive architecture completely, confirm the RAB mechanism as the cleanest growth story in the batch, and put a question mark over the yield. The result is a modest positive on a narrow band: the smallest downside of the seven companies, and an upside that depends on a dividend policy not yet disclosed.",
+ "memo": {
+  "rating": "BUY (small) — the best risk-adjusted position in the batch, sized for the dividend uncertainty",
+  "weighting": "RAB multiple 45%, justified price-to-book 35%, sum-of-the-parts 20%, discounted cash flow excluded at 0% because free cash flow is negative across the build — the same treatment and the same reason as at PPC. A dividend discount cross-check computed outside the model lands at EUR 4.70, within 3% of the blend. The model returns roughly +8% and the memo does not overrule it. The rating is BUY rather than HOLD for a reason that is structural rather than arithmetic: this is the only business in the batch with no volume, price or counterparty risk, its bear case is only about 8% below the current price, and it is the one company here whose dilution bought a regulated return rather than a merchant one. It is sized small because the dividend cover on the enlarged share count is genuinely unresolved, and because look-through net debt is derived rather than sourced.",
+  "nonConsensus": [
+   {
+    "market": "A defensive, low-volatility yield investment tethered to the inevitable expansion of the regional grid.",
+    "us": "The defensive half is completely right and is the best example of it in this batch. The yield half is unresolved. IPTO's FY2025 dividend of about EUR 62.9m gives ADMIE Holding roughly EUR 32m, or about EUR 0.09 per share on 362.86m shares — against reported expectations of EUR 0.18 to EUR 0.24, which cost roughly EUR 65m to pay. Market data services disagree with each other by more than a factor of two, which suggests at least one has not been updated for the June issue.",
+    "evidence": "Phase 3: the look-through dividend arithmetic and the conflicting reported figures."
+   },
+   {
+    "market": "The company is tethered to massive interconnector projects.",
+    "us": "The flagship Great Sea Interconnector is a special purpose vehicle in which Meridiam has become the MAJORITY shareholder. IPTO is the promoter, not the principal owner, and ADMIE Holding reaches it only through a 51% subsidiary. The Cyprus-Israel section was submitted for regulatory investment approval only in August 2026 and is not yet approved. The value in this equity sits in the unglamorous domestic RAB — island links, the Crete interconnection, and network reinforcement for renewables.",
+    "evidence": "Phase 2: the GSI ownership structure and the August 2026 investment request."
+   },
+   {
+    "market": "Two Greek grid stories, similar propositions.",
+    "us": "Both PPC and ADMIE Holding diluted heavily in 2026 — 62% and 56% — and neither description mentions it. But the containers are not comparable. PPC raised EUR 4.5bn to build merchant generation in five liberalised markets while targeting a rising dividend; ADMIE Holding raised roughly EUR 530-546m at a modest discount to recapitalise a legal monopoly before a RAB doubling. Diluting to fund a regulated return is a different act from diluting to fund a merchant one.",
+    "evidence": "Phase 4: the side-by-side comparison of the two 2026 capital increases."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The regulator sets the return, and a WACC reset is a real event risk whose timing this dossier does not know. A 50bp cut would remove most of the upside identified here.",
+    "why": "It is the one risk that can impair a regulated network, and it is entirely outside the company's control."
+   },
+   {
+    "text": "The dividend may be rebased on the enlarged share count. For a stock owned almost entirely for its yield, a cut would hit both the income and the multiple at once.",
+    "why": "This is the strongest argument against the rating and the reason the position is sized small rather than full."
+   },
+   {
+    "text": "The upside is small relative to the inputs. Look-through net debt is derived, and a 25% error in it moves fair value by about EUR 0.49 — more than the entire 8% gap.",
+    "why": "The same discipline that produced HOLD at Constellation and Metlen applies here, and it argues for modesty about the arithmetic even where the structure is sound."
+   }
+  ],
+  "sellTriggers": [
+   "Any cut to the allowed WACC at a regulatory reset",
+   "Dividend per share declared below EUR 0.12 on the enlarged share count",
+   "RAB progression falling materially behind the EUR 7bn 2029 trajectory at any annual disclosure",
+   "IPTO net debt to RAB rising above 55%",
+   "A further capital increase at either IPTO or holding-company level",
+   "Adjusted net profit falling for a second consecutive year",
+   "Any regulatory move to bring interconnector assets outside the remunerated perimeter"
+  ],
+  "reEntry": "Blended fair value is approximately EUR 4.85 with a bear case of approximately EUR 4.11 and a bull case of approximately EUR 5.59 — the narrowest band in the series, which is what a regulated monopoly should produce. Below roughly EUR 4.10 the shares would sit at or under 1.0x look-through RAB with a base-case IRR above 20%, which would justify a full position. At EUR 4.49 a small position is appropriate. The evidentiary test is a single disclosure rather than a price: the first dividend declared on the enlarged share count. A payout at or above EUR 0.18 covered by rising look-through receipts would confirm the thesis and justify sizing up; a rebasing would not break the RAB story but would remove the reason most holders own it."
+ },
+ "model": {
+  "sharesOut": 362.86,
+  "netDebt": 714,
+  "book": {
+   "bvps": 3.94,
+   "coe": 0.075,
+   "growth": 0.035,
+   "roe": {
+    "bear": 0.075,
+    "base": 0.085,
+    "bull": 0.095
+   }
+  },
+  "assetBase": {
+   "label": "Look-through 2026E regulated asset base",
+   "value": 2142,
+   "multiple": {
+    "bear": 1.0,
+    "base": 1.15,
+    "bull": 1.3
+   }
+  },
+  "sotp": [
+   {
+    "name": "Domestic regulated RAB (look-through)",
+    "method": "x RAB",
+    "metric": 2000,
+    "multiple": 1.15,
+    "stake": 1.0
+   },
+   {
+    "name": "Great Sea Interconnector residual stake (look-through)",
+    "method": "x invested",
+    "metric": 150,
+    "multiple": 1.0,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "ADMIE Holding (subject)",
+    "self": true,
+    "pe": 24.1,
+    "pb": 1.14
+   },
+   {
+    "name": "PPC (cross-reference)",
+    "pe": 19.5,
+    "evEbitda": 9.2,
+    "pb": 1.24
+   },
+   {
+    "name": "Metlen (cross-reference)",
+    "pe": 10.6,
+    "evEbitda": 7.7
+   },
+   {
+    "name": "Constellation Energy (cross-reference)",
+    "pe": 23.6,
+    "evEbitda": 14.0
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 3.6,
+    "dividends3y": 0.27
+   },
+   "base": {
+    "price3y": 6.1,
+    "dividends3y": 0.45
+   },
+   "bull": {
+    "price3y": 7.8,
+    "dividends3y": 0.6
+   }
+  },
+  "probabilities": {
+   "bear": 0.25,
+   "base": 0.5,
+   "bull": 0.25
+  },
+  "weights": {
+   "dcf": 0.0,
+   "asset": 0.45,
+   "pb": 0.35,
+   "sotp": 0.2
+  }
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Space Exploration Technologies Corp. (SpaceX)","ticker":"NASDAQ: SPCX","sector":"infrastructure","currency":"USD","fxToUsd":1,"price":147.95,"priceUnit":"share","asOf":"2026-09-05","phase":3,"phaseName":"Demand & monetisation structure","assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy. Findings rest on search-result summaries of a company with only two quarters of public reporting."]},
+ "findings":[
+  {"id":"p3-01","claim":"Q2 2026 — the first report as a public company — showed revenue of USD 7.8bn, up 92% year on year and ahead of the USD 6.81bn consensus, with adjusted EBITDA of USD 3.5bn, up 191%, against a net loss of USD 541m.","label":"FACT","source":"CNBC, 2026-08-04","asOf":"2026-08-04","confidence":"high","impact":"high","value":7800,"unit":"USD m"},
+  {"id":"p3-02","claim":"The Connectivity segment produced USD 4.3bn of Q2 revenue with 1.7 million net subscriber additions; the AI segment produced USD 2.6bn, up 247%.","label":"FACT","source":"CNBC Q2 2026 coverage","asOf":"2026-08-04","confidence":"high","impact":"high"},
+  {"id":"p3-03","claim":"Starlink reached 12 million subscribers by mid-2026, roughly double a year earlier, with analysts projecting 16.8 million by year end.","label":"CONSENSUS","source":"ValueAddVC Starlink analysis","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p3-04","claim":"In FY2025 Starlink generated USD 11.39bn of revenue, 61% of total company sales, and was the only profitable business with USD 4.42bn of segment income. Implied FY2025 total revenue was therefore approximately USD 18.7bn.","label":"FACT","source":"Tiger Brokers revenue breakdown; Sacra","asOf":"2025-12-31","confidence":"medium","impact":"high","value":11390,"unit":"USD m"},
+  {"id":"p3-05","claim":"Starlink is projected at roughly USD 20bn of 2026 revenue with approximately USD 14bn of EBITDA and USD 8.1bn of pro forma free cash flow — a 63% EBITDA margin, with about 85% of revenue recurring.","label":"CONSENSUS","source":"ValueAddVC; Tiger Brokers","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p3-06","claim":"Management projects a USD 100bn annualised revenue run rate by the end of 2026. Q2 2026 revenue of USD 7.8bn annualises to approximately USD 31bn, so the target implies roughly tripling the run rate within two quarters.","label":"MANAGEMENT GUIDANCE","source":"CNBC Q2 2026 coverage; Deutsche Bank commentary","asOf":"2026-08-04","confidence":"high","impact":"high","value":100000,"unit":"USD m ARR target"},
+  {"id":"p3-07","claim":"Deutsche Bank described the USD 100bn annualised recurring revenue target as 'likely very achievable'. The gap between USD 31bn annualised actual and USD 100bn claimed is the single most consequential unresolved question in this dossier.","label":"CONSENSUS","source":"Deutsche Bank via Investing.com","asOf":"2026-08-31","confidence":"medium","impact":"high"},
+  {"id":"p3-08","claim":"Demand classification: Starlink's 12 million subscriber base at ~85% recurring is [Existing Contracted]; the government and defence launch manifest is [Existing Contracted]; the Starship commercial ramp is [Unfunded Planned Project]; space-based data centres are [Speculative Demand]; and the USD 100bn run-rate target, at roughly triple the current rate with no disclosed bridge, is [Speculative Demand] until a bridge is shown.","label":"ANALYST ESTIMATE","source":"Applying the Phase 3 classification test","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p3-09","claim":"Growth is currently margin-accretive at the EBITDA line — adjusted EBITDA grew 191% against 92% revenue growth — but not at the net line, where the company still lost USD 541m in the quarter.","label":"ANALYST ESTIMATE","source":"Derived from the Q2 2026 figures","asOf":"2026-08-04","confidence":"high","impact":"high"},
+  {"id":"p3-10","claim":"FY2026 revenue is estimated at approximately USD 34bn, from Q2 of USD 7.8bn with continued sequential growth through the second half — well above FY2025's ~USD 18.7bn but far below the USD 100bn annualised claim.","label":"ANALYST ESTIMATE","source":"Derived from reported quarterly revenue and the growth trajectory","asOf":"2026-09-05","confidence":"medium","impact":"high","value":34000,"unit":"USD m"}
+ ],
+ "tables":[
+  {"title":"Reported results and the guidance gap",
+   "columns":["Measure","Value","Comment"],
+   "rows":[
+    ["Q2 2026 revenue","USD 7.8bn","+92% YoY, beat USD 6.81bn consensus"],
+    ["Q2 2026 adjusted EBITDA","USD 3.5bn","+191%"],
+    ["Q2 2026 net income","-USD 541m","Loss-making at the net line"],
+    ["Q2 annualised revenue","~USD 31bn","Simple annualisation"],
+    ["FY2026E revenue","~USD 34bn","Analyst estimate with H2 growth"],
+    ["Management ARR target, end-2026","USD 100bn","Roughly 3x the current run rate, in two quarters"]
+   ],
+   "note":"[FACT] for reported figures, [MANAGEMENT GUIDANCE] for the target, [ANALYST ESTIMATE] for the annualisation. The last row is the crux of the entire investment case and no public bridge from USD 31bn to USD 100bn has been disclosed."},
+  {"title":"Demand classified",
+   "columns":["Source","Evidence","Class","Base-case weight"],
+   "rows":[
+    ["Starlink subscriber base","12m subs, ~85% recurring","[Existing Contracted]","Full"],
+    ["Government and defence launch","Incumbent manifest","[Existing Contracted]","Full"],
+    ["AI segment revenue","USD 2.6bn in Q2, +247%","[Approved / Committed Pipeline]","Partial — very short history"],
+    ["Starship commercial ramp","Pre-commercial","[Unfunded Planned Project]","Minimal"],
+    ["Space-based data centres","No operating facility","[Speculative Demand]","Zero"],
+    ["USD 100bn ARR by end-2026","No disclosed bridge from USD 31bn","[Speculative Demand]","Zero until bridged"]
+   ],
+   "note":"[ANALYST ESTIMATE] The classification is the finding. Two of the six rows carry the valuation and both are speculative under this protocol's own test."}
+ ],
+ "gaps":[
+  {"item":"The bridge from a USD 31bn run rate to a USD 100bn ARR target","whyItMatters":"This single number does more work in the current market price than any other. Without a disclosed bridge — which segments, which contracts, which pricing — it cannot be classified as anything but speculative.","resolvedBy":"Q3 2026 results and management commentary, November 2026"},
+  {"item":"Starlink ARPU and churn","whyItMatters":"Subscribers doubled; whether revenue per user held or fell determines whether the growth is as valuable as it appears.","resolvedBy":"Segment disclosure"},
+  {"item":"AI segment revenue composition","whyItMatters":"USD 2.6bn growing 247% with three months of public history and a related-party origin. Whether it is third-party contracted revenue or internal is undisclosed.","resolvedBy":"10-Q segment note"},
+  {"item":"Order backlog","whyItMatters":"No backlog figure was found for launch or AI. Alphabet's comparable disclosure of USD 514bn of Cloud backlog is what allowed its capex to be classed as compensated; SpaceX has disclosed no equivalent.","resolvedBy":"10-Q remaining performance obligations"}
+ ],
+ "risks":[
+  {"text":"The USD 100bn ARR target implies roughly tripling the run rate in two quarters and no bridge has been disclosed. The market appears to be pricing it as delivered.","severity":"high","probability":"high"},
+  {"text":"The company is loss-making at the net line despite a 191% increase in adjusted EBITDA, and adjusted EBITDA excludes precisely the costs that matter here.","severity":"high","probability":"high"},
+  {"text":"No backlog disclosure means the capital programme cannot be classed as demand-backed in the way Alphabet's could.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — the first real test of the trajectory toward the USD 100bn target","window":"Nov 2026","impact":"High","probability":0.95},
+  {"text":"Starlink reaching the projected 16.8m subscribers by year end","window":"Feb 2027","impact":"Medium","probability":0.6}
+ ],
+ "conclusions":[
+  "The operating momentum is genuine and rapid: Q2 revenue up 92% to USD 7.8bn, adjusted EBITDA up 191%, Starlink subscribers doubled to 12 million with 1.7 million added in a single quarter.",
+  "Starlink is a genuinely excellent business — roughly USD 20bn of 2026 revenue at an estimated 63% EBITDA margin with ~85% recurring — and it is the only segment disclosed as profitable.",
+  "The company nonetheless lost USD 541m at the net line in the quarter. Adjusted EBITDA growth of 191% excludes the costs that make this a loss-making enterprise.",
+  "The decisive number is the USD 100bn annualised revenue target for end-2026 against roughly USD 31bn annualised today. No bridge has been disclosed, so under this protocol's own classification test it is speculative demand and earns zero base-case weight.",
+  "Unlike Alphabet, which could point to USD 514bn of contracted backlog to justify its capital programme, SpaceX has disclosed no equivalent order book."
+ ],
+ "thesisImpact":"Phase 3 draws the line between what is operating and what is claimed. Starlink at 12 million subscribers is real, profitable and compounding. The USD 100bn target, the Starship commercial ramp and space-based data centres are not yet evidenced. Phase 5 must value the first and treat the rest as option value rather than base case.",
+ "model":{"sharesOut":13000}
+}

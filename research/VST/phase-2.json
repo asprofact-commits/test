@@ -1,0 +1,208 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Vistra Corp.",
+  "ticker": "NYSE: VST",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1.0,
+  "price": 139.8,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on Q2 2026 results, PPA announcements and financial press."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The nuclear fleet is genuinely irreplaceable on the same grounds as Constellation's: 6.5 GW of existing US nuclear that cannot be permitted, financed or built on any timescale relevant to this decade's demand. That is why hyperscalers pay 20-year terms for it.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from US nuclear build timelines",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-02",
+   "claim": "Uprates are the growth mechanism, as at Constellation, and Vistra has quantified them: the Meta agreements include 433 MW of uprates across Perry, Davis-Besse and Beaver Valley. Cheap incremental megawatts from existing licensed sites, sold forward for twenty years.",
+   "label": "FACT",
+   "source": "Vistra Meta PPA disclosure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 433,
+   "unit": "MW of contracted uprates"
+  },
+  {
+   "id": "p2-03",
+   "claim": "That is the most attractive structure in this batch: the customer funds an uprate at an already-licensed nuclear site and contracts the output for two decades. It is capacity addition without permitting risk, siting risk or merchant exposure.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-04",
+   "claim": "The 27 GW gas fleet is the real earnings engine and it has no barrier to entry of that kind. Combined-cycle and peaking plant can be built in ERCOT in roughly three to four years, and the same data-centre demand that lifts prices is attracting new build.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from ERCOT build economics",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-05",
+   "claim": "The 8.7 GW coal fleet is a liability dressed as an asset. It carries retirement obligations, ash and water compliance costs and carbon exposure, and in a market where gas sets the marginal price its running hours compress as renewables build out. It is a fifth of the fleet.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the fleet composition and US coal economics",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-06",
+   "claim": "Geographic concentration is the structural weakness. Vistra is far more exposed to Texas than to any other market, so ERCOT's forward curve is close to being the company's income statement. Diversification across 20 retail states does not offset generation concentrated in one.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed market position",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-07",
+   "claim": "Vistra sits on the correct side of this batch's equipment bottleneck for its existing fleet and the wrong side for growth. Its installed base is already built, which is an advantage; but adding gas capacity now means ordering turbines from GE Vernova or Siemens Energy into a market where the gas turbine backlog is 116 GW and 70 GW respectively.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the GEV and ENR dossiers in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-08",
+   "claim": "That cuts both ways and is the strongest argument for the equity. If new gas capacity cannot be delivered for five years because the turbine queue is full, then existing dispatchable capacity in a load-growing market is scarcer than the current forward curve implies.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Barriers to entry, ranked within the fleet",
+   "columns": [
+    "Asset",
+    "Capacity",
+    "Barrier",
+    "Assessment"
+   ],
+   "rows": [
+    [
+     "Nuclear",
+     "6.5 GW",
+     "Very high — cannot be rebuilt",
+     "The reason hyperscalers sign 20-year terms"
+    ],
+    [
+     "Contracted uprates",
+     "433 MW",
+     "High — licensed sites only",
+     "Capacity growth without permitting or merchant risk"
+    ],
+    [
+     "Gas",
+     "27 GW",
+     "Medium — 3-4 years to build, but the turbine queue is full",
+     "The earnings engine; scarcity is temporary but real"
+    ],
+    [
+     "Coal",
+     "8.7 GW",
+     "None — the barrier is to staying open",
+     "Retirement, carbon and compliance liability"
+    ],
+    [
+     "Solar and storage",
+     "1.3 GW",
+     "Low",
+     "Small"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The asset with the strongest barrier is 15% of the fleet. The asset with none is 20%."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Coal retirement schedule and asset retirement obligations",
+   "whyItMatters": "8.7 GW with undisclosed retirement timing and cost is a direct and unquantified claim on equity value.",
+   "resolvedBy": "10-K"
+  },
+  {
+   "item": "ERCOT share of generation EBITDA",
+   "whyItMatters": "Management identifies Texas as the dominant exposure but the concentration is not quantified here, and it is the company's principal risk.",
+   "resolvedBy": "10-K segment disclosure"
+  },
+  {
+   "item": "Announced new-build gas capacity in ERCOT through 2030",
+   "whyItMatters": "Decides whether the current tightness persists or is competed away, which is the same question the GE Vernova dossier asks from the other side.",
+   "resolvedBy": "ERCOT interconnection queue"
+  },
+  {
+   "item": "Capital cost and funding of the 433 MW of uprates",
+   "whyItMatters": "Whether the customer or Vistra funds them determines the return on the most attractive growth in the group.",
+   "resolvedBy": "Not disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Generation is heavily concentrated in ERCOT, so the Texas forward curve is close to being the company's income statement.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "8.7 GW of coal carries retirement obligations, compliance cost and carbon exposure, with compressing run hours as renewables build out.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The 27 GW gas fleet that generates most of the earnings has no durable barrier to entry beyond the current turbine queue.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Uprate capacity entering service under contract",
+   "window": "2027-2030",
+   "impact": "High",
+   "probability": 0.75
+  },
+  {
+   "text": "ERCOT reserve margin tightening as data-centre load connects",
+   "window": "2027-2029",
+   "impact": "Very high",
+   "probability": 0.6
+  },
+  {
+   "text": "Coal retirement announcements clarifying the liability",
+   "window": "Ongoing",
+   "impact": "Medium",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "The nuclear fleet is genuinely irreplaceable on the same grounds as Constellation's, and that is precisely why hyperscalers will sign twenty-year terms for it.",
+  "The contracted uprate structure is the most attractive in this batch: 433 MW across Perry, Davis-Besse and Beaver Valley, adding capacity at already-licensed sites with the output sold forward for two decades — growth without permitting, siting or merchant risk.",
+  "But the earnings engine is 27 GW of merchant gas with no durable barrier beyond the current turbine queue, and 8.7 GW of coal that is a liability dressed as an asset.",
+  "Geographic concentration is the structural weakness. ERCOT's forward curve is close to being Vistra's income statement, and diversification across 20 retail states does not offset generation concentrated in one.",
+  "The turbine bottleneck cuts both ways, and this is the strongest argument for the equity: if new gas capacity cannot be delivered for five years because GE Vernova's and Siemens Energy's queues are full, existing dispatchable capacity in a load-growing market is scarcer than the forward curve implies."
+ ],
+ "thesisImpact": "Phase 2 identifies the real asymmetry. The contracted nuclear and uprate position is small but excellent and grows; the merchant gas position is large, concentrated and cyclical, and its scarcity value depends on a turbine queue that this batch's other dossiers show is being expanded away. Phase 5 should value the contracted and merchant halves separately.",
+ "model": {
+  "sharesOut": 340
+ }
+}

@@ -1,0 +1,234 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Constellation Energy Corporation",
+  "ticker": "NASDAQ: CEG",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1,
+  "price": 283.78,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment egress proxy.",
+   "CONFIDENCE WARNING. Shares outstanding (~362m) and net debt (~USD 30bn post-Calpine) are unsourced estimates. A 15% error in either moves fair value by more than the gap to the market price."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "Q2 2026 adjusted operating earnings were USD 2.55 per share against USD 1.91 a year earlier, up 33%, driven by the addition of Calpine, higher PJM capacity prices and stronger realised customer margins in the commercial business.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 2.55,
+   "unit": "USD adj EPS"
+  },
+  {
+   "id": "p3-02",
+   "claim": "Full-year 2026 adjusted operating earnings guidance was raised to USD 11.50-12.50 per share from USD 11.00-12.00, reflecting strong year-to-date performance.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Constellation Q2 2026 guidance",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 12.0,
+   "unit": "USD adj EPS midpoint"
+  },
+  {
+   "id": "p3-03",
+   "claim": "At USD 283.78 and a guidance midpoint of USD 12.00, the stock trades at approximately 23.6x FY2026 adjusted operating earnings \u2014 a multiple that does not depend on the uncertain share count.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 283.78 / 12.00",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 23.6,
+   "unit": "x FY2026E adj EPS"
+  },
+  {
+   "id": "p3-04",
+   "claim": "Demand for the product is structurally scarce and growing, but the contracted share is what matters: 920 MW signed in one quarter at 18.5 years brings roughly 30% of clean baseload under contract.",
+   "label": "FACT",
+   "source": "Constellation Q2 2026 results",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-05",
+   "claim": "Demand classification: the contracted ~30% of baseload at 18.5-year duration is [Existing Contracted]; the Calpine dispatchable fleet and retail book are [Existing Contracted] but short-dated; further hyperscaler PPAs are [Approved / Committed Pipeline] given the demonstrated signing rate; and the assumption that the remaining ~70% of baseload eventually contracts at similar premiums is [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-06",
+   "claim": "Growth is margin-accretive at present, but the drivers are mixed in quality: Calpine is an acquisition, higher PJM capacity prices are an auction outcome, and higher realised customer margins are a commercial achievement. Only the third is repeatable by management action.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed Q2 drivers",
+   "asOf": "2026-08-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-07",
+   "claim": "The market has already substantially repriced this story. At USD 283.78 the stock is roughly 31% below its 52-week high of USD 412.70 and 24% above its low of USD 228.63 \u2014 a very different starting point from the other AI-power names in this batch.",
+   "label": "FACT",
+   "source": "Market data, September 2026",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Q2 2026 and the guidance",
+   "columns": [
+    "Measure",
+    "Value",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "Q2 2026 adjusted operating EPS",
+     "USD 2.55",
+     "vs USD 1.91, +33%"
+    ],
+    [
+     "FY2026 guidance",
+     "USD 11.50-12.50",
+     "Raised from 11.00-12.00"
+    ],
+    [
+     "Implied P/E at USD 283.78",
+     "~23.6x",
+     "Independent of the share count estimate"
+    ],
+    [
+     "Nuclear PPAs signed in Q2",
+     "920 MW",
+     "18.5-year average duration"
+    ],
+    [
+     "Clean baseload contracted",
+     "~30%",
+     "~70% remains merchant"
+    ],
+    [
+     "52-week range",
+     "USD 228.63 - 412.70",
+     "Currently 31% below the high"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] with [ANALYST ESTIMATE] on the multiple. Unlike GE Vernova, this equity has already de-rated substantially."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "Contracted nuclear baseload (~30%)",
+     "920 MW signed, 18.5yr average",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "Calpine dispatchable fleet",
+     "Acquired, operating",
+     "[Existing Contracted], short-dated",
+     "Full"
+    ],
+    [
+     "Retail supply book",
+     "Leading US position",
+     "[Existing Contracted], short-dated",
+     "Full"
+    ],
+    [
+     "Further hyperscaler PPAs",
+     "Demonstrated signing rate",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "Remaining ~70% contracting at similar premiums",
+     "Assumption",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The classification is unusually favourable \u2014 most of the revenue is already contracted or operating. What is speculative is the extension of the premium to the rest of the fleet."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Realised price in the nuclear PPAs",
+   "whyItMatters": "The thesis rests on premium pricing and the price is confidential. Duration and volume are disclosed; the premium is not.",
+   "resolvedBy": "Not disclosed"
+  },
+  {
+   "item": "Merchant hedging position and open exposure",
+   "whyItMatters": "Roughly 70% of baseload is merchant. The earnings sensitivity to power prices is the largest unquantified variable.",
+   "resolvedBy": "10-Q hedging disclosure"
+  },
+  {
+   "item": "Calpine contribution split within the guidance raise",
+   "whyItMatters": "Distinguishes acquired earnings from organic improvement.",
+   "resolvedBy": "Segment disclosure"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly 70% of clean baseload is merchant, so most of the fleet is exposed to power prices and capacity auctions rather than to the contracted premium.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Two of the three cited Q2 earnings drivers \u2014 Calpine and PJM capacity prices \u2014 are not repeatable management actions.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "There is no disclosed price premium, only disclosed duration and volume. The core thesis claim is unmeasured.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q3 2026 results and further PPA announcements",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Next PJM capacity auction outcome",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "Operating momentum is strong: Q2 adjusted operating EPS up 33% to USD 2.55, with FY2026 guidance raised to USD 11.50-12.50.",
+  "At USD 283.78 the stock trades at approximately 23.6x the guidance midpoint \u2014 a multiple that does not depend on the uncertain share count, and the most reliable valuation anchor in this dossier.",
+  "The demand classification is unusually favourable for this protocol. Most revenue is contracted or operating; only the extension of the premium to the remaining 70% of baseload is speculative.",
+  "The quality of the earnings drivers is mixed. Calpine is an acquisition and higher PJM capacity prices are an auction outcome; only improved customer margins are a repeatable commercial achievement.",
+  "The market has already repriced this substantially \u2014 31% below the 52-week high. That is a materially better starting point than GE Vernova in the same batch."
+ ],
+ "thesisImpact": "Phase 3 establishes that the operating case is sound and already partly in the price. Unlike the other AI-power names in this batch, a significant de-rating has already occurred, which changes the risk-reward without changing the business.",
+ "model": {
+  "sharesOut": 362
+ }
+}

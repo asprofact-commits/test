@@ -1,0 +1,218 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "ADMIE (IPTO) Holding S.A.",
+  "ticker": "ATHEX: ADMIE",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 4.49,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy. Findings rest on search-result summaries of the FY2025 results release, the June 2026 share capital increase documentation and Greek and Cypriot press.",
+   "STRUCTURE. ADMIE Holding is a holding company whose sole asset is a 51% stake in IPTO S.A., the Greek transmission system operator. The remaining 49% is held by the Greek state (through DES ADMIE) and State Grid Corporation of China. Every figure in this dossier is therefore a look-through of IPTO at 51%, and that is stated wherever it applies.",
+   "A widely syndicated headline reported the June 2026 share issue price as EUR 1.00. That figure is the nominal-value context, not the offer. The offer was 130,864,197 new shares at EUR 4.17, completed 18 June 2026. The EUR 1.00 figure is not used anywhere in this dossier."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "This is the only genuinely regulated business in the batch, and the thesis's framing fits it in a way it did not fit PPC. IPTO is the Greek electricity transmission system operator: a legal monopoly, remunerated on a regulated asset base, with revenue set by the regulator rather than by a market.",
+   "label": "FACT",
+   "source": "IPTO corporate structure",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-02",
+   "claim": "Pricing power is therefore neither commercial nor competitive — it is the allowed return. The company cannot raise price, cannot lose share and cannot be disintermediated. What it can suffer is a regulatory reset, and that is the entire risk architecture of the equity.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the regulated model",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-03",
+   "claim": "The growth mechanism in the thesis is real, funded and specific. IPTO's 2026-2029 Strategic Plan carries roughly EUR 6bn of investment and is intended to take the regulated asset base from about EUR 3.3bn in 2025 to roughly EUR 7bn by 2029 — very nearly a doubling.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "IPTO 2026-2029 Strategic Plan and capital increase documentation",
+   "asOf": "2026-06-16",
+   "confidence": "high",
+   "impact": "high",
+   "value": 7,
+   "unit": "EUR bn regulated asset base target 2029"
+  },
+  {
+   "id": "p1-04",
+   "claim": "That is the cleanest growth mechanism in this batch. A regulated network earns its allowed return on whatever it is permitted to invest, so RAB growth converts almost mechanically into earnings growth — with no volume risk, no price risk and no counterparty risk.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-05",
+   "claim": "But shareholders funded it, and the thesis does not say so. ADMIE Holding issued 130,864,197 new shares at EUR 4.17 in a non-preemptive book-build completed on 18 June 2026, raising roughly EUR 530-546m to fund its 51% pro-rata participation in IPTO's EUR 1bn capital increase. Against 232m shares previously outstanding that is a 56% increase in the share count.",
+   "label": "FACT",
+   "source": "ADMIE Holding capital increase documentation",
+   "asOf": "2026-06-18",
+   "confidence": "high",
+   "impact": "high",
+   "value": 56,
+   "unit": "% increase in share count"
+  },
+  {
+   "id": "p1-06",
+   "claim": "The issue was non-preemptive, so existing holders received no rights and no compensating instrument. The dilution was uncompensated, though the EUR 4.17 price was only a modest discount to the market — a materially healthier structure than a deeply discounted rights issue.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the offer structure",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "This is the second Greek company in this batch to fund a grid build by materially diluting shareholders in 2026. PPC increased its share count by 62% in April; ADMIE Holding by 56% in June. Both descriptions in the thesis set present the plan and omit who paid for it.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the PPC dossier in this batch",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-08",
+   "claim": "Profitability moved the wrong way in the most recent reported year. Consolidated adjusted net profit was EUR 132.4m in FY2025 against EUR 157.9m in FY2024, a decline of about 16%, in a business whose asset base was growing.",
+   "label": "FACT",
+   "source": "ADMIE Holding FY2025 results",
+   "asOf": "2026-04-01",
+   "confidence": "high",
+   "impact": "high",
+   "value": 132.4,
+   "unit": "EUR m FY2025 adjusted net profit"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The thesis sentence, tested clause by clause",
+   "columns": [
+    "Claim",
+    "Verdict",
+    "Evidence"
+   ],
+   "rows": [
+    [
+     "Regulated Greek power transmission operator",
+     "CONFIRMED — the only truly regulated business in the batch",
+     "IPTO is the Greek TSO; a legal monopoly on a regulated asset base"
+    ],
+    [
+     "Tethered to physical expansion of the grid",
+     "CONFIRMED and quantified",
+     "RAB EUR 3.3bn (2025) to ~EUR 7bn (2029) on ~EUR 6bn of capex"
+    ],
+    [
+     "Massive interconnector projects",
+     "Confirmed — but see Phase 2",
+     "The flagship Great Sea Interconnector is now Meridiam-majority"
+    ],
+    [
+     "Defensive, low-volatility",
+     "Largely confirmed",
+     "Regulated revenue; no volume, price or counterparty risk"
+    ],
+    [
+     "Yield investment",
+     "QUESTIONABLE — the arithmetic is strained",
+     "56% more shares; see Phase 3"
+    ],
+    [
+     "Implied: therefore buy",
+     "Not tested by those facts",
+     "Phase 5"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] The framing that failed for PPC succeeds here. What needs testing is not whether this is a regulated network — it plainly is — but whether the yield survives the build."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The current regulatory period's allowed WACC and its reset date",
+   "whyItMatters": "For a regulated network the allowed return IS the pricing power. A 50bp change moves earnings and fair value materially, and the reset timetable is the principal event risk.",
+   "resolvedBy": "RAE regulatory decisions"
+  },
+  {
+   "item": "The cause of the 16% FY2025 profit decline",
+   "whyItMatters": "A regulated network with a growing asset base should not normally see profit fall. Whether this is interest cost, depreciation phasing or a regulatory adjustment changes the forward picture entirely.",
+   "resolvedBy": "FY2025 annual report"
+  },
+  {
+   "item": "IPTO net debt and gearing against the RAB",
+   "whyItMatters": "Every look-through valuation in Phase 5 depends on it, and it is the input this dossier is least sure of.",
+   "resolvedBy": "IPTO financial statements"
+  },
+  {
+   "item": "Whether ADMIE Holding equity-accounts or consolidates IPTO",
+   "whyItMatters": "Determines whether the reported EUR 132.4m is the group figure or the holding company's share, which changes per-share earnings by roughly a factor of two.",
+   "resolvedBy": "Annual report accounting policy note"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The share count rose 56% in June 2026 through a non-preemptive issue, so existing holders were diluted without rights and the thesis does not mention it.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The allowed return is set by the regulator and is the entire pricing-power architecture. A WACC reset is the principal event risk and its timing is not established here.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "FY2025 adjusted net profit fell about 16% to EUR 132.4m in a year when the asset base was growing, and the cause is not established.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The listed vehicle owns 51% of the operating company, so it controls neither the dividend policy nor the capital plan outright.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 results — the first full picture on the enlarged share count",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "Regulatory decision on the allowed WACC for the next period",
+   "window": "Unknown",
+   "impact": "Very high",
+   "probability": 0.5
+  },
+  {
+   "text": "RAB progression disclosure toward the EUR 7bn 2029 target",
+   "window": "Annual",
+   "impact": "High",
+   "probability": 0.8
+  }
+ ],
+ "conclusions": [
+  "This is the only genuinely regulated business in the batch, and the thesis's framing fits it where it did not fit PPC. IPTO is a legal monopoly remunerated on a regulated asset base — no volume risk, no price risk, no counterparty risk.",
+  "The growth mechanism is the cleanest here: roughly EUR 6bn of investment taking the regulated asset base from about EUR 3.3bn in 2025 to roughly EUR 7bn by 2029. In a regulated network, RAB growth converts almost mechanically into earnings growth.",
+  "But shareholders funded it. ADMIE Holding issued 130,864,197 shares at EUR 4.17 in a non-preemptive book-build in June 2026 — a 56% increase in the share count — to fund its 51% share of IPTO's EUR 1bn capital increase. The thesis does not mention it.",
+  "That makes two Greek companies in this batch that funded a grid build by materially diluting shareholders in 2026: PPC by 62% in April, ADMIE Holding by 56% in June. Both descriptions present the plan and omit who paid for it.",
+  "And profit moved the wrong way in the last reported year: adjusted net profit fell about 16% to EUR 132.4m from EUR 157.9m, in a business whose asset base was growing. The cause is not established here and it is the most important thing this dossier does not know."
+ ],
+ "thesisImpact": "Phase 1 confirms the regulated architecture and the RAB mechanism, and establishes that the share count has risen 56%. Phase 5 must value the company per share on the enlarged base and must test whether the 'yield' half of the thesis survives a build funded partly by shareholders.",
+ "model": {
+  "sharesOut": 362.86
+ }
+}

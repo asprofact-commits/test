@@ -1,0 +1,208 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Siemens Energy AG",
+  "ticker": "XETRA: ENR",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 143.68,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 1,
+  "phaseName": "Pricing-power architecture",
+  "assumedContext": [
+   "No primary filing could be retrieved: every external domain is blocked by this environment's egress proxy. Findings rest on search-result summaries of Siemens Energy's Q3 FY2026 earnings release, the FY2025 annual results and reputable trade press.",
+   "Siemens Energy's fiscal year ends 30 September. Q3 FY2026 covers 1 April to 30 June 2026, reported 6 August 2026.",
+   "All figures in EUR. Net cash is an estimate (see Phase 4); shares outstanding are the disclosed 9M weighted-average basic count."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p1-01",
+   "claim": "The thesis figure is exact. Order backlog reached EUR 162bn at the end of Q3 FY2026, an all-time high, after orders of EUR 17.9bn in the quarter.",
+   "label": "FACT",
+   "source": "Siemens Energy Q3 FY2026 earnings release",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 162,
+   "unit": "EUR bn order backlog"
+  },
+  {
+   "id": "p1-02",
+   "claim": "The scarcity in the thesis is independently verifiable and severe. Large power transformer lead times average roughly 128 weeks and reach up to four years; generator step-up units run about 144 weeks; 38kV switchgear 78-104 weeks. Transformer prices are up roughly 77% since 2019.",
+   "label": "FACT",
+   "source": "Trade press surveys of 2026 grid-equipment lead times",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 128,
+   "unit": "weeks average LPT lead time"
+  },
+  {
+   "id": "p1-03",
+   "claim": "The company is demonstrably converting that scarcity into margin, and faster than it promised. Grid Technologies now expects a profit margin before special items of 18-20% in FY2026 — a level originally targeted for FY2028, reached two years early — on comparable revenue growth of 25-27%.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Siemens Energy FY2026 segment guidance, Q3 FY2026",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p1-04",
+   "claim": "Group profitability has roughly doubled in a single year. Profit before special items was 6.0% of revenue in FY2025 (EUR 2,355m); FY2026 guidance is 10-12% with management trending to the upper end. Q3 FY2026 alone printed 14.2% (EUR 1,623m), more than triple the prior-year quarter.",
+   "label": "FACT",
+   "source": "Siemens Energy FY2025 results and Q3 FY2026 earnings release",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 14.2,
+   "unit": "% Q3 margin before special items"
+  },
+  {
+   "id": "p1-05",
+   "claim": "Pricing power here is a delivery-slot auction, not a price list. Competition in grid equipment has shifted from price to manufacturing capacity and guaranteed delivery dates; utilities are prioritising suppliers that can commit to a slot. That is the purest form of scarcity rent, and it is exactly as durable as the scarcity.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed lead-time and pricing data",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-06",
+   "claim": "The central tension, and it is the same one found in GE Vernova. Siemens Energy plans roughly EUR 6bn of investment by 2028 with about a third — some EUR 2bn — going to transformer and gas-insulated switchgear plants, expanding that capacity by about 50% by 2030. The company is spending EUR 2bn to relieve the shortage it is being valued on.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Siemens Energy capital markets day; capacity expansion disclosures",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-07",
+   "claim": "'Dominant' needs qualifying. This is a three-to-four firm oligopoly, and the others are expanding at least as aggressively: Hitachi Energy is committing more than USD 1bn to North American transformer capacity including a USD 457m plant intended to be the largest US large-power-transformer facility by 2028, and GE Vernova is expanding through Prolec.",
+   "label": "FACT",
+   "source": "Trade press on North American transformer capacity investment",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p1-08",
+   "claim": "The loss-making business the thesis omits is no longer loss-making at the run rate. Siemens Gamesa lost EUR 260m before special items in H1 FY2026 against EUR 932m a year earlier, narrowed to a EUR 44m quarterly loss, and is guided to break even in FY2026. That is the single largest difference between this company and GE Vernova, whose wind segment is still contracting.",
+   "label": "FACT",
+   "source": "Siemens Energy H1 and Q2/Q3 FY2026 disclosures",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The thesis sentence, tested clause by clause",
+   "columns": [
+    "Claim",
+    "Verdict",
+    "Evidence"
+   ],
+   "rows": [
+    [
+     "EUR 162bn order backlog",
+     "Confirmed exactly",
+     "Q3 FY2026 all-time high"
+    ],
+    [
+     "Severe component scarcity",
+     "Confirmed independently",
+     "LPT lead times ~128 weeks, prices +77% since 2019"
+    ],
+    [
+     "Leveraging it to its advantage",
+     "Confirmed, and ahead of plan",
+     "Grid Technologies 18-20% margin in FY2026, the FY2028 target"
+    ],
+    [
+     "Transformers, switchgear, gas turbines",
+     "Confirmed",
+     "Grid backlog record EUR 51bn; gas turbine backlog approaching 70 GW"
+    ],
+    [
+     "'Dominant'",
+     "Overstated",
+     "Three-to-four firm oligopoly; Hitachi Energy investing >USD 1bn in US capacity"
+    ],
+    [
+     "Implied: therefore buy",
+     "Not tested by those facts",
+     "Phase 5"
+    ]
+   ],
+   "note": "[FACT/MANAGEMENT GUIDANCE] Every operating claim survives. This is the most accurate thesis description in the batch so far."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Backlog margin profile",
+   "whyItMatters": "EUR 162bn of backlog booked across four years at very different price levels. The 2024 vintage and the 2026 vintage do not carry the same margin, and the mix determines when reported margin peaks.",
+   "resolvedBy": "Annual report backlog disclosure"
+  },
+  {
+   "item": "Backlog conversion schedule",
+   "whyItMatters": "EUR 162bn against roughly EUR 45bn of annual revenue is 3.6 years of work, but the conversion is not linear and the long-dated tail is priced differently from the near tail.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Competitor capacity additions in aggregate",
+   "whyItMatters": "Decides whether the shortage ends in 2028 or 2032, which is the single largest swing factor in the valuation.",
+   "resolvedBy": "Not centrally disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The company is investing roughly EUR 2bn to expand transformer and switchgear capacity by ~50% by 2030, and its two largest competitors are doing the same. The scarcity rent is being deliberately competed away.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Pricing power is a delivery-slot premium, which is exactly as durable as the delivery constraint and no more.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "'Dominant' overstates the position: this is one of three to four credible suppliers, and Hitachi Energy is expanding North American capacity at least as fast.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q4 and FY2026 results — confirmation of the upper-end margin",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "FY2027 guidance and any update to the mid-term margin frame",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Siemens Gamesa confirmed at break-even for the full year",
+   "window": "Nov 2026",
+   "impact": "Medium",
+   "probability": 0.7
+  }
+ ],
+ "conclusions": [
+  "Every operating claim in the thesis checks out, and the EUR 162bn figure is exact. This is the most accurate description in the batch.",
+  "The scarcity is real and independently measurable: transformer lead times around 128 weeks and up to four years, prices up roughly 77% since 2019.",
+  "The company is converting it faster than it promised. Grid Technologies will hit its FY2028 margin target of 18-20% in FY2026, and group margin before special items has roughly doubled from 6.0% to a guided 10-12%.",
+  "The tension is identical to GE Vernova's, and it is the batch's recurring finding: Siemens Energy is spending roughly EUR 2bn to expand transformer and switchgear capacity by ~50% by 2030. The capacity build is the mechanism that ends the premium.",
+  "One material point in the company's favour that the thesis omits: Siemens Gamesa has gone from a EUR 932m half-year loss to a guided break-even. GE Vernova's wind business has not."
+ ],
+ "thesisImpact": "Phase 1 confirms the thesis in full and identifies the question Phase 5 must answer: not whether the scarcity rent is real — it plainly is — but how many years of it are already in the price, given that the company and both its main competitors are simultaneously building the capacity that ends it.",
+ "model": {
+  "sharesOut": 854
+ }
+}

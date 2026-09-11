@@ -1,0 +1,360 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Meta Platforms, Inc.",
+    "ticker": "NASDAQ: META",
+    "sector": "software",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 615.20,
+    "priceUnit": "share",
+    "asOf": "2026-09-06",
+    "phase": 5,
+    "phaseName": "Valuation, stress tests & investment committee memo",
+    "assumedContext": [
+      "Network egress blocked except the search index. The peer table could not be completed: P/B, net debt/EBITDA, ROE, dividend yield and 3-year CAGRs are unavailable for the peer set, so peer multiples are used as a cross-check only, never as a primary method.",
+      "Phases 1-4 were run in this session and are loaded; no phase content was assumed.",
+      "Meta has a single listing in USD with no ADR line, so no FX conversion is applied."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p5-01",
+      "claim": "Triangulated probability-weighted fair value is $496 per share against a price of $615.20 - a 19.3% overvaluation - on a 30/45/25 bear/base/bull weighting with methods weighted SOTP 30%, DCF 35%, EV/IC 25% and P/B-ROE 10%.",
+      "label": "ANALYST ESTIMATE",
+      "value": 496,
+      "unit": "USD per share fair value",
+      "source": "Derived in Phase 5 section 5.3 from the scenario models supplied in this file's model block",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-02",
+      "claim": "Expected three-year IRR to September 2029 including dividends is 4.5% (bear -24.4%, base +3.3%, bull +27.1%) against a 10.0% cost of equity and a 4.79% risk-free rate. The investor is being offered roughly a Treasury return for mega-cap equity risk.",
+      "label": "ANALYST ESTIMATE",
+      "value": 4.5,
+      "unit": "% expected 3-year IRR",
+      "source": "Derived from the scenario three-year targets and dividends in this file's model block, against the price of $615.20",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-03",
+      "claim": "Approximately 87% of DCF enterprise value is terminal value in every scenario (86.9% bear, 86.3% base, 87.4% bull), which is why the DCF is weighted at 35% rather than carrying the primary weight.",
+      "label": "ANALYST ESTIMATE",
+      "value": 86.3,
+      "unit": "% of base-case EV in terminal value",
+      "source": "Derived in Phase 5 section 5.3 DCF table",
+      "asOf": "2026-09-06",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p5-04",
+      "claim": "Meta trades at 18.2x consensus 2027 EPS against a populated-peer median of about 27.9x, a 35% headline discount. Decomposed: ~15 points of P/E explained by free cash flow at zero, ~5 by the zero-contract revenue book, ~5 by controlled-company governance and ~2 by litigation overhang, leaving an unexplained residual of only about 3 points, roughly 11% of price.",
+      "label": "ANALYST ESTIMATE",
+      "value": 11,
+      "unit": "% unexplained peer discount",
+      "source": "Derived from peer P/E data retrieved 2026-09-06 (Alphabet 16.8-17.0x, Microsoft 26.7x, Amazon 29.25x stale at 2026-04-02, Apple 36.08x, Netflix 31.23x, Oracle 25.02x, Pinterest 43.12x, Reddit ~50x) and the Phase 1-4 findings",
+      "asOf": "2026-09-06",
+      "confidence": "low",
+      "impact": "medium"
+    },
+    {
+      "id": "p5-05",
+      "claim": "Sum-of-the-parts values Family of Apps at $1,442bn (FY2026E segment EBIT of ~$103bn at 14x), Reality Labs at negative $74bn (four years of the $18.5bn annual loss run-rate) and the AI compute and Superintelligence Labs stack at $75bn (cumulative 2025-26 incremental AI capital of ~$150bn marked at half of cost), giving $568 per share - the closest method to the market price.",
+      "label": "ANALYST ESTIMATE",
+      "value": 568,
+      "unit": "USD per share, SOTP",
+      "source": "Derived in Phase 5 section 5.3; segment EBIT extrapolated from Q2 2026 Family of Apps operating income of $23,394m and Reality Labs operating loss of $4,619m",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-06",
+      "claim": "Meta trades at 6.2x invested capital and 6.0x book value, against a justified EV/IC of 4.3x on the Phase 4 spread ((ROIC 31% - g 3%) / (WACC 9.5% - g 3%)) and a justified P/B of 3.0x at a 24% normalised ROE and a 10.0% cost of equity.",
+      "label": "ANALYST ESTIMATE",
+      "value": 4.3,
+      "unit": "x justified EV/invested capital",
+      "source": "Derived from Phase 4 invested capital of $254.8bn, ROIC and WACC estimates, and BVPS of $102.52",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-07",
+      "claim": "Scenario probabilities are set at bear 30 / base 45 / bull 25 rather than symmetric, because management raised capex guidance twice during 2026 and declined to guide 2027 at all - the decision-maker's observed behaviour has been consistently toward more spending.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0.30,
+      "unit": "bear probability",
+      "source": "Weighting judgement derived from Meta's Q1 2026 and Q2 2026 guidance revisions and the Q2 2026 call refusal to guide 2027",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-08",
+      "claim": "FY2027 capex guidance, expected late January 2027, is worth approximately 30% of base-case fair value across its plausible range: guidance at or below $150bn adds roughly $120 per share to the base case, while guidance above $180bn moves the weighting toward the bear case.",
+      "label": "ANALYST ESTIMATE",
+      "value": 30,
+      "unit": "% of base-case fair value at risk on one disclosure",
+      "source": "Derived by re-running the base-case DCF across a $150bn-$180bn 2027 capex range",
+      "asOf": "2026-09-06",
+      "confidence": "medium",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Peer set and justification",
+      "columns": ["Peer", "Why it is in the set"],
+      "rows": [
+        ["Alphabet (GOOGL)", "The only true structural comparable: ad auction, AI capex at similar scale, dual-class control"],
+        ["Microsoft (MSFT)", "AI capital intensity at Meta's scale but recovered through contracted enterprise revenue - the contrast that prices Meta's zero-contract book"],
+        ["Amazon (AMZN)", "Hyperscale capex plus a large advertising business; the closest capital-cycle analogue"],
+        ["Apple (AAPL)", "The mega-cap counterfactual: a consumer platform that chose not to run an AI capital programme"],
+        ["Netflix (NFLX)", "Consumer attention monetised at high margin with light capital - what Meta's multiple looked like before 2025"],
+        ["Oracle (ORCL)", "AI infrastructure funded with debt but sold on multi-year contracted backlog; the most instructive contrast in the table"],
+        ["Pinterest (PINS)", "Pure-play social advertising with no AI capital burden - isolates the ad business from the compute business"],
+        ["Reddit (RDDT)", "Pure-play social advertising plus data licensing; the market's chosen 'social ads + AI' expression"],
+        ["Snap (SNAP)", "Pure-play social advertising, structurally disadvantaged; the downside of the ad-only comparison"],
+        ["Tencent (0700.HK)", "Global social and advertising under controlled ownership - the governance analogue"]
+      ]
+    },
+    {
+      "title": "Peer multiples (materially incomplete - see gaps)",
+      "columns": ["Company", "P/E", "EV/EBITDA", "P/B", "ND/EBITDA", "ROE", "Div yield", "As of"],
+      "rows": [
+        ["Meta (self)", "19.4x 26E / 18.2x 27E", "~13.0x 26E", "6.0x", "-0.06x", "~26%", "0.34%", "2026-09-06"],
+        ["Alphabet", "16.8-17.0x", "12.55x", "n/d", "n/d", "n/d", "n/d", "2026-09-04"],
+        ["Microsoft", "26.7x", "17.4x", "n/d", "n/d", "n/d", "n/d", "2026"],
+        ["Amazon", "29.25x (stale)", "n/d", "n/d", "n/d", "n/d", "n/d", "2026-04-02"],
+        ["Apple", "36.08x", "n/d", "n/d", "n/d", "n/d", "n/d", "2026-08-27"],
+        ["Netflix", "31.23x", "n/d", "n/d", "n/d", "n/d", "n/d", "2026-09-03"],
+        ["Oracle", "25.02x", "n/d", "n/d", "n/d", "n/d", "n/d", "2026-09-02"],
+        ["Pinterest", "43.12x", "31.99x", "n/d", "n/d", "n/d", "n/d", "2026"],
+        ["Reddit", "~50x", "n/d", "n/d", "n/d", "n/d", "n/d", "2026"],
+        ["Snap", "n/d (-41% YTD)", "n/d", "n/d", "n/d", "n/d", "n/d", "2026-07"],
+        ["Tencent", "n/d", "n/d", "n/d", "n/d", "n/d", "n/d", "-"],
+        ["Median (populated)", "~27.9x", "~17.4x", "-", "-", "-", "-", ""]
+      ],
+      "note": "Empty cells are shown empty rather than estimated. Peer multiples are used as a cross-check only."
+    },
+    {
+      "title": "Decomposing the 35% peer discount",
+      "columns": ["Component", "Points of P/E", "Justified?"],
+      "rows": [
+        ["Free cash flow at ~zero while peers convert", "~15", "Yes - FY2026E FCF about zero on $252bn of revenue; dividend debt-funded"],
+        ["Zero contracted revenue vs Microsoft and Oracle backlogs", "~5", "Yes - a spot book mechanically deserves a lower multiple"],
+        ["Controlled company, no minority mechanism", "~5", "Yes - 61% of votes in one hand, buybacks already suspended"],
+        ["Litigation and design-mandate overhang", "~2", "Yes, though largely resolved in cash terms by the August settlement"],
+        ["Unexplained residual", "~3 (about 11% of price)", "The actual opportunity - not enough on its own"]
+      ]
+    },
+    {
+      "title": "Scenario assumptions",
+      "columns": ["", "Bear (30%)", "Base (45%)", "Bull (25%)"],
+      "rows": [
+        ["Trigger set", "2027 capex >=$180bn; ad-demand pause on the 2022 pattern; OpenAI/TikTok take 2-3pts of incremental budget; design mandates cut teen impressions; USD strengthens", "2027 capex ~$165bn then plateaus; ad growth decelerates gracefully to mid-teens; mandates cost ~1% of impressions; no second revenue stream at scale", "2027 capex ~$165bn then falls; price per ad stays above +10%; agents and Meta AI subscriptions reach $20bn+; buybacks resume; rates fall"],
+        ["Revenue 2027 to 2031 ($bn)", "275 to 355", "300 to 490", "315 to 555"],
+        ["OCF margin", "50% to 50%", "55% to 58%", "56% to 62%"],
+        ["Capex ($bn)", "160 to 100 (forced retrenchment)", "165 to 175 (plateau)", "165 to 170"],
+        ["FCF 2027-31 ($bn)", "-22.5, -6, 23.6, 56.6, 77.5", "0, 17, 46, 80, 109", "11.4, 42.5, 86, 132, 174"],
+        ["WACC", "10.8%", "9.5%", "8.8%"],
+        ["Terminal growth", "1.5%", "3.0%", "3.5%"],
+        ["Normalised ROE", "15%", "24%", "30%"],
+        ["EV/IC multiple", "3.0x", "4.3x", "5.5x"]
+      ],
+      "note": "A bear case run at the base WACC is not a stress test: the bear scenario is a different credit and a different equity risk premium."
+    },
+    {
+      "title": "Triangulation",
+      "columns": ["Method", "Weight", "Probability-weighted value", "Why this weight"],
+      "rows": [
+        ["SOTP", "30%", "$568", "The only method that separates the extraordinary franchise from the unproven programme - which is the entire question"],
+        ["DCF", "35%", "$546", "Mandatory and directionally right, but ~87% of value is terminal, so it cannot carry the primary weight when the disputed input is the next three years"],
+        ["EV/IC", "25%", "$423", "Anchored to the measured ROIC-WACC spread rather than a peer average; the cleanest expression of Phase 4"],
+        ["P/B vs ROE", "10%", "$290", "Structurally harsh on a compounder; retained as a floor, not an answer"],
+        ["Peer multiples", "cross-check", "~11% unexplained residual", "Peer table materially incomplete"],
+        ["TRIANGULATED FAIR VALUE", "", "$496", "-19.3% against $615.20"]
+      ]
+    },
+    {
+      "title": "Justified P/B sensitivity (value per share, BVPS $102.52)",
+      "columns": ["ROE", "COE 9.0%", "COE 10.0%", "COE 11.0%"],
+      "rows": [
+        ["15% (bear)", "$205", "$176", "$154"],
+        ["24% (base)", "$359", "$308", "$269"],
+        ["30% (bull)", "$462", "$395", "$346"]
+      ],
+      "note": "Justified P/B = (ROE - g) / (COE - g) at g = 3.0%. Meta trades at 6.0x book."
+    },
+    {
+      "title": "Catalyst calendar",
+      "columns": ["Window", "Catalyst", "Impact", "Probability", "Re-rates multiple or changes cash flow"],
+      "rows": [
+        ["Late Oct 2026", "Q3 2026: incremental settlement charge, first quarter under design mandates, first 2027 capex signal", "High", "0.95", "Both"],
+        ["Late Jan 2027", "FY2027 capex guidance - the single most important disclosure in front of this stock", "High", "0.90", "Both; plus or minus $30bn is worth ~30% of base-case fair value"],
+        ["Late Jan 2027", "FY2026 10-K: whether server life is extended beyond 5.5 years", "Medium", "0.90", "Multiple only (non-cash)"],
+        ["H1 2027", "EC ruling on whether less-personalised ads satisfy the DMA remedy", "Medium", "0.50", "Cash flow"],
+        ["2027", "First disclosed AI or business-messaging revenue line", "High", "0.40", "Multiple - converts the central gap into an underwritable asset"],
+        ["2027-28", "Buyback resumption against the $25.03bn authorisation", "High", "0.35", "Multiple - the cleanest plateau signal"],
+        ["Next 18 months", "Equity issuance to fund the programme", "High", "0.20", "Both, negatively"],
+        ["Continuous", "US 10-year Treasury: each 100bp is worth ~17% of equity value", "High", "-", "Multiple"]
+      ]
+    },
+    {
+      "title": "Trigger-to-buy conditions (would flip the rating to TACTICAL BUY)",
+      "columns": ["Condition", "Effect"],
+      "rows": [
+        ["FY2027 capex guided at or below $150bn", "Cuts the annual hurdle by ~$10bn; adds roughly $120/share to the base case alone"],
+        ["Two consecutive quarters of incremental operating margin above 20%", "Evidences the plateau in the numbers rather than the guidance"],
+        ["Buyback resumption at $10bn+ annualised", "Signals management believes the funding peak has passed"],
+        ["A disclosed AI or business-messaging revenue line at $10bn+ run-rate", "Replaces the 0.5x cost mark on the AI segment with an earnings-based value"]
+      ],
+      "note": "Any two together take probability-weighted fair value above the current price. This is a bear case with a date on it: late January 2027."
+    }
+  ],
+  "gaps": [
+    {
+      "item": "FY2027 capital expenditure",
+      "whyItMatters": "Worth approximately 30% of base-case fair value across its plausible range - the largest single unknown in the valuation",
+      "resolvedBy": "Q3 2026 results (late October) or FY2026 results (late January 2027)"
+    },
+    {
+      "item": "Complete peer table: P/B, net debt/EBITDA, ROE, dividend yield and 3-year revenue and EBITDA CAGRs",
+      "whyItMatters": "Without them the discount decomposition is directional rather than measured, and peer work can only serve as a cross-check",
+      "resolvedBy": "A market-data terminal, or egress access to stockanalysis.com and finance.yahoo.com"
+    },
+    {
+      "item": "Any AI-attributable revenue disclosure",
+      "whyItMatters": "Would replace the 0.5x-of-cost mark on the AI segment in the SOTP with an earnings-based valuation - a swing of about $29 per share at each extreme",
+      "resolvedBy": "Company segment disclosure"
+    },
+    {
+      "item": "Company-stated capex per gigawatt",
+      "whyItMatters": "The $40bn/GW anchor drives the entire $12.8bn revenue hurdle; at $30bn/GW the hurdle falls to about $9.6bn and the base case improves materially",
+      "resolvedBy": "Company disclosure or utility interconnection filings"
+    },
+    {
+      "item": "Reconciliation of consensus FY2026 EPS of $31.72 to management's expense guidance",
+      "whyItMatters": "Determines whether the market's headline 19.4x multiple is real or roughly 22.5x",
+      "resolvedBy": "Post-Q3 consensus revisions or a management bridge"
+    }
+  ],
+  "risks": [
+    {"text": "Committed cost against a spot revenue book: ~$279bn of not-yet-commenced leases and 5.5-year asset lives behind revenue with no take-or-pay. FY2022 precedent: revenue -1%, operating income -38%, on a cost base one third the size of 2027's", "severity": "high", "probability": "medium"},
+    {"text": "The compute has no second buyer: open-weighting Muse Spark 1.2 and Muse Glimmer forfeits any licensing annuity, so $137bn a year must be recovered from advertising alone", "severity": "high", "probability": "high"},
+    {"text": "No one can stop it: 61% of votes in one hand, capex guidance raised twice in 2026, buyback suspended, dividend debt-funded, equity offering reportedly considered", "severity": "high", "probability": "high"},
+    {"text": "Duration risk: ~87% of DCF value is terminal, so each 100bp of discount rate removes ~17% of equity value, with the 10-year already at its highest since November 2023", "severity": "high", "probability": "medium"},
+    {"text": "Competitive: OpenAI ad run-rate went from ~$100m to ~$1bn in six months and TikTok's US joint venture is newly unencumbered with US advertisers", "severity": "medium", "probability": "medium"}
+  ],
+  "catalysts": [
+    {"text": "Q3 2026 results: incremental settlement charge, first quarter under the youth-safety design mandates, first 2027 capex signal", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "FY2027 capital expenditure guidance - the disclosure that decides the rating", "window": "late January 2027", "impact": "High", "probability": 0.9},
+    {"text": "First disclosed AI or business-messaging revenue line", "window": "2027", "impact": "High", "probability": 0.4},
+    {"text": "Buyback resumption against the $25.03bn unused authorisation", "window": "2027-2028", "impact": "High", "probability": 0.35},
+    {"text": "Primary equity issuance to fund the capital programme", "window": "next 18 months", "impact": "High", "probability": 0.2}
+  ],
+  "conclusions": [
+    "Triangulated probability-weighted fair value is $496 against a price of $615.20 - a 19.3% overvaluation - weighting SOTP 30%, DCF 35%, EV/IC 25% and P/B-ROE 10% across a 30/45/25 scenario set.",
+    "Expected three-year IRR is 4.5% against a 10.0% cost of equity and a 4.79% risk-free rate. That, rather than the fair-value gap, is the decisive number: mega-cap equity risk for approximately a Treasury return.",
+    "The headline 35% peer discount is about 32 points explained by zero free cash flow, a zero-contract revenue book, controlled-company governance and litigation. The unexplained residual is roughly 3 points of P/E, about 11% - not enough on its own to buy the stock.",
+    "About 87% of DCF value is terminal in every scenario, which is why the DCF is weighted at 35% and the SOTP - the only method that separates the proven franchise from the unproven programme - carries 30%.",
+    "Dispersion is enormous and honest: $231 bear to $1,003 bull. This is a high-conviction statement about which variable matters, not a high-conviction point estimate, and that variable is disclosed in late January 2027.",
+    "Rating AVOID: a price call, not a quality call. The disciplined entry is approximately $500, below which most outcomes are acceptable."
+  ],
+  "thesisImpact": "Phase 5 contradicts nothing in Phases 1-4; it prices them. The franchise is exceptional and the programme is not yet earning. At $615.20 the market pays a full price for Family of Apps and marks the AI programme at roughly half of cost - defensible, and still leaving expected return below the cost of equity. The bear case has a date on it: FY2027 capex guidance in late January 2027.",
+  "model": {
+    "sharesOut": 2550,
+    "netDebt": -6600,
+    "minorities": 0,
+    "wacc": {"bear": 0.108, "base": 0.095, "bull": 0.088},
+    "terminalGrowth": {"bear": 0.015, "base": 0.030, "bull": 0.035},
+    "fcf": {
+      "bear": [-22500, -6000, 23600, 56600, 77500],
+      "base": [0, 17000, 46000, 80000, 109000],
+      "bull": [11400, 42500, 86000, 132000, 174000]
+    },
+    "assetBase": {
+      "label": "Invested capital",
+      "value": 254800,
+      "multiple": {"bear": 3.0, "base": 4.3, "bull": 5.5}
+    },
+    "book": {
+      "bvps": 102.52,
+      "coe": 0.100,
+      "growth": 0.030,
+      "roe": {"bear": 0.15, "base": 0.24, "bull": 0.30}
+    },
+    "sotp": [
+      {"name": "Family of Apps", "method": "EV/EBIT", "metric": 103000, "multiple": 14.0, "stake": 1.0},
+      {"name": "Reality Labs", "method": "Capitalised losses", "metric": -18500, "multiple": 4.0, "stake": 1.0},
+      {"name": "AI compute & Superintelligence Labs", "method": "Cost less haircut", "metric": 150000, "multiple": 0.5, "stake": 1.0}
+    ],
+    "peers": [
+      {"name": "Meta Platforms", "self": true, "pe": 18.2, "evEbitda": 13.0, "pb": 6.0, "ndEbitda": -0.06, "roe": 26.0, "dy": 0.34},
+      {"name": "Alphabet", "pe": 16.9, "evEbitda": 12.55},
+      {"name": "Microsoft", "pe": 26.7, "evEbitda": 17.4},
+      {"name": "Amazon", "pe": 29.25},
+      {"name": "Apple", "pe": 36.08},
+      {"name": "Netflix", "pe": 31.23},
+      {"name": "Oracle", "pe": 25.02},
+      {"name": "Pinterest", "pe": 43.12, "evEbitda": 31.99},
+      {"name": "Reddit", "pe": 50.0}
+    ],
+    "targets": {
+      "bear": {"price3y": 260, "dividends3y": 6.3},
+      "base": {"price3y": 672, "dividends3y": 6.6},
+      "bull": {"price3y": 1257, "dividends3y": 6.9}
+    },
+    "probabilities": {"bear": 0.30, "base": 0.45, "bull": 0.25},
+    "weights": {"dcf": 0.35, "asset": 0.25, "pb": 0.10, "sotp": 0.30}
+  },
+  "memo": {
+    "rating": "AVOID",
+    "weighting": "SOTP 30%, DCF 35%, EV/IC 25%, P/B-ROE 10%. The DCF is weighted below its default because roughly 87% of its value is terminal while the disputed variable is the shape of the next three years; the SOTP carries 30% because it is the only method that separates the extraordinary advertising franchise from the unproven capital programme, which is the entire question. Peer multiples are a cross-check only - the peer table could not be completed under this session's network policy. This is a price call, not a quality call: triangulated fair value $496 against $615.20, and an expected three-year IRR of 4.5% against a 10.0% cost of equity.",
+    "nonConsensus": [
+      {
+        "market": "Meta at 19.4x 2026 and 18.2x 2027 consensus EPS is the cheapest mega-cap AI asset.",
+        "us": "The consensus E is not reconcilable to the company's own guidance. On ~$252bn of revenue and guided expenses of $165-169bn, operating income is ~$85bn and EPS lands nearer $27 - about 14% below the $31.72 consensus - putting the real multiple at ~22.5x, not 19.4x.",
+        "evidence": "Phase 4: FY2026 total expense guidance of $165-169bn given with Q2 2026 results, against FY2025 operating income of $83.28bn and an FY2026E of ~$85bn on $51bn more revenue."
+      },
+      {
+        "market": "The risk is that AI capex fails to pay off eventually; the advertising business itself is safe.",
+        "us": "The arithmetic is tighter and more immediate. At $12.8bn of required revenue per gigawatt, a $165bn capital year adds about $53bn to the annual revenue Meta must earn simply to cover its cost of capital - against actual annual revenue increments of $51-53bn. At the $180bn run-rate the 2027-28 plans imply, the hurdle grows about $58bn a year. The programme runs to stand still.",
+        "evidence": "Phase 2 unit cost curve (section 2.2) and Phase 3 section 3.2; incremental ROIC of 1.4% for 2025-26E and 6.4% for 2025-28E against a 9.5% WACC in Phase 4 section 4.4."
+      },
+      {
+        "market": "The DMA and EU data regulation are the structural threat to Meta's targeting and pricing.",
+        "us": "Europe is Meta's fastest-pricing region at +19% per ad - the DMA has not bitten. The instrument that actually threatens the model is the August 2026 state AG settlement, whose design mandates (one-hour daily limits, nighttime blocks, age assurance) attack impressions, the term carrying 14 of the 27 points of growth, and which appears in no sell-side model.",
+        "evidence": "Phase 1 section 1.2 regional pricing table (Meta Q2 2026 results); the settlement terms reported 2026-08-26, including the 30% tranche contingent on YouTube and TikTok adopting equivalent measures."
+      }
+    ],
+    "fears": [
+      {
+        "text": "Committed cost sits behind a spot revenue book: roughly $279bn of not-yet-commenced lease obligations and a 5.5-year asset life, with no take-or-pay, no minimum volume and no indexation anywhere in the revenue.",
+        "why": "The precedent is exact and recent. In FY2022 revenue fell 1% and operating income fell 38%, from $46.75bn to $28.94bn. The committed 2027 cost base is roughly three times the 2022 base, and the leases cannot be cut."
+      },
+      {
+        "text": "The compute has no second buyer. Meta open-weighted Muse Spark 1.2 and open-sourced Muse Glimmer, deliberately forgoing any model-licensing annuity.",
+        "why": "Every dollar of $137bn a year must be recovered through advertising and first-party products - in a year when OpenAI's ad run-rate went from about $100m to about $1bn in six months and TikTok's US joint venture became a fully funded, US-governed competitor. A regulated utility with stranded assets gets cost recovery; Meta gets a 5.5-year write-off."
+      },
+      {
+        "text": "No one can stop it. Sixty-one percent of the votes sit with one holder who in 2026 alone raised capex guidance twice, suspended a $25bn buyback, funded the dividend with debt and reportedly considered an equity offering.",
+        "why": "There is no board mechanism, no proxy mechanism and no activist mechanism available to minority holders. If the programme doubles again, shareholders will read about it rather than vote on it."
+      }
+    ],
+    "sellTriggers": [
+      "FY2027 capital expenditure guided above $180bn",
+      "Incremental operating margin (delta operating income / delta revenue, y/y) below 10% for two consecutive quarters",
+      "Any primary equity issuance to fund the capital programme",
+      "Total debt/EBITDA above 1.5x for two consecutive quarters, or a downgrade below AA- / Aa3",
+      "Average price per ad growth below +5% y/y for two consecutive quarters",
+      "Family daily active people declining year-on-year in any quarter"
+    ]
+  }
+}

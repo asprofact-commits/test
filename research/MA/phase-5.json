@@ -1,0 +1,131 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Mastercard Incorporated","ticker":"NYSE: MA","sector":"financials","currency":"USD","fxToUsd":1,"price":580.00,"priceUnit":"share","asOf":"2026-09-05","phase":5,"phaseName":"Valuation, stress tests & IC memo",
+  "assumedContext":[
+   "No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.",
+   "The DCF is weighted at 50% here — the highest in this series — because Mastercard's cash flows are unusually stable, predictable and already being generated. That is the opposite of the Alphabet and SpaceX dossiers, where near-term free cash flow is negative and the DCF was down-weighted to 20% and 10% respectively.",
+   "Price-to-book is excluded: sustained buybacks have reduced book equity to a small fraction of the economic asset base, and the network was never capitalised.",
+   "Net debt of approximately USD 8bn is an estimate, not a sourced figure."]},
+ "findings":[
+  {"id":"p5-01","claim":"At USD 580 Mastercard trades at approximately 29.4x estimated FY2026 adjusted earnings of USD 19.75 and roughly 22.7x estimated FY2026 EBITDA of USD 22.7bn, on an enterprise value of approximately USD 515bn.","label":"ANALYST ESTIMATE","source":"Derived: 580 / 19.75; EV = 507 market cap plus ~8 net debt","asOf":"2026-09-05","confidence":"medium","impact":"high","value":29.4,"unit":"x FY2026E earnings"},
+  {"id":"p5-02","claim":"The trailing multiple is 31.87x and the 52-week range is USD 464.52 to USD 601.62, so the stock trades near the upper end of its own range.","label":"FACT","source":"Market data via Morningstar and Investing.com","asOf":"2026-09-05","confidence":"medium","impact":"medium"},
+  {"id":"p5-03","claim":"Visa trades at a forward price/earnings of approximately 24.96 as of 5 September 2026 against Mastercard at roughly 27 to 28 on the same basis — a Mastercard premium of about 9 to 12%, materially compressed from the historical relationship.","label":"FACT","source":"GuruFocus; valueinvesting.io; comparative analyses, 2026","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-04","claim":"A discounted cash flow on base-case assumptions — free cash flow of USD 22bn to USD 35bn across 2027-31, an 8.5% WACC and 3.5% terminal growth — gives approximately USD 667 per share, about 15% above the market price.","label":"ANALYST ESTIMATE","source":"Derived; workings reproduced in the workspace model","asOf":"2026-09-05","confidence":"medium","impact":"high","value":667,"unit":"USD per share"},
+  {"id":"p5-05","claim":"An EV/EBITDA valuation at 23x gives approximately USD 588 — almost exactly the market price — and a sum-of-the-parts separating the payment network at 20x operating income from value-added services at 28x gives approximately USD 556.","label":"ANALYST ESTIMATE","source":"Derived from the FY2026E segment split","asOf":"2026-09-05","confidence":"low","impact":"high"},
+  {"id":"p5-06","claim":"Weighted 50% DCF, 30% EV/EBITDA and 20% sum-of-the-parts, the base case is approximately USD 621 and the probability-weighted fair value approximately USD 618 — about 6.5% above the market price.","label":"ANALYST ESTIMATE","source":"Derived; computed in the workspace from model.weights","asOf":"2026-09-05","confidence":"medium","impact":"high","value":618,"unit":"USD per share"},
+  {"id":"p5-07","claim":"Reverse DCF: at an 8.5% WACC the current price of USD 580 implies terminal growth of approximately 3.0% in perpetuity — at or below long-run US nominal GDP of roughly 4%, and the only company in this series whose implied terminal growth is not above the economy.","label":"ANALYST ESTIMATE","source":"Derived: solving for the terminal value implied by the market price","asOf":"2026-09-05","confidence":"medium","impact":"high","value":3.0,"unit":"% implied perpetual growth"},
+  {"id":"p5-08","claim":"That comparison is the cleanest way to place this dossier: Apple's price implies about 5.7% perpetual growth, Alphabet's about 5.1%, SpaceX's requires roughly tripling revenue, and Mastercard's implies about 3.0% — below nominal GDP, for a business currently growing revenue in the mid-teens.","label":"ANALYST ESTIMATE","source":"Derived; comparisons from research/AAPL, research/GOOGL and research/SPCX","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-09","claim":"Expected three-year IRR is approximately +8.8%, spanning -5.4% in the bear case to +20.4% in the bull — the tightest and most positively skewed distribution in this series.","label":"ANALYST ESTIMATE","source":"Derived from the scenario targets including dividends","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p5-10","claim":"The valuation conclusion is a modest discount rather than a mispricing. Fair value of approximately USD 618 against USD 580 is 6.5% — well inside the model's own error bars, since a 100bp change in WACC moves the DCF by roughly 20% at these growth rates.","label":"ANALYST ESTIMATE","source":"Derived sensitivity","asOf":"2026-09-05","confidence":"high","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Valuation by method, base case",
+   "columns":["Method","Value per share","vs USD 580","Weight","Why this weight"],
+   "rows":[
+    ["Discounted cash flow","~USD 667","+15%","50%","Weighted up: cash flows are stable, predictable and already generated"],
+    ["EV/EBITDA at 23x","~USD 588","+1%","30%","Sanity check against the market's revealed preference"],
+    ["Sum of the parts","~USD 556","-4%","20%","Payment network at 20x EBIT, value-added services at 28x"],
+    ["Justified P/B","n/a","—","0%","Excluded — book equity is not economically meaningful"],
+    ["Blended base case","~USD 621","+7%","100%","Probability-weighted across scenarios: ~USD 618"]
+   ],
+   "note":"[ANALYST ESTIMATE] The three methods cluster within about 20% of each other and straddle the market price — the tightest agreement in this series, and a direct consequence of valuing a business on cash it already produces."},
+  {"title":"Scenarios",
+   "columns":["Scenario","Prob.","Trigger set","WACC","Terminal g","Fair value","3y IRR"],
+   "rows":[
+    ["Bear","25%","Merchants decline premium cards at scale under the settlement; stablecoin substitution becomes measurable in cross-border; consumer spending slows","9.3%","2.5%","~USD 425","-5.4%"],
+    ["Base","50%","Settlement effects prove manageable; value-added services keep compounding at ~20%; low-teens revenue growth decays gradually","8.5%","3.5%","~USD 621","+10.0%"],
+    ["Bull","25%","Honor-all-cards has minimal practical effect; VAS reaches half of revenue; the stablecoin rail is captured rather than lost","8.0%","3.75%","~USD 803","+20.4%"]
+   ],
+   "note":"[ANALYST ESTIMATE] The bear case is a genuine structural scenario rather than a valuation de-rating: it requires the settlement and substitution to actually bite, which they have not yet."},
+  {"title":"The four dossiers on identical methodology",
+   "columns":["","Mastercard","Apple","Alphabet","SpaceX"],
+   "rows":[
+    ["Forward P/E","~29.4x","~36.9x","~29.8x clean","n/a — loss-making"],
+    ["EV/EBITDA","~22.7x","~27.8x","~18.6x","~128x"],
+    ["Implied perpetual growth at the price","~3.0%","~5.7%","~5.1%","3x revenue required"],
+    ["FCF margin","~52%","~28%","negative","negative"],
+    ["DCF weight assigned","50%","53%","20%","10%"],
+    ["Fair value vs price","+6.5%","-32%","-11%","-61%"],
+    ["Rating","HOLD / NEUTRAL","AVOID","HOLD / NEUTRAL","AVOID"]
+   ],
+   "note":"[ANALYST ESTIMATE] Mastercard is the only one of the four whose price does not require growth above the economy in perpetuity, and the only one where the arithmetic returns a positive gap."}
+ ],
+ "gaps":[
+  {"item":"Volume carried on premium and rewards cards","whyItMatters":"The end of honor-all-cards is the settlement's substantive change and its exposure cannot be sized without this. It is the single most important number missing from this dossier.","resolvedBy":"Not disclosed at this granularity; issuer-level data would be required"},
+  {"item":"Cross-border revenue as a share of the total","whyItMatters":"Both the growth engine and the line most exposed to stablecoin substitution. It drives the bear case.","resolvedBy":"10-K revenue disaggregation"},
+  {"item":"Sourced WACC components","whyItMatters":"The DCF carries 50% of the weight here, and a 100bp error moves it by roughly 20% at these growth rates — more than the entire gap to the market price.","resolvedBy":"Live 10-year Treasury and a published beta"},
+  {"item":"Value-added services margin","whyItMatters":"41% of revenue with undisclosed profitability, and it carries 20% of the valuation weight through the sum-of-the-parts.","resolvedBy":"Not separately disclosed"},
+  {"item":"Mastercard's share of the settlement and any incremental charge","whyItMatters":"The one genuine balance-sheet unknown.","resolvedBy":"10-Q litigation note; EDNY final judgment"}
+ ],
+ "risks":[
+  {"text":"The end of honor-all-cards is a structural change to the mix rather than the rate, and its magnitude cannot be sized from public disclosure.","severity":"high","probability":"medium"},
+  {"text":"Stablecoin and account-to-account substitution attacks cross-border first — the highest-rate, fastest-growing line.","severity":"high","probability":"medium"},
+  {"text":"A 3.8% free cash flow yield against a low-four-percent risk-free rate leaves no margin for a growth disappointment.","severity":"medium","probability":"medium"},
+  {"text":"The 6.5% gap to fair value is well inside the model's error bars; this is not a mispricing call.","severity":"low","probability":"high"},
+  {"text":"The DCF carries 50% weight and a 100bp WACC error moves it ~20%, so the conclusion is more discount-rate-sensitive here than in any other dossier in this series.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — guided to the high end of the low-double-digit range","window":"Oct 2026","impact":"Medium","probability":0.95},
+  {"text":"EDNY final approval of the USD 38bn settlement","window":"H2 2026","impact":"High","probability":0.75},
+  {"text":"BVNK acquisition closes and the stablecoin strategy becomes concrete","window":"End 2026","impact":"Medium","probability":0.8},
+  {"text":"First quarters after honor-all-cards ends, showing any premium-card mix effect","window":"2027","impact":"High","probability":0.6},
+  {"text":"FY2026 10-K disaggregation of cross-border and services revenue","window":"Feb 2027","impact":"Medium","probability":0.9}
+ ],
+ "conclusions":[
+  "Mastercard is the highest-quality business in this series on every operating measure — a ~52% free cash flow margin, 57.6% operating margin expanding 230bp, mid-teens revenue growth, and almost no capital requirement — and it is the only one trading at a modest discount to fair value rather than a premium.",
+  "Blended fair value is approximately USD 618 against USD 580, about 6.5% above. That is a modest discount, not a mispricing, and it sits well inside the model's own error bars.",
+  "The reverse DCF is the cleanest placement of this dossier against the others: the price implies roughly 3.0% perpetual growth, at or below nominal GDP. Apple's implies 5.7%, Alphabet's 5.1%, and SpaceX's requires tripling revenue. Mastercard is the only one of the four not priced for above-economy growth forever.",
+  "The bear case is genuinely structural rather than a de-rating: the end of honor-all-cards lets merchants decline the highest-interchange cards, and stablecoin substitution attacks cross-border first. Both are credible, both are unmeasured, and neither is yet visible in a 14% revenue growth rate.",
+  "The three valuation methods cluster within about 20% and straddle the market price — the tightest agreement in this series, and a direct consequence of valuing a business on cash it already produces rather than cash it promises."
+ ],
+ "thesisImpact":"The five phases converge on a rare thing in this series: a business whose quality is unambiguous, whose price is close to reasonable, and whose risks are structural rather than valuation-driven. The correct posture is to own it or to wait for the structural risks to be priced, not to argue about the multiple. What to watch is not the growth rate but the first quarter in which merchants visibly decline premium cards, or cross-border volume visibly migrates.",
+ "memo":{
+  "rating":"HOLD / NEUTRAL",
+  "weighting":"DCF 50%, EV/EBITDA 30%, sum-of-the-parts 20%. The DCF weight is the highest assigned in this series and deliberately so: Mastercard's cash flows are stable, predictable and already being generated, which is precisely the condition under which a discounted cash flow is trustworthy. Compare Alphabet at 20% and SpaceX at 10%, where near-term free cash flow is negative and the instrument measures the terminal assumption instead. Price-to-book is excluded. The rating is HOLD rather than a buy because a 6.5% gap to fair value is inside the error bars — a 100bp WACC change moves the DCF by roughly 20% — so this is a quality judgement with a fair price, not an identified mispricing.",
+  "nonConsensus":[
+   {"market":"The USD 38bn settlement is a manageable 0.1 point cut to interchange rates.","us":"The rate cut is the trivial part. The substantive concession is the end of honor-all-cards, which for the first time lets merchants decline premium, rewards and commercial credit cards — the highest-interchange tier. That attacks the mix rather than the average rate, and the exposure cannot be sized from public disclosure because the volume carried on those cards is not broken out.","evidence":"Phase 1: settlement terms; Phase 5 gap list — the volume-by-tier disclosure that would size it does not exist publicly."},
+   {"market":"Stablecoins are an existential threat to the card networks.","us":"Structurally credible, aimed correctly at cross-border, and so far entirely invisible: Q2 2026 revenue grew 14% with cross-border cited as a growth driver. More to the point, Mastercard is buying the substitute — BVNK for up to USD 1.8bn — at roughly 10% of one year's free cash flow. Owning the rail is not the same as keeping the toll, but the cost of the option is trivial relative to the threat it hedges.","evidence":"Phase 1 and 2: Q2 2026 results against the substitution thesis; the BVNK acquisition terms."},
+   {"market":"Mastercard is the expensive one of the payment networks and deserves its premium.","us":"The premium has largely gone. Visa trades at about 25x forward earnings against Mastercard at roughly 27 to 28 — a 9 to 12% gap, compressed from the historical relationship. An investor paying for Mastercard today is paying much less of a relative premium than the reputation suggests, which matters more than the absolute multiple.","evidence":"Phase 5: sourced forward multiples for both, September 2026."}
+  ],
+  "fears":[
+   {"text":"The end of honor-all-cards is the first change in decades that touches the mix rather than the rate, and nobody — including this analysis — can size it from public disclosure.","why":"It is a structural change to the most profitable part of the revenue base, it is newly live, and the disclosure required to quantify it does not exist. That combination deserves genuine humility."},
+   {"text":"Stablecoin and account-to-account substitution attacks cross-border first, which is simultaneously the highest-rate line and the current growth engine.","why":"The threat does not require anyone to build a better network. It makes the network unnecessary for a given flow, which is a different and harder problem than competition."},
+   {"text":"A 3.8% free cash flow yield against a low-four-percent risk-free rate leaves no margin for a growth disappointment, and interchange has been narrowed by regulators repeatedly for three decades.","why":"The entire valuation rests on mid-teens growth persisting. The political direction of travel on interchange has been one-way for a very long time."}
+  ],
+  "sellTriggers":[
+   "Net revenue growth falls below 8% year on year for two consecutive quarters",
+   "Value-added services growth falls below 12% year on year for two consecutive quarters",
+   "Cross-border volume growth turns negative in any quarter absent a travel shock",
+   "Operating margin falls below 54% for two consecutive quarters",
+   "Any disclosed measurable volume migration to stablecoin or account-to-account rails",
+   "Forward price/earnings above 36x without an upgrade to the cash-flow path"
+  ],
+  "reEntry":"Blended fair value is approximately USD 618. The base case supports paying up to that; a 15% margin of safety implies adding below approximately USD 525, which is inside the 52-week range and therefore a realistic entry rather than a theoretical one. With an expected three-year IRR of about +8.8% and the tightest, most positively skewed scenario distribution in this series, an existing holder has no valuation reason to sell. This is the one name of the four where the answer to 'should I own this' is closer to yes than no."
+ },
+ "model":{
+  "sharesOut":874,
+  "netDebt":8000,
+  "wacc":{"bear":0.093,"base":0.085,"bull":0.080},
+  "terminalGrowth":{"bear":0.025,"base":0.035,"bull":0.0375},
+  "fcf":{
+   "bear":[20000,21000,22000,23000,24000],
+   "base":[22000,25000,28000,31500,35000],
+   "bull":[23000,27000,32000,37000,43000]},
+  "assetBase":{"label":"FY2026E EBITDA","value":22700,"multiple":{"bear":18,"base":23,"bull":28}},
+  "sotp":[
+   {"name":"Payment network","method":"EV/EBIT","metric":13500,"multiple":20,"stake":1.0},
+   {"name":"Value-added services","method":"EV/EBIT","metric":8000,"multiple":28,"stake":1.0}],
+  "peers":[
+   {"name":"Mastercard (subject)","self":true,"pe":29.4,"evEbitda":22.7,"ndEbitda":0.35,"dy":0.58},
+   {"name":"Visa","pe":25.0},
+   {"name":"Apple","pe":36.9,"evEbitda":27.8,"ndEbitda":-0.36,"dy":0.33},
+   {"name":"Alphabet (clean)","pe":29.8,"evEbitda":18.6,"ndEbitda":-0.66,"dy":0.26},
+   {"name":"S&P 500 (index)","pe":25.6}],
+  "targets":{
+   "bear":{"price3y":480,"dividends3y":11.0},
+   "base":{"price3y":760,"dividends3y":12.0},
+   "bull":{"price3y":1000,"dividends3y":13.0}},
+  "probabilities":{"bear":0.25,"base":0.50,"bull":0.25},
+  "weights":{"dcf":0.50,"asset":0.30,"sotp":0.20,"pb":0.0}
+ }
+}

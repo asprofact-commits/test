@@ -1,0 +1,219 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Siemens Energy AG",
+  "ticker": "XETRA: ENR",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 143.68,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on the Q3 FY2026 earnings release, FY2025 results and trade press.",
+   "Fiscal year ends 30 September."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The backlog is a stock that depletes, not an annuity. EUR 162bn against roughly EUR 45bn of FY2026E revenue is about 3.6 years of work — shorter than GE Vernova's 5.8-year gas turbine queue, and the shorter queue is the weaker scarcity signal.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 162 / ~45",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 3.6,
+   "unit": "years of revenue in backlog"
+  },
+  {
+   "id": "p2-02",
+   "claim": "The backlog is still growing faster than it converts. Q3 book-to-bill was approximately 1.57 (EUR 17.9bn of orders against EUR 11.4bn of revenue), and roughly EUR 26bn was added to backlog between Q2 and Q3.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 17.9 / 11.4",
+   "asOf": "2026-08-06",
+   "confidence": "high",
+   "impact": "high",
+   "value": 1.57,
+   "unit": "x book-to-bill, Q3 FY2026"
+  },
+  {
+   "id": "p2-03",
+   "claim": "Grid Technologies is the better asset inside the group and the backlog says so: a record EUR 51bn order backlog on transformer demand, and the tightest, longest-lived bottleneck of the three product lines.",
+   "label": "FACT",
+   "source": "Siemens Energy Q3 FY2026 disclosures",
+   "asOf": "2026-08-09",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 51,
+   "unit": "EUR bn Grid Technologies backlog"
+  },
+  {
+   "id": "p2-04",
+   "claim": "The gas turbine position is real but second to the grid business: the Siemens gas turbine backlog is approaching 70 GW, against GE Vernova's 116 GW.",
+   "label": "FACT",
+   "source": "Trade press on Siemens gas turbine backlog",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium",
+   "value": 70,
+   "unit": "GW gas turbine backlog"
+  },
+  {
+   "id": "p2-05",
+   "claim": "The physical bottleneck is being relieved on a three-year clock, not a ten-year one. Siemens Energy's first US large power transformer plant, a USD 150m facility in Charlotte, begins production in early 2027; a further USD 185m, 550,000 sq ft plant in Jackson County, Georgia starts construction in November 2026 with roughly three years to full buildout.",
+   "label": "FACT",
+   "source": "Trade press on Siemens Energy US transformer capacity",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-06",
+   "claim": "The asset base is manufacturing capacity, not an irreplaceable resource. That is the structural difference from Constellation: a transformer plant takes about three years and a few hundred million dollars to build, and three firms are building them. A nuclear fleet cannot be built at any price on any relevant timescale.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed plant costs and build times",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-07",
+   "claim": "The genuinely scarce asset here is skilled labour and the grain-oriented electrical steel supply chain, not the buildings. The Georgia plant alone requires more than 1,400 new hires. Whether the industry can staff a 50% capacity expansion is a better question than whether it can fund one.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the announced hiring requirement",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "medium"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The backlog clock, and how it compares",
+   "columns": [
+    "Company",
+    "Backlog",
+    "Annual revenue",
+    "Queue length"
+   ],
+   "rows": [
+    [
+     "Siemens Energy",
+     "EUR 162bn",
+     "~EUR 45bn FY2026E",
+     "~3.6 years"
+    ],
+    [
+     "GE Vernova (gas turbines only)",
+     "116 GW",
+     "20 GW output",
+     "5.8 years"
+    ],
+    [
+     "Siemens Energy (gas turbines only)",
+     "~70 GW",
+     "not disclosed",
+     "Not calculable"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] A 3.6-year queue still supports premium pricing. It supports it for fewer years than a 5.8-year one, and book-to-bill of 1.57x is what is currently extending it."
+  },
+  {
+   "title": "How fast the bottleneck can be relieved",
+   "columns": [
+    "Constraint",
+    "Time to add capacity",
+    "Capital required",
+    "Assessment"
+   ],
+   "rows": [
+    [
+     "Large power transformers",
+     "~3 years per plant",
+     "USD 150-460m",
+     "Fundable and buildable; three firms are doing it"
+    ],
+    [
+     "Gas-insulated switchgear",
+     "~2-3 years",
+     "Part of the EUR 6bn plan",
+     "+50% capacity targeted by 2030"
+    ],
+    [
+     "Heavy-duty gas turbines",
+     "Longer, specialised",
+     "Higher",
+     "The stickier of the two bottlenecks"
+    ],
+    [
+     "Skilled labour and GOES supply",
+     "Uncertain",
+     "Not the binding cost",
+     "The real constraint on the expansion"
+    ]
+   ],
+   "note": "[FACT/ANALYST ESTIMATE] This is the key structural distinction in the batch. Constellation's asset cannot be rebuilt. Siemens Energy's can, and is being rebuilt by its competitors."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Aggregate industry transformer capacity additions through 2030",
+   "whyItMatters": "Determines when lead times normalise, which determines how many years of scarcity pricing the DCF should carry.",
+   "resolvedBy": "Not centrally disclosed; would require summing announced plants"
+  },
+  {
+   "item": "Cancellation and repricing terms in the backlog",
+   "whyItMatters": "A EUR 162bn backlog booked against a shortage is worth much less if slots can be released without penalty when lead times fall.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Capacity utilisation across existing plants",
+   "whyItMatters": "Distinguishes margin from pricing versus margin from operating leverage. Only the second survives normalisation.",
+   "resolvedBy": "Not disclosed"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The bottleneck can be relieved with three-year, few-hundred-million-dollar plants, and the whole industry is building them. This is a manufacturing constraint, not an irreplaceable asset.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The 3.6-year queue is shorter than GE Vernova's turbine queue and is being sustained by 1.57x book-to-bill. If order intake normalises the queue shortens quickly.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Backlog cancellation and repricing terms are undisclosed, so the durability of EUR 162bn is asserted rather than established.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Charlotte transformer plant begins production",
+   "window": "Early 2027",
+   "impact": "Medium",
+   "probability": 0.85
+  },
+  {
+   "text": "Industry lead-time surveys showing the first decline",
+   "window": "2027-2028",
+   "impact": "High",
+   "probability": 0.6
+  }
+ ],
+ "conclusions": [
+  "The backlog is a depleting stock of about 3.6 years of revenue — real, but a shorter queue than GE Vernova's 5.8-year turbine backlog.",
+  "It is still lengthening: Q3 book-to-bill of roughly 1.57x added about EUR 26bn in a single quarter.",
+  "Grid Technologies is the better business inside the group, with a record EUR 51bn backlog and the tighter, longer-lived bottleneck.",
+  "The decisive structural point: this bottleneck can be relieved. A transformer plant costs a few hundred million dollars and takes about three years, and Siemens, Hitachi and GE Vernova are all building them now. Constellation's nuclear fleet cannot be replicated at any price.",
+  "The binding constraint on the expansion is more likely skilled labour and electrical steel than capital — the Georgia plant alone needs 1,400 hires."
+ ],
+ "thesisImpact": "Phase 2 confirms the backlog and dates the risk. The plants that relieve the shortage start producing in 2027 and reach full output around 2029-2030, which puts a specific horizon on the scarcity rent. The DCF in Phase 5 must fade the premium inside the explicit forecast window rather than carry it into the terminal value.",
+ "model": {
+  "sharesOut": 854
+ }
+}

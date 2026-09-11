@@ -1,0 +1,64 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Mastercard Incorporated","ticker":"NYSE: MA","sector":"financials","currency":"USD","fxToUsd":1,"price":580.00,"priceUnit":"share","asOf":"2026-09-05","phase":1,"phaseName":"Pricing-power architecture","assumedContext":["Sector is recorded as financials to match GICS, but the banking profile in this protocol does NOT apply: Mastercard has no loan book, no credit risk, no CET1 ratio and no net interest margin. It is a two-sided network that takes a toll on transactions. Phases 1 and 3 therefore use the software/internet profile (network effects, switching costs, antitrust) and Phase 2 an infrastructure toll-road frame.","No primary filing could be retrieved: every external domain is blocked by this environment egress proxy, including sec.gov. Findings rest on search-result summaries of Mastercard 8-K/10-Q releases and reputable press."]},
+ "findings":[
+  {"id":"p1-01","claim":"Mastercard does not set the price a consumer pays. It sets interchange and scheme fees within a four-party model, and its pricing power derives from a two-sided network that issuers and merchants cannot practically leave.","label":"ANALYST ESTIMATE","source":"Derived from the four-party network model","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p1-02","claim":"The pricing power is demonstrable and still expanding: net revenue grew 14% year on year in Q2 2026 to USD 9.3bn, and full-year 2025 operating margin reached 57.6%, up from 55.3% in 2024.","label":"FACT","source":"Mastercard Q2 2026 results; FY2025 results","asOf":"2026-07-30","confidence":"high","impact":"high","value":57.6,"unit":"% FY2025 operating margin"},
+  {"id":"p1-03","claim":"A judge granted preliminary approval on 9 June 2026 to a USD 38bn interchange settlement with merchants, describing it as fair, reasonable and adequate. The pact covers approximately 12 million merchants.","label":"REGULATORY STATUTE","source":"PYMNTS 2026-06; Payments Dive; Fox Business","asOf":"2026-06-09","confidence":"high","impact":"high","value":38000,"unit":"USD m settlement"},
+  {"id":"p1-04","claim":"The settlement terms reduce interchange by 0.1 percentage points for five years, cap standard consumer rates at 1.25%, give merchants greater freedom to surcharge, and — most significantly — discontinue the honor-all-cards rule, so merchants may decline higher-cost rewards, premium and commercial credit cards.","label":"REGULATORY STATUTE","source":"PYMNTS; Fox Business; Yahoo Finance settlement coverage","asOf":"2026-06-09","confidence":"high","impact":"high"},
+  {"id":"p1-05","claim":"The end of honor-all-cards is the substantive concession, not the 0.1 point rate cut. Premium and rewards cards carry the highest interchange, so allowing merchants to refuse them attacks the most profitable part of the mix rather than the average rate.","label":"ANALYST ESTIMATE","source":"Derived from the settlement terms and the structure of interchange pricing","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-06","claim":"Retailers have objected to the settlement, and it still requires final approval from the federal court for the Eastern District of New York. The terms are therefore not yet certain.","label":"FACT","source":"PYMNTS retailer objection coverage; Payments Dive","asOf":"2026-06-30","confidence":"high","impact":"medium"},
+  {"id":"p1-07","claim":"Stablecoins are widely identified as the largest long-term threat, because settling digital dollars directly on-chain bypasses card rails entirely and attacks cross-border fees, acquiring economics and float.","label":"CONSENSUS","source":"Third Bridge; Payments Dive; Cryptonomist, 2026","asOf":"2026-06-30","confidence":"medium","impact":"high"},
+  {"id":"p1-08","claim":"A February 2026 Citrini Research note argued that AI agents optimised to minimise transaction cost could systematically route around card rails, targeting the 2-3% interchange charged by Visa and Mastercard in favour of networks costing fractions of a cent.","label":"CONSENSUS","source":"Citrini Research via payments commentary, February 2026","asOf":"2026-02-28","confidence":"low","impact":"high"},
+  {"id":"p1-09","claim":"The assessed near-term risk is merchant-led rather than consumer-led: platforms such as Amazon, Walmart and Shopify have direct incentives to route payments over cheaper rails, with adoption fastest in cross-border and high-value B2B flows.","label":"CONSENSUS","source":"Third Bridge; stablecoin adoption analyses, 2026","asOf":"2026-06-30","confidence":"medium","impact":"high"},
+  {"id":"p1-10","claim":"Mastercard's response has been to buy the rails rather than resist them: it agreed to acquire BVNK, an enterprise stablecoin infrastructure provider, in a deal whose final price could reach USD 1.8bn on closing at the end of 2026, and is reported to be building a network stablecoin with Visa.","label":"FACT","source":"Global Finance Magazine; Forbes 2026-06-11; Kavout","asOf":"2026-06-30","confidence":"medium","impact":"high","value":1800,"unit":"USD m acquisition"},
+  {"id":"p1-11","claim":"Assessed to date, stablecoins have not shaken the card networks. Q2 2026 revenue grew 14% and cross-border volume growth was cited as a driver — the opposite of what disintermediation would produce.","label":"ANALYST ESTIMATE","source":"Derived from Q2 2026 results against the Third Bridge assessment","asOf":"2026-07-30","confidence":"medium","impact":"high"},
+  {"id":"p1-12","claim":"Governance is conventional: a single class of listed Class A stock, no controlling shareholder, and a board-approved capital return programme. The Mastercard Foundation's holding is a legacy of the IPO structure and does not confer operating control.","label":"FACT","source":"Mastercard corporate disclosures","asOf":"2025-12-31","confidence":"medium","impact":"low"}
+ ],
+ "tables":[
+  {"title":"Pricing mechanism and what constrains it",
+   "columns":["Revenue line","How price is set","Evidence of power","Binding constraint"],
+   "rows":[
+    ["Domestic switching and assessment","Scheme fees set by Mastercard","Net revenue +14% in Q2 2026","The USD 38bn settlement; Durbin-style regulation"],
+    ["Cross-border","Higher-rate fees on international volume","Cited as a Q2 2026 growth driver","Stablecoin and A2A substitution, fastest in this line"],
+    ["Interchange (set, not earned)","Mastercard sets the rate issuers receive","Determines card issuance economics","Settlement caps consumer rates at 1.25%"],
+    ["Value-added services","Priced per service, partly usage-based","USD 3.8bn in Q2, +20%","Competition from specialist vendors"],
+    ["Premium and rewards mix","Highest interchange tier","The most profitable part of the mix","Honor-all-cards ends — merchants may now refuse these cards"]
+   ],
+   "note":"[FACT/REGULATORY STATUTE] The final row is the one that matters. A 0.1 point cut to the average rate is manageable; letting merchants decline the highest-margin cards is a structural change to the mix."},
+  {"title":"The disintermediation debate, as it actually stands",
+   "columns":["Claim","Evidence for","Evidence against"],
+   "rows":[
+    ["Stablecoins bypass card rails","On-chain settlement is genuinely cheaper; market ~USD 275bn in 2025 and forecast to more than double","No visible effect on volumes: Q2 2026 revenue +14% with cross-border cited as a driver"],
+    ["AI agents will route around interchange","Citrini Research, February 2026","Speculative; no measured volume shift disclosed"],
+    ["Merchant-led adoption is the real risk","Amazon, Walmart and Shopify have direct incentives","Merchants have wanted lower rates for thirty years; the constraint is consumer preference, not merchant will"],
+    ["The networks are responding","BVNK acquisition up to USD 1.8bn; a network stablecoin reported with Visa","Buying the rails is not the same as retaining the toll"]
+   ],
+   "note":"[CONSENSUS/ANALYST ESTIMATE] The threat is real, credible and — so far — not visible in the numbers. That combination is exactly what makes it hard to price."}
+ ],
+ "gaps":[
+  {"item":"The revenue mix by interchange tier","whyItMatters":"The end of honor-all-cards allows merchants to decline premium and rewards cards. Without the share of volume carried on those cards, the exposure cannot be sized — and it is the single most important consequence of the settlement.","resolvedBy":"Not disclosed at this granularity; would require issuer-level data"},
+  {"item":"Final approval and any amendment to the settlement","whyItMatters":"Retailers have objected and final approval is pending in the EDNY. The terms could change.","resolvedBy":"The EDNY final approval order"},
+  {"item":"Any measured volume loss to stablecoin or account-to-account rails","whyItMatters":"The bear case rests on substitution that has not yet appeared in reported volumes. A first measurable data point would change the analysis materially in either direction.","resolvedBy":"Quarterly volume disclosures over several periods"}
+ ],
+ "risks":[
+  {"text":"The end of honor-all-cards lets merchants decline the highest-interchange cards, attacking the most profitable part of the mix rather than the average rate.","severity":"high","probability":"medium"},
+  {"text":"Stablecoin and account-to-account substitution is structurally credible and attacks cross-border first — the highest-rate line.","severity":"high","probability":"medium"},
+  {"text":"The settlement is not final; retailers have objected and terms could tighten.","severity":"medium","probability":"medium"},
+  {"text":"Interchange is politically exposed in every major jurisdiction, and has been reduced by regulation repeatedly.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"EDNY final approval of the USD 38bn settlement","window":"H2 2026","impact":"High","probability":0.75},
+  {"text":"BVNK acquisition closes","window":"End 2026","impact":"Medium","probability":0.8},
+  {"text":"First quarter showing measurable volume migration to non-card rails","window":"2027-2028","impact":"High","probability":0.3}
+ ],
+ "conclusions":[
+  "Pricing power is exceptional and still expanding — 14% revenue growth in Q2 2026 and a 57.6% operating margin in FY2025, up 230bp. Almost nothing in this protocol's experience matches that combination at this scale.",
+  "The USD 38bn settlement's headline concession, a 0.1 point interchange cut, is not the important one. Ending honor-all-cards lets merchants decline premium and rewards cards, which attacks the richest part of the mix rather than the average rate.",
+  "The stablecoin threat is structurally credible, aimed first at cross-border — Mastercard's highest-rate line — and endorsed by serious analysis. It is also, so far, entirely invisible in reported volumes.",
+  "Mastercard's response is to buy the rails rather than fight them: BVNK for up to USD 1.8bn, and a reported network stablecoin with Visa. Owning the rail is not the same as keeping the toll, and that distinction is the crux of the long-term case.",
+  "Governance is conventional and unremarkable — a welcome contrast with the last two dossiers in this series."
+ ],
+ "thesisImpact":"Phase 1 frames the whole investment case as a duration question rather than a quality question. The franchise is superb and currently accelerating; the threats are credible but unmeasured. What an investor is really underwriting is how many years of this economics remain before substitution becomes visible — which makes the terminal assumption in Phase 5 unusually load-bearing.",
+ "model":{"sharesOut":874}
+}

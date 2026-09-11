@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Investment Decision Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<!--
+  Investment Decision Agent — single-file, no build step, no backend.
+  Everything (profile, holdings, journal) is stored in this browser's
+  localStorage only. No market data is fetched: you supply the numbers,
+  the engine scores them transparently and shows every factor it used.
+  Educational decision-support tool. Not investment advice.
+-->
+<style>
+:root{
+  --gold:#B8943E; --steel:#2C4A5A; --navy:#1C2E3A; --cream:#FBF7EF;
+  --ink:#2a2a26; --line:rgba(28,46,58,.14); --ok:#3d7a4f; --warn:#c07f28; --err:#a5432e;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);min-height:100dvh;display:flex;flex-direction:column}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit;font-size:16px;color:inherit}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:20;background:var(--navy);color:var(--cream)}
+.bar{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.2rem;letter-spacing:.04em}
+.brand em{color:var(--gold);font-style:normal;font-size:.66rem;letter-spacing:.22em;display:block;font-family:var(--sans);text-transform:uppercase;opacity:.9}
+.tabs{display:flex;gap:2px;border:1px solid rgba(251,247,239,.22);border-radius:99px;padding:2px}
+.tabs button{padding:6px 14px;border-radius:99px;font-size:.8rem;color:rgba(251,247,239,.72);white-space:nowrap}
+.tabs button.on{background:var(--gold);color:#fff;font-weight:700}
+@media(max-width:720px){.bar{flex-direction:column;align-items:stretch}.tabs{justify-content:space-between}.tabs button{flex:1;padding:8px 6px;font-size:.74rem}}
+
+/* ---------- layout ---------- */
+main{flex:1;width:100%;max-width:1140px;margin:0 auto;padding:22px 20px 90px}
+.view{display:none}.view.on{display:block}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.sticky{position:sticky;top:86px}
+@media(max-width:900px){.sticky{position:static}}
+
+h2{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.6rem;line-height:1.15;margin-bottom:4px}
+h3{font-family:var(--serif);color:var(--navy);font-weight:600;font-size:1.2rem;margin-bottom:8px}
+.sub{color:var(--steel);font-size:.88rem;line-height:1.55;margin-bottom:18px}
+.cat{margin:20px 0 10px;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.muted{color:var(--steel);font-size:.82rem;line-height:1.5}
+
+/* ---------- forms ---------- */
+.row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.row3{grid-template-columns:repeat(2,1fr)}}
+label.f{display:block;margin-bottom:10px}
+label.f b{display:block;font-size:.74rem;letter-spacing:.05em;color:var(--steel);margin-bottom:4px;text-transform:uppercase}
+label.f i{font-style:normal;color:var(--gold);cursor:help;font-size:.72rem;margin-left:4px}
+input[type=text],input[type=number],input[type=date],select,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:76px;line-height:1.5;resize:vertical}
+.seg{display:flex;gap:6px}
+.seg button{flex:1;border:1.5px solid var(--line);border-radius:10px;background:#fff;padding:10px 6px;font-size:.85rem;color:var(--navy)}
+.seg button.on{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:700}
+.btn{background:var(--navy);color:var(--cream);font-size:.95rem;font-weight:700;padding:13px 20px;border-radius:11px;width:100%}
+.btn.gold{background:var(--gold);color:#fff}
+.btn.ghost{background:#fff;color:var(--steel);border:1.5px solid var(--line);font-weight:400}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;margin-top:12px}
+.mini{font-size:.78rem;padding:7px 12px;border-radius:9px;border:1.5px solid var(--line);background:#fff;color:var(--steel);width:auto}
+.mini.danger{color:var(--err);border-color:rgba(165,67,46,.3)}
+
+/* ---------- completeness ---------- */
+.meter{height:6px;background:rgba(184,148,62,.16);border-radius:99px;overflow:hidden;margin:6px 0}
+.meter i{display:block;height:100%;background:var(--gold);width:0%;transition:width .35s ease}
+
+/* ---------- verdict ---------- */
+.verdict{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.vhead{padding:18px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line)}
+.dial{flex:0 0 92px;width:92px;height:92px;position:relative}
+.dial svg{transform:rotate(-90deg)}
+.dial b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.75rem;color:var(--navy)}
+.vtxt{flex:1;min-width:0}
+.vtxt .lbl{font-family:var(--serif);font-size:1.5rem;font-weight:700;line-height:1.1}
+.vtxt .why{font-size:.85rem;color:var(--steel);line-height:1.5;margin-top:5px}
+.v-buy{color:var(--ok)}.v-hold{color:var(--warn)}.v-avoid{color:var(--err)}.v-none{color:var(--steel)}
+.action{padding:14px 18px;background:rgba(184,148,62,.07);border-bottom:1px solid var(--line)}
+.action .big{font-family:var(--serif);font-size:1.32rem;color:var(--navy);line-height:1.25}
+.action .det{font-size:.82rem;color:var(--steel);margin-top:6px;line-height:1.55}
+
+/* ---------- factor bars ---------- */
+.grp{padding:14px 18px;border-bottom:1px solid var(--line)}
+.grp:last-child{border-bottom:none}
+.ghead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+.ghead b{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ghead span{font-size:.8rem;color:var(--steel)}
+.fac{display:grid;grid-template-columns:1fr 46px;gap:8px;align-items:center;margin-bottom:7px}
+.fac .nm{font-size:.83rem;color:var(--navy)}
+.fac .nm small{display:block;color:var(--steel);font-size:.72rem;line-height:1.35}
+.fac .fbar{grid-column:1/-1;height:5px;background:rgba(28,46,58,.08);border-radius:99px;overflow:hidden;margin-top:-2px}
+.fac .fbar i{display:block;height:100%;border-radius:99px}
+.fac .sc{text-align:right;font-family:var(--serif);font-size:1.05rem;color:var(--navy)}
+.flags{list-style:none;font-size:.84rem;line-height:1.6}
+.flags li{padding-left:20px;position:relative;margin-bottom:4px}
+.flags li:before{position:absolute;left:0;top:0}
+.flags li.g:before{content:"▲";color:var(--ok);font-size:.7rem}
+.flags li.r:before{content:"▼";color:var(--err);font-size:.7rem}
+.flags li.n:before{content:"—";color:var(--steel)}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{text-align:left;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:400;padding:0 8px 7px 0;border-bottom:1px solid var(--line)}
+td{padding:9px 8px 9px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+td.r,th.r{text-align:right;padding-right:0}
+.tw{overflow-x:auto}
+.pill{display:inline-block;font-size:.68rem;letter-spacing:.06em;padding:2px 9px;border-radius:99px;background:rgba(184,148,62,.14);color:#8a6d26;text-transform:uppercase}
+.pill.ok{background:rgba(61,122,79,.13);color:var(--ok)}
+.pill.err{background:rgba(165,67,46,.12);color:var(--err)}
+.pill.due{background:rgba(192,127,40,.15);color:var(--warn)}
+.empty{text-align:center;color:var(--steel);font-size:.86rem;padding:26px 10px;line-height:1.6}
+
+/* ---------- misc ---------- */
+.note{border:1px solid var(--line);border-left:3px solid var(--gold);background:#fff;border-radius:0 12px 12px 0;padding:13px 15px;font-size:.84rem;color:var(--steel);line-height:1.55;margin:14px 0}
+.note.warn{border-left-color:var(--err)}
+.disclaim{max-width:1140px;margin:0 auto;padding:0 20px 40px;font-size:.75rem;color:var(--steel);line-height:1.6;opacity:.85}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:var(--cream);padding:11px 24px;border-radius:99px;font-size:.86rem;z-index:50;transition:transform .25s ease;pointer-events:none}
+#toast.on{transform:translateX(-50%) translateY(0)}
+.kv{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;padding:6px 0;border-bottom:1px dashed var(--line)}
+.kv:last-child{border-bottom:none}
+.kv b{font-weight:400;color:var(--steel)}
+.kv span{color:var(--navy);text-align:right}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="brand">Investment Decision Agent<em>Evidence in · verdict out</em></div>
+    <nav class="tabs">
+      <button data-tab="analyze" class="on">Analyse</button>
+      <button data-tab="portfolio">Portfolio</button>
+      <button data-tab="journal">Journal</button>
+      <button data-tab="profile">Profile</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ ANALYSE ============ -->
+  <section class="view on" id="v-analyze">
+    <div class="split">
+
+      <div>
+        <h2>Score a candidate</h2>
+        <p class="sub">Enter what you know. Every field is optional — the engine scores only the factors you provide and tells you how much of the picture is missing.</p>
+
+        <div class="card">
+          <label class="f"><b>Asset type</b>
+            <div class="seg" id="atype">
+              <button data-v="stock" class="on">Individual stock</button>
+              <button data-v="etf">ETF / fund</button>
+            </div>
+          </label>
+          <div class="row">
+            <label class="f"><b>Ticker</b><input type="text" id="f-ticker" placeholder="ASML" autocomplete="off"></label>
+            <label class="f"><b>Name</b><input type="text" id="f-name" placeholder="ASML Holding" autocomplete="off"></label>
+          </div>
+          <div class="row">
+            <label class="f"><b>Price per share</b><input type="number" id="f-price" step="any" placeholder="640"></label>
+            <label class="f"><b>Sector / exposure</b><select id="f-sector"></select></label>
+          </div>
+        </div>
+
+        <div id="dynfields"></div>
+
+        <div class="card">
+          <div class="ghead"><b>Data completeness</b><span id="compl-txt">0%</span></div>
+          <div class="meter"><i id="compl-bar"></i></div>
+          <p class="muted" id="compl-note">Fill in what you have. Below 45% the agent refuses to give a buy verdict.</p>
+        </div>
+
+        <button class="btn gold" id="run">Analyse</button>
+        <div class="btnrow">
+          <button class="btn ghost mini" id="clearform" style="flex:1">Clear form</button>
+          <button class="btn ghost mini" id="loaddemo" style="flex:1">Load example</button>
+        </div>
+      </div>
+
+      <div id="resultcol">
+        <div class="sticky" id="result">
+          <div class="card empty">
+            No analysis yet.<br>Fill in the candidate on the left and press <b>Analyse</b>.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PORTFOLIO ============ -->
+  <section class="view" id="v-portfolio">
+    <h2>Portfolio</h2>
+    <p class="sub">What you already own. The agent uses this to check concentration, sector limits and how much room a new position actually has.</p>
+
+    <div class="card" id="pf-summary"></div>
+
+    <div class="card">
+      <h3>Add a holding</h3>
+      <div class="row3">
+        <label class="f"><b>Ticker</b><input type="text" id="h-tk" placeholder="VWCE" autocomplete="off"></label>
+        <label class="f"><b>Name</b><input type="text" id="h-nm" placeholder="Vanguard All-World" autocomplete="off"></label>
+        <label class="f"><b>Sector</b><select id="h-sec"></select></label>
+      </div>
+      <div class="row3">
+        <label class="f"><b>Units</b><input type="number" id="h-un" step="any" placeholder="42"></label>
+        <label class="f"><b>Avg cost / unit</b><input type="number" id="h-ac" step="any" placeholder="98.40"></label>
+        <label class="f"><b>Current price</b><input type="number" id="h-pr" step="any" placeholder="118.20"></label>
+      </div>
+      <button class="btn" id="h-add">Add holding</button>
+    </div>
+
+    <div class="card">
+      <h3>Holdings</h3>
+      <div class="tw"><table id="pf-table"></table></div>
+    </div>
+
+    <div class="card">
+      <h3>Sector exposure</h3>
+      <div id="pf-sectors"></div>
+    </div>
+  </section>
+
+  <!-- ============ JOURNAL ============ -->
+  <section class="view" id="v-journal">
+    <h2>Decision journal</h2>
+    <p class="sub">Every saved verdict, with the thesis you wrote at the time and the date you said you would re-check it. This is the part that actually improves decisions — a thesis you cannot remember is a thesis you cannot falsify.</p>
+    <div class="card" id="jr-summary"></div>
+    <div id="jr-list"></div>
+  </section>
+
+  <!-- ============ PROFILE ============ -->
+  <section class="view" id="v-profile">
+    <h2>Investor profile</h2>
+    <p class="sub">Your constraints. These drive position sizing, the risk factors and several of the hard rules — an identical stock scores differently for a 3-year conservative saver and a 20-year aggressive one.</p>
+
+    <div class="card">
+      <div class="row">
+        <label class="f"><b>Currency</b><select id="p-cur"><option value="EUR">EUR €</option><option value="USD">USD $</option><option value="GBP">GBP £</option></select></label>
+        <label class="f"><b>Investable cash</b><input type="number" id="p-cash" step="any" placeholder="12000"></label>
+      </div>
+      <label class="f"><b>Risk tolerance</b>
+        <div class="seg" id="p-risk">
+          <button data-v="conservative">Conservative</button>
+          <button data-v="moderate" class="on">Moderate</button>
+          <button data-v="aggressive">Aggressive</button>
+        </div>
+      </label>
+      <div class="row3">
+        <label class="f"><b>Horizon (years)</b><input type="number" id="p-hor" step="any" placeholder="10"></label>
+        <label class="f"><b>Max position %</b><input type="number" id="p-maxpos" step="any" placeholder="8"></label>
+        <label class="f"><b>Max sector %</b><input type="number" id="p-maxsec" step="any" placeholder="30"></label>
+      </div>
+      <label class="f"><b>Risk budget per position % <i title="How much of the whole portfolio you are willing to see swing on one position in a typical year. 1.5% is a common default. Lower = smaller positions in volatile assets.">?</i></b><input type="number" id="p-budget" step="any" placeholder="1.5"></label>
+      <button class="btn" id="p-save">Save profile</button>
+    </div>
+
+    <div class="card">
+      <h3>Data</h3>
+      <p class="muted">Everything lives in this browser only — nothing is uploaded anywhere. Export before clearing your browser data or switching device.</p>
+      <div class="btnrow">
+        <button class="btn ghost mini" id="d-export" style="flex:1">Export JSON</button>
+        <button class="btn ghost mini" id="d-import" style="flex:1">Import JSON</button>
+        <button class="btn ghost mini danger" id="d-reset" style="flex:1">Reset all</button>
+      </div>
+      <input type="file" id="d-file" accept="application/json" hidden>
+    </div>
+  </section>
+
+</main>
+
+<div class="disclaim">
+  <b>Not investment advice.</b> This is a decision-support tool: it applies a fixed, published set of heuristics to numbers <em>you</em> type in, and shows its whole reasoning so you can disagree with it. It fetches no market data, knows nothing about the current market, and cannot verify a single figure you enter — garbage in, confident-looking garbage out. Scores are opinions encoded as arithmetic, not forecasts. Past performance does not predict future returns. Do your own research and consider a licensed adviser for anything that matters.
+</div>
+
+<div id="toast"></div>
+
+<script>
+"use strict";
+
+/* =========================================================================
+   0 · utilities
+   ========================================================================= */
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.prototype.slice.call(r.querySelectorAll(s));
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const num=v=>{ if(v===null||v===undefined||v==='') return null;
+  const n=parseFloat(String(v).replace(',','.')); return isNaN(n)?null:n; };
+const r1=v=>Math.round(v*10)/10;
+
+/* piecewise-linear map: pts must be ascending in x, y is the 0-100 score */
+function scale(v,pts){
+  if(v===null||isNaN(v)) return null;
+  if(v<=pts[0][0]) return pts[0][1];
+  for(let i=1;i<pts.length;i++){
+    if(v<=pts[i][0]){
+      const a=pts[i-1], b=pts[i];
+      return a[1]+(b[1]-a[1])*(v-a[0])/(b[0]-a[0]);
+    }
+  }
+  return pts[pts.length-1][1];
+}
+/* pick a label by ascending thresholds */
+function band(v,pairs,last){ for(const [t,l] of pairs){ if(v<=t) return l; } return last; }
+
+function money(v){
+  const c={EUR:'€',USD:'$',GBP:'£'}[S.profile.currency]||'€';
+  if(v===null||v===undefined||isNaN(v)) return '—';
+  const a=Math.abs(v);
+  const s=a>=1000?Math.round(v).toLocaleString('en-US'):(Math.round(v*100)/100).toLocaleString('en-US');
+  return c+s;
+}
+function pct(v,d=1){ return (v===null||isNaN(v))?'—':(Math.round(v*Math.pow(10,d))/Math.pow(10,d))+'%'; }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'),2200); }
+function today(){ return new Date().toISOString().slice(0,10); }
+function addDays(iso,n){ const d=new Date(iso+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+
+/* =========================================================================
+   1 · state
+   ========================================================================= */
+const SECTORS=['Technology','Financials','Health care','Consumer','Industrials','Energy',
+  'Materials','Utilities','Real estate','Communications','Broad index / diversified','Other'];
+
+const DEFAULT_PROFILE={currency:'EUR',cash:null,tolerance:'moderate',horizon:10,
+  maxPos:8,maxSector:30,riskBudget:1.5};
+
+const S={profile:Object.assign({},DEFAULT_PROFILE),holdings:[],journal:[],
+  atype:'stock',lastResult:null};
+
+const KEY='ida.v1';
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(
+  {profile:S.profile,holdings:S.holdings,journal:S.journal})); }catch(e){} }
+function load(){
+  try{ const raw=localStorage.getItem(KEY); if(!raw) return;
+    const d=JSON.parse(raw);
+    if(d.profile) S.profile=Object.assign({},DEFAULT_PROFILE,d.profile);
+    if(Array.isArray(d.holdings)) S.holdings=d.holdings;
+    if(Array.isArray(d.journal))  S.journal=d.journal;
+  }catch(e){}
+}
+
+/* =========================================================================
+   2 · factor definitions
+   Each factor: k key · l label · ph placeholder · w weight inside its group
+   · hint tooltip · sc(value, ctx) -> {s:0..100, note:string, flag?:'g'|'r'}
+   ========================================================================= */
+const F={};
+
+/* ---- valuation ---- */
+F.pe={k:'pe',l:'P/E ratio',ph:'18.4',w:1.2,
+  hint:'Price divided by earnings per share. Enter a negative number if the company is loss-making.',
+  sc:v=>{
+    if(v<0) return {s:16,flag:'r',note:'Loss-making — no earnings to value. Only defensible if you are underwriting a specific path to profit.'};
+    if(v<3) return {s:60,note:'A P/E under 3 is almost always an artefact — one-off gains, or the market pricing in collapse. Verify the earnings figure.'};
+    const s=scale(v,[[5,97],[10,89],[15,77],[20,63],[25,51],[35,34],[50,18],[80,8]]);
+    return {s,flag:v<=15?'g':(v>=35?'r':null),
+      note:`${v}× earnings — ${band(v,[[10,'deep-value territory'],[16,'below the long-run market average'],[22,'around the market average'],[32,'a growth premium you must justify']],'priced for near-flawless execution')}.`};
+  }};
+F.peg={k:'peg',l:'PEG',ph:'1.4',w:1.0,
+  hint:'P/E divided by the expected annual earnings growth rate in percent. Below 1 is classically cheap for the growth on offer.',
+  sc:v=>{
+    if(v<0) return {s:18,flag:'r',note:'Negative PEG — either losses or shrinking earnings. The ratio is meaningless here; judge on cash flow instead.'};
+    const s=scale(v,[[0.5,97],[1,88],[1.5,72],[2,54],[3,32],[5,12]]);
+    return {s,flag:v<=1?'g':(v>=2.5?'r':null),
+      note:`Paying ${v} of P/E per point of growth — ${band(v,[[1,'cheap relative to the growth'],[1.6,'fair for the growth'],[2.5,'expensive unless growth surprises up']],'the growth story is already fully paid for')}.`};
+  }};
+F.fcfy={k:'fcfy',l:'FCF yield %',ph:'4.2',w:1.2,
+  hint:'Free cash flow divided by market capitalisation, ×100. The single hardest number to fake.',
+  sc:v=>{
+    const s=scale(v,[[-5,8],[0,24],[2,45],[4,62],[6,78],[8,90],[12,97]]);
+    return {s,flag:v>=6?'g':(v<0?'r':null),
+      note:v<0?'Burning cash — the business is funded by investors, not customers. Check the runway.'
+              :`${v}% of the market cap comes back as free cash each year — ${band(v,[[2,'thin'],[4,'modest'],[7,'healthy']],'high, so ask why the market is sceptical')}.`};
+  }};
+F.pb={k:'pb',l:'P/B',ph:'3.1',w:0.7,
+  hint:'Price divided by book value per share. Most informative for banks, insurers and asset-heavy businesses.',
+  sc:v=>({s:scale(v,[[0.5,96],[1,90],[2,76],[4,58],[8,36],[15,14]]),
+    note:`${v}× book — ${band(v,[[1,'below the accounting value of the assets'],[2.5,'a mild premium to book'],[5,'a substantial premium, so the value is in intangibles']],'book value tells you almost nothing here')}.`})};
+F.dy={k:'dy',l:'Dividend yield %',ph:'2.1',w:0.6,
+  hint:'Annual dividend per share divided by price, ×100. Very high yields usually price in a cut.',
+  sc:v=>({s:scale(v,[[0,55],[1.5,68],[3,80],[5,82],[7,60],[10,32],[15,12]]),
+    flag:v>=8?'r':null,
+    note:v>=8?`${v}% is a distress signal more often than a gift — check whether free cash flow actually covers it.`
+             :`${v}% yield — ${band(v,[[0.5,'effectively none; the return has to come from price'],[2,'modest'],[4.5,'a meaningful income component']],'high; verify it is covered')}.`})};
+
+/* ---- quality ---- */
+F.roe={k:'roe',l:'ROE %',ph:'18',w:1.1,
+  hint:'Return on equity: net income divided by shareholder equity, ×100.',
+  sc:v=>({s:scale(v,[[-10,8],[0,20],[5,38],[10,55],[15,72],[25,88],[40,97]]),
+    flag:v>=20?'g':(v<0?'r':null),
+    note:`${v}% return on equity — ${band(v,[[0,'destroying capital'],[8,'below the cost of capital'],[15,'respectable'],[25,'strong']],'exceptional, but check it is not just leverage')}.`})};
+F.margin={k:'margin',l:'Net margin %',ph:'12',w:1.0,
+  hint:'Net profit divided by revenue, ×100. Best compared against direct competitors.',
+  sc:v=>({s:scale(v,[[-10,8],[0,22],[3,40],[8,58],[15,76],[25,92],[40,98]]),
+    note:`${v}% of every unit of revenue reaches the bottom line — ${band(v,[[0,'nothing does'],[5,'thin, so volume and cost control decide everything'],[14,'solid'],[25,'wide']],'unusually wide, which invites competition')}.`})};
+F.de={k:'de',l:'Debt / equity',ph:'0.6',w:1.0,
+  hint:'Total debt divided by shareholder equity. Above ~2 the equity is a leveraged bet on the business.',
+  sc:v=>({s:scale(v,[[0,95],[0.3,90],[0.6,78],[1,64],[2,42],[3,24],[5,8]]),
+    flag:v<=0.5?'g':(v>=2?'r':null),
+    note:`${v}× debt to equity — ${band(v,[[0.3,'a fortress balance sheet'],[0.8,'comfortable'],[1.5,'leveraged but normal for many sectors'],[2.5,'highly leveraged; refinancing risk matters']],'the equity is the thin slice above the debt')}.`})};
+F.icov={k:'icov',l:'Interest coverage',ph:'8',w:0.9,
+  hint:'Operating profit divided by interest expense. Below ~2 the lenders effectively own the outcome.',
+  sc:v=>({s:scale(v,[[0,8],[1.5,28],[3,50],[5,68],[10,85],[20,96]]),
+    flag:v<2?'r':null,
+    note:`Operating profit covers interest ${v}× — ${band(v,[[1.5,'barely; a bad quarter breaks a covenant'],[3,'tightly'],[8,'comfortably']],'with a wide margin of safety')}.`})};
+F.growth={k:'growth',l:'Revenue growth % (3y avg)',ph:'9',w:1.0,
+  hint:'Average annual revenue growth over roughly the last three years.',
+  sc:v=>({s:scale(v,[[-20,8],[-5,25],[0,42],[5,58],[10,72],[20,88],[35,97]]),
+    flag:v>=15?'g':(v<0?'r':null),
+    note:`Revenue ${v<0?'shrinking':'growing'} ${Math.abs(v)}% a year — ${band(v,[[-5,'a business in retreat'],[2,'flat; the case must rest on margins or buybacks'],[10,'steady'],[22,'fast']],'very fast, so the risk is deceleration')}.`})};
+
+/* ---- ETF cost & structure ---- */
+F.ter={k:'ter',l:'TER % (ongoing charge)',ph:'0.12',w:1.4,
+  hint:'Total expense ratio per year. The one cost you control with certainty.',
+  sc:v=>({s:scale(v,[[0.03,98],[0.07,92],[0.15,82],[0.25,70],[0.4,55],[0.7,33],[1.2,12]]),
+    flag:v<=0.15?'g':(v>=0.6?'r':null),
+    note:`${v}% a year, compounding against you — ${band(v,[[0.1,'about as cheap as index exposure gets'],[0.25,'cheap'],[0.5,'acceptable only for exposure you cannot get cheaper']],'expensive; over 20 years this is a large share of the return')}.`})};
+F.aum={k:'aum',l:'Fund size (millions)',ph:'2400',w:0.8,
+  hint:'Assets under management. Very small funds get closed and merged, which forces a taxable exit.',
+  sc:v=>({s:scale(v,[[20,18],[100,48],[500,72],[2000,88],[10000,96]]),
+    flag:v<100?'r':null,
+    note:`${Math.round(v).toLocaleString('en-US')}m under management — ${band(v,[[100,'small enough to be at real risk of closure'],[500,'viable but not comfortable'],[3000,'well established']],'very large and liquid')}.`})};
+F.holdings={k:'holdings',l:'Number of holdings',ph:'1400',w:0.9,
+  hint:'How many positions the fund holds. More holdings, less single-name risk.',
+  sc:v=>({s:scale(v,[[1,18],[10,34],[30,55],[100,75],[500,90],[1500,96]]),
+    note:`${Math.round(v).toLocaleString('en-US')} positions — ${band(v,[[25,'concentrated; this is closer to a stock pick than an index'],[80,'moderately diversified'],[400,'broadly diversified']],'very broad')}.`})};
+F.top10={k:'top10',l:'Top-10 weight %',ph:'18',w:0.9,
+  hint:'Share of the fund sitting in its ten largest holdings. A broad-sounding index can still be a bet on five companies.',
+  sc:v=>({s:scale(v,[[10,95],[20,88],[35,72],[50,52],[70,30],[90,12]]),
+    flag:v>=45?'r':null,
+    note:`Top ten holdings are ${v}% of the fund — ${band(v,[[20,'genuinely spread'],[35,'a normal cap-weighted tilt'],[55,'concentrated despite the index label']],'this is a concentrated bet wearing an index costume')}.`})};
+F.tracking={k:'tracking',l:'Tracking difference %/yr',ph:'0.05',w:0.7,
+  hint:'How far the fund lagged its index per year (positive = lagged). Includes costs and tax drag.',
+  sc:v=>({s:scale(v,[[-0.1,96],[0,92],[0.1,84],[0.25,70],[0.5,50],[1,24]]),
+    note:v<=0?'Kept pace with, or beat, its index — securities lending or tax treatment working in your favour.'
+             :`Lagged its index by ${v}% a year — ${band(v,[[0.15,'negligible'],[0.4,'noticeable but tolerable']],'large; the fund is not delivering the index you are buying')}.`})};
+
+/* ---- trend ---- */
+F.ma200={k:'ma200',l:'% above 200-day average',ph:'6',w:1.0,
+  hint:'How far the current price sits above (+) or below (-) its 200-day moving average.',
+  sc:v=>({s:scale(v,[[-40,18],[-25,32],[-10,50],[0,66],[10,82],[20,74],[35,50],[60,28]]),
+    flag:v>=30?'r':null,
+    note:v>=30?`${v}% above trend — extended. Buying here means paying for enthusiasm; consider tranches.`
+      :v<0?`${Math.abs(v)}% below trend — the market disagrees with your thesis for now. Cheap or falling, and the chart cannot tell you which.`
+      :`${v}% above trend — a constructive uptrend without being stretched.`})};
+F.dd52={k:'dd52',l:'% below 52-week high',ph:'12',w:0.9,
+  hint:'Distance from the highest price of the last year, as a positive number.',
+  sc:v=>({s:scale(v,[[0,70],[5,82],[12,80],[25,66],[40,48],[60,28],[80,14]]),
+    flag:v>=45?'r':null,
+    note:`${v}% off the 52-week high — ${band(v,[[3,'at the highs, so no margin of error in the entry'],[15,'a modest pullback, often the best entry zone'],[35,'a real drawdown; establish why before buying']],'a severe decline — assume the market knows something you do not')}.`})};
+
+/* ---- risk ---- */
+F.beta={k:'beta',l:'Beta',ph:'1.1',w:0.9,
+  hint:'Sensitivity to the overall market. 1.0 moves with the index, 1.5 amplifies it by half.',
+  sc:(v,c)=>{
+    const ideal={conservative:0.7,moderate:1.0,aggressive:1.25}[c.tol];
+    return {s:clamp(100-58*Math.abs(v-ideal),10,97),
+      note:`Beta ${v} against a ${ideal} target for ${c.tol==='aggressive'?'an':'a'} ${c.tol} profile — ${v>ideal+0.25?'amplifies market moves beyond your stated tolerance':(v<ideal-0.25?'damps market moves; you may be under-using your risk budget':'well matched to your profile')}.`};
+  }};
+F.vol={k:'vol',l:'Annual volatility %',ph:'24',w:1.2,
+  hint:'Annualised standard deviation of returns. Drives position sizing directly — if you enter nothing else, enter this.',
+  sc:(v,c)=>{
+    const tolv={conservative:18,moderate:26,aggressive:38}[c.tol];
+    return {s:scale(v/tolv,[[0.3,96],[0.6,88],[1,70],[1.4,46],[2,24],[3,10]]),
+      flag:v/tolv>=1.5?'r':null,
+      note:`${v}% annualised against a ${tolv}% comfort level — a typical year moves this roughly ±${Math.round(v)}%, and a bad one twice that.`};
+  }};
+F.mcap={k:'mcap',l:'Market cap (billions)',ph:'240',w:0.8,
+  hint:'Size in billions of your currency. Smaller means higher expected return and a much wider distribution of outcomes.',
+  sc:(v,c)=>{
+    let s=scale(v,[[0.05,16],[0.3,32],[2,52],[10,70],[50,84],[200,92],[1000,96]]);
+    if(c.tol==='aggressive') s=s*0.6+65*0.4;
+    if(c.tol==='conservative') s=clamp(s*1.04-5,8,97);
+    return {s,note:`${band(v,[[0.3,'Micro-cap'],[2,'Small-cap'],[10,'Mid-cap'],[200,'Large-cap']],'Mega-cap')} — ${band(v,[[2,'thin liquidity and single-headline risk'],[10,'room to grow, with real business risk'],[200,'established']],'a mature business; expect index-like returns')}.`};
+  }};
+
+/* group layout per asset type. Fit is computed, not entered. */
+const GROUPS={
+  stock:[
+    {g:'Valuation',    w:0.25, f:[F.pe,F.peg,F.fcfy,F.pb,F.dy]},
+    {g:'Quality',      w:0.24, f:[F.roe,F.margin,F.de,F.icov,F.growth]},
+    {g:'Trend',        w:0.13, f:[F.ma200,F.dd52]},
+    {g:'Risk',         w:0.17, f:[F.vol,F.beta,F.mcap]}
+  ],
+  etf:[
+    {g:'Cost & structure', w:0.30, f:[F.ter,F.aum,F.holdings,F.top10,F.tracking]},
+    {g:'Valuation',        w:0.12, f:[F.pe,F.dy]},
+    {g:'Trend',            w:0.14, f:[F.ma200,F.dd52]},
+    {g:'Risk',             w:0.18, f:[F.vol,F.beta]}
+  ]
+};
+const FIT_W={stock:0.21,etf:0.26};
+
+/* =========================================================================
+   3 · portfolio maths
+   ========================================================================= */
+function hval(h){ const v=(num(h.units)||0)*(num(h.price)||0); return isNaN(v)?0:v; }
+function pfStats(){
+  const invested=S.holdings.reduce((a,h)=>a+hval(h),0);
+  const cash=num(S.profile.cash)||0;
+  const total=invested+cash;
+  const bySector={};
+  S.holdings.forEach(h=>{ bySector[h.sector]=(bySector[h.sector]||0)+hval(h); });
+  /* only holdings with a recorded cost basis take part in the P&L figure */
+  const priced=S.holdings.filter(h=>(num(h.avgCost)||0)>0);
+  const cost=priced.reduce((a,h)=>a+(num(h.units)||0)*(num(h.avgCost)||0),0);
+  const costedValue=priced.reduce((a,h)=>a+hval(h),0);
+  return {invested,cash,total,bySector,cost,pnl:costedValue-cost,
+    pnlPartial:priced.length!==S.holdings.length};
+}
+function weightOf(v){ const t=pfStats().total; return t>0?v/t*100:0; }
+
+/* =========================================================================
+   4 · the engine
+   ========================================================================= */
+function analyse(inp){
+  const p=S.profile, at=inp.atype;
+  const ctx={tol:p.tolerance,horizon:num(p.horizon)||10,atype:at};
+  const pf=pfStats();
+
+  /* ---- 4a · entered factor groups ---------------------------------- */
+  const groups=[];
+  let covW=0, allW=0;
+  GROUPS[at].forEach(g=>{
+    const rows=[]; let sw=0, ss=0, wPresent=0, wAll=0;
+    g.f.forEach(f=>{
+      wAll+=f.w;
+      const v=inp.vals[f.k];
+      if(v===null||v===undefined){ rows.push({l:f.l,s:null,note:'not provided'}); return; }
+      const out=f.sc(v,ctx);
+      rows.push({l:f.l,s:out.s,note:out.note,flag:out.flag||null});
+      ss+=out.s*f.w; sw+=f.w; wPresent+=f.w;
+    });
+    const cov=wAll>0?wPresent/wAll:0;
+    covW+=g.w*cov; allW+=g.w;
+    groups.push({g:g.g,w:g.w,cov,score:sw>0?ss/sw:null,rows});
+  });
+  const confidence=allW>0?covW/allW:0;
+
+  /* ---- 4b · intended size, before conviction ----------------------- */
+  const volIn=inp.vals.vol;
+  const vol=volIn!==null&&volIn!==undefined?volIn:(at==='etf'?16:28);
+  const volAssumed=(volIn===null||volIn===undefined);
+  const maxPos=num(p.maxPos)||8, maxSec=num(p.maxSector)||30, budget=num(p.riskBudget)||1.5;
+  const intended=Math.min(maxPos, budget*100/Math.max(vol,4));
+
+  /* existing exposure to the same name and to its sector */
+  const same=S.holdings.filter(h=>(h.ticker||'').toUpperCase()===(inp.ticker||'').toUpperCase()&&inp.ticker);
+  const sameW=weightOf(same.reduce((a,h)=>a+hval(h),0));
+  const secW=weightOf(pf.bySector[inp.sector]||0);
+  const cashW=pf.total>0?pf.cash/pf.total*100:0;
+
+  /* ---- 4c · portfolio-fit group ------------------------------------ */
+  const fitRows=[];
+  {
+    const postPos=sameW+intended;
+    fitRows.push({l:'Position concentration',w:1.1,
+      s:scale(postPos/maxPos,[[0.2,92],[0.5,86],[0.8,74],[1,58],[1.3,32],[2,10]]),
+      note:`A ${r1(intended)}% position${sameW>0?` on top of the ${r1(sameW)}% you already hold`:''} would put ${r1(postPos)}% of the portfolio in this one name, against your ${maxPos}% ceiling.`,
+      flag:postPos>maxPos?'r':(postPos<=maxPos*0.6?'g':null)});
+
+    const postSec=secW+intended;
+    fitRows.push({l:'Sector concentration',w:1.0,
+      s:scale(postSec/maxSec,[[0.2,92],[0.5,86],[0.8,74],[1,58],[1.3,30],[2,8]]),
+      note:`${inp.sector} is ${r1(secW)}% of the portfolio today and would become ${r1(postSec)}%, against your ${maxSec}% ceiling.`,
+      flag:postSec>maxSec?'r':null});
+
+    const need=clamp(vol/7,1,12);
+    fitRows.push({l:'Horizon vs volatility',w:1.2,
+      s:scale(ctx.horizon/need,[[0.3,10],[0.6,32],[1,64],[1.5,82],[3,95]]),
+      note:`At ${Math.round(vol)}% volatility${volAssumed?' (assumed — you did not enter one)':''} this asset needs roughly ${r1(need)} years to make a loss unlikely; you have ${ctx.horizon}.`,
+      flag:ctx.horizon<need?'r':(ctx.horizon>need*2?'g':null)});
+
+    if(pf.total>0){
+      fitRows.push({l:'Dry powder',w:0.8,
+        s:scale(cashW/Math.max(intended,0.1),[[0.3,14],[0.7,42],[1,68],[2,86],[4,95]]),
+        note:`Cash is ${r1(cashW)}% of the portfolio; the intended position needs ${r1(intended)}%.`,
+        flag:cashW<intended?'r':null});
+    }
+
+    const n=S.holdings.length;
+    fitRows.push({l:'Diversification context',w:0.7,
+      s:at==='etf'?(n<5?88:76):scale(n,[[0,42],[3,52],[8,72],[15,84],[30,80],[60,62]]),
+      note:at==='etf'
+        ? `A fund adds breadth rather than single-name risk to your ${n} existing position${n===1?'':'s'}.`
+        : `You hold ${n} position${n===1?'':'s'}. ${n<5?'Adding a single stock to a thin portfolio concentrates outcomes on your stock-picking.':(n>35?'Past ~30 names the marginal stock mostly adds admin, not diversification.':'A sensible number of names to be adding to.')}`});
+  }
+  {
+    let sw=0,ss=0; fitRows.forEach(r=>{ss+=r.s*r.w;sw+=r.w;});
+    groups.push({g:'Portfolio fit',w:FIT_W[at],cov:1,score:ss/sw,rows:fitRows});
+  }
+
+  /* ---- 4d · weighted total ----------------------------------------- */
+  let ws=0, wt=0;
+  groups.forEach(g=>{
+    if(g.score===null) return;
+    const eff=g.w*(0.5+0.5*g.cov);
+    g.eff=eff; ws+=g.score*eff; wt+=eff;
+  });
+  const rawScore=wt>0?ws/wt:0;
+  /* shrink toward neutral when the evidence is thin: a strong score built on
+     two data points is not the same claim as one built on fifteen. */
+  const shrink=0.6+0.4*confidence;
+  const score=50+(rawScore-50)*shrink;
+  groups.forEach(g=>{ g.share=g.eff&&wt>0?g.eff/wt:0; });
+
+  /* ---- 4e · hard rules --------------------------------------------- */
+  const blocks=[];
+  const v=inp.vals;
+  if(ctx.horizon<2)
+    blocks.push({cap:'WATCH',t:`A ${ctx.horizon}-year horizon is too short for equity of any kind. Money you need inside two years does not belong in a market that routinely falls 20% and stays there for a year.`});
+  if(v.pe!==null&&v.pe<0&&v.de!==null&&v.de>2.5&&v.icov!==null&&v.icov<1.5)
+    blocks.push({cap:'AVOID',t:'Loss-making, heavily indebted and unable to cover its interest. That is the classic solvency-risk profile — the equity can go to zero without the business ever formally failing.'});
+  if(v.fcfy!==null&&v.fcfy<0&&v.de!==null&&v.de>2)
+    blocks.push({cap:'AVOID',t:'Burning cash while carrying substantial debt. The next financing round happens on the lender’s terms, not yours.'});
+  if(confidence<0.45)
+    blocks.push({cap:'MORE DATA',t:`Only ${Math.round(confidence*100)}% of the factors this engine wants were provided. Anything above "watch" would be a guess dressed up as arithmetic.`});
+  if(pf.total<=0)
+    blocks.push({cap:null,t:'No portfolio or cash recorded, so position sizing is expressed in percentages only. Add them under Profile and Portfolio for amounts.'});
+
+  /* ---- 4f · verdict ------------------------------------------------- */
+  const LADDER=['AVOID','WATCH','MORE DATA','STARTER POSITION','BUY','STRONG BUY'];
+  let label = score>=80?'STRONG BUY' : score>=68?'BUY' : score>=56?'STARTER POSITION'
+            : score>=44?'WATCH' : 'AVOID';
+  blocks.forEach(b=>{
+    if(!b.cap) return;
+    if(LADDER.indexOf(b.cap)<LADDER.indexOf(label)) label=b.cap;
+  });
+  const vclass = (label==='STRONG BUY'||label==='BUY')?'v-buy'
+               : (label==='AVOID')?'v-avoid'
+               : (label==='MORE DATA')?'v-none':'v-hold';
+
+  /* ---- 4g · position sizing ---------------------------------------- */
+  const conv=clamp((score-52)/28,0,1);
+  const posRoom=Math.max(0,maxPos-sameW);
+  const secRoom=Math.max(0,maxSec-secW);
+  let sizePct=intended*conv;
+  const caps=[];
+  if(sizePct>posRoom){ sizePct=posRoom; caps.push(`your ${maxPos}% single-position ceiling`); }
+  if(sizePct>secRoom){ sizePct=secRoom; caps.push(`your ${maxSec}% ceiling on ${inp.sector}`); }
+  if(pf.total>0&&sizePct>cashW){ sizePct=cashW; caps.push('the cash you have available'); }
+  if(label==='AVOID'||label==='WATCH'||label==='MORE DATA') sizePct=0;
+  sizePct=Math.max(0,sizePct);
+
+  const amount=pf.total>0?pf.total*sizePct/100:null;
+  const shares=(amount!==null&&inp.price)?amount/inp.price:null;
+
+  let tranches=1;
+  if(sizePct>0){
+    if(vol>32||(v.ma200!==null&&v.ma200>25)||score<66) tranches=3;
+    else if(vol>20||score<74||sizePct>5) tranches=2;
+  }
+  /* the analysis says buy, but your own ceilings leave nowhere to put it */
+  const noRoom=sizePct===0&&['STARTER POSITION','BUY','STRONG BUY'].indexOf(label)>=0;
+
+  /* ---- 4h · flags & narrative --------------------------------------- */
+  const green=[],red=[];
+  groups.forEach(g=>g.rows.forEach(r=>{
+    if(r.flag==='g') green.push(r.note);
+    if(r.flag==='r') red.push(r.note);
+  }));
+
+  /* weakest scored factors drive the review triggers */
+  const scored=[];
+  groups.forEach(g=>g.rows.forEach(r=>{ if(r.s!==null&&r.s!==undefined) scored.push({g:g.g,l:r.l,s:r.s}); }));
+  scored.sort((a,b)=>a.s-b.s);
+  const weakest=scored.slice(0,3);
+  const triggers=weakest.map(w=>TRIGGER[w.l]||`${w.l} deteriorates further from here`);
+  triggers.push(`Price falls ${vol>30?35:25}% with no change in the fundamentals above — either the thesis is wrong or the position is a bargain, and you must decide which on purpose rather than by inertia`);
+
+  return {score,rawScore,shrink,label,vclass:noRoom?'v-hold':vclass,noRoom,
+    confidence,groups,blocks,green,red,triggers,weakest,
+    sizePct,amount,shares,tranches,caps,intended,conv,vol,volAssumed,
+    sameW,secW,cashW,pf,input:inp};
+}
+
+/* review trigger phrasing per factor */
+const TRIGGER={
+  'P/E ratio':'The multiple re-rates upward again without earnings following it',
+  'PEG':'Growth expectations are cut while the multiple holds',
+  'FCF yield %':'Free cash flow turns negative for two consecutive quarters',
+  'P/B':'Book value is written down materially',
+  'Dividend yield %':'The dividend is cut, or free cash flow stops covering it',
+  'ROE %':'Return on equity falls below the cost of capital for a full year',
+  'Net margin %':'Net margin compresses for two consecutive quarters',
+  'Debt / equity':'Leverage rises further, or debt is refinanced at a materially higher rate',
+  'Interest coverage':'Interest coverage falls below 2×',
+  'Revenue growth % (3y avg)':'Revenue growth turns negative year on year',
+  'TER % (ongoing charge)':'A materially cheaper fund appears for the same exposure',
+  'Fund size (millions)':'Assets keep shrinking, raising the odds of a forced closure',
+  'Number of holdings':'The index methodology changes and narrows the fund',
+  'Top-10 weight %':'Top-ten concentration climbs past 50%',
+  'Tracking difference %/yr':'Tracking difference widens beyond 0.4% a year',
+  '% above 200-day average':'Price closes below its 200-day average and stays there for a month',
+  '% below 52-week high':'The drawdown deepens past 40% from the high',
+  'Beta':'Correlation to the market rises sharply, removing the diversification you bought it for',
+  'Annual volatility %':'Realised volatility exceeds your comfort level for a full quarter',
+  'Market cap (billions)':'Liquidity dries up enough that your position takes days to exit',
+  'Position concentration':'This position drifts above your single-name ceiling',
+  'Sector concentration':'The sector drifts above your ceiling',
+  'Horizon vs volatility':'Your horizon shortens — a house deposit, a job change, anything that pulls the money forward',
+  'Dry powder':'Cash falls low enough that you could not average down if you wanted to',
+  'Diversification context':'The portfolio drifts toward too few, or too many, positions to manage'
+};
+
+/* =========================================================================
+   5 · form
+   ========================================================================= */
+function fillSelect(el,list,val){
+  el.innerHTML=list.map(s=>`<option${s===val?' selected':''}>${esc(s)}</option>`).join('');
+}
+function renderForm(){
+  const wrap=$('#dynfields'); wrap.innerHTML='';
+  GROUPS[S.atype].forEach(g=>{
+    const c=document.createElement('div'); c.className='card';
+    c.innerHTML='<div class="ghead"><b>'+esc(g.g)+'</b><span>'+Math.round(g.w*100)+'% of the score</span></div>'+
+      '<div class="row">'+g.f.map(f=>
+        '<label class="f"><b>'+esc(f.l)+' <i title="'+esc(f.hint)+'">?</i></b>'+
+        '<input type="number" step="any" data-k="'+f.k+'" placeholder="'+esc(f.ph)+'"></label>').join('')+
+      '</div>';
+    wrap.appendChild(c);
+  });
+  $$('#dynfields input').forEach(i=>{
+    if(S.draft&&S.draft[i.dataset.k]!==undefined&&S.draft[i.dataset.k]!==null) i.value=S.draft[i.dataset.k];
+    i.addEventListener('input',()=>{ S.draft[i.dataset.k]=i.value; updateCompleteness(); });
+  });
+  updateCompleteness();
+}
+function readVals(){
+  const vals={};
+  GROUPS[S.atype].forEach(g=>g.f.forEach(f=>{ vals[f.k]=null; }));
+  $$('#dynfields input').forEach(i=>{ vals[i.dataset.k]=num(i.value); });
+  return vals;
+}
+function updateCompleteness(){
+  const vals=readVals(); let w=0,tot=0;
+  GROUPS[S.atype].forEach(g=>{
+    let p=0,a=0; g.f.forEach(f=>{ a+=f.w; if(vals[f.k]!==null) p+=f.w; });
+    tot+=g.w; w+=g.w*(a?p/a:0);
+  });
+  const c=tot?w/tot:0, p=Math.round(c*100);
+  $('#compl-bar').style.width=p+'%';
+  $('#compl-txt').textContent=p+'%';
+  $('#compl-note').textContent = p>=75?'Enough to score with confidence.'
+    : p>=45?'Workable. The missing factors are simply left out of the score, not assumed away.'
+    : 'Below 45% the agent will refuse anything stronger than "watch".';
+}
+
+/* =========================================================================
+   6 · results
+   ========================================================================= */
+function barColor(s){ return s>=70?'var(--ok)':(s>=50?'var(--gold)':'var(--err)'); }
+
+function renderResult(R){
+  const C=2*Math.PI*40, dash=C*clamp(R.score,0,100)/100;
+  const cur=R.pf.total>0;
+
+  let h='<div class="verdict">';
+
+  /* head */
+  h+='<div class="vhead"><div class="dial">'+
+     '<svg width="92" height="92" viewBox="0 0 92 92">'+
+     '<circle cx="46" cy="46" r="40" fill="none" stroke="rgba(28,46,58,.1)" stroke-width="7"/>'+
+     '<circle cx="46" cy="46" r="40" fill="none" stroke="'+barColor(R.score)+'" stroke-width="7" stroke-linecap="round" stroke-dasharray="'+dash.toFixed(1)+' '+C.toFixed(1)+'"/>'+
+     '</svg><b>'+Math.round(R.score)+'</b></div>'+
+     '<div class="vtxt"><div class="lbl '+R.vclass+'">'+esc(R.label)+(R.noRoom?' · no room':'')+'</div>'+
+     '<div class="why">'+esc(R.input.ticker||R.input.name||'This candidate')+
+     ' · '+Math.round(R.confidence*100)+'% of the evidence the engine asks for'+
+     (R.volAssumed?' · volatility assumed':'')+
+     (R.confidence<0.92?'<br>Raw score '+Math.round(R.rawScore)+', pulled toward neutral because the evidence is incomplete.':'')+
+     '</div></div></div>';
+
+  /* action */
+  h+='<div class="action">';
+  if(R.sizePct>0){
+    h+='<div class="big">Buy '+r1(R.sizePct)+'% of the portfolio'+
+       (cur?' — '+money(Math.round(R.amount))+(R.shares?' ≈ '+(R.shares>=10?Math.floor(R.shares):r1(R.shares))+' units':''):'')+'</div>';
+    h+='<div class="det">'+
+       (R.tranches>1?'Split into '+R.tranches+' tranches over the next '+(R.tranches===3?'three months':'two months')+' — the score is good, not certain, and averaging in costs little when you are unsure. ':'A single purchase is fine at this conviction and volatility. ')+
+       'Sized from a '+S.profile.riskBudget+'% risk budget against '+Math.round(R.vol)+'% volatility ('+r1(R.intended)+'% full size), scaled to '+Math.round(R.conv*100)+'% for conviction'+
+       (R.caps.length?', then limited by '+R.caps.join(' and '):'')+'.</div>';
+  }else{
+    h+='<div class="big">'+(R.noRoom?'No room to buy':'No purchase')+'</div><div class="det">'+
+       (R.noRoom?'The evidence supports buying — your own limits are what stop it. '+
+          (R.caps.length?'Blocked by '+R.caps.join(' and ')+'. ':'')+
+          'Either trim something to make space, raise the ceiling deliberately, or accept that this one arrived too late.'
+        :R.label==='MORE DATA'?'Not because it is a bad investment — because you have not shown the engine enough to tell.'
+        :R.label==='WATCH'?'Worth following. Set the review triggers below and revisit when one fires.'
+        :R.label==='AVOID'?'The weight of the evidence you entered argues against it.'
+        :'Position sizing came out at zero once your limits were applied.')+'</div>';
+  }
+  h+='</div>';
+
+  /* blocking rules */
+  if(R.blocks.length){
+    h+='<div class="grp"><div class="ghead"><b>Rules that fired</b></div><ul class="flags">'+
+      R.blocks.map(b=>'<li class="'+(b.cap?'r':'n')+'">'+(b.cap?'<b>'+esc(b.cap)+'</b> — ':'')+esc(b.t)+'</li>').join('')+
+      '</ul></div>';
+  }
+
+  /* factor groups */
+  R.groups.forEach(g=>{
+    h+='<div class="grp"><div class="ghead"><b>'+esc(g.g)+'</b><span>'+
+       (g.score===null?'no data':Math.round(g.score)+' · '+Math.round((g.share||0)*100)+'% of this verdict')+'</span></div>';
+    g.rows.forEach(r=>{
+      if(r.s===null||r.s===undefined){
+        h+='<div class="fac"><div class="nm">'+esc(r.l)+'<small>not provided — excluded from the score</small></div><div class="sc" style="color:var(--steel);font-size:.9rem">—</div></div>';
+      }else{
+        h+='<div class="fac"><div class="nm">'+esc(r.l)+'<small>'+esc(r.note)+'</small></div>'+
+           '<div class="sc">'+Math.round(r.s)+'</div>'+
+           '<div class="fbar"><i style="width:'+clamp(r.s,0,100)+'%;background:'+barColor(r.s)+'"></i></div></div>';
+      }
+    });
+    h+='</div>';
+  });
+
+  /* flags */
+  if(R.green.length||R.red.length){
+    h+='<div class="grp"><div class="ghead"><b>What stands out</b></div><ul class="flags">'+
+      R.green.map(t=>'<li class="g">'+esc(t)+'</li>').join('')+
+      R.red.map(t=>'<li class="r">'+esc(t)+'</li>').join('')+'</ul></div>';
+  }
+
+  /* portfolio impact */
+  h+='<div class="grp"><div class="ghead"><b>Portfolio impact</b></div>'+
+     '<div class="kv"><b>Portfolio value</b><span>'+(cur?money(R.pf.total):'not recorded')+'</span></div>'+
+     '<div class="kv"><b>Cash today</b><span>'+(cur?money(R.pf.cash)+' · '+r1(R.cashW)+'%':'not recorded')+'</span></div>'+
+     '<div class="kv"><b>'+esc(R.input.sector)+' weight</b><span>'+r1(R.secW)+'% → '+r1(R.secW+R.sizePct)+'%</span></div>'+
+     '<div class="kv"><b>This position</b><span>'+r1(R.sameW)+'% → '+r1(R.sameW+R.sizePct)+'%</span></div>'+
+     '</div>';
+
+  /* pre-mortem */
+  h+='<div class="grp"><div class="ghead"><b>Pre-mortem — what would make this a mistake</b></div><ul class="flags">'+
+     R.weakest.map((w,i)=>'<li class="n">'+esc(w.l)+' — '+Math.round(w.s)+'/100. '+
+       (i===0?'The weakest part of the case, and the most likely way this goes wrong.'
+        :i===1?'The next most fragile assumption behind the verdict.'
+        :'Also thin enough to be worth watching.')+'</li>').join('')+
+     '</ul><div class="cat" style="margin-top:14px">Review triggers</div><ul class="flags">'+
+     R.triggers.map(t=>'<li class="n">'+esc(t)+'</li>').join('')+'</ul></div>';
+
+  /* journal */
+  h+='<div class="grp"><div class="ghead"><b>Record the decision</b></div>'+
+     '<label class="f"><b>Thesis — in one paragraph, why you are doing this</b>'+
+     '<textarea id="j-thesis" placeholder="I am buying because … I would be wrong if …"></textarea></label>'+
+     '<label class="f"><b>Review on</b><input type="date" id="j-review" value="'+addDays(today(),90)+'"></label>'+
+     '<div class="btnrow"><button class="btn" id="j-save" style="flex:2">Save to journal</button>'+
+     '<button class="btn ghost" id="j-copy" style="flex:1">Copy summary</button></div></div>';
+
+  h+='</div>';
+  $('#result').innerHTML=h;
+
+  $('#j-save').addEventListener('click',()=>saveJournal(R));
+  $('#j-copy').addEventListener('click',()=>copySummary(R));
+}
+
+function summaryText(R){
+  const L=[];
+  L.push((R.input.ticker||R.input.name||'Candidate')+' — '+R.label+' ('+Math.round(R.score)+'/100, '+Math.round(R.confidence*100)+'% data)');
+  L.push(today());
+  L.push('');
+  L.push(R.sizePct>0?('Action: buy '+r1(R.sizePct)+'% of portfolio'+(R.amount!==null?' ('+money(R.amount)+')':'')+(R.tranches>1?' in '+R.tranches+' tranches':'')):'Action: no purchase');
+  L.push('');
+  R.groups.forEach(g=>{
+    if(g.score===null) return;
+    L.push(g.g+': '+Math.round(g.score));
+    g.rows.forEach(r=>{ if(r.s!==null&&r.s!==undefined) L.push('  · '+r.l+' '+Math.round(r.s)+' — '+r.note); });
+  });
+  if(R.red.length){ L.push(''); L.push('Red flags:'); R.red.forEach(t=>L.push('  ▼ '+t)); }
+  L.push(''); L.push('Review triggers:'); R.triggers.forEach(t=>L.push('  · '+t));
+  L.push(''); L.push('Generated by the Investment Decision Agent from self-entered figures. Not investment advice.');
+  return L.join('\n');
+}
+function copySummary(R){
+  const t=summaryText(R);
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(()=>toast('Summary copied'),()=>toast('Copy failed'));
+  }else{
+    const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta);
+    ta.select(); try{document.execCommand('copy');toast('Summary copied');}catch(e){toast('Copy failed');}
+    document.body.removeChild(ta);
+  }
+}
+function saveJournal(R){
+  const thesis=($('#j-thesis').value||'').trim();
+  if(!thesis){ toast('Write the thesis first — that is the point'); $('#j-thesis').focus(); return; }
+  S.journal.unshift({
+    id:Date.now(), date:today(), ticker:R.input.ticker||'', name:R.input.name||'',
+    atype:R.input.atype, sector:R.input.sector, label:R.label, score:Math.round(R.score),
+    confidence:Math.round(R.confidence*100), sizePct:r1(R.sizePct), amount:R.amount,
+    noRoom:R.noRoom,
+    thesis, review:$('#j-review').value||addDays(today(),90), reviewedOn:null,
+    triggers:R.triggers.slice(0)
+  });
+  save(); renderJournal(); toast('Saved to journal');
+}
+
+/* =========================================================================
+   7 · portfolio view
+   ========================================================================= */
+function renderPortfolio(){
+  const p=pfStats();
+  $('#pf-summary').innerHTML=
+    '<div class="kv"><b>Invested</b><span>'+money(p.invested)+'</span></div>'+
+    '<div class="kv"><b>Cash</b><span>'+money(p.cash)+(p.total>0?' · '+r1(p.cash/p.total*100)+'%':'')+'</span></div>'+
+    '<div class="kv"><b>Total</b><span>'+money(p.total)+'</span></div>'+
+    '<div class="kv"><b>Unrealised P&amp;L</b><span style="color:'+(p.pnl>=0?'var(--ok)':'var(--err)')+'">'+
+      (p.cost>0?(p.pnl>=0?'+':'')+money(p.pnl)+' · '+(p.pnl>=0?'+':'')+r1(p.pnl/p.cost*100)+'%'+
+        (p.pnlPartial?' <span class="muted">(holdings with a cost basis only)</span>':''):'—')+'</span></div>'+
+    '<div class="kv"><b>Positions</b><span>'+S.holdings.length+'</span></div>';
+
+  const t=$('#pf-table');
+  if(!S.holdings.length){
+    t.innerHTML='<tr><td class="empty">No holdings yet. Add them above — the agent needs them to judge concentration and sizing.</td></tr>';
+  }else{
+    const rows=S.holdings.map((h,i)=>{
+      const v=hval(h), cost=(num(h.units)||0)*(num(h.avgCost)||0);
+      const pl=cost>0?(v-cost)/cost*100:null;
+      return '<tr><td><b>'+esc(h.ticker||'—')+'</b><br><span class="muted">'+esc(h.name||'')+'</span></td>'+
+        '<td><span class="pill">'+esc(h.sector)+'</span></td>'+
+        '<td class="r">'+money(v)+'</td>'+
+        '<td class="r">'+(p.total>0?r1(v/p.total*100)+'%':'—')+'</td>'+
+        '<td class="r" style="color:'+(pl===null?'var(--steel)':(pl>=0?'var(--ok)':'var(--err)'))+'">'+
+          (pl===null?'—':(pl>=0?'+':'')+r1(pl)+'%')+'</td>'+
+        '<td class="r"><button class="mini danger" data-del="'+i+'">Remove</button></td></tr>';
+    }).join('');
+    t.innerHTML='<tr><th>Holding</th><th>Sector</th><th class="r">Value</th><th class="r">Weight</th><th class="r">P&amp;L</th><th></th></tr>'+rows;
+    $$('#pf-table [data-del]').forEach(b=>b.addEventListener('click',()=>{
+      S.holdings.splice(parseInt(b.dataset.del,10),1); save(); renderPortfolio();
+    }));
+  }
+
+  const maxSec=num(S.profile.maxSector)||30;
+  const keys=Object.keys(p.bySector).filter(k=>p.bySector[k]>0)
+    .sort((a,b)=>p.bySector[b]-p.bySector[a]);
+  $('#pf-sectors').innerHTML = keys.length? keys.map(k=>{
+    const w=p.total>0?p.bySector[k]/p.total*100:0;
+    const over=w>maxSec;
+    return '<div class="fac"><div class="nm">'+esc(k)+
+      '<small>'+money(p.bySector[k])+(over?' — above your '+maxSec+'% ceiling':'')+'</small></div>'+
+      '<div class="sc">'+r1(w)+'%</div>'+
+      '<div class="fbar"><i style="width:'+clamp(w/Math.max(maxSec,w)*100,0,100)+'%;background:'+(over?'var(--err)':'var(--gold)')+'"></i></div></div>';
+  }).join('') : '<p class="muted">Nothing to show yet.</p>';
+}
+
+/* =========================================================================
+   8 · journal view
+   ========================================================================= */
+function renderJournal(){
+  const due=S.journal.filter(j=>j.review&&j.review<=today());
+  $('#jr-summary').innerHTML=
+    '<div class="kv"><b>Decisions recorded</b><span>'+S.journal.length+'</span></div>'+
+    '<div class="kv"><b>Due for review</b><span style="color:'+(due.length?'var(--warn)':'var(--steel)')+'">'+due.length+'</span></div>';
+
+  if(!S.journal.length){
+    $('#jr-list').innerHTML='<div class="card empty">Nothing recorded yet.<br>Analyse a candidate and save the verdict with your thesis.</div>';
+    return;
+  }
+  $('#jr-list').innerHTML=S.journal.map(j=>{
+    const isDue=j.review&&j.review<=today();
+    const cls=(j.label==='BUY'||j.label==='STRONG BUY')?'ok':(j.label==='AVOID'?'err':'');
+    return '<div class="card"><div class="ghead">'+
+      '<b>'+esc(j.ticker||j.name||'—')+' · '+esc(j.date)+'</b>'+
+      '<span><span class="pill '+cls+'">'+esc(j.label)+(j.noRoom?' · no room':'')+'</span>'+(isDue?' <span class="pill due">review due</span>':'')+'</span></div>'+
+      '<div class="kv"><b>Score / data</b><span>'+j.score+'/100 · '+j.confidence+'% data</span></div>'+
+      '<div class="kv"><b>Size taken</b><span>'+(j.sizePct>0?j.sizePct+'%'+(j.amount!==null&&j.amount!==undefined?' · '+money(j.amount):''):'none')+'</span></div>'+
+      '<div class="kv"><b>Next review</b><span>'+esc(j.review||'—')+(j.reviewedOn?' · last reviewed '+esc(j.reviewedOn):'')+'</span></div>'+
+      '<p class="muted" style="margin:10px 0 0;white-space:pre-wrap">'+esc(j.thesis)+'</p>'+
+      (j.triggers&&j.triggers.length?'<div class="cat">Review triggers</div><ul class="flags">'+
+        j.triggers.map(t=>'<li class="n">'+esc(t)+'</li>').join('')+'</ul>':'')+
+      '<div class="btnrow"><button class="mini" data-rev="'+j.id+'">Reviewed today, next in 90 days</button>'+
+      '<button class="mini danger" data-jdel="'+j.id+'">Delete</button></div></div>';
+  }).join('');
+
+  $$('#jr-list [data-rev]').forEach(b=>b.addEventListener('click',()=>{
+    const j=S.journal.find(x=>x.id==b.dataset.rev);
+    if(j){ j.reviewedOn=today(); j.review=addDays(today(),90); save(); renderJournal(); toast('Review logged'); }
+  }));
+  $$('#jr-list [data-jdel]').forEach(b=>b.addEventListener('click',()=>{
+    S.journal=S.journal.filter(x=>x.id!=b.dataset.jdel); save(); renderJournal();
+  }));
+}
+
+/* =========================================================================
+   9 · profile view
+   ========================================================================= */
+function renderProfile(){
+  const p=S.profile;
+  $('#p-cur').value=p.currency;
+  $('#p-cash').value=p.cash===null||p.cash===undefined?'':p.cash;
+  $('#p-hor').value=p.horizon; $('#p-maxpos').value=p.maxPos;
+  $('#p-maxsec').value=p.maxSector; $('#p-budget').value=p.riskBudget;
+  $$('#p-risk button').forEach(b=>b.classList.toggle('on',b.dataset.v===p.tolerance));
+}
+function saveProfile(){
+  const p=S.profile;
+  p.currency=$('#p-cur').value;
+  p.cash=num($('#p-cash').value);
+  p.horizon=num($('#p-hor').value)||10;
+  p.maxPos=clamp(num($('#p-maxpos').value)||8,0.5,100);
+  p.maxSector=clamp(num($('#p-maxsec').value)||30,1,100);
+  p.riskBudget=clamp(num($('#p-budget').value)||1.5,0.1,20);
+  save(); renderProfile(); renderPortfolio(); toast('Profile saved');
+}
+
+/* =========================================================================
+   10 · wiring
+   ========================================================================= */
+function showTab(name){
+  $$('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===name));
+  $$('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+name));
+  if(name==='portfolio') renderPortfolio();
+  if(name==='journal') renderJournal();
+  if(name==='profile') renderProfile();
+  window.scrollTo(0,0);
+}
+
+const DEMO={
+  ticker:'ASML',name:'ASML Holding',sector:'Technology',price:640,
+  vals:{pe:31,peg:1.5,fcfy:3.4,pb:16,dy:1.1,roe:41,margin:26,de:0.32,icov:28,growth:14,
+        ma200:8,dd52:14,vol:31,beta:1.35,mcap:255}
+};
+
+function init(){
+  load();
+  fillSelect($('#f-sector'),SECTORS,'Technology');
+  fillSelect($('#h-sec'),SECTORS,'Broad index / diversified');
+  S.draft={};
+  renderForm(); renderProfile(); renderPortfolio(); renderJournal();
+
+  $$('.tabs button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+
+  $$('#atype button').forEach(b=>b.addEventListener('click',()=>{
+    S.atype=b.dataset.v;
+    $$('#atype button').forEach(x=>x.classList.toggle('on',x===b));
+    renderForm();
+  }));
+  $$('#p-risk button').forEach(b=>b.addEventListener('click',()=>{
+    S.profile.tolerance=b.dataset.v;
+    $$('#p-risk button').forEach(x=>x.classList.toggle('on',x===b));
+  }));
+
+  $('#run').addEventListener('click',()=>{
+    const inp={atype:S.atype,ticker:($('#f-ticker').value||'').trim().toUpperCase(),
+      name:($('#f-name').value||'').trim(),sector:$('#f-sector').value,
+      price:num($('#f-price').value),vals:readVals()};
+    const R=analyse(inp);
+    S.lastResult=R;
+    renderResult(R);
+    if(window.matchMedia('(max-width:900px)').matches) $('#result').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  $('#clearform').addEventListener('click',()=>{
+    $('#f-ticker').value=''; $('#f-name').value=''; $('#f-price').value='';
+    S.draft={}; renderForm();
+    $('#result').innerHTML='<div class="card empty">No analysis yet.<br>Fill in the candidate on the left and press <b>Analyse</b>.</div>';
+  });
+
+  $('#loaddemo').addEventListener('click',()=>{
+    S.atype='stock';
+    $$('#atype button').forEach(x=>x.classList.toggle('on',x.dataset.v==='stock'));
+    $('#f-ticker').value=DEMO.ticker; $('#f-name').value=DEMO.name;
+    $('#f-price').value=DEMO.price; $('#f-sector').value=DEMO.sector;
+    S.draft=Object.assign({},DEMO.vals); renderForm();
+    toast('Example loaded — figures are illustrative, not current');
+  });
+
+  $('#h-add').addEventListener('click',()=>{
+    const h={ticker:($('#h-tk').value||'').trim().toUpperCase(),name:($('#h-nm').value||'').trim(),
+      sector:$('#h-sec').value,units:num($('#h-un').value),avgCost:num($('#h-ac').value),price:num($('#h-pr').value)};
+    if(!h.ticker&&!h.name){ toast('Give it a ticker or a name'); return; }
+    if(!h.units||!h.price){ toast('Units and current price are required'); return; }
+    S.holdings.push(h); save(); renderPortfolio();
+    ['#h-tk','#h-nm','#h-un','#h-ac','#h-pr'].forEach(s=>$(s).value='');
+    toast('Holding added');
+  });
+
+  $('#p-save').addEventListener('click',saveProfile);
+
+  $('#d-export').addEventListener('click',()=>{
+    const blob=new Blob([JSON.stringify({profile:S.profile,holdings:S.holdings,journal:S.journal},null,2)],{type:'application/json'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='investment-agent-'+today()+'.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  });
+  $('#d-import').addEventListener('click',()=>$('#d-file').click());
+  $('#d-file').addEventListener('change',e=>{
+    const f=e.target.files&&e.target.files[0]; if(!f) return;
+    const rd=new FileReader();
+    rd.onload=()=>{
+      try{
+        const d=JSON.parse(rd.result);
+        if(d.profile) S.profile=Object.assign({},DEFAULT_PROFILE,d.profile);
+        if(Array.isArray(d.holdings)) S.holdings=d.holdings;
+        if(Array.isArray(d.journal))  S.journal=d.journal;
+        save(); renderProfile(); renderPortfolio(); renderJournal(); toast('Imported');
+      }catch(err){ toast('That file is not valid JSON'); }
+      e.target.value='';
+    };
+    rd.readAsText(f);
+  });
+  $('#d-reset').addEventListener('click',()=>{
+    if(!confirm('Delete the profile, all holdings and the whole journal from this browser? This cannot be undone.')) return;
+    S.profile=Object.assign({},DEFAULT_PROFILE); S.holdings=[]; S.journal=[];
+    save(); renderProfile(); renderPortfolio(); renderJournal(); toast('Everything cleared');
+  });
+}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>

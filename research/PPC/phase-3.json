@@ -1,0 +1,264 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Public Power Corporation S.A.",
+  "ticker": "ATHEX: PPC",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 22.9,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Share count is 597m following the April 2026 capital increase."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "FY2026 targets are reaffirmed at EUR 2.4bn of adjusted EBITDA, EUR 0.7bn of adjusted net income after minorities and a dividend of EUR 0.80 per share. H1 2026 delivered EUR 1.24bn of adjusted EBITDA and EUR 0.4bn of adjusted net income, so the full-year target is tracking.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "PPC H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 2.4,
+   "unit": "EUR bn FY2026E adjusted EBITDA"
+  },
+  {
+   "id": "p3-02",
+   "claim": "On 597m shares, EUR 0.7bn of adjusted net income is roughly EUR 1.17 per share. At EUR 22.90 that is about 19.5x earnings — which is not a cheap multiple for a utility, and it is a direct consequence of the 62% increase in the share count.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 700 / 597; 22.90 / 1.17",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 19.5,
+   "unit": "x FY2026E adjusted earnings"
+  },
+  {
+   "id": "p3-03",
+   "claim": "The Kozani data centre is the thesis's most specific claim and the least contracted. Phase I targets 300 MW operational by the end of 2028, with expansion potential to 1 GW. Total Phase I investment is roughly EUR 3.5bn, of which PPC contributes about EUR 1.2bn.",
+   "label": "FACT",
+   "source": "PPC April 2026 announcement and Greek press",
+   "asOf": "2026-05-25",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 300,
+   "unit": "MW Kozani Phase I"
+  },
+  {
+   "id": "p3-04",
+   "claim": "There is no signed anchor tenant. PPC has been in talks with four hyperscalers — Google, Meta, AWS and Microsoft — toward a joint venture in which the partner takes a long-term land lease and a 10-year power purchase agreement from nearby PPC solar parks. Partner selection was targeted for the end of summer 2026 and no agreement has been announced.",
+   "label": "FACT",
+   "source": "Greek financial press reporting on the Kozani process",
+   "asOf": "2026-05-25",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-05",
+   "claim": "The structural consequence is decisive. PPC's EUR 1.2bn is roughly a third of the Phase I cost; the partner funds the rest. Without a signed partner the project does not proceed at the announced scale, and PPC's own commitment does not substitute. The 300 MW campus is a plan contingent on a counterparty that does not yet exist.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: EUR 1.2bn of a EUR 3.5bn Phase I",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-06",
+   "claim": "The contrast within this batch is exact and instructive. Constellation has signed 920 MW of nuclear PPAs at 18.5-year average duration; Vistra is described as holding hyperscaler PPAs. PPC has a process. Under this protocol's classification test that is the difference between [Existing Contracted] and [Unfunded Planned], and it is the difference between earnings and a press release.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the Constellation dossier",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-07",
+   "claim": "Demand classification: current generation, supply and distribution earnings are [Existing Contracted] and operating; the 7.3 GW renewable fleet is [Existing Contracted]; the funded portion of the 2026-2030 capacity plan is [Approved / Committed Pipeline]; the Kozani 300 MW campus is [Unfunded Planned] pending a partner; and the 1 GW expansion ambition and the EUR 8bn regional data-centre vision are [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-08",
+   "claim": "The dividend policy and the capital programme are in visible tension. PPC targets EUR 0.80 per share in 2026 rising to EUR 1.40 by 2030. On 597m shares that is roughly EUR 3.3bn of dividends over the plan period — against the EUR 4.5bn just raised from shareholders. The company is returning about three-quarters of its equity raise as dividends while borrowing to build.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: average DPS ~EUR 1.10 x 597m x 5 years",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "FY2026 targets and what they mean per share",
+   "columns": [
+    "Measure",
+    "Value",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "FY2026E adjusted EBITDA",
+     "EUR 2.4bn",
+     "H1 delivered EUR 1.24bn — on track"
+    ],
+    [
+     "FY2026E adjusted net income after minorities",
+     "EUR 0.7bn",
+     "Reaffirmed August 2026"
+    ],
+    [
+     "Shares outstanding",
+     "597m",
+     "369m + 228m issued April 2026"
+    ],
+    [
+     "Adjusted EPS",
+     "~EUR 1.17",
+     "[ANALYST ESTIMATE]"
+    ],
+    [
+     "P/E at EUR 22.90",
+     "~19.5x",
+     "Not a cheap utility multiple"
+    ],
+    [
+     "Dividend per share",
+     "EUR 0.80",
+     "3.5% yield; ~68% payout"
+    ],
+    [
+     "2030 dividend target",
+     "EUR 1.40",
+     "~24% CAGR from EUR 0.40 in 2024"
+    ]
+   ],
+   "note": "[MANAGEMENT GUIDANCE/ANALYST ESTIMATE] The dividend is the strongest part of the equity story. The earnings multiple is the weakest, and the 62% share-count increase is why."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "Generation, supply and distribution earnings",
+     "Operating",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "7.3 GW renewable fleet",
+     "Operating, 58% of capacity",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "Funded portion of the 2026-2030 build",
+     "EUR 4.5bn equity raised, debt capacity in place",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "Kozani 300 MW campus",
+     "Process with four hyperscalers, NO signed tenant",
+     "[Unfunded Planned]",
+     "Zero"
+    ],
+    [
+     "1 GW Kozani expansion and the EUR 8bn regional vision",
+     "Ambition",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The operating base classifies well. The data-centre story — the part of the thesis that is most specific and most exciting — earns zero base-case weight because there is no counterparty."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Whether a Kozani anchor tenant has been signed since May 2026",
+   "whyItMatters": "It is the difference between [Unfunded Planned] and [Approved / Committed Pipeline], and it is the single most valuable piece of news this company could produce. The egress restriction here means the answer cannot be checked as of today.",
+   "resolvedBy": "Company announcement"
+  },
+  {
+   "item": "The PPA price and duration contemplated at Kozani",
+   "whyItMatters": "A 10-year PPA from adjacent solar is a very different asset from an 18.5-year nuclear PPA. Duration and price determine whether it de-risks the renewable build materially.",
+   "resolvedBy": "Not disclosed"
+  },
+  {
+   "item": "Adjusted versus statutory earnings bridge",
+   "whyItMatters": "All targets are on an adjusted basis. During a lignite phase-out with asset retirements, the gap to statutory profit can be large and persistent.",
+   "resolvedBy": "Interim report"
+  },
+  {
+   "item": "Minority interest share of group EBITDA",
+   "whyItMatters": "Needed to bridge consolidated EBITDA to shareholder value. It is the largest single estimate in Phase 4.",
+   "resolvedBy": "Interim report segment note"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The Kozani campus has no signed anchor tenant. PPC's EUR 1.2bn is about a third of Phase I cost; without a partner the project does not proceed at the announced scale.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "At roughly 19.5x adjusted earnings on the enlarged share count, the equity is not cheap for a utility, whatever the enterprise multiple says.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The dividend policy returns roughly EUR 3.3bn over the plan against the EUR 4.5bn just raised, while the build is funded 31% by new debt.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "All guidance is on an adjusted basis during a lignite phase-out, when the gap to statutory earnings can be large.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Announcement of a Kozani anchor tenant and joint venture structure",
+   "window": "H2 2026",
+   "impact": "Very high",
+   "probability": 0.55
+  },
+  {
+   "text": "FY2026 results against the EUR 2.4bn EBITDA and EUR 0.80 dividend targets",
+   "window": "Q1 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "Kozani construction start",
+   "window": "End 2026",
+   "impact": "High",
+   "probability": 0.5
+  }
+ ],
+ "conclusions": [
+  "Operating delivery is on track: H1 2026 adjusted EBITDA of EUR 1.24bn against a reaffirmed FY2026 target of EUR 2.4bn, with adjusted net income after minorities of EUR 0.7bn and a EUR 0.80 dividend.",
+  "But on 597m shares that is roughly EUR 1.17 of adjusted EPS and about 19.5x earnings — not a cheap multiple for a utility, and a direct consequence of the 62% share-count increase the thesis does not mention.",
+  "The Kozani data centre is the thesis's most specific claim and its least contracted. Phase I is 300 MW by end-2028 at roughly EUR 3.5bn, of which PPC funds about EUR 1.2bn — and there is no signed anchor tenant, only a process with four hyperscalers.",
+  "That is decisive rather than pedantic. PPC's contribution is about a third of the cost; without a partner the project does not proceed at the announced scale. Under this protocol it is [Unfunded Planned] and earns zero base-case weight.",
+  "The contrast inside this batch makes the point: Constellation has 920 MW signed at 18.5-year average duration. PPC has a shortlist. That is the difference between earnings and a press release."
+ ],
+ "thesisImpact": "Phase 3 removes the data centre from the base case and puts the equity on its operating earnings, where the enlarged share count makes it look expensive rather than cheap. The dividend is the strongest part of the story and is what will produce most of the return in the base case.",
+ "model": {
+  "sharesOut": 597
+ }
+}

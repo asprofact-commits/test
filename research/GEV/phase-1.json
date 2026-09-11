@@ -1,0 +1,48 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"GE Vernova Inc.","ticker":"NYSE: GEV","sector":"industrials","currency":"USD","fxToUsd":1,"price":943.34,"priceUnit":"share","asOf":"2026-09-05","phase":1,"phaseName":"Pricing-power architecture","assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy, including sec.gov. Findings rest on search-result summaries of GE Vernova 8-K releases and reputable trade press.","Net cash of approximately USD 10bn is an analyst estimate, not a sourced figure — a declared gap. Sector peers are deliberately omitted from the peer table here because six comparable companies are being analysed in the same batch; the cross-company comparison is the peer set."]},
+ "findings":[
+  {"id":"p1-01","claim":"GE Vernova sets equipment prices in a market where it is one of three credible heavy-duty gas turbine suppliers worldwide, alongside Siemens Energy and Mitsubishi Power. Pricing power derives from oligopoly plus a multi-year delivery queue.","label":"ANALYST ESTIMATE","source":"Derived from the structure of the heavy-duty gas turbine market","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p1-02","claim":"The pricing power is demonstrable in the order book rather than the margin: Q2 2026 orders were USD 24.2bn, up 88% organically, with Power segment orders up 134%.","label":"FACT","source":"GE Vernova Q2 2026 results, 2026-07-22; Utilities ME","asOf":"2026-07-22","confidence":"high","impact":"high","value":24200,"unit":"USD m orders"},
+  {"id":"p1-03","claim":"Total backlog reached USD 176bn, confirming the figure cited in the investment thesis. Gas turbine backlog specifically reached 116 GW, with a target of 125 GW under contract by year end.","label":"FACT","source":"GE Vernova Q2 2026 slides via Investing.com; Turbomachinery Magazine; Utility Dive","asOf":"2026-07-22","confidence":"high","impact":"high","value":176000,"unit":"USD m backlog"},
+  {"id":"p1-04","claim":"The scarcity is physical and time-bound rather than permanent. GE Vernova is on track for 20 GW of annual gas turbine output in Q3 2026, 24 GW in 2028 and is acting to reach 30 GW in 2030 — a 50% capacity expansion that will progressively relieve the shortage creating today's pricing power.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p1-05","claim":"That is the central tension in the equity. The same capacity expansion management promises as growth is also the mechanism that ends the shortage premium — and all three major suppliers are expanding simultaneously.","label":"ANALYST ESTIMATE","source":"Derived from the capacity guidance and the market structure","asOf":"2026-09-05","confidence":"medium","impact":"high"},
+  {"id":"p1-06","claim":"Segment margins reveal where the power actually sits: Power is guided to 17-19% segment EBITDA margin and Electrification to 18-20%, while the consolidated adjusted EBITDA margin guidance is only 12-14%. Wind and corporate costs consume roughly a third of segment profitability.","label":"MANAGEMENT GUIDANCE","source":"GE Vernova Q2 2026 guidance","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p1-07","claim":"Wind is a genuine drag, not a rounding error: segment orders fell 40% to USD 1.2bn in Q2 2026 on lower onshore equipment orders in North America. The company carries a structurally loss-making business alongside two excellent ones.","label":"FACT","source":"GE Vernova Q2 2026 results","asOf":"2026-07-22","confidence":"high","impact":"high"},
+  {"id":"p1-08","claim":"Regulatory and political exposure is real but favourable at present: demand is driven by data centre load growth and grid replacement, both of which enjoy bipartisan support in the US. The counterweight is that gas turbine demand is a bet on gas remaining the marginal dispatchable technology for two decades.","label":"ANALYST ESTIMATE","source":"Derived","asOf":"2026-09-05","confidence":"medium","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"Where the pricing power sits, and where it does not",
+   "columns":["Segment","Evidence","Guided EBITDA margin","Assessment"],
+   "rows":[
+    ["Power (gas turbines)","Orders +134%; 116 GW backlog","17-19%","Genuine scarcity pricing, time-bound"],
+    ["Electrification (grid)","Revenue guided USD 14.5-15.0bn","18-20%","Structural shortage in transformers and switchgear"],
+    ["Wind","Orders -40% to USD 1.2bn","Loss-making","A drag carried alongside two good businesses"],
+    ["Consolidated","—","12-14%","Segment strength diluted by roughly a third"]
+   ],
+   "note":"[MANAGEMENT GUIDANCE/FACT] The gap between 17-20% segment margins and 12-14% consolidated is the most important number in this table."}
+ ],
+ "gaps":[
+  {"item":"Contracted pricing and escalation terms within the 116 GW backlog","whyItMatters":"A backlog booked at today's scarcity prices is worth far more than one booked at historical prices with cost escalators. This determines whether the USD 176bn converts at premium or normal margins.","resolvedBy":"Not disclosed; management commentary is the only source"},
+  {"item":"Competitor capacity expansion plans","whyItMatters":"GE Vernova is adding 50% capacity by 2030. If Siemens Energy and Mitsubishi do likewise, the shortage ends sooner than the backlog runs off.","resolvedBy":"Competitor disclosures — Siemens Energy is analysed separately in this batch"},
+  {"item":"Wind segment path to breakeven","whyItMatters":"It consumes a material share of group profitability and its orders are falling 40%.","resolvedBy":"Segment guidance"}
+ ],
+ "risks":[
+  {"text":"The capacity expansion to 30 GW by 2030 is the mechanism that ends the shortage premium the equity is priced on, and all three suppliers are expanding at once.","severity":"high","probability":"medium"},
+  {"text":"Consolidated margin of 12-14% is roughly a third below segment margins, and Wind is the reason.","severity":"medium","probability":"high"},
+  {"text":"Gas turbine demand is a two-decade bet on gas remaining the marginal dispatchable technology.","severity":"medium","probability":"low"}
+ ],
+ "catalysts":[
+  {"text":"Reaching 125 GW of gas turbine backlog under contract","window":"End 2026","impact":"Medium","probability":0.7},
+  {"text":"Q3 2026 results — 20 GW annual output run rate","window":"Oct 2026","impact":"Medium","probability":0.9}
+ ],
+ "conclusions":[
+  "The USD 176bn backlog cited in the investment thesis is confirmed, as is the extraordinary order momentum — Q2 orders up 88% organically with Power up 134%.",
+  "Pricing power is real and derives from a three-supplier oligopoly meeting a demand surge with a multi-year delivery queue. It is visible in orders rather than in margin.",
+  "The critical tension: the same capacity expansion management sells as growth — 20 GW now to 30 GW by 2030, a 50% increase — is the mechanism that ends the scarcity premium. All three suppliers are expanding simultaneously.",
+  "Segment margins of 17-20% are diluted to a consolidated 12-14% by Wind and corporate costs. The company carries a structurally loss-making business, with orders down 40%, alongside two excellent ones.",
+  "The thesis phrase 'premier global infrastructure equity' is defensible on franchise. Whether it is defensible on price is Phase 5's question."
+ ],
+ "thesisImpact":"Phase 1 validates the operating claim in the investment thesis and identifies the mechanism that could undo it. This is a cyclical scarcity, deliberately being relieved by the company itself. What an investor underwrites is not whether the backlog exists — it does — but at what margin it converts and what the business earns once the queue clears.",
+ "model":{"sharesOut":266}
+}

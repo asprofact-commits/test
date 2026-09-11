@@ -1,0 +1,64 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Apple Inc.","ticker":"NASDAQ: AAPL","sector":"consumer","currency":"USD","fxToUsd":1,"price":328,"priceUnit":"share","asOf":"2026-09-05","phase":4,"phaseName":"Capital structure & returns on capital",
+  "assumedContext":["No primary filing retrievable; balance-sheet figures come from search-result summaries of Apple's releases.","WACC components (risk-free rate, beta, equity risk premium) are analyst assumptions, not sourced market data, and are flagged as such."]},
+ "findings":[
+  {"id":"p4-01","claim":"Apple carries approximately USD 85bn of total debt against a net cash position of approximately USD 62bn, implying gross cash and investments of roughly USD 147bn. The balance sheet is a net asset, not a net liability.","label":"FACT","source":"Capital-return analyses of Apple FY2026 balance sheet","asOf":"2026-06-27","confidence":"medium","impact":"high","value":-62000,"unit":"USD m net debt"},
+  {"id":"p4-02","claim":"On 30 April 2026 the board authorised an additional USD 100bn of share repurchases and raised the quarterly dividend from USD 0.26 to USD 0.27.","label":"FACT","source":"Apple Q2 FY2026 capital return announcement, 2026-04-30","asOf":"2026-04-30","confidence":"high","impact":"high","value":100000,"unit":"USD m buyback authorisation"},
+  {"id":"p4-03","claim":"Apple returns nearly all operating cash flow to shareholders, roughly 85% via buyback and 15% via dividend. The dividend yield is approximately 0.33% at USD 328 — this is a buyback story, not an income story.","label":"ANALYST ESTIMATE","source":"Derived: USD 1.08 annualised dividend / USD 328. Split from capital-return analyses","asOf":"2026-09-05","confidence":"medium","impact":"medium"},
+  {"id":"p4-04","claim":"Operating cash flow rose 53% year on year to USD 83bn across the first six months of FY2026 against capex of USD 4bn, implying roughly USD 79bn of free cash flow in the seasonally strongest half.","label":"FACT","source":"Apple FY2026 H1 cash flow via capital-return analyses","asOf":"2026-03-28","confidence":"medium","impact":"high"},
+  {"id":"p4-05","claim":"FY2026 free cash flow is estimated at approximately USD 135bn, consistent with estimated net income of USD 131bn plus depreciation and stock compensation less capex and working capital.","label":"ANALYST ESTIMATE","source":"Derived from H1 actuals and the FY2026 net income estimate","asOf":"2026-09-05","confidence":"medium","impact":"high","value":135000,"unit":"USD m"},
+  {"id":"p4-06","claim":"There is no debt-capacity constraint and no covenant, rating or statutory ceiling that binds. Apple could fund any plausible investment programme from cash on hand without accessing markets.","label":"ANALYST ESTIMATE","source":"Derived from the net cash position and capex profile","asOf":"2026-09-05","confidence":"high","impact":"medium"},
+  {"id":"p4-07","claim":"Rate sensitivity runs the opposite way to a leveraged company. With approximately USD 62bn of net cash, a 100bp rise adds roughly USD 0.6bn and a 200bp rise roughly USD 1.2bn of pre-tax income, before the effect of the largely fixed-rate, long-dated debt stock. Rates are a second-order issue.","label":"ANALYST ESTIMATE","source":"Derived: 62,000 x 1% and x 2%","asOf":"2026-09-05","confidence":"medium","impact":"low"},
+  {"id":"p4-08","claim":"Currency is the material sensitivity, not rates. On an assumed ~58% international revenue share, a 10% appreciation of the US dollar would reduce reported revenue by roughly USD 28bn and gross profit by roughly USD 13bn before hedging. Management cited FX headwinds in Q4 FY2026 guidance.","label":"ANALYST ESTIMATE","source":"Derived: 477.5 x 0.58 x 10% = 27.7; x 46% gross margin = 12.7. International share is an assumption, not a sourced figure","asOf":"2026-09-05","confidence":"low","impact":"high"},
+  {"id":"p4-09","claim":"Return on invested capital exceeds the cost of capital by an extraordinary margin on any reasonable definition — the company converts roughly 28% of revenue to free cash flow with capex under 5% of operating cash flow. The precise ratio is not economically meaningful because a decade of buybacks has shrunk book equity to a small fraction of the economic asset base.","label":"ANALYST ESTIMATE","source":"Derived: 135 / 477.5 free cash flow margin; capex/OCF from H1 FY2026","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-10","claim":"Weighted average cost of capital is estimated at 8.8% in the base case, from an assumed 4.2% risk-free rate, a beta of approximately 1.15 and a 4.5% equity risk premium, with debt immaterial to the blend. Each component is an assumption rather than sourced data.","label":"ANALYST ESTIMATE","source":"Standard CAPM build; components assumed, not sourced","asOf":"2026-09-05","confidence":"low","impact":"high"}
+ ],
+ "tables":[
+  {"title":"Capital structure",
+   "columns":["Item","Amount (USD bn)","Comment"],
+   "rows":[
+    ["Total debt","~85","Largely fixed-rate, long-dated"],
+    ["Cash and investments","~147","Derived: 85 + 62"],
+    ["Net cash","~62","A net asset"],
+    ["FY2026E free cash flow","~135","~28% of revenue"],
+    ["Buyback authorisation, Apr 2026","100","Roughly 2% of market cap per year at current pace"],
+    ["Annual dividend","~1.08/share","~0.33% yield"]
+   ],
+   "note":"[FACT] for debt, cash and the authorisation; [ANALYST ESTIMATE] for FCF and yield. There is no balance-sheet risk in this name — which is precisely why the valuation question is the only question."},
+  {"title":"Mandatory sensitivities",
+   "columns":["Shock","Effect","Mechanism"],
+   "rows":[
+    ["Rates +100bp","~+USD 0.6bn pre-tax","Net interest on net cash; debt is fixed-rate"],
+    ["Rates +200bp","~+USD 1.2bn pre-tax","As above — Apple benefits from higher rates"],
+    ["USD +10%","~-USD 28bn revenue, ~-USD 13bn gross profit","~58% international revenue, before hedging"],
+    ["Tariffs","~-USD 900m per quarter observed","Being absorbed, not passed through"],
+    ["Loss of the Google payment","~-USD 20bn operating income","Near-100% margin, not replaceable by pricing"]
+   ],
+   "note":"[ANALYST ESTIMATE] The ranking is the finding: for Apple, currency and one contract matter enormously and leverage does not matter at all. The conventional utility sensitivities are irrelevant here."}
+ ],
+ "gaps":[
+  {"item":"Actual FY2026 international revenue share","whyItMatters":"The FX sensitivity is the largest quantified balance-sheet risk and it rests on an assumed 58% split.","resolvedBy":"FY2026 10-K segment disclosure, late October 2026"},
+  {"item":"Apple's FX hedging programme and its coverage","whyItMatters":"Determines how much of the USD 13bn gross-profit sensitivity actually reaches earnings.","resolvedBy":"10-K market risk disclosure"},
+  {"item":"Sourced risk-free rate, beta and equity risk premium","whyItMatters":"The DCF is highly sensitive to WACC and every component here is an assumption. A 100bp WACC error moves fair value by roughly 15%.","resolvedBy":"Market data for the 10-year Treasury and a published beta"}
+ ],
+ "risks":[
+  {"text":"A 10% dollar appreciation costs roughly USD 13bn of gross profit before hedging — larger than any other modelled sensitivity except the Google payment.","severity":"high","probability":"medium"},
+  {"text":"The buyback is roughly 2% of market cap a year. At 37x earnings it retires far less value per dollar than it did at 15x — capital return is a weaker support at this valuation.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"FY2026 10-K — international revenue split, hedging, full-year capex","window":"Late Oct 2026","impact":"Medium","probability":0.95},
+  {"text":"Next capital-return authorisation","window":"Apr 2027","impact":"Medium","probability":0.9}
+ ],
+ "conclusions":[
+  "There is no balance-sheet risk. Net cash of roughly USD 62bn, no binding constraint, and roughly USD 135bn of annual free cash flow against USD 4bn of half-year capex.",
+  "Returns on capital exceed the cost of capital by an extraordinary margin — the exact inverse of the KEPCO case. This company does not have a returns problem.",
+  "The mandatory rate sensitivity is nearly irrelevant and runs in Apple's favour. Currency is the real exposure: a 10% dollar move is worth roughly USD 13bn of gross profit before hedging.",
+  "The buyback is a weaker support than it looks. Retiring 2% of the share count a year at 37x earnings creates far less value per dollar than the same programme did at 15x.",
+  "Because there is no leverage question and no returns question, the entire investment case reduces to one question: what is a durable, extraordinarily profitable, moderately growing business worth?"
+ ],
+ "thesisImpact":"Phase 4 eliminates the risks that usually decide a utility or industrial case — leverage, funding, returns below cost of capital — and leaves valuation as the sole determinant. That makes Phase 5 unusually load-bearing: the entire answer rests on the discount rate and terminal assumptions, which is exactly where a DCF is weakest and where the reverse-DCF is the more honest instrument.",
+ "model":{"sharesOut":14590,"netDebt":-62000,
+   "wacc":{"bear":0.095,"base":0.088,"bull":0.083},
+   "terminalGrowth":{"bear":0.020,"base":0.030,"bull":0.035}}
+}

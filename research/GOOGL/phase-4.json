@@ -1,0 +1,67 @@
+{
+ "schema":"invest-phase/1",
+ "meta":{"company":"Alphabet Inc.","ticker":"NASDAQ: GOOGL","sector":"software","currency":"USD","fxToUsd":1,"price":338.72,"priceUnit":"share","asOf":"2026-09-05","phase":4,"phaseName":"Capital structure & returns on capital",
+  "assumedContext":["No primary filing could be retrieved: every external domain is blocked by this environment egress proxy. Findings rest on search-result summaries.","Whether the USD 84.75bn equity raise is already inside the reported ~USD 240bn cash balance and the 12.23bn share count could not be established. Both are treated as post-raise, which is the conservative reading for per-share value."]},
+ "findings":[
+  {"id":"p4-01","claim":"Q2 2026 free cash flow was negative USD 5.9bn — the first cash-negative quarter since the 2004 IPO — after capex doubled year on year to a record USD 44.9bn.","label":"FACT","source":"Alphabet Q2 2026 results; Tom's Hardware, FourWeekMBA, BigGo coverage","asOf":"2026-07-22","confidence":"high","impact":"high","value":-5900,"unit":"USD m"},
+  {"id":"p4-02","claim":"Alphabet repurchased no stock in the first half of 2026, against USD 28.3bn of buybacks in the same period a year earlier, with USD 69.5bn still authorised and unused.","label":"FACT","source":"FourWeekMBA analysis of Q2 2026 capital allocation","asOf":"2026-07-22","confidence":"medium","impact":"high"},
+  {"id":"p4-03","claim":"Alphabet launched an USD 84.75bn equity raise — reported as the largest in US corporate history — to fund the AI infrastructure buildout through 2027, including a USD 10bn anchor investment from Berkshire Hathaway.","label":"FACT","source":"FourWeekMBA; Motley Fool; Levelheaded Investing, Aug 2026","asOf":"2026-08-27","confidence":"medium","impact":"high","value":84750,"unit":"USD m"},
+  {"id":"p4-04","claim":"The company is simultaneously paying a dividend and issuing equity: a quarterly dividend of USD 0.22 per share payable 14 September 2026, raised 5% in April, costing roughly USD 10.8bn a year.","label":"FACT","source":"Motley Fool, 2026-08-27; Alphabet dividend announcements","asOf":"2026-08-27","confidence":"high","impact":"medium"},
+  {"id":"p4-05","claim":"Cash and securities stand at approximately USD 240bn against long-term debt of approximately USD 98bn, which has roughly doubled. Debt issuance proceeds were USD 64.56bn in 2025. Net cash is therefore approximately USD 142bn.","label":"FACT","source":"Simply Wall St; Eulerpool; Levelheaded Investing, 2026","asOf":"2026-06-30","confidence":"medium","impact":"high","value":142000,"unit":"USD m net cash"},
+  {"id":"p4-06","claim":"This is a complete inversion of the capital structure policy. A company that returned roughly USD 70bn a year to shareholders is now raising debt and equity to fund capex, in the way a utility funds a grid buildout rather than the way a software company funds growth.","label":"ANALYST ESTIMATE","source":"Derived from the buyback halt, the equity raise and the debt increase","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-07","claim":"Q2 2026 other income was a net gain of USD 98.0bn, primarily unrealised gains on equity securities in SpaceX and a private company — an increase of USD 95.3bn year on year.","label":"FACT","source":"Alphabet Q2 2026 results / 10-Q as summarised in coverage","asOf":"2026-07-22","confidence":"high","impact":"high","value":98000,"unit":"USD m"},
+  {"id":"p4-08","claim":"Alphabet itself quantified the distortion: the USD 99.0bn net gain on equity securities increased the tax provision by USD 21.9bn, net income by USD 77.1bn and diluted EPS by USD 6.26. Reported Q2 EPS of USD 9.11 therefore contains USD 2.85 of operating earnings and USD 6.26 of paper gain.","label":"FACT","source":"Alphabet Q2 2026 results, company-provided reconciliation","asOf":"2026-07-22","confidence":"high","impact":"high","value":6.26,"unit":"USD per share from the gain"},
+  {"id":"p4-09","claim":"The USD 2.85 of clean Q2 EPS closely matches the USD 2.88 analyst consensus, confirming that the sell-side was forecasting operating earnings while the headline reported a 294% EPS increase. The gap between the two is entirely mark-to-market.","label":"ANALYST ESTIMATE","source":"Derived: reported USD 9.11 less the company-disclosed USD 6.26, against the USD 2.88 consensus","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-10","claim":"Consequently the widely cited price/earnings ratio of about 17x — the basis for calling Alphabet the cheapest megacap — is computed on trailing earnings inflated by these gains. On estimated FY2026 operating earnings of roughly USD 11.37 per share the multiple is approximately 29.8x, not 17x.","label":"ANALYST ESTIMATE","source":"Derived: FY2026E operating income ~USD 170bn less ~17% tax over 12.23bn shares; price USD 338.72","asOf":"2026-09-05","confidence":"medium","impact":"high","value":29.8,"unit":"x clean FY2026E earnings"},
+  {"id":"p4-11","claim":"Return on capital cannot be measured meaningfully mid-cycle. The denominator is being rebuilt at roughly USD 200bn a year and the assets are not yet generating their full revenue, so any current ROIC reading is an artefact of timing rather than a statement about the business.","label":"ANALYST ESTIMATE","source":"Derived from the capex profile","asOf":"2026-09-05","confidence":"high","impact":"high"},
+  {"id":"p4-12","claim":"Rate sensitivity has reversed with the capital structure. On approximately USD 142bn of net cash a 100bp rise still adds roughly USD 1.4bn of pre-tax income, but with debt roughly doubled and further issuance planned, the marginal effect of higher rates is now a rising funding cost on a multi-year borrowing programme rather than a windfall on idle cash.","label":"ANALYST ESTIMATE","source":"Derived: 142,000 x 1%; debt trajectory from the 2025-26 issuance record","asOf":"2026-09-05","confidence":"medium","impact":"medium"}
+ ],
+ "tables":[
+  {"title":"The capital structure inversion",
+   "columns":["Policy","H1 2025","H1 2026","Direction"],
+   "rows":[
+    ["Share repurchases","USD 28.3bn","USD 0","Halted"],
+    ["Equity issuance","None","USD 84.75bn raise launched","Largest in US corporate history"],
+    ["Long-term debt","~USD 49bn","~USD 98bn","Roughly doubled"],
+    ["Dividend","Initiated 2024","USD 0.22/qtr, +5%","Maintained while issuing stock"],
+    ["Free cash flow","Strongly positive","Negative USD 5.9bn in Q2","First since the 2004 IPO"]
+   ],
+   "note":"[FACT] except the H1 2025 debt figure [ANALYST ESTIMATE, derived from the doubling]. Every line moved the same direction in a single year."},
+  {"title":"What the headline multiple hides",
+   "columns":["Measure","Reported","Clean","Difference"],
+   "rows":[
+    ["Q2 2026 diluted EPS","USD 9.11","USD 2.85","USD 6.26 of unrealised gain"],
+    ["Q2 2026 net income","~USD 112bn","~USD 35bn","USD 77.1bn after tax"],
+    ["Q2 2026 other income","USD 98.0bn net gain","—","SpaceX and one private holding"],
+    ["Price / earnings","~17.0x trailing","~29.8x FY2026E operating","Roughly a doubling"]
+   ],
+   "note":"[FACT] for the first three rows, which Alphabet disclosed itself; [ANALYST ESTIMATE] for the clean multiple. The company was transparent about the reconciliation. The market summary statistic was not."}
+  ],
+ "gaps":[
+  {"item":"Assumed useful life of compute assets and the depreciation schedule","whyItMatters":"With ~60% of USD 200bn in short-lived compute, this is the largest determinant of reported earnings over the next three years and therefore of every multiple in Phase 5.","resolvedBy":"FY2026 10-K property and equipment note"},
+  {"item":"Whether the USD 84.75bn raise is inside the reported cash balance and share count","whyItMatters":"Roughly 250m shares at the current price is about 2% dilution, and USD 85bn is about 2% of market cap in cash. Double-counting or omitting it moves per-share value either way.","resolvedBy":"Q3 2026 balance sheet"},
+  {"item":"Incremental return on the capex programme","whyItMatters":"The entire investment case is whether USD 200bn a year earns above the cost of capital. Cloud margin expansion is suggestive but not an ROIC measurement.","resolvedBy":"Several years of segment margin data; not resolvable now"},
+  {"item":"FY2026 operating cash flow","whyItMatters":"Needed to size full-year free cash flow. The Q2 negative print is a data point, not a run rate.","resolvedBy":"FY2026 10-K cash flow statement"}
+ ],
+ "risks":[
+  {"text":"The most widely cited valuation statistic for this company — a ~17x P/E — is wrong for investment purposes, being computed on earnings that include USD 77bn of after-tax paper gains. Anyone who owns Alphabet because it is 'the cheap megacap' owns it on a false premise.","severity":"high","probability":"high"},
+  {"text":"Free cash flow has gone negative and the company is funding capex with debt and the largest equity raise in US corporate history while still paying a dividend.","severity":"high","probability":"high"},
+  {"text":"Depreciation on short-lived compute assets will rise sharply and could compress reported operating margin even as revenue compounds.","severity":"high","probability":"medium"},
+  {"text":"The buyback that supported the share count has stopped, and issuance is diluting it instead.","severity":"medium","probability":"high"}
+ ],
+ "catalysts":[
+  {"text":"Q3 2026 results — whether free cash flow stays negative and whether buybacks resume","window":"Oct 2026","impact":"High","probability":0.95},
+  {"text":"FY2026 10-K depreciation disclosure","window":"Feb 2027","impact":"High","probability":0.95}
+ ],
+ "conclusions":[
+  "The single most important finding in this dossier: Alphabet's headline ~17x P/E is computed on trailing earnings containing USD 77.1bn of after-tax unrealised gains on SpaceX and one private holding. On clean FY2026 operating earnings the multiple is approximately 29.8x. Alphabet is not the cheapest megacap; it is priced in line with the market's growth cohort.",
+  "Alphabet disclosed this reconciliation itself — the USD 6.26 per share of gain inside the USD 9.11 reported. The distortion is in the market's summary statistic, not in the company's reporting.",
+  "The capital structure has inverted completely in one year: buybacks halted from USD 28.3bn, an USD 84.75bn equity raise launched, long-term debt roughly doubled to USD 98bn, and free cash flow negative for the first time since the 2004 IPO.",
+  "There is no solvency question — roughly USD 142bn of net cash and USD 170bn of operating income — but there is now a genuine funding question, and the company is answering it by selling stock while paying a dividend.",
+  "Return on capital cannot be measured mid-cycle and will not be measurable for several years. That is not a neutral observation: it means the central claim of the bull case is currently unfalsifiable."
+ ],
+ "thesisImpact":"Phase 4 changes the valuation question entirely. Phases 1-3 built a strong operating case; Phase 4 establishes that the multiple the market quotes for this business is roughly half the real one, and that the company is now funding itself the way a capital-intensive utility does. The Phase 5 work must be done on clean earnings, must weight the DCF down because near-term free cash flow is negative, and must treat depreciation policy as the principal sensitivity.",
+ "model":{"sharesOut":12230,"netDebt":-142000,
+  "wacc":{"bear":0.098,"base":0.090,"bull":0.084},
+  "terminalGrowth":{"bear":0.020,"base":0.035,"bull":0.040}}
+}

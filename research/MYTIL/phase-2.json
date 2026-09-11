@@ -1,0 +1,239 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Metlen Energy & Metals PLC",
+  "ticker": "LSE: MTLN / ATHEX: MYTIL",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 46.62,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 2,
+  "phaseName": "Asset base & physical bottlenecks",
+  "assumedContext": [
+   "No primary filing retrievable; findings rest on H1 2026 and FY2025 results releases and trade press."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p2-01",
+   "claim": "The renewables number in the thesis is a pipeline, not an asset base, and the ratio is the finding. The global operational portfolio is 1.2 GW, generating roughly 0.9 TWh in H1 2026, against a total pipeline exceeding 12 GW. Ten parts of every eleven are not built.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 1.2,
+   "unit": "GW operational vs >12 GW pipeline"
+  },
+  {
+   "id": "p2-02",
+   "claim": "And it is not intended to become one. Metlen runs an explicit asset-rotation model: build, then sell. It completed the sale of a 283 MW UK solar portfolio in H1 2026 and targets 1.0-1.5 GW of annual delivery. The pipeline is inventory, not installed base.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-03",
+   "claim": "That distinction is the single most important reframing in this dossier. A 12 GW pipeline owned by an independent power producer is a future annuity to be discounted. A 12 GW pipeline owned by a developer on an asset-rotation model is a stream of development margins and construction contracts, which are cyclical, execution-dependent, and worth a materially lower multiple.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed business model",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-04",
+   "claim": "The pipeline composition is disclosed and is weighted to the two technologies with the lowest barriers to entry: roughly 57% photovoltaic and 35% storage. Neither has a component bottleneck of the kind Siemens Energy enjoys in transformers; solar modules and battery cells are in global oversupply.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-05",
+   "claim": "The genuinely scarce asset in the group is the metals complex. Aluminium of Greece is a fully integrated bauxite-alumina-aluminium operation, the largest in the European Union, and the EU is not permitting new primary smelters. That is a Constellation-type barrier: it cannot be rebuilt.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the EU primary aluminium landscape",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p2-06",
+   "claim": "The expansion at that asset is specific and dated: 2m tonnes of bauxite, 1.26m tonnes of alumina and 50 tonnes of gallium a year, EUR 295.5m committed, bauxite from 2026, alumina and gallium phasing from 2027, full scale 2028.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "Metlen final investment decision announcement",
+   "asOf": "2025-01-16",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p2-07",
+   "claim": "Greek hydrology is an underappreciated swing factor. Hydroelectric generation more than doubled in H1 2026 on higher rainfall, and Greek renewable generation rose 21% year on year. Part of the record half is weather, and weather does not compound.",
+   "label": "FACT",
+   "source": "Metlen H1 2026 results",
+   "asOf": "2026-08-05",
+   "confidence": "high",
+   "impact": "medium"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The renewables number, decomposed",
+   "columns": [
+    "Measure",
+    "Value",
+    "What it is"
+   ],
+   "rows": [
+    [
+     "Operational portfolio",
+     "1.2 GW",
+     "The actual asset base"
+    ],
+    [
+     "H1 2026 generation",
+     "~0.9 TWh",
+     "What it produced"
+    ],
+    [
+     "Total pipeline",
+     ">12 GW",
+     "Inventory to be built and sold"
+    ],
+    [
+     "Pipeline composition",
+     "~57% PV, ~35% storage",
+     "The two lowest-barrier technologies"
+    ],
+    [
+     "Asset rotation target",
+     "1.0-1.5 GW per year",
+     "The business model: build then sell"
+    ],
+    [
+     "H1 2026 disposal",
+     "283 MW UK solar",
+     "Completed"
+    ]
+   ],
+   "note": "[FACT] The thesis cites 11.1 GW as though it were an asset base. It is a development inventory of which about a tenth is built, in technologies with no component bottleneck."
+  },
+  {
+   "title": "Barriers to entry, ranked within the group",
+   "columns": [
+    "Asset",
+    "Barrier",
+    "Assessment"
+   ],
+   "rows": [
+    [
+     "Aluminium of Greece",
+     "Very high — the EU is not permitting new primary smelters",
+     "The genuinely irreplaceable asset"
+    ],
+    [
+     "Gallium capacity (from 2027)",
+     "High — the only significant EU primary source",
+     "Strategic, funded, not yet producing"
+    ],
+    [
+     "Greek thermal and hydro generation",
+     "Medium — permitting and siting",
+     "Real but not unique"
+    ],
+    [
+     "Renewables development pipeline",
+     "Low — PV and storage are in global oversupply",
+     "A margin business, not a moat"
+    ],
+    [
+     "M Power Projects (EPC)",
+     "None",
+     "Lump-sum contracting; it caused the FY2025 loss"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The group's best asset is the one the thesis mentions least, and the one it leads with has the weakest barrier."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Development margin per MW on rotated assets",
+   "whyItMatters": "It is the entire economics of the renewables segment. Volume is disclosed; margin is not.",
+   "resolvedBy": "Not separately disclosed"
+  },
+  {
+   "item": "Pipeline maturity split — ready-to-build versus early stage",
+   "whyItMatters": "12 GW of early-stage pipeline and 12 GW of consented pipeline are worth very different amounts.",
+   "resolvedBy": "Investor presentation"
+  },
+  {
+   "item": "Aluminium of Greece production volumes and cost position",
+   "whyItMatters": "The group's most defensible asset, and its cost position on the global curve determines whether it earns through the cycle.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Normalised hydrological contribution",
+   "whyItMatters": "Hydro generation more than doubled in H1 2026. Without a normalised baseline the record half cannot be adjusted for weather.",
+   "resolvedBy": "Annual report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "The 12 GW pipeline is development inventory in oversupplied technologies, not an installed base. Only 1.2 GW is operational, and the model is to sell what is built.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Development and EPC margins are cyclical and execution-dependent, and deserve a materially lower multiple than contracted generation.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Part of the record H1 was hydrology. Hydroelectric generation more than doubled on rainfall, which does not compound.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "The gallium and alumina expansion is not yet producing. Full-scale operation is a 2028 event with normal commissioning risk.",
+   "severity": "medium",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Bauxite start-up at Agios Nikolaos",
+   "window": "2026",
+   "impact": "Medium",
+   "probability": 0.8
+  },
+  {
+   "text": "First gallium output — EU strategic supply",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Further asset rotation disposals at disclosed margins",
+   "window": "Ongoing",
+   "impact": "Medium",
+   "probability": 0.85
+  }
+ ],
+ "conclusions": [
+  "The pipeline figure in the thesis is real and understated — it now exceeds 12 GW — but only 1.2 GW is operational. Ten parts in eleven are not built.",
+  "And they are not meant to be held. Metlen runs an explicit asset-rotation model targeting 1.0-1.5 GW of annual delivery, and sold a 283 MW UK solar portfolio in H1. The pipeline is inventory, not installed base.",
+  "That reframing is the most important in this dossier. A pipeline owned by a developer is a stream of development margins and construction contracts — cyclical, execution-dependent, and worth a lower multiple than contracted generation.",
+  "The composition compounds it: roughly 57% PV and 35% storage, the two technologies with no component bottleneck and global oversupply. This is the opposite of Siemens Energy's transformer position.",
+  "The group's genuinely irreplaceable asset is the one the thesis mentions least — Aluminium of Greece, the EU's largest integrated bauxite-alumina-aluminium operation, in a bloc that is not permitting new primary smelters."
+ ],
+ "thesisImpact": "Phase 2 inverts the thesis's emphasis. The renewables pipeline it leads with is the group's weakest-barrier business, and the metals complex it treats as the junior partner is the only asset here that cannot be rebuilt. Phase 5's sum-of-the-parts must apply a development multiple to renewables and an infrastructure multiple to metals, not the reverse.",
+ "model": {
+  "sharesOut": 142.62
+ }
+}

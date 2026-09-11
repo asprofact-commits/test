@@ -1,0 +1,441 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Metlen Energy & Metals PLC",
+  "ticker": "LSE: MTLN / ATHEX: MYTIL",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 46.62,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing retrievable; every external domain is blocked by this environment's egress proxy.",
+   "Net debt (~EUR 1,600m) is derived from the disclosed leverage ratios; the share count is uncertain by roughly 3%.",
+   "METHOD WEIGHTING IS DELIBERATELY UNUSUAL. For a five-part conglomerate the sum-of-the-parts is the appropriate primary method, so it carries 40% here against a 25% default. The DCF carries only 25%: with 77% of its value in the terminal value and a business whose cash flow includes lumpy asset-rotation proceeds, it is a poor instrument for this company and is weighted accordingly.",
+   "The base case is built on FY2026 guidance of ~EUR 1,075m EBITDA. The medium-term target of EUR 1.92-2.08bn earns zero base-case weight and appears only in the bull case.",
+   "Sector peers are omitted; the batch companies are the peer set."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "A sum-of-the-parts valuing M Energy at 8x, M Renewables at 11x, M Metals at 7x, M Power Projects at 6x and M Concessions at 10x segment EBITDA gives approximately EUR 53 per share — roughly 13% above the market price. This is the method that matters most for a conglomerate and it supports the thesis.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 53,
+   "unit": "EUR per share, sum of the parts"
+  },
+  {
+   "id": "p5-02",
+   "claim": "An EV/EBITDA valuation at 8.5x FY2026E EBITDA of EUR 1,075m gives approximately EUR 53, and a discounted cash flow on roughly EUR 350m rising to EUR 700m of free cash flow at a 9.0% WACC gives approximately EUR 49.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-03",
+   "claim": "Weighted 40% sum-of-the-parts, 35% EV/EBITDA and 25% DCF, the base case is approximately EUR 52 and the probability-weighted fair value approximately EUR 52 — roughly 11% above the market price. Metlen is the first company in this series to come out above its price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 52,
+   "unit": "EUR per share"
+  },
+  {
+   "id": "p5-04",
+   "claim": "The bear case is unusually severe and the reason is disclosed rather than hidden: with 77% of the DCF in terminal value and a bear discount rate of 10.5%, modest cash flow deterioration compounds hard. The DCF bear case of roughly EUR 15 is not a forecast, it is a demonstration that this method is fragile for this company — which is precisely why it carries only 25% weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-05",
+   "claim": "Reverse valuation: at approximately 7.7x FY2026E EBITDA the price implies roughly no growth from here and a permanent conglomerate discount. Given a funded gallium and alumina expansion reaching full scale in 2028 and a structural change to the shareholder base via FTSE 100 inclusion, that is a demanding thing to assume.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-06",
+   "claim": "The upside case does not require the medium-term target to be hit. Reaching EUR 1.5bn of EBITDA rather than the targeted EUR 2bn, at an 8.5x multiple, would give roughly EUR 78 per share. The thesis can be substantially wrong about the target and the investment can still work.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "The single largest risk is not valuation, it is repetition. Lump-sum EPC losses on one project cut group EBITDA 30% and segment profitability 78% in FY2025. Nothing in the available disclosure establishes how much lump-sum exposure remains.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from Phase 3",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "Honest limitation: this is a valuation of estimated segment EBITDA at estimated multiples, against a derived net debt figure and an uncertain share count. The 11% upside is smaller than the combined uncertainty in those inputs, exactly as at Constellation.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs EUR 46.62",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "Sum of the parts",
+     "~EUR 53",
+     "+13%",
+     "40%",
+     "Low — segment EBITDA estimated"
+    ],
+    [
+     "EV/EBITDA at 8.5x",
+     "~EUR 53",
+     "+13%",
+     "35%",
+     "Low — net debt derived"
+    ],
+    [
+     "Discounted cash flow",
+     "~EUR 49",
+     "+5%",
+     "25%",
+     "Low — 77% terminal value; weighted down deliberately"
+    ],
+    [
+     "Blended base case",
+     "~EUR 52",
+     "+11%",
+     "100%",
+     "Probability-weighted ~EUR 52"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] All three methods agree that the shares are worth more than the price. They agree within 8% of each other, which is the tightest clustering in the series."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "30%",
+     "Further lump-sum EPC losses; aluminium and power prices fall; the conglomerate discount persists or widens",
+     "~EUR 38",
+     "-6.6%"
+    ],
+    [
+     "Base",
+     "50%",
+     "FY2026 delivers ~EUR 1.1bn; gallium and alumina commission on schedule; the discount narrows modestly on FTSE 100 flows",
+     "~EUR 52",
+     "+14.5%"
+    ],
+    [
+     "Bull",
+     "20%",
+     "EBITDA approaches EUR 1.5bn by 2028; gallium earns a strategic premium; the discount closes toward European peers",
+     "~EUR 71",
+     "+29.6%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The bear probability is set at 30% rather than the usual 25% because the downside scenario has already happened once, in FY2025."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Remaining lump-sum EPC exposure after Protos",
+   "whyItMatters": "The FY2025 loss cut group EBITDA 30%. Whether it can recur is the single most important unknown in this dossier, and it is not disclosed.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Segment EBITDA split",
+   "whyItMatters": "The sum-of-the-parts carries 40% weight and rests entirely on an estimated split.",
+   "resolvedBy": "Interim and annual report segment notes"
+  },
+  {
+   "item": "The bridge from FY2026 guidance to the EUR 2bn medium-term target",
+   "whyItMatters": "Roughly EUR 900m of incremental EBITDA with no public allocation. It earns zero base-case weight, so this gap is what separates the base case from the bull case.",
+   "resolvedBy": "Capital markets day"
+  },
+  {
+   "item": "Reported net debt and share count",
+   "whyItMatters": "Net debt is derived and the share count is uncertain by ~3%. Together they are comparable in size to the 11% upside.",
+   "resolvedBy": "Interim report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Lump-sum EPC losses cut group EBITDA 30% and segment profitability 78% in FY2025, and the remaining exposure is undisclosed. The bear case here is a repeat, not a hypothetical.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The two largest businesses are commodity price-takers in aluminium, alumina and wholesale power.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The 11% upside is smaller than the combined uncertainty in derived net debt, estimated segment EBITDA and an uncertain share count.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The renewables story is a development pipeline in oversupplied technologies, not an installed base: 1.2 GW operational against >12 GW of pipeline, on a build-and-sell model.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "Part of the record H1 is hydrology, which does not compound.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 results — the EUR 1.0-1.15bn range, segment split and reported net debt",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "First gallium and alumina output at Agios Nikolaos",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Index-driven buying following FTSE 100 inclusion",
+   "window": "Ongoing",
+   "impact": "Medium",
+   "probability": 0.7
+  },
+  {
+   "text": "Completion of the lump-sum EPC book without further losses",
+   "window": "2026-2027",
+   "impact": "High",
+   "probability": 0.6
+  },
+  {
+   "text": "Further asset rotation disposals at disclosed margins",
+   "window": "Ongoing",
+   "impact": "Medium",
+   "probability": 0.85
+  }
+ ],
+ "conclusions": [
+  "Metlen is the first company in this series whose shares come out worth more than their price. Blended fair value is approximately EUR 52 against EUR 46.62, roughly 11% above, and all three methods agree within 8% of each other.",
+  "The 'undervalued' half of the thesis is confirmed: roughly 7.7x EV/EBITDA and 10.6x earnings, the cheapest in the batch by a wide margin. But four of the five reasons for that discount survive scrutiny and are durable.",
+  "The thesis's factual problem is 'record profitability'. FY2025 revenue rose 25% while EBITDA fell 30% and net profit halved on lump-sum construction losses. FY2026 guidance merely returns EBITDA to the FY2024 level — three years, no growth, a 30% trough in the middle.",
+  "The renewables framing is also inverted. The >12 GW figure is development inventory in oversupplied technologies of which only 1.2 GW is operational, on an explicit build-and-sell model. The group's genuinely irreplaceable asset is the metals complex the thesis barely mentions.",
+  "The most interesting thing here is the funded gallium expansion — 50 tonnes a year from 2027, which would be the EU's only significant primary source of a metal China restricts by export control. It is the one place in this group where real pricing power is being created, and it is not what the thesis is about."
+ ],
+ "thesisImpact": "The five phases confirm the discount, correct the profitability claim, invert the emphasis between renewables and metals, and land on a modest positive. This is the only company in the batch so far trading below a defensible fair value — and the margin is thin enough that the rating rests on the sum-of-the-parts holding up, which in turn rests on an estimated segment split.",
+ "memo": {
+  "rating": "HOLD / ACCUMULATE ON WEAKNESS",
+  "weighting": "Sum-of-the-parts 40%, EV/EBITDA 35%, DCF 25% — a deliberate departure from the default, because for a five-part conglomerate the sum-of-the-parts is the appropriate primary method and a DCF with 77% terminal value on lumpy asset-rotation cash flow is the least reliable. The model returns a modest positive at roughly +11% and the memo does not overrule it, but it does qualify it: the upside is smaller than the combined uncertainty in derived net debt, estimated segment EBITDA and a share count uncertain by 3%. This is the same reasoning applied at Constellation, reaching the opposite sign. The honest position is that Metlen is cheap for identifiable reasons, most of them real, and that the shares are worth owning at a better price rather than chased at this one.",
+  "nonConsensus": [
+   {
+    "market": "Metlen delivered record profitability, supported by an 11.1 GW renewable pipeline.",
+    "us": "FY2025 revenue rose 25% while EBITDA fell 30% to EUR 753m and net profit halved, on lump-sum EPC losses concentrated in the Protos project — which cut M Renewables profitability by roughly 78%. FY2026 guidance of EUR 1.0-1.15bn simply returns EBITDA to the FY2024 outturn of EUR 1,080m. H1 2026 is a genuine record half and a recovery, not a breakout; the three-year EBITDA growth rate is approximately zero.",
+    "evidence": "Phase 3: FY2024, FY2025 and FY2026E EBITDA side by side."
+   },
+   {
+    "market": "The 11.1 GW pipeline is the asset base underpinning the valuation.",
+    "us": "Only 1.2 GW is operational and the model is explicitly build-and-sell — 1.0-1.5 GW of annual delivery, with a 283 MW UK portfolio sold in H1. The pipeline is inventory, roughly 57% PV and 35% storage, the two technologies in global oversupply with no component bottleneck. It is a stream of development margins and construction contracts, which deserve a development multiple, not an annuity multiple.",
+    "evidence": "Phase 2: 1.2 GW operational, >12 GW pipeline, the asset rotation target and the H1 disposal."
+   },
+   {
+    "market": "This is an energy and renewables story with a metals arm attached.",
+    "us": "The emphasis is inverted. Aluminium of Greece — the EU's largest integrated bauxite-alumina-aluminium operation, in a bloc that is not permitting new primary smelters — is the only asset in the group that cannot be rebuilt. And the funded EUR 295.5m expansion adds 50 tonnes a year of gallium from 2027, which would be the EU's only significant primary source of a metal China controls by export licence. That is the one place in this conglomerate where genuine pricing power is being created, and the thesis does not mention it.",
+    "evidence": "Phase 1 and Phase 2: the FID, the production targets and the EU primary aluminium landscape."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The discount is genuinely large and one real reason for it has been deliberately removed. A FTSE 100 constituent with a primary London listing has a structurally different buyer base from a Greek mid-cap, and index flows do not care about conglomerate logic.",
+    "why": "This is the strongest argument for the bull case and it is mechanical rather than speculative."
+   },
+   {
+    "text": "The deleveraging is real and fast — EUR 728m in six months, leverage halved from 3.1x to 1.7x. Companies that convert profit into balance sheet at that rate are usually not value traps.",
+    "why": "Cash is the hardest fact in any dossier, and this one has it."
+   },
+   {
+    "text": "The upside does not require the medium-term target. EUR 1.5bn of EBITDA rather than the targeted EUR 2bn, at 8.5x, is roughly EUR 78 per share. The thesis can be substantially wrong and the investment can still work.",
+    "why": "An investment case with that much room for error in the assumptions is rare, and it is the best argument against a flat HOLD."
+   }
+  ],
+  "sellTriggers": [
+   "Any further lump-sum EPC loss disclosure in M Power Projects",
+   "Net leverage returning above 2.5x",
+   "FY2026 EBITDA below EUR 1.0bn — the bottom of guidance",
+   "M Renewables segment profitability failing to recover to pre-2025 levels in FY2026",
+   "Delay to gallium or alumina commissioning beyond 2028",
+   "Asset rotation delivery below 1.0 GW in a full year",
+   "Aluminium prices falling more than 20% without a corresponding fall in the group's power costs"
+  ],
+  "reEntry": "Blended fair value is approximately EUR 52 with a bear case of approximately EUR 38 and a bull case of approximately EUR 71. Below roughly EUR 42 the shares would offer a base-case IRR above 18% with the sum-of-the-parts providing a floor, which would justify a full position. At EUR 46.62 the 11% upside is inside the error bars on derived net debt and estimated segment EBITDA, so the appropriate action is a starter position at most and patience for a better entry. The evidentiary test that would change this is simpler than a price: a full year of the lump-sum EPC book completing without further losses, plus a disclosed segment split confirming the sum-of-the-parts. Both arrive with the FY2026 results."
+ },
+ "model": {
+  "sharesOut": 142.62,
+  "netDebt": 1600,
+  "wacc": {
+   "bear": 0.105,
+   "base": 0.09,
+   "bull": 0.082
+  },
+  "terminalGrowth": {
+   "bear": 0.015,
+   "base": 0.02,
+   "bull": 0.025
+  },
+  "fcf": {
+   "bear": [
+    300,
+    280,
+    320,
+    350,
+    380
+   ],
+   "base": [
+    350,
+    400,
+    500,
+    600,
+    700
+   ],
+   "bull": [
+    500,
+    650,
+    800,
+    950,
+    1100
+   ]
+  },
+  "assetBase": {
+   "label": "FY2026E EBITDA",
+   "value": 1075,
+   "multiple": {
+    "bear": 6.5,
+    "base": 8.5,
+    "bull": 10.5
+   }
+  },
+  "sotp": [
+   {
+    "name": "M Energy (generation and supply)",
+    "method": "EV/EBITDA",
+    "metric": 380,
+    "multiple": 8,
+    "stake": 1.0
+   },
+   {
+    "name": "M Renewables (development, asset rotation)",
+    "method": "EV/EBITDA",
+    "metric": 280,
+    "multiple": 11,
+    "stake": 1.0
+   },
+   {
+    "name": "M Metals (Aluminium of Greece)",
+    "method": "EV/EBITDA",
+    "metric": 300,
+    "multiple": 7,
+    "stake": 1.0
+   },
+   {
+    "name": "M Power Projects (EPC)",
+    "method": "EV/EBITDA",
+    "metric": 60,
+    "multiple": 6,
+    "stake": 1.0
+   },
+   {
+    "name": "M Concessions (infrastructure)",
+    "method": "EV/EBITDA",
+    "metric": 55,
+    "multiple": 10,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "Metlen (subject)",
+    "self": true,
+    "pe": 10.6,
+    "evEbitda": 7.7
+   },
+   {
+    "name": "Siemens Energy (cross-reference)",
+    "pe": 30.4,
+    "evEbitda": 17.0
+   },
+   {
+    "name": "Constellation Energy (cross-reference)",
+    "pe": 23.6,
+    "evEbitda": 14.0
+   },
+   {
+    "name": "GE Vernova (cross-reference)",
+    "evEbitda": 40.2
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 35,
+    "dividends3y": 3.0
+   },
+   "base": {
+    "price3y": 65,
+    "dividends3y": 5.0
+   },
+   "bull": {
+    "price3y": 95,
+    "dividends3y": 6.5
+   }
+  },
+  "probabilities": {
+   "bear": 0.3,
+   "base": 0.5,
+   "bull": 0.2
+  },
+  "weights": {
+   "dcf": 0.25,
+   "asset": 0.35,
+   "sotp": 0.4,
+   "pb": 0.0
+  }
+ }
+}

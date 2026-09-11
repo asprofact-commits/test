@@ -1,0 +1,473 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Siemens Energy AG",
+  "ticker": "XETRA: ENR",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 143.68,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing retrievable; every external domain is blocked by this environment's egress proxy.",
+   "Net cash (~EUR 8bn), D&A and the segment profit split are estimates. Because the company holds net cash rather than net debt, an error there moves fair value less than the equivalent error at Constellation.",
+   "The DCF is run on UNDERLYING free cash flow, not the guided EUR 8bn pre-tax figure. Phase 3 establishes that roughly EUR 2.5bn a year of the guided figure is customer prepayment on a growing order book.",
+   "Sector peers are omitted; six comparable companies are analysed in the same batch and the cross-company comparison is the peer set."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "The single decision that drives this valuation: the DCF uses underlying free cash flow of roughly EUR 6.0bn post-tax in 2027 falling to EUR 5.8bn in 2028 before recovering, not the guided EUR 8bn pre-tax. Using the headline figure would raise fair value by roughly 40% and would be valuing customer prepayments as though they were earnings.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from Phase 3",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-02",
+   "claim": "On that basis the discounted cash flow gives approximately EUR 140 per share at an 8.0% WACC and 2.0% terminal growth. Terminal value is roughly 77% of the total, which is high and is disclosed rather than buried.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 140,
+   "unit": "EUR per share"
+  },
+  {
+   "id": "p5-03",
+   "claim": "An EV/EBITDA valuation at 17x estimated FY2026E EBITDA of EUR 6.8bn gives approximately EUR 145 — essentially the market price — and a sum-of-the-parts valuing Grid Technologies at 20x segment profit, Gas Services at 15x, Transformation of Industry at 14x and Siemens Gamesa at 0.35x revenue gives approximately EUR 120.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-04",
+   "claim": "Weighted 35% DCF, 40% EV/EBITDA and 25% sum-of-the-parts, the base case is approximately EUR 137 and the probability-weighted fair value approximately EUR 139 — about 3% below the market price. This is the closest to fair value of any company in the series.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 139,
+   "unit": "EUR per share"
+  },
+  {
+   "id": "p5-05",
+   "claim": "Published analyst price targets average roughly EUR 196 with a high of EUR 260 and a low of EUR 100, from about 25 analysts skewed to buy. This analysis again sits below the covering universe, by roughly 29% against the average.",
+   "label": "CONSENSUS",
+   "source": "Analyst targets via market data services",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 196,
+   "unit": "EUR average price target"
+  },
+  {
+   "id": "p5-06",
+   "claim": "The gap to consensus is explainable in one line. Consensus appears to capitalise the guided EUR 8bn of free cash flow. This analysis capitalises roughly EUR 5.5bn of underlying free cash flow. That single adjustment accounts for almost the whole difference, and it is a disagreement about one number rather than about the business.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "Reverse valuation: to justify EUR 122bn of equity at a fair 15x EBITDA the business needs roughly EUR 8.7bn of EBITDA against roughly EUR 6.8bn guided this year. That is a 28% increase, achievable by 2028 on the current growth and margin trajectory if scarcity pricing survives the capacity build. The price is a specific bet on the same tension Phase 1 identified — and, unlike GE Vernova, it is not an extravagant one.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "The relative conclusion is stronger than the absolute one. At roughly 17x EBITDA against GE Vernova's roughly 40x, with the same demand drivers, a comparable net cash balance sheet, a wind business guided to break-even rather than still contracting, and a credit upgrade in July, Siemens Energy is the cheaper way to own this theme by a wide margin.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the GE Vernova dossier",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs EUR 143.68",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "EV/EBITDA at 17x",
+     "~EUR 145",
+     "+1%",
+     "40%",
+     "Low — depends on estimated EBITDA and net cash"
+    ],
+    [
+     "Discounted cash flow (underlying FCF)",
+     "~EUR 140",
+     "-3%",
+     "35%",
+     "Low — 77% terminal value"
+    ],
+    [
+     "Sum of the parts",
+     "~EUR 120",
+     "-16%",
+     "25%",
+     "Low — segment profit estimated"
+    ],
+    [
+     "Blended base case",
+     "~EUR 137",
+     "-5%",
+     "100%",
+     "Probability-weighted ~EUR 139"
+    ],
+    [
+     "Sell-side average",
+     "EUR 196",
+     "+36%",
+     "cross-check",
+     "Capitalises guided rather than underlying FCF"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] All three methods cluster within 16% of each other, which is a much tighter spread than at Constellation. The uncertainty here is about the future, not about the inputs."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "25%",
+     "Book-to-bill falls below 1.0x; advances unwind; capacity expansion compresses Grid margins back toward 14%",
+     "~EUR 102",
+     "-10.0%"
+    ],
+    [
+     "Base",
+     "50%",
+     "Margins hold near the upper guided range; book-to-bill normalises gradually; buyback proceeds",
+     "~EUR 137",
+     "+7.1%"
+    ],
+    [
+     "Bull",
+     "25%",
+     "Grid margins exceed 20%; the shortage persists past 2030; Gamesa turns profitable",
+     "~EUR 179",
+     "+23.1%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Expected 3-year IRR of roughly +6.8% sits at or just below a reasonable cost of equity. That is what a fairly valued equity looks like."
+  },
+  {
+   "title": "The batch so far, on one page",
+   "columns": [
+    "Company",
+    "EV/EBITDA",
+    "Fair value gap",
+    "Balance sheet",
+    "Rating"
+   ],
+   "rows": [
+    [
+     "Siemens Energy",
+     "~17x",
+     "-3%",
+     "~EUR 8bn net cash, BBB+",
+     "HOLD"
+    ],
+    [
+     "Constellation Energy",
+     "~14x",
+     "-11%",
+     "~USD 30bn net debt",
+     "HOLD"
+    ],
+    [
+     "GE Vernova",
+     "~40x",
+     "-37%",
+     "~USD 10bn net cash",
+     "AVOID"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Three companies, one demand story, three very different prices. The dispersion is the finding."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "The change in contract liabilities and customer advances",
+   "whyItMatters": "It would settle whether the DCF should use EUR 8bn or EUR 5.5bn of pre-tax free cash flow. That single number is worth roughly 40% of fair value. Nothing else in this dossier matters as much.",
+   "resolvedBy": "Quarterly cash flow statement and balance sheet"
+  },
+  {
+   "item": "Backlog margin profile and cancellation terms",
+   "whyItMatters": "Determines how much of the EUR 162bn is locked at current prices and what happens to it if lead times normalise.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Aggregate industry transformer capacity additions",
+   "whyItMatters": "Decides whether the scarcity rent ends in 2029 or 2033, which is the largest single swing factor in the terminal value.",
+   "resolvedBy": "Not centrally disclosed"
+  },
+  {
+   "item": "Reported net cash, D&A and shareholders' equity",
+   "whyItMatters": "All estimated. They move EV/EBITDA, which carries 40% weight.",
+   "resolvedBy": "Annual report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Roughly EUR 2.5bn a year of free cash flow is customer prepayment on a growing order book. When book-to-bill reaches 1.0x it stops, and the cash flow the market is capitalising falls by about a third.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "The company and both its main competitors are expanding transformer and switchgear capacity by roughly 50% by 2030. The premium being valued is being deliberately competed away.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Margins doubled in one year and there is no through-cycle record — the company was spun out in 2020 and required a state guarantee package in 2023.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Terminal value is roughly 77% of the DCF, so fair value is dominated by assumptions about the period after the capacity build completes.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "FY2026 results and FY2027 guidance",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "First quarter with book-to-bill below 1.2x",
+   "window": "2027-2028",
+   "impact": "High",
+   "probability": 0.5
+  },
+  {
+   "text": "Charlotte transformer plant enters production; industry lead times begin to fall",
+   "window": "2027-2028",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Siemens Gamesa confirmed at break-even, then profitable",
+   "window": "Nov 2026 onward",
+   "impact": "Medium",
+   "probability": 0.7
+  },
+  {
+   "text": "Further tranches of the EUR 6bn buyback",
+   "window": "2026-2028",
+   "impact": "Medium",
+   "probability": 0.85
+  }
+ ],
+ "conclusions": [
+  "Every operating claim in the thesis is confirmed, including the EUR 162bn backlog exactly, and the scarcity is independently measurable in transformer lead times of roughly 128 weeks and prices up 77% since 2019.",
+  "The company is monetising it ahead of plan: Grid Technologies reaches its FY2028 margin target of 18-20% two years early, and group margin before special items has roughly doubled from 6.0% to a guided 10-12%.",
+  "The valuation-critical finding repeats GE Vernova's: FY2026 free cash flow is guided at around EUR 8bn against roughly EUR 5.3bn of profit before special items, and management attributes the difference to customer advance payments on a 1.57x book-to-bill. The DCF here uses the underlying figure.",
+  "On that basis blended fair value is approximately EUR 137 against EUR 143.68 — roughly 3% below, the closest to fair value in the series — with an expected 3-year IRR of about 6.8%, at or just below a fair cost of equity.",
+  "The relative conclusion is the more useful one. At roughly 17x EBITDA against GE Vernova's roughly 40x, with the same demand exposure, a comparable net cash balance sheet, a July credit upgrade and a wind business guided to break-even rather than still contracting, this is by a wide margin the cheaper way to own the electrification theme."
+ ],
+ "thesisImpact": "The five phases confirm the thesis in full and find the equity approximately fairly priced. That is a materially different answer from GE Vernova, where the identical operating story sits at more than twice the multiple, and it is reached by the same adjustment in both cases: capitalising underlying free cash flow rather than the advance-inflated guided figure.",
+ "memo": {
+  "rating": "HOLD / NEUTRAL",
+  "weighting": "EV/EBITDA 40%, DCF 35%, sum-of-the-parts 25%. The three methods cluster within 16% of each other and the blended figure sits about 3% below the market price, which is inside any reasonable error bar. The model and the memo agree on HOLD. The rating is absolute, not relative: within this batch Siemens Energy is clearly the preferred vehicle for the electrification theme, and that is a portfolio-construction conclusion rather than a statement that the shares are cheap.",
+  "nonConsensus": [
+   {
+    "market": "Siemens Energy will generate around EUR 8bn of free cash flow, so the equity yields well over 5%.",
+    "us": "Roughly EUR 2.5bn a year of that is customer prepayment on an order book growing at 1.57x book-to-bill, and management says so explicitly. Underlying free cash flow is closer to EUR 5.5bn pre-tax. Capitalising the guided figure is worth roughly 40% of fair value, and it accounts for almost the whole gap between this analysis and the EUR 196 consensus target.",
+    "evidence": "Phase 3: guided FY2026 FCF pre-tax of ~EUR 8bn against ~EUR 5.3bn profit before special items and ~EUR 4bn net income, with advances named as the driver."
+   },
+   {
+    "market": "Siemens Energy is leveraging severe component scarcity to its advantage.",
+    "us": "It is, and it is simultaneously spending roughly EUR 2bn to end that scarcity — a ~50% expansion of transformer and gas-insulated switchgear capacity by 2030 — while Hitachi Energy commits more than USD 1bn to the same thing and GE Vernova expands through Prolec. The first plants produce from early 2027. This is a manufacturing bottleneck with a three-year relief cycle, not an irreplaceable asset.",
+    "evidence": "Phase 1 and Phase 2: the EUR 6bn capex plan, the Charlotte and Georgia plants, and the competitor announcements."
+   },
+   {
+    "market": "GE Vernova is the premier way to own electrification.",
+    "us": "It is the same trade at roughly 2.4 times the EBITDA multiple. Siemens Energy has the same demand drivers, a comparable net cash balance sheet, a July 2026 credit upgrade to BBB+, and a wind business guided to break-even where GE Vernova's is still contracting at -40% orders. The dispersion between roughly 17x and roughly 40x is not explained by anything found in either dossier.",
+    "evidence": "Phase 4: the cross-batch multiple comparison."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The scarcity may last longer than three years. Lead times are set by skilled labour and grain-oriented electrical steel as much as by buildings, and the Georgia plant alone needs more than 1,400 hires. Capacity announcements are not capacity.",
+    "why": "This is the strongest argument against fading the premium inside the forecast window, and the labour constraint is genuinely hard to model."
+   },
+   {
+    "text": "The margin trajectory has beaten the plan twice. Grid Technologies hit its FY2028 target in FY2026. A management team that keeps beating its own targets may be guiding conservatively rather than peaking.",
+    "why": "The base rate on serial guidance beats favours continuation, not reversal."
+   },
+   {
+    "text": "The advance-payment effect is disclosed, not hidden, and it does not reverse — it simply stops growing. Free cash flow converges to underlying rather than falling below it.",
+    "why": "Correct, and it means the bear case here is a plateau rather than a decline. That is a meaningfully gentler bear case than a working-capital unwind."
+   }
+  ],
+  "sellTriggers": [
+   "Book-to-bill below 1.0x for two consecutive quarters",
+   "Free cash flow pre-tax falling below profit before special items for two consecutive quarters — confirms the advance reversal",
+   "Grid Technologies margin before special items below 16% in any quarter",
+   "Group margin before special items failing to exceed 12% in FY2027",
+   "Industry transformer lead times falling below 80 weeks",
+   "Siemens Gamesa returning to a loss before special items after the guided break-even",
+   "Order intake growth below zero year on year for two consecutive quarters"
+  ],
+  "reEntry": "Blended fair value is approximately EUR 137 with a bear case of approximately EUR 102 and a bull case of approximately EUR 179. A price below roughly EUR 120 would put the shares below the sum-of-the-parts floor and offer a base-case IRR above 12%, which would justify buying. Above roughly EUR 180 the price requires the scarcity premium to survive the capacity build intact, which Phase 2 argues against. Between those points the shares are fairly priced and the appropriate action is to hold and watch book-to-bill, which is the single number that tells you when the cash flow story changes."
+ },
+ "model": {
+  "sharesOut": 854,
+  "netDebt": -8000,
+  "wacc": {
+   "bear": 0.09,
+   "base": 0.08,
+   "bull": 0.073
+  },
+  "terminalGrowth": {
+   "bear": 0.015,
+   "base": 0.02,
+   "bull": 0.025
+  },
+  "fcf": {
+   "bear": [
+    4500,
+    4200,
+    4300,
+    4500,
+    4700
+   ],
+   "base": [
+    6000,
+    5800,
+    6200,
+    6800,
+    7400
+   ],
+   "bull": [
+    7000,
+    7500,
+    8200,
+    9000,
+    10000
+   ]
+  },
+  "assetBase": {
+   "label": "FY2026E EBITDA",
+   "value": 6800,
+   "multiple": {
+    "bear": 13,
+    "base": 17,
+    "bull": 21
+   }
+  },
+  "sotp": [
+   {
+    "name": "Grid Technologies",
+    "method": "EV/segment profit",
+    "metric": 2600,
+    "multiple": 20,
+    "stake": 1.0
+   },
+   {
+    "name": "Gas Services",
+    "method": "EV/segment profit",
+    "metric": 2030,
+    "multiple": 15,
+    "stake": 1.0
+   },
+   {
+    "name": "Transformation of Industry",
+    "method": "EV/segment profit",
+    "metric": 870,
+    "multiple": 14,
+    "stake": 1.0
+   },
+   {
+    "name": "Siemens Gamesa",
+    "method": "EV/revenue",
+    "metric": 11500,
+    "multiple": 0.35,
+    "stake": 1.0
+   },
+   {
+    "name": "Corporate and eliminations",
+    "method": "EV/segment profit",
+    "metric": -300,
+    "multiple": 14,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "Siemens Energy (subject)",
+    "self": true,
+    "pe": 30.4,
+    "evEbitda": 17.0
+   },
+   {
+    "name": "GE Vernova (cross-reference)",
+    "evEbitda": 40.2
+   },
+   {
+    "name": "Constellation Energy (cross-reference)",
+    "pe": 23.6,
+    "evEbitda": 14.0
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 100,
+    "dividends3y": 4.5
+   },
+   "base": {
+    "price3y": 170,
+    "dividends3y": 6.5
+   },
+   "bull": {
+    "price3y": 260,
+    "dividends3y": 8.0
+   }
+  },
+  "probabilities": {
+   "bear": 0.25,
+   "base": 0.5,
+   "bull": 0.25
+  },
+  "weights": {
+   "dcf": 0.35,
+   "asset": 0.4,
+   "sotp": 0.25,
+   "pb": 0.0
+  }
+ }
+}

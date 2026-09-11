@@ -1,0 +1,280 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "LAMDA Development S.A.",
+  "ticker": "ATHEX: LAMDA",
+  "sector": "real estate",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 6.24,
+  "priceUnit": "share",
+  "asOf": "2026-09-06",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "LAMDA's Q1 2026 covers January-March 2026 and was reported in July 2026."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "Q1 2026 revenue was EUR 143m, up 35% year on year, of which The Ellinikon contributed about EUR 105.5-106m and residential sales about EUR 87m. Revenue growth is real and it is overwhelmingly residential.",
+   "label": "FACT",
+   "source": "LAMDA Q1 2026 results",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high",
+   "value": 143,
+   "unit": "EUR m Q1 2026 revenue"
+  },
+  {
+   "id": "p3-02",
+   "claim": "And group consolidated EBITDA before asset valuations was EUR 12.0-12.3m, DOWN 2% year on year, with a net loss of EUR 17.7m. Revenue up 35%, EBITDA down 2%, and a loss at the bottom line.",
+   "label": "FACT",
+   "source": "LAMDA Q1 2026 results",
+   "asOf": "2026-07-08",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-03",
+   "claim": "THE FINDING OF THIS DOSSIER, and it is the third independent instance of the same mechanism in this series. Cumulative cash proceeds from The Ellinikon exceeded EUR 1.7bn through May 2026, against cumulative project investment of about EUR 1.1bn through March. The project has taken in more cash than it has spent — because a large part of those proceeds are residential PRE-SALES: customers paying for homes that have not been built.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the disclosed cumulative proceeds and cumulative investment",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-04",
+   "claim": "This is structurally the same as the customer-advance effect found at GE Vernova, where free cash flow ran at twice EBITDA, and at Siemens Energy, where it ran at 1.5 times profit before special items. In all three the company receives cash ahead of an obligation it has not yet discharged. Here the obligation is to build the homes.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; cross-reference to the GEV and ENR dossiers",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-05",
+   "claim": "The practical consequence is that group cash of EUR 831m at end-March is not all free. An unquantified portion is customer money against undelivered units, and the construction cost of delivering them is a future call on it. Treating that balance as net liquidity available to equity would overstate the balance sheet.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-06",
+   "claim": "Management expects about EUR 600m of cash inflows from residential sales during 2026 against roughly EUR 500m of Ellinikon capital expenditure in the same year. The project is close to self-funding on a cash basis while it is loss-making on an accounting basis — and both statements describe the same pre-sale mechanism.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "LAMDA management commentary",
+   "asOf": "2026-07-08",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-07",
+   "claim": "Demand classification: mall and marina rental income is [Existing Contracted] under leases; roughly 1,000 homes already sold with cash received is [Existing Contracted] but carries a delivery obligation rather than a receivable; the 300-350 units to be released in 2026 is [Approved / Committed Pipeline]; and the remaining multi-decade Ellinikon programme, including the assumption that Greek demand absorbs thousands of units at around EUR 14,000 per square metre, is [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-08",
+   "claim": "The demand evidence to date is genuinely good and genuinely early. Roughly 1,000 homes sold and more than EUR 1.7bn of cumulative proceeds is real money from real buyers. But no unit has been delivered, so buyer satisfaction, snagging, resale pricing and the second-hand market are all still hypothetical.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-06",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Q1 2026 — three numbers that only make sense together",
+   "columns": [
+    "Measure",
+    "Value",
+    "Change"
+   ],
+   "rows": [
+    [
+     "Revenue",
+     "EUR 143m",
+     "+35%"
+    ],
+    [
+     "of which The Ellinikon",
+     "~EUR 105.5-106m",
+     "—"
+    ],
+    [
+     "of which residential",
+     "~EUR 87m",
+     "—"
+    ],
+    [
+     "Group EBITDA before valuations",
+     "EUR 12.0-12.3m",
+     "-2%"
+    ],
+    [
+     "Operating malls EBITDA",
+     "EUR 24.9m",
+     "+5% (record)"
+    ],
+    [
+     "Flisvos Marina EBITDA",
+     "EUR 4.5m",
+     "+12% (record)"
+    ],
+    [
+     "Net result",
+     "-EUR 17.7m",
+     "Loss"
+    ]
+   ],
+   "note": "[FACT] The mature assets earned EUR 29.4m and the group earned EUR 12.3m. The difference is the development, and it is the price of building the thing the equity is valued for."
+  },
+  {
+   "title": "The pre-sale mechanism — the third instance in this series",
+   "columns": [
+    "Company",
+    "Cash received ahead of",
+    "Ratio"
+   ],
+   "rows": [
+    [
+     "GE Vernova",
+     "Turbine delivery",
+     "FCF ~2.0x adjusted EBITDA"
+    ],
+    [
+     "Siemens Energy",
+     "Equipment delivery",
+     "FCF ~1.5x profit before special items"
+    ],
+    [
+     "LAMDA Development",
+     "Home construction",
+     "EUR 1.7bn proceeds vs EUR 1.1bn spend"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Three companies, three sectors, one structure: cash in advance of an undischarged obligation. In every case the cash is real and it is not the same thing as profit."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "Mall and marina rents",
+     "Leases in place; record EBITDA",
+     "[Existing Contracted]",
+     "Full"
+    ],
+    [
+     "~1,000 homes sold, cash received",
+     ">EUR 1.7bn cumulative proceeds",
+     "[Existing Contracted] with a delivery obligation",
+     "Full, net of build cost"
+    ],
+    [
+     "300-350 units to release in 2026",
+     "Announced",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "The remaining multi-decade programme",
+     "Absorption at ~EUR 14,000/sqm unproven",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The near term is well evidenced. What earns zero weight is the assumption that Greek and international demand absorbs many thousands of units at top-of-market pricing over twenty years."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Customer advances and contract liabilities on the balance sheet",
+   "whyItMatters": "It is the number that would separate free cash from customer money inside the EUR 831m balance. It is the single most important missing figure in this dossier, exactly as the change in contract liabilities was at GE Vernova.",
+   "resolvedBy": "Balance sheet and cash flow statement"
+  },
+  {
+   "item": "Remaining construction cost to deliver the units already sold",
+   "whyItMatters": "The obligation against the cash already received. Without it the pre-sale proceeds cannot be assessed as profit or as float.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "Gross development margin on units sold to date",
+   "whyItMatters": "Roughly 1,000 homes have been sold. Whether they were sold at a good margin is the test of the whole model and is not disclosed here.",
+   "resolvedBy": "Segment disclosure"
+  },
+  {
+   "item": "H1 2026 results",
+   "whyItMatters": "Only Q1 2026 was available at the time of writing, so this dossier is a quarter behind.",
+   "resolvedBy": "H1 2026 report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "A material and unquantified portion of the EUR 831m cash balance is customer money against undelivered homes, with the construction cost still to come.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Revenue rose 35% while EBITDA before valuations fell 2% and the group lost EUR 17.7m. Growth is not currently converting to profit.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "No unit has been delivered yet, so buyer satisfaction, resale pricing and the second-hand market are untested.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Absorption of many thousands of units at around EUR 14,000 per square metre over two decades earns zero base-case weight and is where most of the headline value sits.",
+   "severity": "high",
+   "probability": "medium"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "H1 2026 results — contract liabilities and the delivery obligation",
+   "window": "Q4 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "First residential deliveries at Riviera Tower",
+   "window": "Late 2026 / early 2027",
+   "impact": "Very high",
+   "probability": 0.75
+  },
+  {
+   "text": "Absorption rate on the next 300-350 unit release",
+   "window": "H2 2026",
+   "impact": "High",
+   "probability": 0.8
+  }
+ ],
+ "conclusions": [
+  "Revenue rose 35% to EUR 143m in Q1 2026, overwhelmingly from Ellinikon residential sales — and EBITDA before valuations fell 2% to EUR 12.0-12.3m, with a net loss of EUR 17.7m.",
+  "The finding that drives this dossier is the third independent instance of one mechanism in this series. Cumulative Ellinikon proceeds exceeded EUR 1.7bn through May against cumulative investment of about EUR 1.1bn through March: the project has taken in more cash than it has spent, because much of it is pre-sales for homes not yet built.",
+  "That is structurally what was found at GE Vernova and Siemens Energy — cash received ahead of an obligation not yet discharged. Here the obligation is construction.",
+  "So the EUR 831m cash balance is not all free, and treating it as liquidity available to equity would overstate the balance sheet. Management expects about EUR 600m of residential inflows in 2026 against roughly EUR 500m of Ellinikon capex — close to self-funding on cash while loss-making on accounting, both describing the same mechanism.",
+  "The demand evidence is genuinely good and genuinely early: roughly 1,000 homes sold is real money from real buyers, but nothing has been delivered yet."
+ ],
+ "thesisImpact": "Phase 3 establishes that neither earnings nor cash flow can carry the valuation — earnings are negative by design and cash flow is inflated by pre-sales. Phase 5 must therefore use net asset value and a sum-of-the-parts, and must treat the cash balance with care.",
+ "model": {
+  "sharesOut": 170.93
+ }
+}

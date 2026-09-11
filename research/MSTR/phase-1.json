@@ -1,0 +1,305 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Strategy Inc. (formerly MicroStrategy)",
+    "ticker": "NASDAQ: MSTR",
+    "sector": "financials",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 128.48,
+    "priceUnit": "share",
+    "asOf": "2026-09-11",
+    "phase": 1,
+    "phaseName": "Pricing-power architecture",
+    "assumedContext": [
+      "Network egress is blocked for all domains except the search index; WebFetch returns EGRESS_BLOCKED and curl reports CONNECT 403 against data.sec.gov and strategy.com. No 10-Q, 10-K or 424B5 was read directly; filing figures reached this analysis through search-index summaries. For a company whose valuation is pure balance-sheet arithmetic this is materially limiting.",
+      "Sector mapped to 'financials' because no profile fits a bitcoin treasury vehicle: the asset base is the bitcoin holding, the prudential constraints are the preferred stack and the S&P B- rating, and per that profile Phase 5 uses P/NAV as primary and does not run an EV/FCF DCF.",
+      "Price is the 2026-09-10 close of $128.48; bitcoin fell a further ~2% on the morning of 2026-09-11. Published MSTR quotes over the past month range from $94.85 to $142.80.",
+      "Preferred liquidation preference of $14.8bn is an analyst estimate: STRF, STRC, STRE and STRD share counts are sourced as at 2026-03-19, STRC is rolled forward to the ~$10.5bn reported in September 2026, and STRK is estimated. Range $13.9-15.5bn."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p1-01",
+      "claim": "Strategy holds 845,256 bitcoin against software revenue of $122.37m in Q2 2026 and $124.3m in Q1 2026 (FY2025: $477m). The operating business is roughly 0.7% of the enterprise; the equity is a claim on an asset, not on an operating margin.",
+      "label": "FACT",
+      "value": 845256,
+      "unit": "BTC held",
+      "source": "Strategy holdings following the 2026-08-31 purchase of 4,600 BTC; Q1 2026 and Q2 2026 results; FY2025 10-K",
+      "asOf": "2026-08-31",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-02",
+      "claim": "The reflexive issuance loop reversed in 2026. mNAV peaked at 3.89x in November 2024 and fell below 1.0 for the first time this cycle in late June 2026, at which point ATM issuance became dilutive to bitcoin per share and Strategy paused open-market bitcoin purchases for roughly ten weeks, resuming only on 2026-08-31.",
+      "label": "FACT",
+      "value": 1.0,
+      "unit": "x mNAV crossed below",
+      "source": "CoinDesk 2026-06-27 on enterprise mNAV below 1; mnav.com and Investing.com readings of 1.13-1.16x, 2026; market reporting on the purchase pause and its resumption",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-03",
+      "claim": "Strategy raised $8.41bn of gross ATM proceeds in Q2 2026 and a further $1.28bn between 1 and 26 July 2026, after raising $25.3bn in calendar 2025 (the largest US equity issuance for a second consecutive year) and $11.68bn in the first four months of 2026 (the largest US equity issuance of 2026).",
+      "label": "FACT",
+      "value": 8410,
+      "unit": "USD m ATM gross proceeds, Q2 2026",
+      "source": "Strategy Q2 2026 10-Q; Q1 2026 results, 2026-05-05; FY2025 disclosure",
+      "asOf": "2026-07-26",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-04",
+      "claim": "STRC's dividend rate is reset monthly by the board in increments of up to 0.25% to keep the stock trading at its $100 stated amount, with a contractual one-way ratchet that adds 0.5 percentage points (about $53m a year) if STRC trades below $95 and cannot be reversed if the price recovers. The rate has gone from 9.00% at listing in July 2025 to 11.50% in spring 2026 to 12.00% in September 2026, with STRC trading below par.",
+      "label": "REGULATORY STATUTE",
+      "value": 12.0,
+      "unit": "% STRC dividend rate, September 2026",
+      "source": "Strategy STRC information page and 424B5 prospectus terms; company rate announcements July 2025 - September 2026; CoinDesk 2026-06-01; news.bitcoin.com on the 12% hold",
+      "asOf": "2026-09-01",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-05",
+      "claim": "Preferred dividends were $400.7m in Q2 2026, a $1.60bn annual run-rate, against total company revenue of roughly $495m for FY2026E - the fixed cash cost of the capital structure is about 3.2x total revenue.",
+      "label": "FACT",
+      "value": 400.7,
+      "unit": "USD m quarterly preferred dividends",
+      "source": "Strategy Q2 2026 10-Q",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-06",
+      "claim": "The entire six-year bitcoin programme is approximately 2% above cost: 845,050 BTC acquired for $63.73bn, an average of $75,417 per bitcoin, against roughly $77,000 today - a cumulative gain of about $1.34bn. At the 2026-06-30 quarter end the position was below cost, with bitcoin at roughly $58,700.",
+      "label": "FACT",
+      "value": 75417,
+      "unit": "USD average cost per BTC",
+      "source": "Strategy holdings disclosure following the 2026-08-31 purchase; bitcoin price 2026-09-11 per Fortune and Yahoo Finance; Q2 2026 results showing holdings market value falling from $51.6bn at 2026-03-31 to $49.7bn at 2026-06-30",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-07",
+      "claim": "Treasury and IRS interim guidance issued 2025-09-30 allows a corporation to disregard unrealised gains and losses on digital assets when computing adjusted financial statement income for the 15% corporate alternative minimum tax. Strategy does not expect to be subject to CAMT on unrealised bitcoin gains, removing a multi-billion-dollar liability that would have begun in 2026.",
+      "label": "REGULATORY STATUTE",
+      "source": "Treasury/IRS interim guidance 2025-09-30; Strategy 8-K response; The Block 2025-10",
+      "asOf": "2025-09-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-08",
+      "claim": "MSCI declined on 2026-01-15 to exclude digital-asset treasury companies from its Global Investable Market Indexes, deferring exclusions and size changes and opening a broader consultation on non-operating companies. Strategy was 74.5% of the $113bn of affected float-adjusted market cap; estimated forced outflows had ranged from $8.8bn (JPMorgan) to $15bn.",
+      "label": "REGULATORY STATUTE",
+      "value": 8800,
+      "unit": "USD m estimated outflows avoided (JPMorgan estimate)",
+      "source": "MSCI consultation outcome, January 2026; Strategy letter of 2025-12-10 signed by Saylor and Le; Bitcoin Magazine and Crowdfund Insider reporting",
+      "asOf": "2026-01-15",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-09",
+      "claim": "Strategy remains excluded from the S&P 500 - the index committee will not admit a company whose income is pure asset exposure, and GAAP losses fail the earnings test - while retaining its Nasdaq-100 membership at the annual reconstitution. The largest passive bid available to a US large cap is structurally closed to it.",
+      "label": "REGULATORY STATUTE",
+      "source": "S&P Dow Jones index committee decisions reported 2026; Nasdaq-100 reconstitution reporting, 2026",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "medium"
+    },
+    {
+      "id": "p1-10",
+      "claim": "S&P Global Ratings assigned Strategy a B- issuer credit rating with a stable outlook on 2025-10-27, citing high bitcoin concentration, narrow business focus, weak risk-adjusted capitalization and low US dollar liquidity, and stated an upgrade is unlikely within twelve months.",
+      "label": "REGULATORY STATUTE",
+      "source": "S&P Global Ratings, 2025-10-27; CoinDesk, The Block and Benzinga reporting",
+      "asOf": "2025-10-27",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-11",
+      "claim": "Michael Saylor no longer holds majority voting control: it fell below 50% on or shortly after 2024-11-12 because ATM issuance made Class A voting power exceed Class B. As at 2026-04-01 there were 326,581,627 Class A shares (1 vote) and 19,640,250 Class B shares (10 votes), giving Class B 37.6% of votes, now nearer 35% on a ~384m share count. Strategy no longer qualifies for the Nasdaq controlled-company exemption.",
+      "label": "FACT",
+      "value": 37.6,
+      "unit": "% of votes held by Class B at 2026-04-01",
+      "source": "Strategy 2026 definitive proxy statement, share counts as at 2026-04-01; company 8-K disclosure of November 2024 on loss of majority voting control",
+      "asOf": "2026-04-01",
+      "confidence": "high",
+      "impact": "medium"
+    },
+    {
+      "id": "p1-12",
+      "claim": "NAV bridge at bitcoin $77,000: gross assets $68.98bn (bitcoin $65.08bn + USD reserve $2.40bn + software ~$1.50bn) less convertible notes $6.70bn and preferred liquidation preference ~$14.80bn gives $47.48bn attributable to common, or $123.56 per share on 384.2m shares - a price-to-NAV of 1.04x at $128.48.",
+      "label": "ANALYST ESTIMATE",
+      "value": 123.56,
+      "unit": "USD NAV per share",
+      "source": "Derived in Phase 1 section 1.4 from sourced holdings, the 2026-06-30 balance sheet and the 2026-09-11 bitcoin price; software value and preferred total are analyst estimates with ranges stated",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p1-13",
+      "claim": "Every convertible note in the structure is far out of the money: the 2029 notes convert at $672.40 and the 2030 notes at $433.43 against a $128.48 share price. None will convert to equity; all are debt to be refinanced or repaid in cash. Strategy repurchased and cancelled $1.50bn of 2029 notes for $1.38bn on 2026-05-19, leaving $1.50bn outstanding.",
+      "label": "FACT",
+      "value": 672.40,
+      "unit": "USD 2029 note conversion price",
+      "source": "Strategy press release 2026-05-15 and Q2 2026 10-Q; original 2029 and 2030 note offering documents",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p1-14",
+      "claim": "Cost of equity derived at 18.0%: risk-free 4.79% plus an equity beta of approximately 2.9 against a 4.5% equity risk premium. The beta is structural rather than regressed - the common is a roughly 1.37x levered claim on bitcoin, whose realised volatility is a multiple of the equity market's.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0.18,
+      "unit": "cost of equity, decimal",
+      "source": "Derived. Risk-free from the US 10-year Treasury at 4.79% in early September 2026; leverage ratio derived from the Phase 1 NAV bridge",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "The issuance mechanism: what mNAV does to the ATM",
+      "columns": ["mNAV", "What issuing equity does", "Observed behaviour"],
+      "rows": [
+        ["Above 1.0", "Each share sold buys more bitcoin than it dilutes - bitcoin per share rises", "ATM at full speed: $8.41bn of gross proceeds in Q2 2026 alone, plus $1.28bn in the first 26 days of July"],
+        ["Around 1.0", "Neutral; management has indicated issuance below roughly 1.22x can already destroy per-share value once fees and timing are counted", "Threshold is management guidance, not a disclosed policy"],
+        ["Below 1.0", "Each share sold buys less bitcoin than it dilutes - bitcoin per share falls", "The ATM stops. Open-market purchases paused roughly ten weeks from mid-June 2026, resuming 2026-08-31"]
+      ],
+      "note": "The premium existed because issuance at a premium grew bitcoin per share, and bitcoin per share grew because there was a premium. The loop reversed in June 2026."
+    },
+    {
+      "title": "The capital stack: five prices for one asset",
+      "columns": ["Instrument", "Stated rate", "Approx. outstanding", "Seniority", "What it sells"],
+      "rows": [
+        ["STRF (Strife)", "10.0% fixed, cumulative, quarterly", "~$1.28bn", "1st", "The safest claim on the stack"],
+        ["STRC (Stretch)", "Variable, 12.00% in September 2026", "~$10.5bn", "2nd", "A par-stable, high-yield cash instrument"],
+        ["STRE (Stream)", "~10%, euro-denominated, LuxSE-listed", "~$0.9bn equivalent", "3rd", "European yield buyers"],
+        ["STRK (Strike)", "8.0%, convertible into MSTR", "~$0.7bn [GAP]", "4th", "Yield plus equity upside"],
+        ["STRD (Stride)", "10.0%, non-cumulative", "~$1.40bn", "5th", "Most junior, highest-risk preferred"],
+        ["Convertible notes", "~0%-2.25% coupon", "$6.70bn", "Senior debt", "Cheap money against a call on MSTR, all far out of the money"],
+        ["MSTR common", "none", "~384m shares", "Residual", "Levered bitcoin"]
+      ],
+      "note": "[FACT] Preferred share counts at 2026-03-19 per the FY2025 10-K securities exhibit: STRF 12,839,689; STRC 50,246,513; STRE 7,750,000; STRD 14,024,221, at $100 (or EUR 100) stated amount. STRC rolled forward to ~$10.5bn on September 2026 reporting. Convertible debt $6.70bn at 2026-06-30, down 18% in the quarter."
+    },
+    {
+      "title": "Statutory and index events, and their equity impact",
+      "columns": ["Rule / decision", "Date", "Holding", "Equity impact"],
+      "rows": [
+        ["ASU 2023-08 fair value measurement", "Adopted 2025", "Bitcoin marked to market with gains and losses through net income", "Q1 2026 net loss $12.54bn on a $14.46bn unrealised markdown; Q2 2026 net loss $8.6bn. Earnings are now a bitcoin price chart"],
+        ["CAMT interim guidance (Treasury/IRS)", "2025-09-30", "Unrealised digital-asset gains may be disregarded in adjusted financial statement income", "Removed a multi-billion-dollar tax liability that would have begun in 2026"],
+        ["MSCI index consultation", "Decision 2026-01-15", "Declined to exclude digital-asset treasury companies; broader consultation on non-operating companies opened", "Removed $8.8-15bn of estimated forced outflows. Deferred, not extinguished"],
+        ["S&P 500 / Nasdaq-100", "2026", "Still excluded from the S&P 500 on GAAP losses and pure-asset income; retained in the Nasdaq-100", "The largest passive bid available to a US large cap is structurally closed"],
+        ["S&P Global issuer credit rating", "2025-10-27", "B-, stable: high bitcoin concentration, narrow business focus, weak risk-adjusted capitalization, low USD liquidity", "Junk. Upgrade explicitly unlikely within twelve months"]
+      ],
+      "note": "Strategy won the tax fight and the index fight and the equity is still about 65% below its 52-week high. The problems are arithmetic, not regulatory."
+    },
+    {
+      "title": "Ownership and voting control",
+      "columns": ["Class", "Shares (2026-04-01)", "Votes/share", "Votes", "Share of votes"],
+      "rows": [
+        ["Class A", "326,581,627", "1", "326.6m", "62.4%"],
+        ["Class B (Saylor and affiliates)", "19,640,250", "10", "196.4m", "37.6%"]
+      ],
+      "note": "Saylor lost majority voting control on or shortly after 2024-11-12 because the ATM issued so many Class A shares. The strategy dilutes its founder's control every time it is executed. Strategy no longer qualifies for the Nasdaq controlled-company exemption."
+    },
+    {
+      "title": "NAV bridge at bitcoin $77,000 (2026-09-11)",
+      "columns": ["Component", "USD bn", "Basis"],
+      "rows": [
+        ["Bitcoin: 845,256 BTC x $77,000", "65.08", "FACT holdings; FACT bitcoin price"],
+        ["+ USD reserve (cash $1.71bn + short-term investments $0.74bn)", "2.40", "FACT, 2026-06-30"],
+        ["+ Software business", "1.50", "ANALYST ESTIMATE, ~3.0x ~$495m FY2026E revenue"],
+        ["= Gross assets", "68.98", ""],
+        ["- Convertible notes", "(6.70)", "FACT, 2026-06-30"],
+        ["- Preferred liquidation preference", "(14.80)", "ANALYST ESTIMATE, range $13.9-15.5bn"],
+        ["= NAV attributable to common", "47.48", ""],
+        ["NAV per share on 384.2m shares", "$123.56", ""],
+        ["Price / NAV at $128.48", "1.04x", ""]
+      ]
+    },
+    {
+      "title": "Six years of bitcoin accumulation",
+      "columns": ["Item", "Value"],
+      "rows": [
+        ["Bitcoin acquired", "845,050 BTC for $63.73bn"],
+        ["Average cost per bitcoin", "$75,417"],
+        ["Bitcoin price, 2026-09-11", "~$77,000"],
+        ["Cumulative gain on the entire programme", "+2.1%, about $1.34bn"],
+        ["Position at 2026-06-30 quarter end", "Below cost, bitcoin at roughly $58,700"]
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "item": "Exact preferred liquidation preference outstanding today",
+      "whyItMatters": "It is the largest single deduction in the NAV bridge; a $1bn error moves NAV per share by about $2.60",
+      "resolvedBy": "The equity note in the Q3 2026 10-Q - unreachable under this session's egress policy"
+    },
+    {
+      "item": "STRK shares outstanding",
+      "whyItMatters": "The only preferred series for which no current count could be retrieved, leaving the preferred total as a range",
+      "resolvedBy": "The same 10-Q equity note or a current 424B5"
+    },
+    {
+      "item": "Exact common share count today",
+      "whyItMatters": "Published figures range from 345.9m to 384.2m basic and 419.9m fully diluted; a 10% error moves NAV per share by about $12, which is 10% of the equity value",
+      "resolvedBy": "The Q3 2026 10-Q cover page"
+    },
+    {
+      "item": "The definition behind each published mNAV figure",
+      "whyItMatters": "The headline ratio is quoted as 1.13x, 1.16x and 'below 1' simultaneously - a spread of roughly 15 points on the number that is supposed to summarise the investment case",
+      "resolvedBy": "A stated methodology from each publisher, or building it from filings as done here"
+    },
+    {
+      "item": "Whether and how often the STRC ratchet has been triggered",
+      "whyItMatters": "Each trigger is a permanent increase of roughly $53m a year in a cash obligation already running at $1.60bn",
+      "resolvedBy": "Company dividend announcements and the 10-Q"
+    },
+    {
+      "item": "Software segment operating income",
+      "whyItMatters": "Determines how much of the $1.60bn preferred dividend bill the operating business can cover, which is Phase 3's central question",
+      "resolvedBy": "Segment disclosure in the 10-Q"
+    }
+  ],
+  "risks": [
+    {"text": "Strategy is a price-taker on both sides of its only spread: it takes the bitcoin price on the asset side and the STRC market's required yield on the liability side", "severity": "high", "probability": "high"},
+    {"text": "The cost of capital ratchets one way. STRC has gone 9.00% to 11.50% to 12.00% in fourteen months, with a contractual +0.5% trigger below $95 that cannot be reversed", "severity": "high", "probability": "high"},
+    {"text": "The value-creating mechanism - issuing equity above NAV - requires the premium to already exist, so its loss is self-reinforcing and has no nameable catalyst for reversal other than a higher bitcoin price", "severity": "high", "probability": "high"},
+    {"text": "The MSCI overhang is deferred rather than extinguished: a broader consultation on non-operating companies remains open, with Strategy 74.5% of the affected float", "severity": "medium", "probability": "medium"},
+    {"text": "Every convertible is far out of the money, so the entire $6.70bn converts to cash repayment rather than equity", "severity": "medium", "probability": "high"}
+  ],
+  "catalysts": [
+    {"text": "Q3 2026 results: bitcoin marked at the quarter-end price, the scale of any further bitcoin sales to fund dividends, and the updated preferred balance", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "Monthly STRC dividend rate resets - each one is a direct reading of Strategy's marginal cost of capital", "window": "monthly", "impact": "Medium", "probability": 1.0},
+    {"text": "MSCI's broader consultation on the treatment of non-operating companies concludes", "window": "2027", "impact": "High", "probability": 0.5},
+    {"text": "mNAV sustained back above 1.2x, restarting accretive issuance and the flywheel", "window": "bitcoin-dependent", "impact": "High", "probability": 0.3},
+    {"text": "S&P Global rating action on the B- stable issuer rating", "window": "next 12-18 months", "impact": "Medium", "probability": 0.3}
+  ],
+  "conclusions": [
+    "Strategy is a price-taker on both sides of its only spread. It takes the bitcoin price on the asset side and the STRC market's monthly reset on the liability side. There is no pricing power anywhere in the structure.",
+    "The reflexive flywheel reversed in June 2026: mNAV fell below 1.0 for the first time this cycle, issuance became dilutive to bitcoin per share, and the ATM stopped for ten weeks. The mechanism that created the premium requires the premium to exist.",
+    "The cost of capital ratchets and does not un-ratchet: STRC 9.00% to 12.00% in fourteen months with an irreversible trigger below $95, against a preferred dividend run-rate of $1.60bn a year on total revenue of about $495m.",
+    "Six years and $63.73bn of bitcoin purchases have produced a gain of roughly 2%: average cost $75,417 against about $77,000 today, and the position was below cost at the last quarter end.",
+    "The statutory news was good and it did not matter. CAMT relief removed a multi-billion tax liability and MSCI declined to exclude, yet the equity is roughly 65% below its 52-week high. The problem is arithmetic, not regulation.",
+    "Structural discount assessment: the premium was never a governance discount to be closed but an operating premium earned by accretive issuance. It returns only if a higher bitcoin price re-rates the equity above NAV first - which makes it a bet on bitcoin, not on Strategy."
+  ],
+  "thesisImpact": "Establishes that this is not an operating company with a pricing problem but a leveraged, fee-bearing wrapper around an asset the buyer can own directly, whose one value-creating mechanism has stopped working while its cost of capital ratchets upward monthly and the asset return sits at zero. Phase 2 must size the asset and the cost of carrying it; Phase 3 must find the cash for $1.60bn of annual preferred dividends with the ATM shut; Phase 4 must test whether the levered wrapper beats owning the asset directly.",
+  "model": {
+    "sharesOut": 384.2,
+    "book": {
+      "coe": 0.18
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "ADMIE (IPTO) Holding S.A.",
+  "ticker": "ATHEX: ADMIE",
+  "sector": "energy",
+  "currency": "EUR",
+  "fxToUsd": 1.0,
+  "price": 4.49,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 3,
+  "phaseName": "Demand & monetisation structure",
+  "assumedContext": [
+   "No primary filing retrievable.",
+   "Share count is 362.86m following the June 2026 issue of 130,864,197 new shares (232m previously outstanding), which cross-checks exactly against a reported market capitalisation of ~EUR 1.60bn at EUR 4.49."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p3-01",
+   "claim": "Demand is not a variable here in any ordinary sense. A transmission operator is paid a regulated allowance for making the network available, not for the electricity that flows through it. Volume risk, price risk and counterparty risk are all absent, which is exactly what the thesis means by defensive and is exactly right.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived from the regulated model",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-02",
+   "claim": "So the only demand question that matters is whether the regulator keeps approving investment, and the answer is documented: a EUR 6bn plan, a EUR 1bn equity injection into IPTO already completed, and a RAB target of roughly EUR 7bn by 2029. The pipeline is approved and funded, not aspirational.",
+   "label": "MANAGEMENT GUIDANCE",
+   "source": "IPTO 2026-2029 Strategic Plan",
+   "asOf": "2026-06-16",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p3-03",
+   "claim": "Demand classification, and it is the most favourable in the batch: the existing EUR 3.3bn RAB is [Existing Contracted] in the strongest sense available — a regulated allowance; the funded EUR 6bn programme is [Approved / Committed Pipeline], with the equity already raised; the Cyprus-Israel GSI section is [Unfunded Planned] pending regulatory investment approval; and any assumption of RAB growth beyond the 2029 target is [Speculative Demand] earning zero base-case weight.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Applying the Phase 3 classification test",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-04",
+   "claim": "And now the problem, which is the yield the thesis is built on. IPTO proposed a dividend of approximately EUR 62.9m for FY2025. ADMIE Holding's 51% share of that is roughly EUR 32m. Spread over the enlarged 362.86m shares that is about EUR 0.09 per share — against reported dividend expectations for the stock ranging from EUR 0.18 to EUR 0.24.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 62.9 x 0.51 / 362.86",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 0.09,
+   "unit": "EUR per share of look-through FY2025 dividend receipts"
+  },
+  {
+   "id": "p3-05",
+   "claim": "The sources themselves disagree, which is itself informative: one service reports an annualised EUR 0.24 per share at an 8.09% yield, another EUR 0.18 at about 4.02-4.23%. Those cannot both describe the same enlarged share count, and the higher figure almost certainly predates the June issue.",
+   "label": "FACT",
+   "source": "Market data services, September 2026",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-06",
+   "claim": "The arithmetic that matters: maintaining a EUR 0.18 dividend on 362.86m shares costs roughly EUR 65m a year, against look-through FY2025 dividend receipts of roughly EUR 32m. Either IPTO's distribution rises substantially as the RAB grows, or the holding company pays from reserves, or the dividend per share falls. This dossier cannot determine which, and it is the single most important unknown in it.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-07",
+   "claim": "There is a coherent benign explanation and it should be stated fairly: a regulated network in the steepest part of a RAB build normally retains more cash, and distributions typically recover once assets commission and the allowed return is earned on a larger base. A temporary dip in cover during a doubling of the asset base is not a broken business.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p3-08",
+   "claim": "On reported profitability the trend is also unhelpful: adjusted net profit fell about 16% to EUR 132.4m in FY2025 from EUR 157.9m. On 51% look-through that is roughly EUR 67.5m to ADMIE Holding, or about EUR 0.19 per share on the enlarged count — implying roughly 24x trailing earnings for a regulated network, which is not a cheap multiple.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 132.4 x 0.51 / 362.86; 4.49 / 0.186",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 24.1,
+   "unit": "x trailing look-through earnings"
+  }
+ ],
+ "tables": [
+  {
+   "title": "The yield arithmetic, which is the whole thesis",
+   "columns": [
+    "Measure",
+    "Value",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "IPTO FY2025 proposed dividend",
+     "~EUR 62.9m",
+     "To all IPTO shareholders"
+    ],
+    [
+     "ADMIE Holding's 51% share",
+     "~EUR 32m",
+     "What the listed vehicle receives"
+    ],
+    [
+     "Shares outstanding",
+     "362.86m",
+     "After the June 2026 issue"
+    ],
+    [
+     "Look-through receipts per share",
+     "~EUR 0.09",
+     "[ANALYST ESTIMATE]"
+    ],
+    [
+     "Reported dividend expectations",
+     "EUR 0.18 - 0.24",
+     "Sources conflict; the higher figure likely predates the issue"
+    ],
+    [
+     "Cost of a EUR 0.18 dividend on 362.86m shares",
+     "~EUR 65m",
+     "Roughly twice look-through receipts"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] This is the most important table in the dossier. It does not prove the dividend will be cut — IPTO's distribution should rise as the RAB grows — but it shows the cover is not currently obvious, and the thesis calls this a yield investment."
+  },
+  {
+   "title": "Demand classified",
+   "columns": [
+    "Source",
+    "Evidence",
+    "Class",
+    "Base-case weight"
+   ],
+   "rows": [
+    [
+     "Existing ~EUR 3.3bn RAB",
+     "Regulated allowance",
+     "[Existing Contracted] — strongest form available",
+     "Full"
+    ],
+    [
+     "EUR 6bn 2026-2029 investment plan",
+     "EUR 1bn equity injection completed",
+     "[Approved / Committed Pipeline]",
+     "Partial"
+    ],
+    [
+     "Cyprus-Israel GSI section",
+     "Investment request submitted Aug 2026",
+     "[Unfunded Planned]",
+     "Zero"
+    ],
+    [
+     "RAB growth beyond the 2029 target",
+     "Assumption",
+     "[Speculative Demand]",
+     "Zero"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The most favourable classification in the batch. Almost everything that matters is either regulated allowance or funded plan."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "ADMIE Holding's declared dividend policy on the enlarged share count",
+   "whyItMatters": "The thesis is a yield thesis. Whether the payout per share is maintained, rebased or grown is the single most important fact about this equity and it is not established here.",
+   "resolvedBy": "Company dividend announcement"
+  },
+  {
+   "item": "IPTO's distribution policy through the RAB build",
+   "whyItMatters": "Determines whether look-through receipts rise fast enough to cover the holding company's payout during the steepest capex years.",
+   "resolvedBy": "IPTO financial statements"
+  },
+  {
+   "item": "Whether the EUR 132.4m adjusted net profit is the IPTO group figure or ADMIE Holding's share",
+   "whyItMatters": "Changes look-through earnings per share by roughly a factor of two, and therefore the trailing multiple from about 24x to about 12x.",
+   "resolvedBy": "Annual report"
+  },
+  {
+   "item": "The cause of the 16% FY2025 profit decline",
+   "whyItMatters": "A regulated network with a growing asset base should not normally see profit fall.",
+   "resolvedBy": "FY2025 annual report"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Look-through FY2025 dividend receipts of roughly EUR 0.09 per share do not obviously cover a EUR 0.18 payout on the enlarged share count. The thesis is a yield thesis and the cover is unclear.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "Market data sources disagree on the dividend per share by a factor of more than two, which suggests at least one has not been updated for the June issue.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "On look-through trailing earnings the stock trades near 24x, which is not a cheap multiple for a regulated network — and the accounting basis of that figure is itself uncertain.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "Adjusted net profit fell about 16% in FY2025 with the asset base growing, and the cause is not established.",
+   "severity": "high",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "The first dividend declaration on the enlarged share count",
+   "window": "2027",
+   "impact": "Very high",
+   "probability": 0.8
+  },
+  {
+   "text": "FY2026 results explaining the FY2025 profit decline and the RAB progression",
+   "window": "Q1-Q2 2027",
+   "impact": "High",
+   "probability": 0.85
+  },
+  {
+   "text": "IPTO distribution policy disclosure for the build period",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.6
+  }
+ ],
+ "conclusions": [
+  "Demand is not a variable here in any ordinary sense. A transmission operator is paid a regulated allowance for network availability, not for throughput — no volume risk, no price risk, no counterparty risk. This is exactly what the thesis means by defensive and it is right.",
+  "The classification is the most favourable in the batch: the existing EUR 3.3bn RAB is a regulated allowance, and the EUR 6bn programme is approved and funded with the equity already raised.",
+  "The problem is the yield, which is what the thesis is actually built on. IPTO's FY2025 dividend of about EUR 62.9m gives ADMIE Holding roughly EUR 32m — about EUR 0.09 per share on the enlarged count, against reported expectations of EUR 0.18 to EUR 0.24.",
+  "Maintaining EUR 0.18 on 362.86m shares costs roughly EUR 65m, about twice look-through receipts. That does not prove a cut is coming — IPTO's distribution should rise as the RAB grows, and a dip in cover during a doubling of the asset base is normal — but the cover is not currently obvious.",
+  "Reported profitability also moved the wrong way: adjusted net profit fell about 16% to EUR 132.4m, putting the stock near 24x trailing look-through earnings, on an accounting basis this dossier cannot fully verify."
+ ],
+ "thesisImpact": "Phase 3 confirms the defensive half of the thesis completely and puts the yield half in question. The valuation in Phase 5 should rest on the regulated asset base rather than on trailing earnings or on a dividend whose cover cannot be established here.",
+ "model": {
+  "sharesOut": 362.86
+ }
+}

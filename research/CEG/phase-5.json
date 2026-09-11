@@ -1,0 +1,416 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Constellation Energy Corporation",
+  "ticker": "NASDAQ: CEG",
+  "sector": "energy",
+  "currency": "USD",
+  "fxToUsd": 1,
+  "price": 283.78,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "No primary filing could be retrieved; every external domain is blocked by this environment egress proxy.",
+   "CONFIDENCE WARNING. Shares outstanding (~362m) and net debt (~USD 30bn) are unsourced estimates and together determine every per-share figure. The 23.6x P/E on the guidance midpoint is the only anchor here independent of them, and it is weighted accordingly in the conclusion.",
+   "Sector peers are omitted; six comparable companies are analysed in the same batch and the cross-company comparison is the peer set."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "At USD 283.78 against FY2026 adjusted operating earnings guidance of USD 11.50-12.50, the stock trades at approximately 23.6x the midpoint. This is the most reliable valuation figure in the dossier because it does not depend on the estimated share count.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 283.78 / 12.00",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high",
+   "value": 23.6,
+   "unit": "x FY2026E adj EPS"
+  },
+  {
+   "id": "p5-02",
+   "claim": "A discounted cash flow on estimated free cash flow of USD 4.5bn rising to USD 7.0bn across 2027-31, an 8.5% WACC and 2.5% terminal growth, gives approximately USD 199 per share.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; workings in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 199,
+   "unit": "USD per share"
+  },
+  {
+   "id": "p5-03",
+   "claim": "An EV/EBITDA valuation at 14x estimated FY2026E EBITDA of USD 9.5bn gives approximately USD 285 \u2014 essentially the market price \u2014 and a sum-of-the-parts valuing the nuclear fleet at 16x, the Calpine gas fleet at 9x and retail at 8x gives approximately USD 245.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high"
+  },
+  {
+   "id": "p5-04",
+   "claim": "Weighted 35% DCF, 40% EV/EBITDA and 25% sum-of-the-parts, the base case is approximately USD 245 and the probability-weighted fair value approximately USD 252 \u2014 about 11% below the market price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; computed in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "high",
+   "value": 252,
+   "unit": "USD per share"
+  },
+  {
+   "id": "p5-05",
+   "claim": "Published analyst price targets range from approximately USD 325 to USD 374, so this analysis again sits below the covering universe \u2014 by roughly 22% against the lowest target.",
+   "label": "CONSENSUS",
+   "source": "Analyst targets via market data services",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-06",
+   "claim": "The stock has already de-rated substantially: at USD 283.78 it is roughly 31% below its 52-week high of USD 412.70. Much of the AI-power premium that remains embedded in GE Vernova has already come out of this equity.",
+   "label": "FACT",
+   "source": "Market data, September 2026",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "Reverse valuation: at 23.6x current-year earnings for a business that is roughly one-third contracted and two-thirds merchant, the price implies that the contracted premium extends materially further across the fleet. That is plausible on the demonstrated signing rate of 920 MW in a quarter, but it is not yet contracted.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "The honest summary is that fair value cannot be established to better than a wide band here. The 11% gap to the market price is smaller than the uncertainty introduced by the estimated share count and net debt.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived",
+   "asOf": "2026-09-05",
+   "confidence": "high",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs USD 283.78",
+    "Weight",
+    "Confidence"
+   ],
+   "rows": [
+    [
+     "EV/EBITDA at 14x",
+     "~USD 285",
+     "0%",
+     "40%",
+     "Low \u2014 depends on estimated EBITDA and net debt"
+    ],
+    [
+     "Sum of the parts",
+     "~USD 245",
+     "-14%",
+     "25%",
+     "Low"
+    ],
+    [
+     "Discounted cash flow",
+     "~USD 199",
+     "-30%",
+     "35%",
+     "Low"
+    ],
+    [
+     "P/E on guidance midpoint",
+     "23.6x",
+     "\u2014",
+     "cross-check",
+     "HIGH \u2014 independent of estimates"
+    ],
+    [
+     "Blended base case",
+     "~USD 245",
+     "-14%",
+     "100%",
+     "Probability-weighted ~USD 252"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The EV/EBITDA method lands on the market price and the DCF lands 30% below it. That spread is the honest measure of what is not known here."
+  },
+  {
+   "title": "Scenarios",
+   "columns": [
+    "Scenario",
+    "Prob.",
+    "Trigger set",
+    "Fair value",
+    "3y IRR"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "25%",
+     "Power prices and PJM capacity clear lower; merchant 70% underperforms; leverage constrains capital return",
+     "~USD 171",
+     "-10.1%"
+    ],
+    [
+     "Base",
+     "50%",
+     "Contracting continues at the current pace; merchant earnings normalise; Calpine integrates as planned",
+     "~USD 245",
+     "+6.9%"
+    ],
+    [
+     "Bull",
+     "25%",
+     "The contracted share moves well beyond 30% at sustained premiums; capacity prices stay firm",
+     "~USD 348",
+     "+19.8%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] The wide fair-value range reflects genuine uncertainty about inputs, not just about outcomes."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "Shares outstanding and net debt post-Calpine",
+   "whyItMatters": "Both estimated, and together they determine every per-share figure. This is the largest gap in any dossier in this series.",
+   "resolvedBy": "10-Q cover page and balance sheet"
+  },
+  {
+   "item": "Realised price premium in the nuclear PPAs",
+   "whyItMatters": "The thesis rests on premium pricing and only volume and duration are disclosed.",
+   "resolvedBy": "Not disclosed; contract pricing is confidential"
+  },
+  {
+   "item": "Merchant hedging position across the ~70% uncontracted baseload",
+   "whyItMatters": "The largest earnings sensitivity in the company.",
+   "resolvedBy": "10-Q hedging disclosure"
+  },
+  {
+   "item": "Nuclear sustaining capital expenditure",
+   "whyItMatters": "Determines free cash flow conversion and therefore the DCF, which carries 35% weight.",
+   "resolvedBy": "10-K"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Fair value cannot be established to better than a wide band because share count and net debt are estimates. The gap to price is smaller than the input uncertainty.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Roughly 70% of clean baseload remains merchant and exposed to power prices and capacity auctions.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Roughly USD 30bn of estimated net debt against volatile merchant earnings.",
+   "severity": "medium",
+   "probability": "medium"
+  },
+  {
+   "text": "The thesis claim of 'significant pricing premiums' is asserted rather than measured \u2014 duration and volume are disclosed, price is not.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q3 2026 10-Q \u2014 share count, net debt, and the EBITDA bridge",
+   "window": "Nov 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "Further nuclear PPA announcements with hyperscalers",
+   "window": "Ongoing",
+   "impact": "High",
+   "probability": 0.7
+  },
+  {
+   "text": "Next PJM capacity auction",
+   "window": "2027",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Completion of the Brazos Valley divestiture",
+   "window": "H2 2026",
+   "impact": "Low",
+   "probability": 0.9
+  }
+ ],
+ "conclusions": [
+  "The thesis is directionally right and narrower than stated. Constellation has signed 920 MW of nuclear PPAs at 18.5-year average duration, bringing roughly 30% of clean baseload under contract \u2014 which leaves roughly 70% merchant.",
+  "The named counterparty in the quarter is Walmart. 'Directly to tech hyperscalers' is a narrower description than the disclosure supports, though the direction of travel is clear.",
+  "At approximately 23.6x the FY2026 guidance midpoint the equity is not obviously expensive for a business with an irreplaceable asset base \u2014 and it has already de-rated 31% from its 52-week high, unlike GE Vernova.",
+  "Blended fair value is approximately USD 252 against USD 283.78, roughly 11% below. But that gap is smaller than the uncertainty introduced by the estimated share count and net debt, so it does not support a confident directional call.",
+  "The most useful output of this dossier is not the fair value. It is the observation that roughly 70% of the fleet is merchant, that the premium is unmeasured, and that the two inputs needed to value the equity properly are not available here."
+ ],
+ "thesisImpact": "The five phases confirm an irreplaceable asset base and a genuine, growing contracted premium, while establishing that the equity is roughly two-thirds a merchant generator. Combined with a 31% de-rating already in the price, this is the most balanced risk-reward among the US names in this batch \u2014 and the one whose valuation is least reliably established.",
+ "memo": {
+  "rating": "HOLD / NEUTRAL",
+  "weighting": "EV/EBITDA 40%, DCF 35%, sum-of-the-parts 25%. The model returns AVOID at roughly -11%, and I am stating HOLD. The reason is stated plainly: shares outstanding and net debt are both unsourced estimates, and a 15% error in either moves fair value by more than the 11% gap. Unlike the Apple dossier \u2014 where a -32% gap sat far outside any error bar and the rating moved to the arithmetic \u2014 here the arithmetic is inside its own noise. The 23.6x earnings multiple, which is independent of those estimates, does not indicate an expensive stock.",
+  "nonConsensus": [
+   {
+    "market": "Constellation supplies always-on nuclear power to hyperscalers at premium prices under long-term contracts.",
+    "us": "About 30% of clean baseload is contracted. Roughly 70% is merchant, exposed to wholesale prices and PJM capacity auctions. The named counterparty last quarter was Walmart, not a hyperscaler. The mechanism is real and growing; the description overstates its current scope by roughly three times.",
+    "evidence": "Phase 1: 920 MW signed at 18.5 years bringing the contracted share to ~30%; the Walmart PPA disclosure."
+   },
+   {
+    "market": "Q2's 33% earnings increase demonstrates the earnings power of the contracted strategy.",
+    "us": "Two of the three disclosed drivers are not repeatable management actions. Calpine is an acquisition, and higher PJM capacity prices are an administrative auction outcome. Only improved realised customer margins are a commercial achievement the company controls.",
+    "evidence": "Phase 3: the drivers cited in the Q2 2026 release."
+   },
+   {
+    "market": "This is an AI-power infrastructure asset.",
+    "us": "It carries roughly USD 30bn of estimated net debt against two-thirds merchant earnings and a permanent, large, non-discretionary nuclear sustaining-capital requirement. It has the balance sheet of a leveraged merchant generator, not of a contracted infrastructure asset \u2014 and the difference matters most precisely when power prices fall.",
+    "evidence": "Phase 4: the estimated capital structure and the nuclear maintenance profile."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The asset base genuinely cannot be replicated. No competitor can build a US nuclear fleet on any timescale relevant to this decade's demand, which is why the premium exists at all.",
+    "why": "This is the strongest argument against the rating, and it is a good one. Scarcity of this kind does not usually get cheaper."
+   },
+   {
+    "text": "The contracting rate is accelerating \u2014 920 MW in a single quarter at 18.5 years. If the remaining 70% contracts at similar terms, the merchant discount applied here is wrong.",
+    "why": "The demonstrated signing rate makes the bull case credible rather than speculative."
+   },
+   {
+    "text": "The stock has already fallen 31% from its high. Much of the risk this analysis identifies may already be priced.",
+    "why": "Buying after a de-rating is usually better than buying before one, and the base-case IRR is positive."
+   }
+  ],
+  "sellTriggers": [
+   "Nuclear PPA signing rate falls below 300 MW per quarter for two consecutive quarters",
+   "Nuclear capacity factor falls below 90% for two consecutive quarters",
+   "PJM capacity prices clear materially below the level assumed in guidance",
+   "FY2027 adjusted operating EPS guided below USD 12.00",
+   "Net debt to EBITDA above 4.0x on the reported figures once available",
+   "Any extended unplanned outage at a large nuclear unit"
+  ],
+  "reEntry": "Blended fair value is approximately USD 252 with a bull case of approximately USD 348. Given that the fair value estimate is less reliable than the 23.6x earnings multiple, the more useful test is evidentiary rather than a price: two further quarters at the current PPA signing rate would move the contracted share materially above 30% and would justify a higher multiple on better grounds than this model can currently establish. The first priority is simply to obtain the 10-Q and replace the estimated share count and net debt with real ones."
+ },
+ "model": {
+  "sharesOut": 362,
+  "netDebt": 30000,
+  "wacc": {
+   "bear": 0.095,
+   "base": 0.085,
+   "bull": 0.078
+  },
+  "terminalGrowth": {
+   "bear": 0.02,
+   "base": 0.025,
+   "bull": 0.03
+  },
+  "fcf": {
+   "bear": [
+    4000,
+    4200,
+    4400,
+    4600,
+    4800
+   ],
+   "base": [
+    4500,
+    5200,
+    5900,
+    6500,
+    7000
+   ],
+   "bull": [
+    5000,
+    6200,
+    7500,
+    8800,
+    10000
+   ]
+  },
+  "assetBase": {
+   "label": "FY2026E adjusted EBITDA",
+   "value": 9500,
+   "multiple": {
+    "bear": 11,
+    "base": 14,
+    "bull": 17
+   }
+  },
+  "sotp": [
+   {
+    "name": "Nuclear fleet",
+    "method": "EV/EBITDA",
+    "metric": 5500,
+    "multiple": 16,
+    "stake": 1.0
+   },
+   {
+    "name": "Calpine gas fleet",
+    "method": "EV/EBITDA",
+    "metric": 2500,
+    "multiple": 9,
+    "stake": 1.0
+   },
+   {
+    "name": "Retail supply",
+    "method": "EV/EBITDA",
+    "metric": 1000,
+    "multiple": 8,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "Constellation (subject)",
+    "self": true,
+    "pe": 23.6,
+    "evEbitda": 14.0
+   },
+   {
+    "name": "GE Vernova (cross-reference)",
+    "evEbitda": 40.2
+   },
+   {
+    "name": "S&P 500 (index)",
+    "pe": 25.6
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 200,
+    "dividends3y": 6.0
+   },
+   "base": {
+    "price3y": 340,
+    "dividends3y": 7.0
+   },
+   "bull": {
+    "price3y": 480,
+    "dividends3y": 8.0
+   }
+  },
+  "probabilities": {
+   "bear": 0.25,
+   "base": 0.5,
+   "bull": 0.25
+  },
+  "weights": {
+   "dcf": 0.35,
+   "asset": 0.4,
+   "sotp": 0.25,
+   "pb": 0.0
+  }
+ }
+}

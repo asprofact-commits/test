@@ -1,0 +1,472 @@
+{
+ "schema": "invest-phase/1",
+ "meta": {
+  "company": "Apple Inc.",
+  "ticker": "NASDAQ: AAPL",
+  "sector": "consumer",
+  "currency": "USD",
+  "fxToUsd": 1,
+  "price": 328,
+  "priceUnit": "share",
+  "asOf": "2026-09-05",
+  "phase": 5,
+  "phaseName": "Valuation, stress tests & IC memo",
+  "assumedContext": [
+   "Price-to-book is deliberately omitted, not missing: a decade of buybacks has reduced Apple's book equity to a small fraction of its economic asset base, so justified P/B is not meaningful. Per the sector-profile rule, methods that do not apply are excluded rather than reported.",
+   "A full peer table could not be built \u2014 only Alphabet and Microsoft P/E figures were sourceable, supplemented with index benchmarks. This is a declared gap.",
+   "No primary filing retrievable; all inputs are derived from search-result summaries."
+  ]
+ },
+ "findings": [
+  {
+   "id": "p5-01",
+   "claim": "At USD 328, Apple trades at approximately 36.9x estimated FY2026 EPS of USD 8.89 and approximately 27.8x estimated FY2026 EBITDA of USD 170bn, on an enterprise value of approximately USD 4,728bn.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: 328 / 8.89; EV = 4,790 market cap less 62 net cash, / 170 EBITDA",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 36.9,
+   "unit": "x FY2026E earnings"
+  },
+  {
+   "id": "p5-02",
+   "claim": "The stock has risen approximately 20% in 2026, with an all-time closing high of USD 339.79 on 28 July 2026 and a 52-week range of USD 225.95 to USD 344.57. It is trading close to its high, not at a discount.",
+   "label": "FACT",
+   "source": "MacroTrends, financecharts, TIKR, 2026-09",
+   "asOf": "2026-09-03",
+   "confidence": "high",
+   "impact": "high"
+  },
+  {
+   "id": "p5-03",
+   "claim": "Alphabet trades at approximately 17.0x trailing and 16.6x forward earnings, Microsoft at above 23x, the S&P 500 at 25.6x and the Nasdaq-100 at approximately 34.5x. Apple at ~36.9x is above every one of these benchmarks including the Nasdaq-100.",
+   "label": "FACT",
+   "source": "Bearsavings Mag-7 tracker, 2026-09-02; Motley Fool megacap comparison",
+   "asOf": "2026-09-02",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-04",
+   "claim": "A discounted cash flow on base-case assumptions \u2014 free cash flow growing 8%, 7%, 6%, 6%, 5% from an estimated USD 135bn, an 8.8% WACC and 3.0% terminal growth \u2014 produces a value of approximately USD 195 per share, 40% below the market price.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; full workings reproduced in the workspace model",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 195,
+   "unit": "USD per share"
+  },
+  {
+   "id": "p5-05",
+   "claim": "Reverse DCF: to justify USD 328 at an 8.8% WACC on the same five-year cash flows, terminal growth must be approximately 5.7% in perpetuity. That is materially above long-run nominal GDP, meaning the price embeds Apple growing faster than the economy forever.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: solving TV = FCF5 x (1+g)/(w-g) for the terminal value implied by the market price",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high",
+   "value": 5.7,
+   "unit": "% implied perpetual growth"
+  },
+  {
+   "id": "p5-06",
+   "claim": "Stated the other way: holding terminal growth at a defensible 3.5%, the price is justified only at a WACC of approximately 6.9% \u2014 an equity risk premium of roughly 2.7% over a 4.2% risk-free rate. The market is pricing Apple closer to a bond than to an equity.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: solving for the discount rate that equates DCF value to the market price",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-07",
+   "claim": "Every method tested lands below the market price. DCF USD 195, EV/EBITDA at 24x USD 284, sum-of-the-parts USD 202. The blended base case is approximately USD 222, roughly 32% below USD 328.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived; all four methods reproduced in the workspace",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  },
+  {
+   "id": "p5-08",
+   "claim": "Sum-of-the-parts: Services at an estimated USD 81.6bn of operating income on 25x is worth approximately USD 2,040bn, Products at an estimated USD 76.4bn on 11x approximately USD 840bn, giving an enterprise value of approximately USD 2,880bn and roughly USD 202 per share after net cash.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived: Services revenue ~125.6 at ~65% operating margin; Products the residual of ~158 total operating income",
+   "asOf": "2026-09-05",
+   "confidence": "low",
+   "impact": "medium"
+  },
+  {
+   "id": "p5-09",
+   "claim": "The valuation conclusion is highly assumption-sensitive and is not robust. On more generous inputs \u2014 4.0% terminal growth and an 8.0% WACC \u2014 the DCF produces approximately USD 272, a 17% discount rather than 40%. The direction is consistent across every reasonable input set; the magnitude is not.",
+   "label": "ANALYST ESTIMATE",
+   "source": "Derived sensitivity run",
+   "asOf": "2026-09-05",
+   "confidence": "medium",
+   "impact": "high"
+  }
+ ],
+ "tables": [
+  {
+   "title": "Valuation by method, base case",
+   "columns": [
+    "Method",
+    "Value per share",
+    "vs USD 328",
+    "Weight",
+    "Comment"
+   ],
+   "rows": [
+    [
+     "Discounted cash flow",
+     "~USD 195",
+     "-40%",
+     "53%",
+     "8.8% WACC, 3.0% terminal growth"
+    ],
+    [
+     "EV/EBITDA at 24x",
+     "~USD 284",
+     "-13%",
+     "29%",
+     "Against ~27.8x today"
+    ],
+    [
+     "Sum of the parts",
+     "~USD 202",
+     "-38%",
+     "18%",
+     "Services 25x EBIT, Products 11x EBIT"
+    ],
+    [
+     "Justified P/B",
+     "n/a",
+     "\u2014",
+     "0%",
+     "Excluded \u2014 book equity distorted by buybacks"
+    ],
+    [
+     "Blended",
+     "~USD 222",
+     "-32%",
+     "100%",
+     "Probability-weighted across scenarios: ~USD 222"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] throughout. Weights renormalise over the three applicable methods. The unanimity matters more than any single figure: no method tested supports the price."
+  },
+  {
+   "title": "Scenario definitions",
+   "columns": [
+    "Scenario",
+    "Probability",
+    "Trigger set",
+    "5y FCF CAGR",
+    "WACC",
+    "Terminal g"
+   ],
+   "rows": [
+    [
+     "Bear",
+     "25%",
+     "Google payment lost or repriced down; iPhone 17 pulled demand forward; Services decelerates below 10%; FX and tariffs persist",
+     "~1.4%",
+     "9.5%",
+     "2.0%"
+    ],
+    [
+     "Base",
+     "50%",
+     "Google payment survives at similar economics; replacement cycle normalises; Services holds low-teens; margin settles at 47-48%",
+     "~6.4%",
+     "8.8%",
+     "3.0%"
+    ],
+    [
+     "Bull",
+     "25%",
+     "Siri drives a genuine upgrade cycle; Services re-accelerates; Apple auctions the search default at improved economics; tariffs ease",
+     "~10.0%",
+     "8.3%",
+     "3.5%"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] Probabilities are weighted toward the base case because the FY2026 evidence is strong and the deterioration risks are real but not yet visible in the numbers."
+  },
+  {
+   "title": "What you must believe to own it here",
+   "columns": [
+    "Assumption",
+    "Required level",
+    "Long-run benchmark",
+    "Verdict"
+   ],
+   "rows": [
+    [
+     "Terminal growth at an 8.8% WACC",
+     "~5.7% in perpetuity",
+     "US nominal GDP ~4%",
+     "Above the economy, forever"
+    ],
+    [
+     "WACC at 3.5% terminal growth",
+     "~6.9%",
+     "Equity cost ~9%",
+     "Bond-like risk for an equity"
+    ],
+    [
+     "FY2026E P/E",
+     "36.9x",
+     "Nasdaq-100 34.5x, S&P 25.6x",
+     "Premium to the growthiest index"
+    ],
+    [
+     "Services growth",
+     "Re-accelerating",
+     "Actual: 16% to 12%, missed consensus",
+     "Moving the wrong way"
+    ]
+   ],
+   "note": "[ANALYST ESTIMATE] This is the honest form of the bear case: not that Apple is a bad business, but that each of these four propositions must hold simultaneously."
+  }
+ ],
+ "gaps": [
+  {
+   "item": "A full peer table with EV/EBITDA and net-debt multiples",
+   "whyItMatters": "Only Alphabet and Microsoft P/E were sourceable. Relative valuation is the weakest-evidenced part of this phase.",
+   "resolvedBy": "A market data terminal"
+  },
+  {
+   "item": "Sourced WACC components",
+   "whyItMatters": "A 100bp WACC error moves fair value by roughly 15%, which is half the gap to the market price.",
+   "resolvedBy": "Live 10-year Treasury yield and a published beta"
+  },
+  {
+   "item": "Services operating margin, actual rather than assumed",
+   "whyItMatters": "The sum-of-the-parts rests on an assumed ~65% Services operating margin derived from the disclosed 75.4% gross margin.",
+   "resolvedBy": "Apple does not disclose segment operating income; it would require estimation from third-party work"
+  },
+  {
+   "item": "Whether the iPhone 17 cycle pulled FY2027 demand forward",
+   "whyItMatters": "It is the difference between the base and bear cash-flow paths.",
+   "resolvedBy": "Q1 FY2027 results, January 2027"
+  }
+ ],
+ "risks": [
+  {
+   "text": "Valuation is the thesis. Every method tested lands 13-40% below the market price, and the price implies perpetual growth above nominal GDP.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "Services, the line that justifies the multiple, decelerated to +12% and missed consensus while the multiple assumes durability.",
+   "severity": "high",
+   "probability": "high"
+  },
+  {
+   "text": "~USD 20bn of near-costless profit now rests on a 12-month non-exclusive contract with two live appeals.",
+   "severity": "high",
+   "probability": "medium"
+  },
+  {
+   "text": "The FY2026 surge is a replacement cycle. Q4 guidance already decelerates to +9-11% from +16%.",
+   "severity": "medium",
+   "probability": "high"
+  },
+  {
+   "text": "The conclusion is assumption-sensitive: generous inputs narrow the discount from 40% to 17%. The direction is robust, the magnitude is not.",
+   "severity": "medium",
+   "probability": "high"
+  }
+ ],
+ "catalysts": [
+  {
+   "text": "Q4 FY2026 results \u2014 gross margin without the tariff refund, and Services growth",
+   "window": "Late Oct 2026",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "iOS 27 with full conversational Siri \u2014 the bull case's only real catalyst",
+   "window": "Sept 2026",
+   "impact": "High",
+   "probability": 0.9
+  },
+  {
+   "text": "Q1 FY2027 \u2014 whether the iPhone 17 cycle pulled demand forward",
+   "window": "Jan 2027",
+   "impact": "High",
+   "probability": 0.95
+  },
+  {
+   "text": "New EU App Store commission tiers take effect",
+   "window": "2026-10-01",
+   "impact": "Low",
+   "probability": 1.0
+  },
+  {
+   "text": "Appellate ruling in US v. Google on the ~USD 20bn payment",
+   "window": "2027-2028",
+   "impact": "High",
+   "probability": 0.4
+  }
+ ],
+ "conclusions": [
+  "Apple is an exceptional business at a demanding price. Nothing in Phases 1-4 suggests deterioration in the franchise; everything in Phase 5 suggests the price already assumes it persists and compounds.",
+  "Every valuation method tested lands below the market: DCF ~USD 195, EV/EBITDA ~USD 284, sum-of-the-parts ~USD 202, blended ~USD 222 against USD 328.",
+  "The reverse DCF is the honest statement of the problem: at an 8.8% WACC the price embeds ~5.7% perpetual growth, above long-run nominal GDP. Alternatively it implies a ~6.9% discount rate \u2014 pricing an equity like a bond.",
+  "The composition of growth is wrong for the story being paid for. Hardware, the cyclical line, is growing 22%; Services, the annuity that justifies the multiple, decelerated to 12% and missed consensus.",
+  "The conclusion is directionally robust but magnitude-sensitive. On generous assumptions the discount narrows from 40% to 17%. It does not close."
+ ],
+ "thesisImpact": "The five phases converge on a single sentence: this is a great company whose price requires four separate optimistic propositions to hold at once. That is a valuation call, not a quality call, and it should be revisited on price rather than on news.",
+ "memo": {
+  "rating": "AVOID",
+  "weighting": "DCF 53%, EV/EBITDA 29%, sum-of-the-parts 18%. The DCF carries most weight because Apple's cash conversion is unusually predictable; the EBITDA multiple is the sanity check against the market's revealed preference; P/B is excluded as meaningless for a company that has repurchased most of its book equity. AVOID here is a price call, not a quality judgement: it means do not initiate at USD 328, and it is stated rather than softened to HOLD because all three scenarios \u2014 including the bull case at -15% \u2014 land below the current price. For an existing holder this reads as hold-with-triggers and trim on strength, not liquidate. The single biggest fragility in the conclusion is that 77% of the base-case DCF value sits in the terminal assumption; readers who reject a 3.0% terminal growth rate should flex it in the workspace and watch the answer move.",
+  "nonConsensus": [
+   {
+    "market": "Services is the durable annuity that justifies Apple's premium multiple.",
+    "us": "Services decelerated from +16% to +12% and missed consensus in the June quarter, while hardware \u2014 the cyclical line \u2014 grew 22%. The market is paying an annuity multiple for a mix that is moving toward cyclicality, not away from it.",
+    "evidence": "Phase 3: Q2 vs Q3 FY2026 Services growth and the USD 30.74bn versus USD 31.22bn consensus miss."
+   },
+   {
+    "market": "Apple's low AI capex is disciplined capital allocation that will let it out-earn the hyperscalers.",
+    "us": "Apple is renting its most strategically important capability for ~USD 1bn a year from Google \u2014 simultaneously its largest revenue counterparty, its antitrust co-defendant and a direct competitor. That is not discipline, it is a dependency with no owned fallback, and it arrives two years late.",
+    "evidence": "Phase 2: the ~USD 1bn Gemini contract against hyperscaler capex; Siri shipping in Sept 2026 after a 2024 demonstration."
+   },
+   {
+    "market": "The Google antitrust remedy was a win for Apple because the USD 20bn payment survived.",
+    "us": "The payment survived but its protection did not. It is now non-exclusive, cannot restrict Apple from promoting rivals, and is capped at 12-month terms with both sides appealing. Roughly 13% of operating income at near-100% margin moved from a locked contract to an annual renegotiation.",
+    "evidence": "Phase 1: Judge Mehta's remedy terms; Google's May 2026 appeal and the DOJ's February 2026 appeal."
+   }
+  ],
+  "fears": [
+   {
+    "text": "The valuation genuinely requires perpetual above-GDP growth. At an 8.8% WACC the price implies ~5.7% terminal growth; there is no version of this that is cheap on conventional arithmetic.",
+    "why": "This is not a bear talking point \u2014 it is what the reverse DCF returns, and it holds across every reasonable input set."
+   },
+   {
+    "text": "FY2026's growth is a replacement cycle, and replacement cycles pull demand forward. Q4 guidance already steps down to +9-11% from +16%.",
+    "why": "Two quarters of +22% iPhone growth against a normal cadence is exactly what a pull-forward looks like before it becomes an air pocket."
+   },
+   {
+    "text": "~USD 20bn of near-costless profit rests on one annually-repriced contract with a company that is both counterparty and competitor.",
+    "why": "It cannot be replaced by pricing, and neither appeal will resolve for years."
+   }
+  ],
+  "sellTriggers": [
+   "Services growth falls below 10% year on year for two consecutive quarters",
+   "Gross margin settles below 46% ex-tariff-refund for two consecutive quarters",
+   "iPhone revenue declines year on year in any quarter of FY2027, confirming demand pull-forward",
+   "The Google default-search payment is reduced by more than 25% or terminated on appeal",
+   "Forward P/E exceeds 42x without an upgrade to the underlying cash-flow path"
+  ],
+  "reEntry": "The blended base case is ~USD 222. A 20% margin of safety implies initiating below ~USD 185, or paying up to ~USD 222 for a holder willing to accept no discount. Alternatively the thesis flips without a price move if Services re-accelerates above 15% for two quarters while gross margin holds above 47% ex-refund."
+ },
+ "model": {
+  "sharesOut": 14590,
+  "netDebt": -62000,
+  "wacc": {
+   "bear": 0.095,
+   "base": 0.088,
+   "bull": 0.083
+  },
+  "terminalGrowth": {
+   "bear": 0.02,
+   "base": 0.03,
+   "bull": 0.035
+  },
+  "fcf": {
+   "bear": [
+    137700,
+    137700,
+    139100,
+    141900,
+    144700
+   ],
+   "base": [
+    145800,
+    156000,
+    165400,
+    175300,
+    184100
+   ],
+   "bull": [
+    151200,
+    167800,
+    184600,
+    201200,
+    217300
+   ]
+  },
+  "assetBase": {
+   "label": "FY2026E EBITDA",
+   "value": 170000,
+   "multiple": {
+    "bear": 18,
+    "base": 24,
+    "bull": 29
+   }
+  },
+  "sotp": [
+   {
+    "name": "Services",
+    "method": "EV/EBIT",
+    "metric": 81600,
+    "multiple": 25,
+    "stake": 1.0
+   },
+   {
+    "name": "Products",
+    "method": "EV/EBIT",
+    "metric": 76400,
+    "multiple": 11,
+    "stake": 1.0
+   }
+  ],
+  "peers": [
+   {
+    "name": "Apple (subject)",
+    "self": true,
+    "evEbitda": 27.8,
+    "pe": 36.9,
+    "ndEbitda": -0.36,
+    "dy": 0.33
+   },
+   {
+    "name": "Alphabet",
+    "pe": 17.0
+   },
+   {
+    "name": "Microsoft",
+    "pe": 23.0
+   },
+   {
+    "name": "Nasdaq-100 (index)",
+    "pe": 34.5
+   },
+   {
+    "name": "S&P 500 (index)",
+    "pe": 25.6
+   }
+  ],
+  "targets": {
+   "bear": {
+    "price3y": 180,
+    "dividends3y": 3.4
+   },
+   "base": {
+    "price3y": 272,
+    "dividends3y": 3.6
+   },
+   "bull": {
+    "price3y": 360,
+    "dividends3y": 3.8
+   }
+  },
+  "probabilities": {
+   "bear": 0.25,
+   "base": 0.5,
+   "bull": 0.25
+  }
+ }
+}
