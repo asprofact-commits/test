@@ -1,0 +1,320 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Strategy Inc. (formerly MicroStrategy)",
+    "ticker": "NASDAQ: MSTR",
+    "sector": "financials",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 128.48,
+    "priceUnit": "share",
+    "asOf": "2026-09-11",
+    "phase": 4,
+    "phaseName": "Capital structure, balance-sheet risk & returns on capital",
+    "assumedContext": [
+      "Network egress blocked except the search index; indentures, covenant terms and pre-2025 balance sheets could not be retrieved, so the protocol's ten-year ROIC-versus-WACC series could only be built for 2025-26.",
+      "Market values of the preferred (~$13.5bn against ~$14.8bn par) and the convertibles (~$6.0bn against $6.70bn face) are analyst estimates anchored on STRC trading below its $100 stated amount and the May 2026 convertible repurchase clearing at 92 cents.",
+      "No tax shield is applied in the WACC: preferred dividends are not deductible and Strategy has no taxable income against which to deduct convertible interest.",
+      "netDebt in the model block is set to $21,500m - convertible face of $6,700m plus preferred par of ~$14,800m - so that the workspace's asset-base method deducts the full senior claim from gross assets."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p4-01",
+      "claim": "WACC is approximately 15.5%: common equity $49.36bn at an 18.0% cost (71.7% weight), preferred ~$13.5bn at an 11.9% current yield (19.6%), and convertibles ~$6.0bn at a ~3.5% yield to maturity (8.7%). No tax shield applies.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0.155,
+      "unit": "WACC, decimal",
+      "source": "Derived in Phase 4 section 4.4. Cost of equity from Phase 1 (risk-free 4.79% plus beta ~2.9 times a 4.5% ERP); cost of preferred from $1,603m of dividends over estimated market value; convertible cost a YTM estimate on a discounted, deep out-of-the-money bond",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-02",
+      "claim": "Return on invested capital is approximately 0.3% a year: $63.73bn deployed into bitcoin over roughly six years is now worth $65.08bn, a cumulative +2.1%. Against a 15.5% WACC the spread is approximately minus 15 percentage points.",
+      "label": "ANALYST ESTIMATE",
+      "value": -15.2,
+      "unit": "percentage points, ROIC less WACC",
+      "source": "Derived from Strategy's cumulative bitcoin cost basis and market value at 2026-09-11 against the derived WACC. The annualisation is a simple one and is flattered by cheap early vintages",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-03",
+      "claim": "MSTR common is a 1.37x levered claim on bitcoin ($65.08bn of exposure over $47.48bn of NAV) carrying an annual cash carry equal to 3.44% of common NAV. Bitcoin must compound above about 8.8% a year for the wrapper to beat a spot ETF ignoring the entry premium, and above about 12.3% including the decay of today's 1.04x premium over three years.",
+      "label": "ANALYST ESTIMATE",
+      "value": 12.3,
+      "unit": "% bitcoin CAGR required for MSTR to beat a spot ETF",
+      "source": "Derived in Phase 4 section 4.4 from the Phase 1 NAV bridge, the Phase 2 carry figure and a typical 0.20% spot-ETF expense ratio",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-04",
+      "claim": "Common equity is wiped out only at a bitcoin price of approximately $20,820, 73% below spot: senior claims of $21.50bn less the $2.40bn USD reserve and ~$1.50bn software business require $17.60bn of bitcoin value across 845,256 coins.",
+      "label": "ANALYST ESTIMATE",
+      "value": 20820,
+      "unit": "USD bitcoin price at which common equity is zero",
+      "source": "Derived from the Phase 1 NAV bridge; static, before any bleed from dividend-funded bitcoin sales",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-05",
+      "claim": "There is no maturity wall, no secured debt and no margin-call mechanism. The preferred is perpetual and cannot be put back; no convertible matures before 2029, with a holder put on the 2032 notes at 2029-06-15. Strategy absorbed a roughly 33% bitcoin drawdown in H1 2026 - holdings falling from $51.6bn to $49.7bn in market value while growing 11% in coin count - without a forced sale.",
+      "label": "FACT",
+      "source": "Strategy Q2 2026 10-Q and note terms; 2032 note offering documents; Q1 and Q2 2026 results",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p4-06",
+      "claim": "Thirty-three percent of the bitcoin stack already belongs to someone else: $21.50bn of senior claims (converts $6.70bn plus preferred ~$14.80bn) against a $65.08bn asset, accruing at about 11.9% while the asset yields nothing.",
+      "label": "ANALYST ESTIMATE",
+      "value": 33,
+      "unit": "% of the bitcoin stack encumbered by senior claims",
+      "source": "Derived from the Phase 1 NAV bridge at bitcoin $77,000",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-07",
+      "claim": "Reported results under ASU 2023-08 are a bitcoin price chart: FY2025 net income +$3.80bn on revenue of $477m, then Q1 2026 net loss of $12.54bn on a $14.46bn unrealised markdown - the largest in company history - and Q2 2026 net loss of $8.60bn, for an H1 2026 loss of $21.14bn.",
+      "label": "FACT",
+      "value": -21140,
+      "unit": "USD m H1 2026 net loss",
+      "source": "Strategy FY2025 10-K; Q1 2026 results 2026-05-05; Q2 2026 results 2026-07-30",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p4-08",
+      "claim": "Direct interest-rate sensitivity is near zero - there is no floating-rate debt and the convertibles are fixed to 2029 and beyond. The transmission runs through the STRC monthly reset, which explicitly references credit spreads: each 100bp adds about $105m a year on $10.5bn of STRC, or about $148m across the full preferred stack.",
+      "label": "ANALYST ESTIMATE",
+      "value": 105,
+      "unit": "USD m per year per 100bp on STRC",
+      "source": "Derived from STRC's ~$10.5bn outstanding and its disclosed monthly reset mechanism referencing credit spreads",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "medium"
+    },
+    {
+      "id": "p4-09",
+      "claim": "A 10% move in bitcoin is a 13.7% move in NAV attributable to common - the 1.37x leverage, symmetric. The premium is not symmetric: peer evidence (Semler 0.88x, Nakamoto 0.70x, Metaplanet 0.99x) shows treasury premiums compress in drawdowns, so a 10% bitcoin fall with the premium going from 1.04x to 0.90x is a 25% equity fall.",
+      "label": "ANALYST ESTIMATE",
+      "value": 13.7,
+      "unit": "% NAV move per 10% bitcoin move",
+      "source": "Derived from the Phase 1 NAV bridge; peer mNAV readings from treasury-sector trackers and reporting, 2026",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p4-10",
+      "claim": "The cost of Strategy's largest funding source has risen 33% in fourteen months - STRC from 9.00% at listing in July 2025 to 12.00% in September 2026, worth $315m a year on $10.5bn - through a one-way ratchet. A repeat of the same 300bp move would add $630m a year versus listing, and would arrive precisely when bitcoin is falling.",
+      "label": "ANALYST ESTIMATE",
+      "value": 630,
+      "unit": "USD m per year of added carry if the 300bp move repeats",
+      "source": "Derived from the sourced STRC rate history (9.00% July 2025, 11.50% spring 2026, 12.00% September 2026) applied to the ~$10.5bn outstanding",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-11",
+      "claim": "The funding gap is structural, not cyclical: roughly $1,608m a year before financing, and a higher bitcoin price generates no cash to close it - it only makes the gap easier to fund by reopening the equity ATM. This is an asset that cannot service its own liabilities in any state of the world.",
+      "label": "ANALYST ESTIMATE",
+      "value": -1608,
+      "unit": "USD m annual funding gap before financing",
+      "source": "Derived: estimated software operating cash flow of ~$25m less $1,603m of preferred dividends and ~$30m of convertible interest",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p4-12",
+      "claim": "The compression is cyclical with one permanent overlay. Everything about the mNAV gate, the carry ratio and preferred repricing reverses on a bitcoin rally - a 50% move takes the carry from 2.51% to 1.67% of the stack. The permanent change is the spot bitcoin ETF: the access monopoly that once justified a large premium is gone and will not return, so any future premium must be earned by leverage and the issuance machine alone.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Structural assessment combining the Phase 2 carry curve with the post-2024 existence of US spot bitcoin ETFs",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "The capital stack at market",
+      "columns": ["Layer", "Face / par", "Market value (est.)", "Cost", "Maturity"],
+      "rows": [
+        ["Convertible notes", "$6.70bn", "~$6.0bn", "~0%-2.25% coupon; ~3.5% YTM at a discount", "2029, 2030, 2032 - no wall before 2029"],
+        ["Preferred (STRF, STRC, STRE, STRK, STRD)", "~$14.80bn", "~$13.5bn", "~11.9% current yield on market value", "Perpetual - no maturity at all"],
+        ["Common equity", "-", "$49.36bn", "18.0%", "Residual"],
+        ["Total capital", "", "~$68.9bn", "WACC ~15.5%", ""]
+      ]
+    },
+    {
+      "title": "Headroom against every binding constraint",
+      "columns": ["Constraint", "Current position", "Headroom"],
+      "rows": [
+        ["Covenants", "None disclosed on converts or preferred [GAP]", "Assume non-binding"],
+        ["Maturity schedule", "No maturities before 2029; holder put on the 2032s at 2029-06-15", "~3 years clear"],
+        ["Secured debt / margin calls", "None", "Not applicable - the key structural protection"],
+        ["S&P issuer rating", "B-, stable (2025-10-27): high bitcoin concentration, narrow business focus, weak risk-adjusted capitalization, low USD liquidity", "Constrains the price of new capital, not access"],
+        ["USD liquidity", "$2.40bn against $1,633m of annual carry", "~17.6 months with zero issuance and zero sales"],
+        ["The mNAV gate", "1.04x - economically shut", "The binding constraint"],
+        ["Statutory issuance cap", "None", "n/a"]
+      ]
+    },
+    {
+      "title": "The wipe-out price",
+      "columns": ["Item", "Value"],
+      "rows": [
+        ["Senior claims: converts $6.70bn + preferred $14.80bn", "$21.50bn"],
+        ["Less USD reserve $2.40bn and software ~$1.50bn", "($3.90bn)"],
+        ["Bitcoin value required to cover the claims", "$17.60bn"],
+        ["Bitcoin price at which common equity is worth zero", "~$20,820"],
+        ["Distance from spot ($77,000)", "-73%"]
+      ],
+      "note": "Static, before any bleed from dividend-funded sales. The more useful reading is the inverse: 33% of the stack already belongs to someone else."
+    },
+    {
+      "title": "Sensitivity 1: interest rates",
+      "columns": ["Channel", "+100bp", "+200bp"],
+      "rows": [
+        ["Floating-rate debt", "$0 - there is none", "$0"],
+        ["Convertible interest", "$0 - fixed to 2029+", "$0"],
+        ["STRC repricing via the monthly credit-spread reset", "+$105m/yr on $10.5bn", "+$210m/yr"],
+        ["Full preferred stack repricing over time", "+$148m/yr", "+$296m/yr"],
+        ["Cost of equity", "18.0% to ~19.0%, compressing the justified premium", "18.0% to ~20.0%"],
+        ["Second-order: bitcoin", "Higher real rates have historically been bitcoin-negative - the dominant channel, not modellable here", "-"]
+      ]
+    },
+    {
+      "title": "Sensitivity 2: a 10% move in the functional asset (bitcoin)",
+      "columns": ["Shock", "Bitcoin value", "NAV to common", "Change", "Carry as % of stack"],
+      "rows": [
+        ["BTC +10% to $84,700", "$71.59bn", "$53.99bn", "+13.7%", "2.28%"],
+        ["Spot, $77,000", "$65.08bn", "$47.48bn", "-", "2.51%"],
+        ["BTC -10% to $69,300", "$58.57bn", "$40.97bn", "-13.7%", "2.79%"],
+        ["BTC -33% to $51,600 (repeat of H1 2026)", "$43.62bn", "$26.02bn", "-45.2%", "3.74%"]
+      ],
+      "note": "NAV moves are symmetric at 1.37x. The premium is not: a -10% bitcoin move plus premium compression from 1.04x to 0.90x is a -25% equity move. Genuine FX exposure is small: STRE is euro-denominated (~EUR 775m), so a 10% euro appreciation adds ~$90m of liquidation preference and ~$9m a year of dividends."
+    },
+    {
+      "title": "Sensitivity 3: the cost-of-capital ratchet",
+      "columns": ["Episode", "STRC rate", "Annual carry on $10.5bn", "Change"],
+      "rows": [
+        ["Listing, July 2025", "9.00%", "$945m", "-"],
+        ["Spring 2026", "11.50%", "$1,208m", "+$263m"],
+        ["September 2026", "12.00%", "$1,260m", "+$315m vs listing"],
+        ["Repeat the same +300bp move", "15.00%", "$1,575m", "+$630m vs listing"],
+        ["Whole preferred stack +300bp", "-", "+$444m/yr across ~$14.8bn", "-"]
+      ],
+      "note": "Each trip below $95 adds about $53m a year permanently and cannot be reversed."
+    },
+    {
+      "title": "ROIC vs WACC",
+      "columns": ["Measure", "Value", "Basis"],
+      "rows": [
+        ["Capital deployed into bitcoin, cumulative", "$63.73bn", "FACT"],
+        ["Current market value", "$65.08bn", "FACT at $77,000"],
+        ["Cumulative return on all capital deployed", "+2.1%", "Derived"],
+        ["Simple annualisation over ~6.1 years", "~+0.34%/yr", "Derived; crude, flattered by cheap early vintages"],
+        ["WACC", "15.5%", "Derived"],
+        ["SPREAD", "~ -15.2 percentage points", ""],
+        ["2016-2024 series", "[GAP] - pre-2025 holdings and convertible balances not retrievable", "Egress-blocked"]
+      ],
+      "note": "The spread was enormously positive from 2020 to 2024 - bitcoin bought well below $75,417 with capital costing ~0.4% - and turned deeply negative when the preferred stack was built in 2025. The inflection coincides with the funding mix shift, not with anything that happened to the business."
+    },
+    {
+      "title": "Does the wrapper beat the asset? MSTR NAV return vs a spot bitcoin ETF",
+      "columns": ["Bitcoin CAGR", "MSTR NAV return (1.37x - 3.44%)", "Spot ETF (-0.20%)", "MSTR advantage"],
+      "rows": [
+        ["-20%", "-30.8%", "-20.2%", "-10.6pp"],
+        ["-10%", "-17.1%", "-10.2%", "-6.9pp"],
+        ["0%", "-3.4%", "-0.2%", "-3.2pp"],
+        ["+10%", "+10.3%", "+9.8%", "+0.5pp"],
+        ["+20%", "+24.0%", "+19.8%", "+4.2pp"],
+        ["+40%", "+51.4%", "+39.8%", "+11.6pp"]
+      ],
+      "note": "Breakeven is a bitcoin CAGR of about 8.8% ignoring the entry premium, or about 12.3% including decay of today's 1.04x premium over three years. This is the investment case in one table."
+    },
+    {
+      "title": "Conditions for a durable positive spread",
+      "columns": ["Condition", "Required", "Currently", "Plausible?"],
+      "rows": [
+        ["Bitcoin compounds above the 15.5% WACC", "A bull market", "-12% year to date; +2.1% over six years", "Possible and historically repeated - this is the whole bull case"],
+        ["Retire the 12% preferred", "~$10bn of cash to take WACC to ~10%", "No cash; the software business is worth ~$1.5bn", "Low without a bitcoin rally first"],
+        ["mNAV back above ~1.2x", "Restores common issuance as cheap capital - at 3.89x its cost was effectively negative", "1.04x", "Medium; requires bitcoin higher first"],
+        ["Bitcoin volatility falls", "Would cut the 18% cost of equity", "No evidence", "Low"]
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "item": "Exact preferred balance outstanding and the market value of each series",
+      "whyItMatters": "The largest single input to leverage, WACC and the wipe-out price. A $1bn error moves NAV per share by $2.60 and the leverage ratio by 0.03x",
+      "resolvedBy": "The equity note in the Q3 2026 10-Q and live quotes for STRK, STRF, STRD, STRC and STRE"
+    },
+    {
+      "item": "Ten-year ROIC and WACC series",
+      "whyItMatters": "The protocol's core test could only be run for 2025-26 because pre-2025 bitcoin holdings and convertible balances were not retrievable. The direction of the inflection is clear; its exact timing is not",
+      "resolvedBy": "FY2023 and FY2024 10-Ks - egress-blocked in this session"
+    },
+    {
+      "item": "Covenant terms on the convertibles and the preferred",
+      "whyItMatters": "The conclusion that nothing binds before the rating does is assumed rather than verified. A single financial covenant would change the risk profile materially",
+      "resolvedBy": "Indentures and certificates of designation"
+    },
+    {
+      "item": "Software segment operating income",
+      "whyItMatters": "The only recurring cash inflow, modelled here at about $25m a year against a $1,633m bill",
+      "resolvedBy": "Segment disclosure in the 10-Q"
+    },
+    {
+      "item": "Whether and how often the STRC ratchet has triggered",
+      "whyItMatters": "Each trigger adds about $53m a year to the carry permanently",
+      "resolvedBy": "Company dividend announcements and the 10-Q"
+    }
+  ],
+  "risks": [
+    {"text": "A 15.5% WACC against a ~0.3% annual return on invested capital - a spread of roughly minus 15 percentage points, with the inflection coinciding exactly with the 2025 build-out of the preferred stack", "severity": "high", "probability": "high"},
+    {"text": "Thirty-three percent of the bitcoin stack is encumbered by $21.5bn of senior claims accruing at ~11.9% against an asset that yields nothing", "severity": "high", "probability": "high"},
+    {"text": "The premium is asymmetric: peer treasury companies trade at 0.70x to 1.01x NAV, so a 10% bitcoin fall with premium compression to 0.90x is a 25% equity fall", "severity": "high", "probability": "medium"},
+    {"text": "The STRC ratchet is one-way and repeating the observed 300bp move would add $630m a year of carry, arriving precisely when bitcoin is falling", "severity": "medium", "probability": "medium"},
+    {"text": "The funding gap is structural: a higher bitcoin price generates no cash, only easier access to capital markets", "severity": "high", "probability": "high"}
+  ],
+  "catalysts": [
+    {"text": "Q3 2026 results: the USD reserve balance, cumulative bitcoin sales and the updated preferred balance - the three inputs that set the bleed rate", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "Monthly STRC rate resets, each a direct market reading of Strategy's marginal cost of capital", "window": "monthly", "impact": "Medium", "probability": 1.0},
+    {"text": "A further convertible repurchase at a discount, or a software-business monetisation to retire preferred - the only deleveraging levers available", "window": "next 12 months", "impact": "Medium", "probability": 0.4},
+    {"text": "S&P Global rating action on the B- stable issuer rating", "window": "next 12-18 months", "impact": "Medium", "probability": 0.3},
+    {"text": "Bitcoin sustained above roughly $100,000, which restores mNAV above 1.2x and reopens accretive common issuance", "window": "bitcoin-dependent", "impact": "High", "probability": 0.3}
+  ],
+  "conclusions": [
+    "The balance sheet does not break, and that is a real finding: no secured debt, no margin calls, no maturities before 2029, perpetual preferred that cannot be put back. Strategy absorbed a 33% bitcoin drawdown in H1 2026 without a forced sale, and common equity is wiped out only at bitcoin around $20,820, 73% below spot.",
+    "WACC is approximately 15.5% against a return on invested capital of roughly 0.3% a year - a spread of about minus 15 percentage points - and the inflection coincides with the 2025 build-out of the preferred stack rather than with anything that happened to the business.",
+    "Thirty-three percent of the bitcoin stack already belongs to someone else: $21.5bn of senior claims against a $65.1bn asset, accruing at about 11.9% while the asset yields nothing.",
+    "MSTR common is a 1.37x levered claim on bitcoin carrying a 3.44% annual fee on common NAV. Including the entry premium, bitcoin must compound above roughly 12% a year for the wrapper to beat a spot ETF. That single number is the investment case.",
+    "The compression is cyclical with one permanent overlay. Everything reverses on a bitcoin rally except the existence of the spot ETF, which removed the access monopoly that once justified a large premium and caps how high any durable premium can go."
+  ],
+  "thesisImpact": "Prices Phase 3's bleed against the alternative and produces the number the decision turns on: bitcoin above about 12% a year and the wrapper wins; below it, the wrapper loses to an instrument any investor can buy for 20 basis points. It also removes the tail risk that would otherwise dominate - this is not a forced-seller story. Phase 5's question is therefore not solvency but whether a 1.37x levered, 3.44%-fee bitcoin wrapper trading at 1.04x its own liquidation value is worth owning, and at what price it would be.",
+  "model": {
+    "sharesOut": 384.2,
+    "netDebt": 21500,
+    "minorities": 0,
+    "wacc": {"bear": 0.175, "base": 0.155, "bull": 0.135},
+    "assetBase": {
+      "label": "Gross assets (bitcoin + USD reserve + software)",
+      "value": 68980,
+      "multiple": {"bear": 0.49, "base": 1.10, "bull": 2.37}
+    }
+  }
+}

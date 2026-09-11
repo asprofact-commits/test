@@ -1,0 +1,271 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Strategy Inc. (formerly MicroStrategy)",
+    "ticker": "NASDAQ: MSTR",
+    "sector": "financials",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 128.48,
+    "priceUnit": "share",
+    "asOf": "2026-09-11",
+    "phase": 2,
+    "phaseName": "Productive asset base & carrying-cost curve",
+    "assumedContext": [
+      "Network egress blocked except the search index; no primary filing was read directly.",
+      "The 2024 convertible balance and 2024 year-end bitcoin holdings could not be sourced, so the mix-shift comparison is stated as a conservative order of magnitude rather than a measured ratio.",
+      "Software business assumed to run at approximately breakeven in the carry calculation; segment operating income is not disclosed in any source retrieved."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p2-01",
+      "claim": "The productive asset base is 845,256 bitcoin, 4.025% of all bitcoin that will ever exist, worth $65.08bn at $77,000. It is 94.3% of gross assets of $68.98bn. The next largest corporate holders are Twenty One Capital at 43,500 BTC, Metaplanet at 40,177 and MARA at 35,303.",
+      "label": "FACT",
+      "value": 65080,
+      "unit": "USD m bitcoin market value",
+      "source": "Strategy holdings after the 2026-08-31 purchase; bitcoin treasury trackers, September 2026; bitcoin price 2026-09-11",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-02",
+      "claim": "The accumulation engine switched off in mid-June 2026. Holdings went from 762,099 BTC at 2026-03-31 to 843,775 at 2026-06-30 (+81,676 in the quarter, +11%), then to 845,256 at 2026-08-31 - just 1,481 bitcoin in two months, a 98% collapse in the accumulation rate, coinciding exactly with mNAV crossing below 1.0.",
+      "label": "FACT",
+      "value": 1481,
+      "unit": "BTC added, July-August 2026",
+      "source": "Q1 2026 holdings market value of $51.6bn at 2026-03-31; Q2 2026 results; holdings disclosure after the 2026-08-31 purchase of 4,600 BTC at an average $80,318",
+      "asOf": "2026-08-31",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-03",
+      "claim": "The annual cash carry of the capital structure is approximately $1,633m: $1,603m of preferred dividends (annualising Q2's $400.7m) plus roughly $30m of convertible interest on $6.70bn of 0%-2.25% notes. That is $1,932 per bitcoin per year, or 2.51% of the bitcoin stack.",
+      "label": "ANALYST ESTIMATE",
+      "value": 2.51,
+      "unit": "% of bitcoin stack per year",
+      "source": "Derived from Q2 2026 preferred dividends of $400.7m, the $6.70bn convertible balance at 2026-06-30 and note coupons of 0%-2.25%, divided by 845,256 BTC at $77,000",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-04",
+      "claim": "Strategy's carrying cost is roughly 12.5x the approximately 0.20% annual fee on a US spot bitcoin ETF - an identical exposure available to any buyer. The wrapper's competitive position deteriorated for reasons entirely outside management's control when the spot ETFs launched.",
+      "label": "ANALYST ESTIMATE",
+      "value": 12.5,
+      "unit": "x the cost of a spot bitcoin ETF",
+      "source": "Derived: 2.51% carrying cost against a typical US spot bitcoin ETF expense ratio of about 0.20%",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-05",
+      "claim": "The funding mix shifted the wrong way: from roughly $7bn of convertible notes at a blended ~0.4% in 2024 to $6.70bn of convertibles plus about $14.80bn of perpetual preferred at a blended ~10.8% today, taking annual carry from approximately nothing to $1.63bn in about two years.",
+      "label": "ANALYST ESTIMATE",
+      "value": 10.8,
+      "unit": "% blended preferred cost",
+      "source": "Derived from the preferred stack (STRC 12%, STRF 10%, STRD 10%, STRE ~10%, STRK 8%) weighted by estimated balances; convertible balance $6.70bn at 2026-06-30. The 2024 base is unsourced and the comparison is stated conservatively",
+      "asOf": "2026-09-11",
+      "confidence": "low",
+      "impact": "high"
+    },
+    {
+      "id": "p2-06",
+      "claim": "The carry is procyclical: at a constant $1.633bn of cash obligations it is 1.61% of the stack at bitcoin $120,000, 2.51% at $77,000, 4.29% at $45,000 and 6.44% at $30,000 - and the STRC ratchet raises the numerator in exactly the states where the denominator is falling.",
+      "label": "ANALYST ESTIMATE",
+      "value": 6.44,
+      "unit": "% carry at bitcoin $30,000",
+      "source": "Derived at a constant $1.633bn cash carry across bitcoin prices; conservative because the STRC ratchet raises the carry as the price falls",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-07",
+      "claim": "The USD reserve of $2.40bn covers roughly 17.6 months of the $1.633bn annual cash carry with zero new issuance. S&P's B- rating explicitly cites low US dollar liquidity as a rating constraint.",
+      "label": "ANALYST ESTIMATE",
+      "value": 17.6,
+      "unit": "months of carry covered by the USD reserve",
+      "source": "Derived from the 2026-06-30 USD reserve (cash $1.71bn plus short-term investments $0.74bn) against the derived annual carry; S&P Global Ratings, 2025-10-27",
+      "asOf": "2026-06-30",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-08",
+      "claim": "A 24-month closed capital-markets window costs about 42,400 bitcoin (5.0% of the stack) if bitcoin holds at $77,000, 65,400 (7.7%) at $50,000, and roughly 98,700 (11.7%) at $35,000 with two ratchet triggers - because the numerator rises as the denominator falls.",
+      "label": "ANALYST ESTIMATE",
+      "value": 42400,
+      "unit": "BTC consumed over 24 months at $77,000",
+      "source": "Derived from the annual cash carry across bitcoin price scenarios, assuming the USD reserve is preserved",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p2-09",
+      "claim": "Unlike a GPU fleet or a utility rate base, bitcoin has no depreciation, no maintenance capex and effectively no operating cost - 100% of capital deployed still exists and still works. The offset is that it produces no cash flow, so 100% of the cost of owning it is financing cost, which must be paid from a $495m software business and the asset itself.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Structural assessment of the asset versus regulated and technology comparators; software revenue per Q1 and Q2 2026 results",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p2-10",
+      "claim": "One hundred percent of bitcoin purchases are growth capex and none is maintenance. There is no sustaining spend that can be cut in a downturn to preserve cash; the only cuttable line is the purchase programme, and it has already been cut to zero.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Structural conclusion from the asset's zero-maintenance character and the observed purchase pause of mid-June to 2026-08-31",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "medium"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Asset inventory",
+      "columns": ["Asset", "Quantity", "Value at $77,000/BTC", "Share of gross assets"],
+      "rows": [
+        ["Bitcoin", "845,256 BTC", "$65.08bn", "94.3%"],
+        ["USD reserve (cash $1.71bn + short-term investments $0.74bn)", "-", "$2.40bn", "3.5%"],
+        ["Software business", "~$495m FY2026E revenue", "~$1.50bn (3.0x sales, ANALYST ESTIMATE)", "2.2%"],
+        ["Gross assets", "", "$68.98bn", "100%"]
+      ]
+    },
+    {
+      "title": "The accumulation curve and where it stopped",
+      "columns": ["Date", "Holdings (BTC)", "Change", "Note"],
+      "rows": [
+        ["FY2025 year-end", "~713,502", "-", "FACT; does not reconcile to the Q1 '+22% since January' statement - see gaps"],
+        ["2026-03-31", "762,099", "-", "Derived from Q1 holdings market value of $51.6bn"],
+        ["2026-05-25", "843,738", "-", "Company disclosure"],
+        ["2026-06-30", "843,775", "+81,676 in Q2 (+11%)", "Q2 2026 results"],
+        ["2026-08-31", "845,256", "+1,481 in two months", "After a 4,600 BTC purchase at an average $80,318; a 98% collapse in the accumulation rate"]
+      ],
+      "note": "The pause began on the date mNAV crossed below 1.0. The machine did not slow; it switched off."
+    },
+    {
+      "title": "Cost basis of the asset base",
+      "columns": ["Item", "Value"],
+      "rows": [
+        ["Bitcoin acquired, cumulative", "845,050 BTC for $63.73bn"],
+        ["Average cost", "$75,417 per BTC"],
+        ["Market price 2026-09-11", "~$77,000"],
+        ["Unrealised gain on the entire programme", "+$1.34bn (+2.1%)"],
+        ["Price at which the whole position goes underwater", "$75,417 - 2.1% below spot"],
+        ["Price at the 2026-06-30 quarter end", "~$58,700 - the position was below cost"]
+      ]
+    },
+    {
+      "title": "The carrying-cost curve",
+      "columns": ["Component", "Arithmetic", "USD m/yr"],
+      "rows": [
+        ["Preferred dividends", "$400.7m in Q2 2026, annualised", "1,603"],
+        ["Convertible note interest", "$6.7bn at 0%-2.25% coupons", "~30"],
+        ["Software business, net", "revenue ~$495m, assumed breakeven", "~0"],
+        ["TOTAL ANNUAL CASH CARRY", "sum", "~1,633"],
+        ["Per bitcoin", "$1,633m / 845,256 BTC", "$1,932 per BTC per year"],
+        ["As a share of the stack", "$1,932 / $77,000", "2.51% per year"],
+        ["Versus a US spot bitcoin ETF", "2.51% / 0.20%", "12.5x"]
+      ]
+    },
+    {
+      "title": "Carry as a function of the bitcoin price (procyclicality)",
+      "columns": ["Bitcoin price", "Stack value", "Carry as % of stack", "BTC/yr needed to fund carry"],
+      "rows": [
+        ["$120,000", "$101.4bn", "1.61%", "13,608"],
+        ["$77,000 (spot)", "$65.1bn", "2.51%", "21,208"],
+        ["$60,000", "$50.7bn", "3.22%", "27,217"],
+        ["$45,000", "$38.0bn", "4.29%", "36,289"],
+        ["$30,000", "$25.4bn", "6.44%", "54,433"]
+      ],
+      "note": "Held at a constant $1.633bn cash carry, which is conservative: the STRC ratchet raises the obligation precisely when the price falls."
+    },
+    {
+      "title": "Bottleneck table",
+      "columns": ["Constraint", "Binding?", "Evidence", "Resolution path", "Execution risk"],
+      "rows": [
+        ["The mNAV gate", "Yes - binding since June 2026", "mNAV below 1.0; ATM issuance dilutive; purchases paused ~10 weeks; accumulation down 98% q/q", "Only a higher bitcoin price, which re-rates the equity above NAV and restarts accretive issuance", "High - the condition for fixing it is the condition it is meant to produce"],
+        ["US dollar liquidity", "Approaching", "S&P's B- cites low USD liquidity; $2.40bn reserve against $1.633bn annual carry = ~17.6 months with zero issuance", "Preferred ATM, bitcoin sales, or a convertible", "Medium - all three available, all three costly"],
+        ["STRC par discipline", "Yes", "STRC trades below its $100 stated amount, the condition under which further STRC issuance is least attractive and the ratchet threatens", "Raise the rate (already 12%), or stop issuing", "Medium"],
+        ["Index eligibility", "Partially", "S&P 500 closed on GAAP losses and pure-asset income; Nasdaq-100 retained; MSCI deferred with a broader consultation open", "None available to management", "Low-medium"],
+        ["Bitcoin market depth on exit", "Latent", "845,256 BTC is 4.025% of all bitcoin that will ever exist; there is no orderly liquidation path", "Not applicable while solvent", "High if ever triggered"],
+        ["Physical / operational", "No", "Custody and operations are immaterial costs", "-", "Low"]
+      ]
+    },
+    {
+      "title": "Is the capex compensated?",
+      "columns": ["Test", "Regulated utility", "Hyperscaler GPU fleet", "Strategy's bitcoin"],
+      "rows": [
+        ["Enters a return-earning base?", "Yes, at an allowed ROE", "No", "No"],
+        ["Recovery legally assured?", "Yes", "No", "No"],
+        ["Asset life / depreciation", "30-60 years", "5.5 years", "Infinite - no depreciation at all"],
+        ["Maintenance capex to hold output flat", "Substantial", "Substantial", "Zero"],
+        ["Operating cost", "Substantial", "Substantial", "Effectively zero"],
+        ["Recovery mechanism", "Tariff", "Product pricing", "Price appreciation only"],
+        ["Stranded-asset risk", "Mitigated by cost recovery", "Total loss over 5.5 years", "Total loss, but no forced write-down schedule"]
+      ],
+      "note": "Give the structure its due: the asset does not decay and costs nothing to run. Then state the offset: because it yields nothing, 100% of the cost of owning it is financing cost."
+    }
+  ],
+  "gaps": [
+    {
+      "item": "2024 convertible balance and 2024 year-end bitcoin holdings",
+      "whyItMatters": "The mix-shift conclusion is directionally certain but the 2024 base is unsourced, so the order-of-magnitude claim on unit carrying cost is conservative rather than measured",
+      "resolvedBy": "The FY2024 10-K - unreachable under this session's egress policy"
+    },
+    {
+      "item": "Software segment operating income",
+      "whyItMatters": "Determines whether the operating business contributes to or consumes the $1.633bn annual carry. It is treated as breakeven here, which flatters the analysis if the segment loses money",
+      "resolvedBy": "Segment disclosure in the 10-Q"
+    },
+    {
+      "item": "Funding split of 2026 bitcoin purchases between common ATM and preferred ATM",
+      "whyItMatters": "Determines how much of the permanent 10.8% preferred carry was incurred to buy bitcoin at prices above today's",
+      "resolvedBy": "Financing activities in the Q2 and Q3 2026 10-Q"
+    },
+    {
+      "item": "Reconciliation of FY2025 year-end holdings (713,502 BTC) with the Q1 2026 statement of '+22% since January'",
+      "whyItMatters": "A discrepancy of roughly 40,000 bitcoin, worth about $3bn, in the asset that is 94% of the company",
+      "resolvedBy": "The FY2025 10-K and Q1 2026 10-Q"
+    },
+    {
+      "item": "Convertible coupon schedule and remaining holder put dates",
+      "whyItMatters": "The 2032 notes carry a holder put on 2029-06-15; other put dates were not retrievable, and a put is a refinancing event at a moment of management's choosing only if the window is open",
+      "resolvedBy": "The note indentures"
+    }
+  ],
+  "risks": [
+    {"text": "The carry is procyclical: a falling bitcoin price mechanically raises the cost of carrying bitcoin as a percentage of the stack, and the STRC ratchet raises the dollar obligation in the same states", "severity": "high", "probability": "high"},
+    {"text": "A 24-month closed issuance window consumes 5% of the bitcoin stack if the price holds and nearly 12% if it halves", "severity": "high", "probability": "medium"},
+    {"text": "The wrapper costs 12.5x a spot bitcoin ETF for identical underlying exposure, a competitive disadvantage that did not exist when the strategy was designed and cannot be reversed", "severity": "high", "probability": "high"},
+    {"text": "There is no maintenance spend to cut in a downturn - the only cuttable line is the purchase programme, which is already at zero", "severity": "medium", "probability": "high"},
+    {"text": "845,256 BTC is 4.025% of total supply; there is no orderly path to liquidating it if one were ever required", "severity": "high", "probability": "low"}
+  ],
+  "catalysts": [
+    {"text": "Weekly 8-K purchase and sale disclosures - the cleanest real-time read on whether the accumulation engine has restarted", "window": "weekly", "impact": "Medium", "probability": 1.0},
+    {"text": "Q3 2026 results: bitcoin marked at quarter end, USD reserve balance, and the scale of dividend-funded bitcoin sales", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "STRC returning to or above its $100 stated amount, reopening the preferred ATM on non-punitive terms", "window": "bitcoin-dependent", "impact": "Medium", "probability": 0.4},
+    {"text": "A further convertible repurchase at a discount - the only demonstrably accretive capital action taken in 2026", "window": "next 12 months", "impact": "Medium", "probability": 0.45}
+  ],
+  "conclusions": [
+    "The productive asset is 845,256 bitcoin, 4.025% of total supply, held at an average cost of $75,417 against about $77,000. The entire six-year programme sits 2.1% above water and was below it at the last quarter end.",
+    "The accumulation engine switched off in mid-June 2026: +81,676 BTC in Q2, then +1,481 in two months, a 98% collapse coinciding exactly with mNAV crossing below 1.0.",
+    "The unit cost of this asset is financial carry: $1,932 per bitcoin per year, 2.51% of the stack, roughly 12.5 times the fee on a spot bitcoin ETF offering identical exposure.",
+    "The funding mix shifted the wrong way - from roughly $7bn of ~0.4% convertibles to about $14.8bn of ~10.8% perpetual preferred - taking annual carry from nearly nothing to $1.63bn in two years.",
+    "The carry is procyclical by construction: 2.51% of the stack at $77,000, 4.29% at $45,000, 6.44% at $30,000, with the STRC ratchet adding to the obligation in exactly those states.",
+    "The asset itself is excellent on the tests this protocol usually applies - no depreciation, no maintenance, no operating cost - and that advantage is neutralised by the fact that it yields nothing while the liabilities funding it yield 10.8%."
+  ],
+  "thesisImpact": "Prices what it costs to wait for the Phase 1 mechanism to restart: 2.51% of the bitcoin stack per year, rising as the price falls, with no operating asset capable of covering it. Sets up Phase 3's question directly - with the equity ATM shut, where does $1.633bn a year actually come from?",
+  "model": {
+    "sharesOut": 384.2,
+    "assetBase": {
+      "label": "Gross assets (bitcoin + USD reserve + software)",
+      "value": 68980
+    }
+  }
+}

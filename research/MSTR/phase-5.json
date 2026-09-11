@@ -1,0 +1,356 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Strategy Inc. (formerly MicroStrategy)",
+    "ticker": "NASDAQ: MSTR",
+    "sector": "financials",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 128.48,
+    "priceUnit": "share",
+    "asOf": "2026-09-11",
+    "phase": 5,
+    "phaseName": "Valuation, stress tests & investment committee memo",
+    "assumedContext": [
+      "Network egress blocked except the search index; the exact preferred balance, the exact share count and three peers' P/NAV readings could not be retrieved.",
+      "No fcf scenarios are supplied and weights.dcf is set to 0 deliberately: the asset produces no cash flow in any scenario, free cash flow to the firm is about -$1.6bn a year even in the bull case, and the common pays no dividend, so both an EV/FCF DCF and a dividend-discount model are undefined rather than merely difficult.",
+      "The book (P/B vs normalised ROE) method is omitted for the same reason: book value is NAV because the asset is marked to market under ASU 2023-08, so the justified-P/B formula collapses into a circular restatement of the P/NAV question.",
+      "The assetBase multiple supplied compounds two effects - the bitcoin price move and the P/NAV rating - so the workspace reproduces the same per-share answers from one gross-asset input. Implied bitcoin prices are $45,000 at 0.80x P/NAV (bear), $85,000 at 1.00x (base) and $150,000 at 1.25x (bull)."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p5-01",
+      "claim": "Triangulated fair value is $143.70 against a price of $128.48, an 11.9% premium to the current price, weighting the scenario-based P/NAV method 55% and today's liquidation SOTP 45% across a 35/40/25 bear/base/bull weighting.",
+      "label": "ANALYST ESTIMATE",
+      "value": 143.70,
+      "unit": "USD per share fair value",
+      "source": "Derived in Phase 5 section 5.3 from the model block in this file",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-02",
+      "claim": "Expected three-year IRR to September 2029 is 14.5% (bear -42.6%, base +8.8%, bull +54.5%) against an 18.0% cost of equity. The common pays no dividend, so total return is price only. The gap to the hurdle, not the fair-value premium, decides the rating.",
+      "label": "ANALYST ESTIMATE",
+      "value": 14.5,
+      "unit": "% expected 3-year IRR",
+      "source": "Derived from the scenario three-year targets in the model block against the price of $128.48; cost of equity from Phase 1",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-03",
+      "claim": "Strategy trades at a 5% premium to its treasury-peer median, not a discount: 1.04x P/NAV against a 0.99x median across Metaplanet (0.99x), BitMine (1.01x), Semler Scientific (0.88x) and Nakamoto (~0.70x). More than 15% of digital-asset treasuries now trade below 1.0x NAV.",
+      "label": "FACT",
+      "value": 0.99,
+      "unit": "x median peer P/NAV",
+      "source": "Bitcoin-treasury trackers and sector reporting, 2026 (Metaplanet, BitMine, Semler, Nakamoto readings); Forbes on the share of treasuries below 1.0x; MSTR's own 1.04x derived in Phase 1",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-04",
+      "claim": "The 5-point premium to the peer median decomposes fully: +5 points for scale, liquidity and Nasdaq-100 membership, +5 for track record and capital-markets access, -3 for the highest absolute carry burden and -2 for the preferred-heavy structure. The unexplained residual is approximately zero, so there is no peer-relative opportunity.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0,
+      "unit": "points of unexplained P/NAV discount",
+      "source": "Derived in Phase 5 section 5.1 from the peer table and the Phase 1-4 findings",
+      "asOf": "2026-09-11",
+      "confidence": "low",
+      "impact": "high"
+    },
+    {
+      "id": "p5-05",
+      "claim": "Sum-of-the-parts liquidation value today is $123.56 per share: bitcoin $65,085m marked at $77,000, software $1,485m at 3.0x ~$495m of revenue and a USD reserve of $2,400m, less $21,500m of senior claims, across 384.2m shares. It contains no bitcoin forecast and is the floor the market is paying a 4% premium to.",
+      "label": "ANALYST ESTIMATE",
+      "value": 123.56,
+      "unit": "USD per share SOTP",
+      "source": "Derived in Phase 5 section 5.3 from sourced holdings, the 2026-06-30 balance sheet and the 2026-09-11 bitcoin price",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-06",
+      "claim": "No DCF and no justified-P/B is run, deliberately. The asset produces no cash flow, free cash flow to the firm is roughly -$1.6bn a year in every scenario including the bull case because a higher bitcoin price generates no cash, and the common pays no dividend; separately, book value is NAV so the justified-P/B formula is circular. Both weights are set to zero and the remaining weights renormalise.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Methodological decision set out in Phase 5 section 5.3, following the financials sector profile, which specifies that a DCF here must never be an EV/FCF model",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p5-07",
+      "claim": "Scenario probabilities are 35/40/25 rather than symmetric. The bear weight is raised because bitcoin is down 12% year to date, the whole position sits 2.1% above cost, mNAV has already been below 1.0 this cycle, the carry is procyclical, the STRC ratchet is one-way, and two peers demonstrate that sub-1.0x is a stable state. The bull weight is held at a full quarter because Strategy cannot be forced to sell and will still be present to participate in any bitcoin rally.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0.35,
+      "unit": "bear probability",
+      "source": "Weighting judgement derived from the Phase 1-4 findings and peer P/NAV evidence",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-08",
+      "claim": "Value dispersion runs from $32 in the bear case to $370 in the bull, almost entirely as a function of the bitcoin price and the P/NAV rating. This file has an analytical edge on the wrapper - its cost, leverage and mechanics - and no edge whatsoever on the asset, which is why today's liquidation SOTP carries 45% of the triangulation weight.",
+      "label": "ANALYST ESTIMATE",
+      "value": 370,
+      "unit": "USD per share, bull case",
+      "source": "Derived from the scenario table in Phase 5 section 5.2",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p5-09",
+      "claim": "Sell-side consensus is Strong Buy with average price targets of $224.6 (16 analysts, S&P Global), $225.93 (15 analysts, high $435, low $125) and $251.9 (26 analysts) - 75% to 96% above the current price, and 56% to 75% above this file's triangulated fair value of $143.70.",
+      "label": "CONSENSUS",
+      "value": 224.6,
+      "unit": "USD average price target",
+      "source": "S&P Global, TipRanks, MarketBeat and chartmill consensus aggregates retrieved 2026-09-11",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "medium"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Peer set: the vehicles that sell the same thing",
+      "columns": ["Vehicle", "Holding", "P/NAV (mNAV)", "Annual carry", "Leverage", "Why it is in the set"],
+      "rows": [
+        ["Strategy (MSTR) - self", "845,256 BTC", "1.04x (published readings 1.13-1.16x)", "3.44% of common NAV", "1.37x", "The subject"],
+        ["Metaplanet (3350.T)", "40,177 BTC", "0.99x", "n/d", "n/d", "The most aggressive 2025 accumulator; identical playbook, different jurisdiction"],
+        ["BitMine (ETH)", ">4.7m ETH", "1.01x", "n/d", "n/d", "The one treasury peer whose asset yields - it funds a dividend from staking. The control case for what Strategy structurally cannot do"],
+        ["Semler Scientific", "n/d", "0.88x", "n/d", "n/d", "A small operating business that bolted on a treasury; what happens without scale"],
+        ["Nakamoto", "n/d", "~0.70x", "n/d", "n/d", "Down 96% from peak. The tail outcome, and it is not theoretical"],
+        ["Twenty One Capital (XXI)", "43,500 BTC", "n/d [GAP]", "n/d", "n/d", "Second-largest corporate holder"],
+        ["MARA Holdings", "35,303 BTC", "n/d [GAP]", "n/d", "n/d", "Miner-plus-treasury hybrid"],
+        ["Bullish (BLSH)", "24,300 BTC", "n/d [GAP]", "n/d", "n/d", "Exchange-plus-treasury hybrid"],
+        ["US spot bitcoin ETF", "Bitcoin", "1.00x by construction", "~0.20%", "1.00x", "The alternative. The single most important row in this table"],
+        ["Listed closed-end funds (generic)", "Liquid securities", "Historically 0.85-0.95x", "0.5-2.0%", "1.0x", "The structural analogue: permanent capital, liquid asset, a fee, no durable edge"],
+        ["Median, populated treasury peers", "", "0.99x", "", "", "MSTR trades at a 5% premium to it"]
+      ]
+    },
+    {
+      "title": "Decomposing Strategy's 5-point premium to the peer median",
+      "columns": ["Component", "Points of P/NAV", "Justified?"],
+      "rows": [
+        ["Scale, liquidity, Nasdaq-100 membership", "+5", "Yes - index inclusion and a deep options market are worth something real"],
+        ["Longest track record, deepest capital-markets access", "+5", "Yes - Strategy can still raise preferred when peers cannot"],
+        ["Highest absolute carry burden ($1.63bn/yr, 2.51% of the stack)", "-3", "Yes - and it grows as bitcoin falls"],
+        ["Preferred-heavy structure versus peers' simpler balance sheets", "-2", "Yes - more senior claims ahead of the common"],
+        ["Net explained", "+5", ""],
+        ["Unexplained residual", "~0", "There is no peer-relative opportunity"]
+      ]
+    },
+    {
+      "title": "Scenario assumptions",
+      "columns": ["", "Bear (35%)", "Base (40%)", "Bull (25%)"],
+      "rows": [
+        ["Trigger set", "Bitcoin breaks below the $75,417 cost basis and stays there; mNAV holds below 1.0; ATM stays shut; carry funded entirely by bitcoin sales; STRC ratchets twice; premium compresses toward the Semler/Nakamoto range", "Bitcoin recovers modestly; mNAV oscillates around 1.0x; ATM reopens intermittently; carry funded by a mix of preferred issuance and bitcoin sales; STRC holds near 12%", "Bitcoin makes a new cycle high; mNAV re-rates above 1.25x; the accretion machine restarts; preferred buybacks become possible; the STRC rate falls"],
+        ["Bitcoin price, spot equivalent", "$45,000", "$85,000", "$150,000"],
+        ["P/NAV assigned", "0.80x", "1.00x", "1.25x"],
+        ["Implied gross-asset multiple (as supplied to the model)", "0.49x", "1.10x", "2.37x"],
+        ["Bitcoin per share trajectory", "-4.3%/yr (sales fund carry at a lower price)", "-1.5%/yr", "+8%/yr (accretive issuance resumes)"],
+        ["WACC (documented, not used in a DCF)", "17.5%", "15.5%", "13.5%"],
+        ["Value per share", "$32", "$142", "$370"],
+        ["vs $128.48", "-75%", "+10%", "+188%"]
+      ],
+      "note": "Bear above symmetric because bitcoin is -12% YTD, the position is 2.1% above cost, mNAV has already been below 1.0, the carry is procyclical and the ratchet one-way, and two peers show sub-1.0x is a stable state. Bull held at a full quarter because Strategy cannot be forced to sell and will still be present to participate."
+    },
+    {
+      "title": "Sum of the parts - today's liquidation value",
+      "columns": ["Segment", "Method", "Metric ($m)", "Multiple", "Value ($m)"],
+      "rows": [
+        ["Bitcoin", "Mark to market at $77,000", "65,085", "1.0x", "65,085"],
+        ["Software business", "EV/Sales", "495", "3.0x", "1,485"],
+        ["USD reserve", "At cost", "2,400", "1.0x", "2,400"],
+        ["Gross value", "", "", "", "68,970"],
+        ["Less senior claims (converts + preferred)", "", "", "", "(21,500)"],
+        ["Equity value", "", "", "", "47,470"],
+        ["Per share (384.2m)", "", "", "", "$123.56"]
+      ],
+      "note": "Static, contains no bitcoin forecast. It is the floor the market is paying a 4% premium to."
+    },
+    {
+      "title": "Triangulation",
+      "columns": ["Method", "Weight", "Value", "Why this weight"],
+      "rows": [
+        ["Asset-base (P/NAV, scenario-weighted)", "55%", "$160", "The governing framework for a mark-to-market holding vehicle, and the only method carrying a forward view"],
+        ["SOTP (today's liquidation value)", "45%", "$124", "The hard floor. Weighted heavily because it needs no bitcoin forecast, and a bitcoin forecast is not an edge this file possesses"],
+        ["DCF", "0%", "-", "No cash flows exist in any scenario. Deliberately omitted"],
+        ["P/B vs normalised ROE", "0%", "-", "Circular: book value is NAV. Deliberately omitted"],
+        ["Peer multiples", "cross-check", "$122", "Unexplained residual approximately zero"],
+        ["TRIANGULATED FAIR VALUE", "", "$143.70", "+11.9% against $128.48"]
+      ]
+    },
+    {
+      "title": "Three-year target and expected IRR (to September 2029)",
+      "columns": ["", "Bear", "Base", "Bull", "Expected"],
+      "rows": [
+        ["Bitcoin assumption", "$45,000", "$110,000", "$200,000", ""],
+        ["P/NAV assumption", "0.80x", "1.00x", "1.30x", ""],
+        ["Bitcoin held after dividend-funded sales", "~780k", "~792k", "~900k", ""],
+        ["Shares outstanding", "~400m", "~420m", "~450m", ""],
+        ["3-year target price", "$24", "$166", "$474", "$193"],
+        ["Dividends (common pays none)", "$0", "$0", "$0", "$0"],
+        ["IRR (CAGR)", "-42.6%", "+8.8%", "+54.5%", "+14.5%"]
+      ],
+      "note": "Expected IRR of 14.5% against an 18.0% cost of equity. Positive, fat-tailed, and short of the hurdle - which is why this is a HOLD and not a BUY."
+    },
+    {
+      "title": "Catalyst calendar",
+      "columns": ["Window", "Catalyst", "Impact", "Probability", "Re-rates the multiple or changes NAV"],
+      "rows": [
+        ["Continuous", "The bitcoin price - 94.3% of gross assets, 1.37x levered", "High", "-", "NAV"],
+        ["Monthly", "STRC dividend reset - a direct market quote for Strategy's marginal cost of capital", "Medium", "1.00", "Multiple"],
+        ["Weekly", "8-K purchase and sale disclosures - the cleanest read on whether the ATM has reopened", "Medium", "1.00", "Both"],
+        ["Late October 2026", "Q3 2026 results: cumulative bitcoin sales, USD reserve, updated preferred balance", "High", "0.95", "Both"],
+        ["2027", "MSCI's broader consultation on non-operating companies concludes - the deferred overhang", "High", "0.50", "Multiple"],
+        ["Next 12 months", "Software monetisation or a further discounted convertible repurchase - the only deleveraging levers", "Medium", "0.40", "NAV"],
+        ["Bitcoin-dependent", "mNAV sustained above 1.25x, restarting accretive issuance", "High", "0.30", "Both"],
+        ["Next 12-18 months", "S&P rating action on B- stable", "Medium", "0.30", "Multiple"]
+      ]
+    },
+    {
+      "title": "Trigger-to-buy conditions (would flip the rating to TACTICAL BUY)",
+      "columns": ["Condition", "Effect"],
+      "rows": [
+        ["P/NAV below 0.80x with the structure intact", "Buying $1 of bitcoin for 80 cents with the flywheel optionality free. The condition under which this file turns positive, and peer evidence says it is reachable"],
+        ["mNAV sustained above 1.25x with the ATM demonstrably reopened and bitcoin per share rising for two consecutive quarters", "The machine verifiably restarted"],
+        ["Preferred reduced below $10bn via software monetisation or discounted buy-back", "Cuts the carry below 2% of the stack"],
+        ["STRC rate back below 9.00%", "The cost of capital normalised"]
+      ],
+      "note": "Note the deliberate asymmetry with the sell triggers: a falling P/NAV is a BUY condition, not a sell condition, because for a mark-to-market vehicle with the structure intact a wider discount is a better entry price. Every sell trigger is about the NAV itself being consumed or encumbered."
+    }
+  ],
+  "gaps": [
+    {
+      "item": "Exact preferred balance outstanding and its market value",
+      "whyItMatters": "The largest deduction in every valuation here. A $1bn error is $2.60 per share of NAV and 0.03x of leverage",
+      "resolvedBy": "The equity note in the Q3 2026 10-Q - egress-blocked in this session"
+    },
+    {
+      "item": "Exact current common share count",
+      "whyItMatters": "Published figures span 345.9m basic to 419.9m fully diluted; the spread is worth roughly $12 per share of NAV, about 10% of the equity value",
+      "resolvedBy": "The Q3 2026 10-Q cover page"
+    },
+    {
+      "item": "P/NAV for Twenty One Capital, MARA and Bullish",
+      "whyItMatters": "Would let the sector median be computed on eight names rather than five, which is the basis for the conclusion that Strategy trades at a premium to its sector",
+      "resolvedBy": "Treasury trackers publishing a stated methodology"
+    },
+    {
+      "item": "Software segment operating income and any standalone valuation mark",
+      "whyItMatters": "It is 2.2% of gross assets and the only monetisable non-bitcoin asset - the one deleveraging lever that does not touch the bitcoin",
+      "resolvedBy": "Segment disclosure in the 10-Q"
+    },
+    {
+      "item": "A bitcoin price forecast of any analytical standing",
+      "whyItMatters": "It is the dominant variable in every scenario and this file does not have one - which is precisely why today's liquidation SOTP carries 45% of the triangulation weight",
+      "resolvedBy": "Not resolvable by research. It is a view, not a finding"
+    }
+  ],
+  "risks": [
+    {"text": "The reverse flywheel has no internal exit: mNAV below 1.0 shuts the ATM, bitcoin per share falls as dividends are funded by sales, which removes the reason to pay a premium, which keeps mNAV below 1.0. Only an exogenous bitcoin rally breaks it", "severity": "high", "probability": "high"},
+    {"text": "The carry is procyclical and the ratchet one-way: 2.51% of the stack at $77,000, 4.29% at $45,000, 6.44% at $30,000, with STRC ratcheting up 0.5 points permanently in exactly those states", "severity": "high", "probability": "high"},
+    {"text": "The access monopoly is permanently gone. Spot ETFs deliver the same exposure for about 0.20% with creation and redemption at NAV, the very mechanism that prevents a discount persisting. Strategy has no redemption mechanism", "severity": "high", "probability": "high"},
+    {"text": "Strategy trades at a 5% premium to a peer median of 0.99x, and the structural analogue - closed-end funds holding liquid assets - has historically traded at 0.85-0.95x. Mean reversion points down", "severity": "medium", "probability": "medium"},
+    {"text": "Sell-side consensus of $224-252 is 56% to 75% above this file's fair value, so positioning is crowded on the other side of the argument", "severity": "medium", "probability": "medium"}
+  ],
+  "catalysts": [
+    {"text": "The bitcoin price itself - 94.3% of gross assets at 1.37x leverage; every other catalyst is second order", "window": "continuous", "impact": "High", "probability": 1.0},
+    {"text": "Q3 2026 results: cumulative bitcoin sales, USD reserve and the updated preferred balance", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "MSCI's broader consultation on non-operating companies concludes - the deferred index overhang", "window": "2027", "impact": "High", "probability": 0.5},
+    {"text": "Software-business monetisation or a further discounted convertible repurchase", "window": "next 12 months", "impact": "Medium", "probability": 0.4},
+    {"text": "mNAV sustained above 1.25x, restarting accretive issuance", "window": "bitcoin-dependent", "impact": "High", "probability": 0.3}
+  ],
+  "conclusions": [
+    "Triangulated fair value is $143.70 against $128.48, an 11.9% premium to the current price, weighting scenario-based P/NAV 55% and today's liquidation SOTP 45%.",
+    "Expected three-year IRR is 14.5% against an 18.0% cost of equity. Positive and fat-tailed but below the hurdle, and that gap decides the rating.",
+    "Strategy trades at a 5% premium to its treasury-peer median of 0.99x, not a discount, and the premium is fully explained by scale, liquidity and index membership. The unexplained residual is approximately zero.",
+    "No DCF and no justified-P/B is run, deliberately: the asset produces no cash flow in any scenario and book value is NAV, so both methods are undefined rather than merely difficult.",
+    "Dispersion runs $32 to $370 and is almost entirely a bitcoin view. This file has an edge on the wrapper - its cost, leverage and mechanics - and none on the asset, which is why SOTP at today's price carries 45% of the weight.",
+    "Rating HOLD: neither the broken company a 65% drawdown implies nor the cheap leveraged proxy a $224-252 consensus implies. A competently run, unbreakable, expensive wrapper trading at roughly its own liquidation value plus a small, fully explained premium."
+  ],
+  "thesisImpact": "Phase 5 contradicts nothing in Phases 1-4; it prices them and reaches a conclusion neither headline narrative supports. The disciplined answer is that the vehicle is worth approximately what it trades at, with the buy condition (P/NAV below 0.80x with the structure intact) and the sell conditions (NAV consumption, not a wider discount) specified so the position can be monitored rather than re-argued.",
+  "model": {
+    "sharesOut": 384.2,
+    "netDebt": 21500,
+    "minorities": 0,
+    "wacc": {"bear": 0.175, "base": 0.155, "bull": 0.135},
+    "assetBase": {
+      "label": "Gross assets (bitcoin + USD reserve + software)",
+      "value": 68980,
+      "multiple": {"bear": 0.49, "base": 1.10, "bull": 2.37}
+    },
+    "sotp": [
+      {"name": "Bitcoin (845,256 BTC at $77,000)", "method": "Mark to market", "metric": 65085, "multiple": 1.0, "stake": 1.0},
+      {"name": "Software business", "method": "EV/Sales", "metric": 495, "multiple": 3.0, "stake": 1.0},
+      {"name": "USD reserve", "method": "At cost", "metric": 2400, "multiple": 1.0, "stake": 1.0}
+    ],
+    "peers": [
+      {"name": "Strategy (MSTR)", "self": true, "pb": 1.04},
+      {"name": "Metaplanet", "pb": 0.99},
+      {"name": "BitMine", "pb": 1.01},
+      {"name": "Semler Scientific", "pb": 0.88},
+      {"name": "Nakamoto", "pb": 0.70},
+      {"name": "US spot bitcoin ETF", "pb": 1.00}
+    ],
+    "targets": {
+      "bear": {"price3y": 24, "dividends3y": 0},
+      "base": {"price3y": 166, "dividends3y": 0},
+      "bull": {"price3y": 474, "dividends3y": 0}
+    },
+    "probabilities": {"bear": 0.35, "base": 0.40, "bull": 0.25},
+    "weights": {"dcf": 0.0, "asset": 0.55, "pb": 0.0, "sotp": 0.45}
+  },
+  "memo": {
+    "rating": "HOLD / NEUTRAL",
+    "weighting": "P/NAV (asset-base) 55%, SOTP at today's liquidation value 45%, DCF 0%, P/B-vs-ROE 0%. The two zero weights are deliberate: the asset produces no cash flow in any scenario and free cash flow to the firm is about -$1.6bn a year even in the bull case, so an EV/FCF DCF is undefined; and book value IS net asset value because bitcoin is marked to market under ASU 2023-08, so the justified-P/B formula is a circular restatement of the P/NAV question. SOTP carries 45% because it embeds no bitcoin forecast, and a bitcoin forecast is not an edge this file possesses. Triangulated fair value $143.70 against $128.48; expected three-year IRR 14.5% against an 18.0% cost of equity. The peer note in model.peers uses P/NAV in the pb field, because for mark-to-market treasury vehicles price-to-book and price-to-NAV are the same ratio.",
+    "nonConsensus": [
+      {
+        "market": "MSTR is 'the leveraged bitcoin proxy' - buy it when you want amplified beta.",
+        "us": "The amplification is 1.37x, not the 2-3x the market still prices, and it is rented rather than owned: it is paid for with a 3.44% annual fee on common NAV that rises as bitcoin falls - 2.51% of the bitcoin stack at $77,000, 4.29% at $45,000, 6.44% at $30,000.",
+        "evidence": "Phase 4 section 4.4 leverage derivation ($65.08bn of exposure over $47.48bn of NAV); Phase 2 section 2.2 procyclical carry curve; STRC rate history 9.00% to 12.00% in fourteen months with a one-way ratchet."
+      },
+      {
+        "market": "mNAV has collapsed from 3.89x, therefore MSTR is cheap and the discount will close.",
+        "us": "At 1.04x, Strategy trades ABOVE the 0.99x median of its treasury peers and far above the structural analogue - listed closed-end funds holding liquid assets with a fee and no durable edge have historically traded at 0.85-0.95x. Semler is at 0.88x and Nakamoto at 0.70x today. Mean reversion points down, not up.",
+        "evidence": "Phase 5 section 5.1 peer table and the premium decomposition, which leaves an unexplained residual of approximately zero; Phase 4 on the permanence of the spot-ETF overlay."
+      },
+      {
+        "market": "BTC Yield of +13.3% year to date shows the compounding machine is still working.",
+        "us": "BTC Yield measures bitcoin per share and rises whenever stock is issued above 1.0x mNAV, regardless of the bitcoin price and regardless of what the capital cost. Year to date bitcoin per share rose 13.3% while the bitcoin price fell 12%, leaving bitcoin VALUE per share approximately flat and the shares 65% below their high. With the ATM shut and dividends funded by bitcoin sales, the same metric now runs at roughly -2.5% a year.",
+        "evidence": "Phase 3 section 3.2; company BTC Yield disclosure at 2026-05-25; bitcoin at $87,515 on 2025-12-31 against ~$77,000 today; 52-week range $81.81-$365.21."
+      }
+    ],
+    "fears": [
+      {
+        "text": "The reverse flywheel has no internal exit. mNAV below 1.0 makes issuance dilutive, so the ATM shuts; bitcoin per share then falls as dividends are funded by sales; which removes the reason to pay a premium; which keeps mNAV below 1.0.",
+        "why": "The loop is self-reinforcing in both directions and the only thing that breaks it is an exogenous bitcoin rally. A company whose recovery condition is the outcome it is supposed to produce does not control its own future. The purchase pause from mid-June to 2026-08-31, during which holdings grew by 1,481 bitcoin against 81,676 in the prior quarter, is this mechanism on the record."
+      },
+      {
+        "text": "The carry is procyclical and the ratchet is one-way. At $77,000 the cash bill is 2.51% of the stack; at $45,000 it is 4.29%; at $30,000 it is 6.44% - and in exactly those states STRC trades below $95 and the rate ratchets permanently higher, about $53m a year per trigger.",
+        "why": "The rate has already gone from 9.00% at listing in July 2025 to 12.00% in September 2026. The liability structure is engineered to tighten when the asset falls, which is the risk an investment committee should refuse to underwrite cheaply."
+      },
+      {
+        "text": "The access monopoly is permanently gone. Spot bitcoin ETFs deliver the same exposure for roughly 0.20% - one twelfth of Strategy's carrying cost - with daily creation and redemption at NAV.",
+        "why": "Creation and redemption at NAV is precisely the mechanism that prevents a discount from persisting, and Strategy has none. Its premium was built when it was the only regulated way to hold bitcoin in a brokerage account. Any future premium must be earned by leverage and the issuance machine alone, both of which are cyclical. This is the one part of the bear case that no bitcoin rally repairs."
+      }
+    ],
+    "sellTriggers": [
+      "Bitcoin per share declining for three consecutive quarters",
+      "Cumulative bitcoin sales above 25,000 BTC in any rolling twelve months (about 3% of the stack)",
+      "Bitcoin holdings lower year-on-year in any quarter",
+      "STRC dividend rate above 14.00%",
+      "USD reserve below $1.0bn (under eight months of carry cover)",
+      "Senior claims above 45% of bitcoin market value, against 33% today",
+      "Any secured borrowing against the bitcoin, or an S&P downgrade below B-"
+    ]
+  }
+}

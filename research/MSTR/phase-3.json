@@ -1,0 +1,268 @@
+{
+  "schema": "invest-phase/1",
+  "meta": {
+    "company": "Strategy Inc. (formerly MicroStrategy)",
+    "ticker": "NASDAQ: MSTR",
+    "sector": "financials",
+    "currency": "USD",
+    "fxToUsd": 1,
+    "price": 128.48,
+    "priceUnit": "share",
+    "asOf": "2026-09-11",
+    "phase": 3,
+    "phaseName": "Demand & monetisation structure",
+    "assumedContext": [
+      "Network egress blocked except the search index; no primary filing was read directly.",
+      "'Demand' is translated as demand for Strategy's securities rather than for a product: the software business is ~0.7% of the enterprise and irrelevant to the equity.",
+      "No free-cash-flow scenarios are contributed to the model block. Strategy's asset produces no cash flow and its equity value is a balance-sheet residual, so an EV/FCF DCF would be meaningless; Phase 5 uses P/NAV and SOTP instead, per the financials sector profile."
+    ]
+  },
+  "findings": [
+    {
+      "id": "p3-01",
+      "claim": "Strategy's committed forward funding is zero. The $42bn '42/42' ATM authorisation announced 2026-03-23 is board approval to offer securities, not a pipeline: there is no backstop, standby purchase agreement or underwriting commitment. The obligations on the other side - $1,633m a year of preferred dividends - are contractual, cumulative for STRF and STRC, and ratcheting.",
+      "label": "ANALYST ESTIMATE",
+      "value": 0,
+      "unit": "USD m of committed forward funding",
+      "source": "Structural conclusion from the 42/42 announcement of 2026-03-23 and the absence of any disclosed committed facility in sources retrieved",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-02",
+      "claim": "Accretion from common issuance is $1 x (1 - 1/mNAV). At the November 2024 peak of 3.89x that was +74.3 cents per dollar raised; at today's 1.04x it is +3.8 cents, or about +2.3 cents after typical ATM fees - a 97% collapse in the value of the mechanism, which turns negative on a 5% share-price fall.",
+      "label": "ANALYST ESTIMATE",
+      "value": 2.3,
+      "unit": "cents of value created per dollar of common issued, after fees",
+      "source": "Derived; mNAV of 1.04x from the Phase 1 NAV bridge, 3.89x November 2024 peak per market data",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-03",
+      "claim": "Preferred-funded bitcoin purchases carry an incremental margin of roughly minus 11 percentage points: a realised asset return of about 1% a year on Strategy's own six-year record ($63.73bn deployed, now worth $65.08bn) against a 12.00% STRC cost of capital. Growth here does not merely dilute returns, it destroys capital.",
+      "label": "ANALYST ESTIMATE",
+      "value": -11,
+      "unit": "percentage points incremental margin",
+      "source": "Derived from Strategy's cumulative bitcoin cost basis and market value, against the September 2026 STRC rate of 12.00%",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-04",
+      "claim": "Bitcoin sales to fund preferred dividends have begun and are policy: 32 BTC sold 2026-05-26 to 05-31 for about $2.5m at an average $77,135, and about 3,588 BTC sold near the end of June 2026 for $216m. Management stated on the Q2 call that it will sell bitcoin whenever it considers doing so advantageous and that investors should expect that on a go-forward basis.",
+      "label": "FACT",
+      "value": 3620,
+      "unit": "BTC sold, disclosed 2026 sales",
+      "source": "Strategy 8-K disclosures reported by CoinDesk 2026-06-01 and subsequently; Q2 2026 earnings call remarks",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p3-05",
+      "claim": "Funding the full $1,633m annual carry from bitcoin sales at $77,000 consumes 21,208 BTC a year, 2.51% of the stack, taking bitcoin per share from roughly 220,000 sats to 214,485 sats - a 2.51% annual decline, against the +13.3% BTC Yield reported for the first five months of 2026. At bitcoin $45,000 the bleed is 4.3% a year.",
+      "label": "ANALYST ESTIMATE",
+      "value": -2.51,
+      "unit": "% annual change in bitcoin per share if carry is funded by sales",
+      "source": "Derived from the Phase 2 carry figure, 845,256 BTC and ~384.2m shares; reported BTC Yield of 13.3% YTD at 2026-05-25 and bitcoin per share of 220,900 sats",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "p3-06",
+      "claim": "Management's headline KPI cannot decline when the strategy fails. BTC Yield was +13.3% year to date at 2026-05-25 with a BTC Gain of 89,378 bitcoin and a BTC $ Gain of $6.8bn, while the bitcoin price fell 12% year to date (from $87,515 at 2025-12-31), leaving bitcoin value per share approximately flat and the shares roughly 65% below their 52-week high. BTC Yield rises whenever stock is issued above 1.0x mNAV regardless of the bitcoin price or the cost of the capital.",
+      "label": "MANAGEMENT GUIDANCE",
+      "value": 13.3,
+      "unit": "% BTC Yield YTD at 2026-05-25",
+      "source": "Strategy company disclosure of BTC Yield, BTC Gain and BTC $ Gain at 2026-05-25; bitcoin price of $87,515 at 2025-12-31 per FY2025 disclosure; 52-week range $81.81-$365.21",
+      "asOf": "2026-05-25",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p3-07",
+      "claim": "Capital raised: $25.3bn in calendar 2025 (largest US equity issuance for a second consecutive year), $11.68bn in the first four months of 2026 (largest US equity issuance of 2026), $8.41bn of ATM proceeds in Q2 2026 and $1.28bn between 1 and 26 July 2026 - followed by a common-ATM pause of roughly ten weeks from mid-June.",
+      "label": "FACT",
+      "value": 25300,
+      "unit": "USD m raised in calendar 2025",
+      "source": "Strategy FY2025 disclosure; Q1 2026 results 2026-05-05; Q2 2026 10-Q",
+      "asOf": "2026-07-26",
+      "confidence": "high",
+      "impact": "high"
+    },
+    {
+      "id": "p3-08",
+      "claim": "The 1 million bitcoin by end-2026 target requires roughly 155,000 more bitcoin, about $12bn at $77,000, in under four months with the common ATM economically shut. It is classified Speculative Demand and carries zero weight in any scenario.",
+      "label": "MANAGEMENT GUIDANCE",
+      "value": 155000,
+      "unit": "BTC still required to reach the target",
+      "source": "42/42 plan announced 2026-03-23 with a stated goal of 1 million BTC by end-2026; current holdings of 845,256 BTC",
+      "asOf": "2026-09-11",
+      "confidence": "high",
+      "impact": "medium"
+    },
+    {
+      "id": "p3-09",
+      "claim": "The only clearly value-accretive capital action of 2026 was balance-sheet shrinkage: $1.50bn of 2029 convertible notes repurchased and cancelled for $1.38bn on 2026-05-19, an 8% discount. The software business, worth roughly $1.5bn, could retire a similar amount of 12% preferred and save about $180m a year of carry, and has not been monetised.",
+      "label": "FACT",
+      "value": 120,
+      "unit": "USD m discount captured on the convertible repurchase",
+      "source": "Strategy press release 2026-05-15 and Q2 2026 10-Q; software valuation is an analyst estimate",
+      "asOf": "2026-06-30",
+      "confidence": "high",
+      "impact": "medium"
+    },
+    {
+      "id": "p3-10",
+      "claim": "Strategy uses no secured borrowing against its bitcoin, which is a genuine credit strength - it cannot be margin-called, and survived a roughly 33% bitcoin drawdown in H1 2026 without a forced sale. It also cannot earn any yield on the asset: bitcoin does not stake, in contrast to the ETH treasury peer BitMine, which funds a dividend from staking yield on more than 4.7m ETH.",
+      "label": "ANALYST ESTIMATE",
+      "source": "Assessment of Strategy's disclosed capital structure (unsecured converts and perpetual preferred only); BitMine staking-funded dividend per treasury-sector reporting, 2026",
+      "asOf": "2026-09-11",
+      "confidence": "medium",
+      "impact": "high"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Named sources of capital, with classification",
+      "columns": ["Source", "Counterparty", "Capacity", "Status", "Class"],
+      "rows": [
+        ["MSTR common ATM", "Public equity market", "Half of the $42bn 42/42 authorisation", "GATED - economically shut below 1.0x mNAV; paused ~10 weeks from mid-June 2026", "Approved/Committed capacity; Speculative demand"],
+        ["STRC ATM", "Yield buyers", "Other half of the $42bn authorisation", "Open, but STRC trades below $100 par at a 12.00% rate", "Approved/Committed capacity"],
+        ["STRF / STRD / STRE ATMs", "Yield buyers incl. European (LuxSE)", "Not separately disclosed [GAP]", "Open", "Approved/Committed capacity"],
+        ["Convertible note market", "Credit and volatility funds", "-", "Strategy is a net repurchaser: $1.50bn of 2029s bought back for $1.38bn in May 2026", "Not in use"],
+        ["Bitcoin sales", "Spot market", "845,256 BTC", "In use: ~3,620 BTC sold in May-June 2026 for ~$218m", "Existing Contracted - the only genuinely certain source"],
+        ["Software operating cash flow", "~enterprise customers", "~$495m revenue", "Stable, immaterial", "Approved/Committed, 0-3% of the bill"],
+        ["Secured borrowing against bitcoin", "Private credit", "Not used", "Not disclosed", "Unfunded Planned"],
+        ["1 million BTC by end-2026", "-", "~155,000 BTC / ~$12bn in under four months", "Announced 2026-03-23", "Speculative - zero weight"]
+      ]
+    },
+    {
+      "title": "Volume totals by classification bucket",
+      "columns": ["Class", "Test", "Strategy's position"],
+      "rows": [
+        ["Existing Contracted", "Signed, binding, take-or-pay", "$0 of capital. The only contractually certain source of cash is selling the asset"],
+        ["Approved / Committed Pipeline", "Approved, capacity reserved", "$42bn of authorisation, of which the common half is economically unusable below 1.0x mNAV"],
+        ["Unfunded Planned Project", "Announced without financing", "Secured bitcoin borrowing; further preferred series"],
+        ["Speculative Demand", "Extrapolation or aspiration", "The 1-million-bitcoin target"]
+      ],
+      "note": "A $42bn ATM authorisation is a permit, not a pipeline. Strategy has converted uncertain, optional funding into certain, perpetual obligations."
+    },
+    {
+      "title": "Incremental margin on common issuance, by mNAV",
+      "columns": ["mNAV", "Accretion per $1 issued", "Less ~1.5% ATM fees", "Verdict"],
+      "rows": [
+        ["3.89x (Nov 2024 peak)", "+74.3c", "+72.8c", "The machine that built the company"],
+        ["1.60x", "+37.5c", "+36.0c", "Strongly accretive"],
+        ["1.22x (management's stated threshold)", "+18.0c", "+16.5c", "Accretive"],
+        ["1.04x (today)", "+3.8c", "+2.3c", "Economically trivial"],
+        ["1.00x", "0c", "-1.5c", "Value-destructive after fees"],
+        ["0.95x", "-5.3c", "-6.8c", "Destroys value"]
+      ],
+      "note": "Accretion per dollar issued = $1 x (1 - 1/mNAV). Output down 97% from peak and negative on a 5% share-price fall."
+    },
+    {
+      "title": "Capital raised and what it bought",
+      "columns": ["Period", "Capital raised", "Bitcoin added", "Implied cost"],
+      "rows": [
+        ["Calendar 2025", "$25.3bn - largest US equity issuance, second consecutive year", "to ~713,502 BTC at year-end", "-"],
+        ["Q1 2026 (to 2026-05-05)", "$11.68bn - largest US equity issuance of 2026", "762,099 BTC at 2026-03-31", "-"],
+        ["Q2 2026", "$8.41bn ATM gross proceeds", "+81,676 BTC", "~$65k/BTC"],
+        ["2026-07-01 to 07-26", "$1.28bn ATM gross proceeds", "-", "-"],
+        ["Mid-June to 2026-08-31", "Common ATM paused", "+1,481 BTC net, including sales", "-"]
+      ]
+    },
+    {
+      "title": "Where the $1,633m annual carry actually comes from",
+      "columns": ["Source", "Annual capacity", "Share of the bill", "Class"],
+      "rows": [
+        ["Software operating cash flow", "~$0-50m (estimate)", "0-3%", "Certain, immaterial"],
+        ["Common ATM", "$0 while mNAV below ~1.05", "0% today", "Gated"],
+        ["Preferred ATM", "Open, but each dollar adds ~11% of permanent new carry", "Can cover 100% by enlarging the problem", "Self-defeating at the margin"],
+        ["USD reserve draw-down", "$2.40bn = 17.6 months, once", "-", "Finite"],
+        ["Bitcoin sales", "Unlimited until the stack is gone", "The residual - and therefore the real answer", "In use"]
+      ]
+    },
+    {
+      "title": "Disclosed bitcoin sales to fund dividends",
+      "columns": ["Date", "Amount", "Proceeds", "Stated purpose"],
+      "rows": [
+        ["2026-05-26 to 05-31", "32 BTC", "~$2.5m at an average $77,135", "STRC preferred dividends"],
+        ["~end of June 2026", "3,588 BTC", "$216m", "Preferred dividends"]
+      ],
+      "note": "Saylor on the Q1 call: the company would 'probably sell some bitcoin to pay a dividend just to inoculate the market', later calling it 'a big nothing burger' and arguing Strategy can buy 20 bitcoin for every one sold. That ratio holds only while the ATM works; from mid-June it was approximately 0 bought for every 1 sold."
+    },
+    {
+      "title": "Commercial structures: available versus in use",
+      "columns": ["Mechanism", "In use?", "Economics"],
+      "rows": [
+        ["Committed or backstopped equity facility", "No", "Would convert $42bn of authorisation into committed capital; its absence is why forward funding is $0"],
+        ["Revolving credit facility", "Not disclosed [GAP]", "A B- issuer with no disclosed revolver has no liquidity backstop other than its own assets"],
+        ["Secured borrowing against bitcoin", "No", "Cheaper than 12% preferred but introduces margin-call risk - the one risk the current structure genuinely avoids"],
+        ["Yield on the asset (lending, staking)", "Not possible", "Bitcoin does not stake. BitMine, the ETH treasury peer, funds a dividend from staking yield on 4.7m ETH; Strategy structurally cannot"],
+        ["Covered-call overwriting", "Not disclosed", "Would generate income at the cost of capping upside"],
+        ["Sale or spin of the software business", "No", "~$1.5bn that could retire ~$1.5bn of 12% preferred, saving ~$180m a year of carry"],
+        ["Convertible repurchase at a discount", "Yes", "$1.50bn repurchased for $1.38bn in May 2026 - the single most clearly accretive act of 2026"],
+        ["Take-or-pay / minimum volume", "No", "n/a"]
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "item": "Software segment operating income and cash flow",
+      "whyItMatters": "It is the only non-bitcoin source of cash. At +$50m it covers 3% of the annual carry; at -$50m the hole is 6% larger. The analysis assumes breakeven, which flatters the company",
+      "resolvedBy": "Segment disclosure in the 10-Q"
+    },
+    {
+      "item": "Whether any committed or backstopped credit or equity facility exists",
+      "whyItMatters": "Would transform the funding picture from $0 committed into something underwritable. A B- issuer with no disclosed revolver is a materially different credit",
+      "resolvedBy": "The debt and commitments notes in the 10-Q"
+    },
+    {
+      "item": "Total bitcoin sold in 2026 to date",
+      "whyItMatters": "Only two sales totalling about 3,620 BTC were retrievable; the cumulative figure sets the actual bleed rate against the modelled 2.51% a year",
+      "resolvedBy": "8-K purchase and sale disclosures and the Q3 2026 10-Q"
+    },
+    {
+      "item": "Remaining unissued ATM capacity by series",
+      "whyItMatters": "Determines how long preferred issuance can substitute for common issuance before capacity, rather than appetite, binds",
+      "resolvedBy": "The 10-Q equity note and current prospectus supplements"
+    },
+    {
+      "item": "Whether the 1-million-bitcoin target has been formally withdrawn",
+      "whyItMatters": "It is the company's only public forward commitment and is arithmetically unreachable without roughly $12bn in four months",
+      "resolvedBy": "Q3 2026 results"
+    }
+  ],
+  "risks": [
+    {"text": "Committed forward funding is zero while $1,633m a year of preferred dividends is contractual and ratcheting - the asymmetry that defines the credit", "severity": "high", "probability": "high"},
+    {"text": "Preferred-funded bitcoin purchases run a roughly minus 11 percentage point incremental margin on the company's own six-year realised asset return", "severity": "high", "probability": "high"},
+    {"text": "Dividend-funded bitcoin sales bleed 2.51% of the stack a year at $77,000 and 4.3% at $45,000, reducing the only variable the equity is long", "severity": "high", "probability": "high"},
+    {"text": "The headline KPI, BTC Yield, is structurally incapable of declining when the strategy is failing, which degrades the quality of management's own feedback loop", "severity": "medium", "probability": "high"},
+    {"text": "The only value-accretive actions available in 2026 - repurchasing converts at a discount, monetising the software business - are the opposite of the stated strategy", "severity": "medium", "probability": "medium"}
+  ],
+  "catalysts": [
+    {"text": "Q3 2026 results disclose cumulative 2026 bitcoin sales and the USD reserve balance - the cleanest read on the bleed rate", "window": "late October 2026", "impact": "High", "probability": 0.95},
+    {"text": "Sale or spin of the software business to retire preferred - roughly $1.5bn of value against ~$180m a year of carry", "window": "2027", "impact": "Medium", "probability": 0.2},
+    {"text": "A committed or backstopped facility that converts ATM authorisation into actual committed capital", "window": "next 12 months", "impact": "High", "probability": 0.2},
+    {"text": "Formal withdrawal or restatement of the 1-million-bitcoin target", "window": "Q3 or Q4 2026 results", "impact": "Medium", "probability": 0.5},
+    {"text": "mNAV sustained above 1.22x, restoring genuinely accretive common issuance", "window": "bitcoin-dependent", "impact": "High", "probability": 0.3}
+  ],
+  "conclusions": [
+    "Strategy's committed forward funding is zero: a $42bn ATM authorisation is a permit to offer securities, not a pipeline, while the $1,633m of annual preferred dividends on the other side is contractual and ratcheting.",
+    "Common issuance now creates about 2 cents of value per dollar raised after fees at a 1.04x mNAV, down 97% from the 74 cents available at the November 2024 peak, and it turns negative on a 5% share-price fall.",
+    "Preferred-funded bitcoin purchases carry an incremental margin of roughly minus 11 percentage points - a ~1% realised asset return against 12% capital. Growth here destroys capital rather than merely diluting returns.",
+    "Bitcoin sales to fund dividends are policy, not accident: 32 BTC in May and 3,588 BTC for $216m in June, with management guiding to more. The run-rate bleed is 2.51% of the stack a year, 4.3% at bitcoin $45,000.",
+    "The company's headline KPI cannot fall when the strategy fails: BTC Yield was +13.3% year to date while bitcoin value per share was flat and the shares were 65% below their high.",
+    "The only value-accretive actions available in 2026 are balance-sheet shrinkage - buying back converts at a discount, and monetising the software business - which is the opposite of the stated strategy."
+  ],
+  "thesisImpact": "Answers Phase 2's question: the $1,633m comes from selling the asset or from issuing more of the instrument that created the obligation. Neither is growth, and both shrink bitcoin per share - the only variable the equity is long. The thesis is now fully specified: MSTR is a levered claim on bitcoin carrying a 2.51% annual fee that rises as bitcoin falls, whose one source of alpha is switched off and cannot restart until the outcome it is meant to cause has already occurred.",
+  "model": {
+    "sharesOut": 384.2
+  }
+}
